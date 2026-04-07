@@ -237,13 +237,27 @@ function KPICard({ label, value, sub, bg }) {
 
 // --- Main component ---
 export default function PerformanceReport({ hsToken }) {
+  const CACHE_KEY = 'perf_report_cache';
+  const CACHE_TTL = 3 * 24 * 60 * 60 * 1000; // 3 days
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [report, setReport] = useState(null);
+  const [report, setReport] = useState(() => {
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+      if (cached && Date.now() - cached.ts < CACHE_TTL) return cached.data;
+    } catch {}
+    return null;
+  });
   const [progress, setProgress] = useState('');
+  const [cacheAge, setCacheAge] = useState(() => {
+    try { const c = JSON.parse(localStorage.getItem(CACHE_KEY)); return c?.ts || null; } catch { return null; }
+  });
 
-  const loadReport = useCallback(async () => {
+  const loadReport = useCallback(async (force) => {
     if (!hsToken) { setError('Set HubSpot token to load report'); return; }
+    // Use cache if fresh and not forced
+    if (!force && report) return;
     setLoading(true); setError(''); setProgress('Fetching owners...');
 
     try {
@@ -363,13 +377,18 @@ export default function PerformanceReport({ hsToken }) {
       const thisConnRate = totalDials ? (connections / totalDials * 100) : 0;
       const connRateDelta = thisConnRate - lastConnRate;
 
-      setReport({
+      const reportData = {
         periodLabel: `Week of ${fmtDate(thisMonday.toISOString())} (WTD)`,
         totalDials, connections, meetings, dialsPerDay, uniqueCompanies: uniqueCompanies.size,
-        dispositionCounts, byDay, byRep, byVertical, meetingsList,
+        dispositionCounts, byDay,
+        byRep: Object.fromEntries(Object.entries(byRep).map(([k, v]) => [k, { ...v, dates: [...v.dates] }])),
+        byVertical, meetingsList,
         dialsDelta, connDelta, meetDelta, connRateDelta,
         connectRate: thisConnRate,
-      });
+      };
+      setReport(reportData);
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: reportData }));
+      setCacheAge(Date.now());
       setProgress('');
     } catch (e) {
       setError(e.message);
@@ -392,7 +411,7 @@ export default function PerformanceReport({ hsToken }) {
   if (error) {
     return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', flexDirection: 'column', gap: 12 }}>
       <div style={{ color: '#dc2626', fontSize: 14 }}>{error}</div>
-      <button onClick={loadReport} style={{ background: '#4f46e5', color: 'white', border: 'none', borderRadius: 6, padding: '8px 16px', cursor: 'pointer', fontSize: 13 }}>Retry</button>
+      <button onClick={() => loadReport(true)} style={{ background: '#4f46e5', color: 'white', border: 'none', borderRadius: 6, padding: '8px 16px', cursor: 'pointer', fontSize: 13 }}>Retry</button>
     </div>;
   }
   if (!report) return null;
@@ -430,7 +449,10 @@ export default function PerformanceReport({ hsToken }) {
       {/* Title */}
       <div style={{ background: S.headerBg, color: S.headerText, padding: '16px 20px', borderRadius: 8, marginTop: 16, fontSize: 15, fontWeight: 700 }}>
         Runbook — Nooks Call Performance | {r.periodLabel}
-        <button onClick={loadReport} style={{ float: 'right', background: '#374151', color: '#d1d5db', border: 'none', borderRadius: 5, padding: '4px 12px', cursor: 'pointer', fontSize: 11 }}>↻ Refresh</button>
+        <span style={{ float: 'right', display: 'flex', alignItems: 'center', gap: 10 }}>
+          {cacheAge && <span style={{ fontSize: 10, color: '#9ca3af' }}>Cached {new Date(cacheAge).toLocaleString()}</span>}
+          <button onClick={() => loadReport(true)} style={{ background: '#374151', color: '#d1d5db', border: 'none', borderRadius: 5, padding: '4px 12px', cursor: 'pointer', fontSize: 11 }}>↻ Refresh</button>
+        </span>
       </div>
 
       {/* ========== SECTION 1: OVERVIEW ========== */}
@@ -470,7 +492,7 @@ export default function PerformanceReport({ hsToken }) {
       <ColHeader cols={repCols} widths={repWidths} />
       {sortedReps.map(([rep, d], i) => {
         const cr = pctNum(d.connections, d.dials);
-        const dialsDay = d.dates.size ? Math.round(d.dials / d.dates.size) : 0;
+        const dialsDay = (d.dates?.size || d.dates?.length || 1) ? Math.round(d.dials / (d.dates?.size || d.dates?.length || 1)) : 0;
         return <DataRow key={rep} alt={i % 2 === 1} widths={repWidths} cells={[
           { value: rep, style: { fontWeight: 700 } },
           d.dials, dialsDay, d.connections,
@@ -520,7 +542,7 @@ export default function PerformanceReport({ hsToken }) {
       <ColHeader cols={repCols} widths={repWidths} />
       {sortedReps.map(([rep, d], i) => {
         const cr = pctNum(d.connections, d.dials);
-        const dialsDay = d.dates.size ? Math.round(d.dials / d.dates.size) : 0;
+        const dialsDay = (d.dates?.size || d.dates?.length || 1) ? Math.round(d.dials / (d.dates?.size || d.dates?.length || 1)) : 0;
         return <DataRow key={rep} alt={i % 2 === 1} widths={repWidths} cells={[
           { value: rep, style: { fontWeight: 700 } },
           d.dials, dialsDay, d.connections,
