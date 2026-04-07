@@ -35,7 +35,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA16d239d8dd54e26485de71ddca6eebc0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363202818794",
     "persona": "",
-    "offer": ""
+    "offer": "We help IT teams automate workflows and deploy AI agents faster for production."
   },
   {
     "id": "363206407898",
@@ -205,7 +205,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe6a5f6c1d1f54bdac1b974902ad3363e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363150585591",
     "persona": "",
-    "offer": "So that how many so that's that's super interesting and that's actually why i called is that our platform run book so basically it serves it as a platform to build and deploy these agents much more quickly to get through that list of priorities and be able to qa and simulate and..."
+    "offer": "We provide a platform to build and deploy AI agents faster with built-in QA and simulation."
   },
   {
     "id": 363095824078,
@@ -222,7 +222,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb99c001c77958bf166052f9aefb51342.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363095824078",
     "persona": "Finance / AP",
-    "offer": "So 've been working with finance and it teams in the logistics space to help them automate billing and accounts payable typically for teams who have to manually collect pods look up data various sources spreadsheets and match it to their tms or crm before billing i was curious..."
+    "offer": "We help logistics finance teams automate billing and AP by collecting PODs and matching invoices to TMS."
   },
   {
     "id": "363105275624",
@@ -273,7 +273,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65cdb9c9495e85385b39db901ecb2819.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363092523714",
     "persona": "Finance / AP",
-    "offer": "Thank you so much so 'm from a company called run book and i've been working with finance teams mostly in logistics to help them automate billing and accounts payable typically for teams who have to manually collect pods or work orders create invoices and match it to their tms..."
+    "offer": "We help finance teams in logistics automate billing and accounts payable."
   },
   {
     "id": 363091722971,
@@ -290,7 +290,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3d3a89f476576a398e3cc94c99c64151.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363091722971",
     "persona": "IT Leadership",
-    "offer": "Yeah this is about your work i've been working with a good amount of it and ai engineering teams in the logistics space now and i've been seeing a common theme in regards to automating workflows complex workloads"
+    "offer": "We help logistics teams automate complex AI workflows and engineering processes."
   },
   {
     "id": "363097583315",
@@ -324,7 +324,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe3a9b55f2256ecbb08103ff8507c2d41.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363097747135",
     "persona": "IT / Engineering",
-    "offer": "Yeah that's what a lot of people say that but the times at building those agents and governing those agents down stream when you when you scale your fleet to that i don't know ten thousand agents orchestrating them becomes a problem so this is something we can help with yeah..."
+    "offer": "We help data teams build and govern AI agents at scale."
   },
   {
     "id": 363088001763,
@@ -341,7 +341,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87451e7ad6bcb2df0fa224145d2489b9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363088001763",
     "persona": "Technical IC",
-    "offer": "Thank you so much so roger i see your a solutions architect at len working on ai and i've been working with a good amount of it and ai and engineering teams and i've been hearing a common theme that i thought my resonate with you is that they wanna automate workflows for their..."
+    "offer": "We help AI teams build and deploy agents faster with built-in governance and orchestration."
   },
   {
     "id": "363074847431",
@@ -460,7 +460,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7acd5933f3cff4cdf9d03584c5bbb366.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362937748175",
     "persona": "Technical IC",
-    "offer": "Thank you so much so see you're working on enterprise architecture at gordon and i thought this might be relevant to you so i've been working with a good number of it and engineering teams in the logistics and supply chain side of things and i've been hearing a common theme..."
+    "offer": "We help IT teams deploy AI agents faster for logistics and supply chain workflows."
   },
   {
     "id": 362934932169,
@@ -477,7 +477,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb1287a8acc31e90a0e74fcd882045595.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362934932169",
     "persona": "IT Leadership",
-    "offer": "Alright thank you christopher so i see your leading it team at brock and i've been working with a good amount of it and engineering teams in the logistics and manufacturing space and i've been hearing a common theme that i thought might resonate with you is that they wanna..."
+    "offer": "We help IT teams deploy AI agents faster to automate operational workflows across multiple systems."
   },
   {
     "id": "362957532906",
@@ -545,7 +545,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbfa599f2d14f9016ac2555d6b1ef9f48.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362927672041",
     "persona": "IT / Engineering",
-    "offer": "Thank you so james i see your leading commercial digital solutions and assuming that falls under it and 've been working with the a good amount of it and engineering teams in the logistics and manufacturing space and i've been seeing a theme that i thought i resonate with you..."
+    "offer": "We help engineering teams deploy AI agents to automate repetitive manual workflows across systems."
   },
   {
     "id": "362957289199",
@@ -596,7 +596,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe775ca59268483958c5cd95c887d4cb4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362924071614",
     "persona": "Executive",
-    "offer": "Cool so the company i'm calling for is called run book and what we do is we provide organizations you guys with a platform that helps build and deploy agents that handle the manual coordination work that's slow dispatch and operations teams down i i know that you look after..."
+    "offer": "We provide a platform to build and deploy agents that automate manual operational coordination work."
   },
   {
     "id": "362956602096",
@@ -732,7 +732,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e035f0897a3784a498493c4a3097d1c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362950752968",
     "persona": "Director (Other)",
-    "offer": "Good thanks sean so i see your leading it over at otis i've been working with a number of it and engineering teams now in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with it is that they wanna automate workflows..."
+    "offer": "We help IT teams deploy AI agents faster with built-in governance and production readiness."
   },
   {
     "id": "362949937898",
@@ -851,7 +851,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA33b019a39536808550bbdb34bbca8363.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362925116122",
     "persona": "IT / Engineering",
-    "offer": "No worries yeah just thirty seconds and you can you can tell me whether or not it makes sense to continue your conversation good so i've been working with a number of it teams in the logistics in manufacturing space mostly but i've been hearing a common theme that i thought you..."
+    "offer": "We help IT teams build and deploy AI agents for automating business workflows reliably."
   },
   {
     "id": "362925040321",
@@ -919,7 +919,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9381c030afb894dbfba15e3b6712f62d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362555414210",
     "persona": "Executive",
-    "offer": ""
+    "offer": "We help teams build and deploy AI agents to automate daily operational tasks."
   },
   {
     "id": 362586077920,
@@ -970,7 +970,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA32143c1ad96d1d44edfa02bf13933ed7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362539175641",
     "persona": "IT Leadership",
-    "offer": "Thanks grant so i see your senior architect at it'll aws i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators tasks that are repetitive..."
+    "offer": "We help IT teams deploy AI agents to automate cross-system workflows."
   },
   {
     "id": "362562513633",
@@ -1089,7 +1089,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5734f7e56da5d5ddd1749b92638a48c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362500558543",
     "persona": "Director (Other)",
-    "offer": "Well look at reached out to you specifically i understand that you're the director of enterprise systems over uni group our company what we do is provide a platform that helps teams deploy build and deploy agents that automate a lot of the manual coordination work that flow..."
+    "offer": "We provide a platform to build and deploy AI agents that automate operational coordination work."
   },
   {
     "id": 362567113402,
@@ -1106,7 +1106,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4f43817d664c50ad7d1c13574ae4b832.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362567113402",
     "persona": "IT Leadership",
-    "offer": "This is chuck ga i'm calling from run book we're a we're a platform that helps your team filled and play agents to operationalize a lot of manual coordination task that your teams the slow team's is down wondering if you guys have looked at anything that"
+    "offer": "We help teams build and deploy AI agents to automate manual operational coordination tasks."
   },
   {
     "id": 362489731770,
@@ -1123,7 +1123,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7214f190c45081d21a451ce4901ad7c9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362489731770",
     "persona": "Executive",
-    "offer": ""
+    "offer": "We help automation teams build and deploy agents."
   },
   {
     "id": "362517809887",
@@ -1225,7 +1225,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9255f9f65efdd13fec22b84e139a2f4a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362364834504",
     "persona": "IT Leadership",
-    "offer": "So we are in the ai agent space it's a platform for building ai agents it's a orchestration layer for all your agents it's supposed to make building agents easy for non technical users and also keep your agents in one place if you scale to thousands of agents we help keep things..."
+    "offer": "We provide a platform to build and deploy AI agents with orchestration and governance for non-technical users."
   },
   {
     "id": "362354035406",
@@ -1310,7 +1310,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA850cfecc25bc7ffcfce19eddb1f4b5e8.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362212771521",
     "persona": "IT / Engineering",
-    "offer": "Hi i appreciate it and yeah you tell me if it's relevant or not so i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators tasks that are..."
+    "offer": "We help IT and engineering teams deploy AI agents faster with built-in governance and production controls."
   },
   {
     "id": "362129861329",
@@ -1344,7 +1344,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA189d41f807500115f64544db5ee5bdfd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362145872612",
     "persona": "Executive",
-    "offer": "So yeah totally get that it sounds you guys are to probably something pretty good we what we do is it's a it's a product and a platform for building ai agents and it's also an orchestration layer for these agents"
+    "offer": "We help IT and engineering teams deploy AI agents into production faster with built-in governance."
   },
   {
     "id": 362174592760,
@@ -1531,7 +1531,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb932731da59d02bb7384ce4a9f4d4238.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362157792957",
     "persona": "Director (Other)",
-    "offer": "Alright michael yeah i see your leading innovation analytics and i've been working with a number of it and engineering teams now in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for..."
+    "offer": "We help IT teams deploy AI agents faster with built-in orchestration and governance."
   },
   {
     "id": 362166597359,
@@ -1650,7 +1650,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfa362fbd955663085793143135755f96.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362187948742",
     "persona": "IT / Engineering",
-    "offer": "So i see your meeting transformation at us radiology i've been working with a number of it and engineering teams and i've can here a common theme that i thought my resonate with you they wanna automate workflows for their business operators test that are repetitive manual and..."
+    "offer": "We help IT teams build and orchestrate AI agents at scale with simplified management."
   },
   {
     "id": "362110769905",
@@ -1701,7 +1701,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6fec2c2d4fcc122dd24339d14171b252.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362016227037",
     "persona": "Executive",
-    "offer": "Thanks patrick so i see your ceo at envision 've been working with a number of different it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows with their operators process at our competitive schedule..."
+    "offer": "We help IT teams build and deploy AI agents for workflow automation in production."
   },
   {
     "id": "362015779540",
@@ -1803,7 +1803,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAede189d74555a364cd245f314a1683bf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362010112758",
     "persona": "IT / Engineering",
-    "offer": "But i've been i see your it manager at shell and i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna build or automate workflows for their business operators it's tasks that are..."
+    "offer": "We help IT teams deploy AI agents in production with built-in governance and enterprise alignment."
   },
   {
     "id": 362014471868,
@@ -1820,7 +1820,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd9725e618995ab30d94a6f7ad8e18bba.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014471868",
     "persona": "IT / Engineering",
-    "offer": "So they wanna automate workflows for their business operators tasks that are repetitive manual and may require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem..."
+    "offer": ""
   },
   {
     "id": "362014865137",
@@ -1871,7 +1871,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87e6ae78e7f92ba9a6e9a55b78e8e4bc.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361972268755",
     "persona": "IT / Engineering",
-    "offer": "Yeah so sean see your a senior manager for it at h s and i've been working with a number of it and engineering leaders in the logistics space and there's a common theme that i thought you might resonate with they wanna automate their workflows for their business operators but..."
+    "offer": "We help IT teams deploy AI agents faster that automate complex workflows with built-in production governance."
   },
   {
     "id": 361985440464,
@@ -1905,7 +1905,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8614fe5bc14a6f80659dc7b868ad15af.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014595801",
     "persona": "Technical IC",
-    "offer": "Okay great so jean i noticed here a lead enterprise architect at bp and i've been working with several other enterprise it key and engineering teams in the logistics and manufacturing space mostly and i've been hearing a common theme that i thought you might resonate with given..."
+    "offer": "We help enterprise teams deploy AI agents that automate workflows across multiple systems."
   },
   {
     "id": "361985295097",
@@ -1939,7 +1939,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9165cd277781fa84f502d5ace3329e4e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362013511405",
     "persona": "Other",
-    "offer": "Great so thirty seconds so see you're your an it business partner at lineage i've been working with a number of different it and engineering teams mostly in the logistics space now and i've been hearing a common theme that i thought might resonate with you they wanna automate..."
+    "offer": "We help IT teams deploy AI agents to automate repetitive workflows across systems."
   },
   {
     "id": 362012375795,
@@ -1956,7 +1956,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd77817a673ab374e515608c78ba7c709.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012375795",
     "persona": "IT / Engineering",
-    "offer": "Thank you ex yeah oh so i see your it application development manager i'm working with a good amount of it at engineering teams mostly in the logistics space and i've been hearing a comments theme email i thought you might resonate with they wanna automate workflows for their..."
+    "offer": "We help IT teams deploy AI agents for business workflow automation with built-in production reliability."
   },
   {
     "id": 362012352216,
@@ -1973,7 +1973,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1f6fc795041c1a8b3209858bd4e6a7d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012352216",
     "persona": "Executive",
-    "offer": "Thank you savannah so see your chief strategy officer effective i've been working with a good amount of it and engineering teams mostly in currently in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna..."
+    "offer": "We help IT teams deploy AI agents faster with built-in orchestration for multi-agent workflows."
   },
   {
     "id": "361993264874",
@@ -2024,7 +2024,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb33959ccafa246a36d89562b4baa94a2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361966817978",
     "persona": "Director (Other)",
-    "offer": "Run book we are at an organization that helps folks y'all deploy agents to automate a lot of the business processes that slow teams down and operations in billing saw that you look after the analytics and insights thought you might have some thoughts on that i'm curious if you..."
+    "offer": "We help deploy AI agents to automate business processes in operations and billing."
   },
   {
     "id": "361891660520",
@@ -2126,7 +2126,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3f318536d44befd301d17fee61db0961.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361975966425",
     "persona": "Director (Other)",
-    "offer": ""
+    "offer": "We help organizations build and deploy AI agents."
   },
   {
     "id": "361969889010",
@@ -2177,7 +2177,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA754192b999d0a6564de87444f7652295.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361891592913",
     "persona": "IT / Engineering",
-    "offer": "Yeah thank you so i see you're a d for it focus on digital transformation at fedex i'm working with a good number of it and engineering teams in the logistics space and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for..."
+    "offer": "We help IT teams deploy AI agents faster with governance and production reliability."
   },
   {
     "id": 361992668904,
@@ -2194,7 +2194,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA138246bd80acfdf19d73f235e8453752.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992668904",
     "persona": "Operations Leadership",
-    "offer": "Alright okay so what our company does it is that we help teams yours automate a lot of the manual coordination effort that goes in to things billing dispatching and and getting you guys paid i guess but by doing by deploying ai agents that your team can build and take ownership..."
+    "offer": "We help operations teams automate manual coordination using AI agents."
   },
   {
     "id": 361992306372,
@@ -2211,7 +2211,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAaedf41c44ce8d972a1fdcecbfc126ca3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992306372",
     "persona": "IT Leadership",
-    "offer": "So i'm working with a ton of it and engineering teams mostly in a logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for the business operators and they've looked to ai agents to help with..."
+    "offer": "We help IT teams deploy AI agents faster for business workflow automation."
   },
   {
     "id": 361949147864,
@@ -2245,7 +2245,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87d2dabe7ed534942dac4198cc5bf65b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361963330283",
     "persona": "IT Leadership",
-    "offer": "So i'm working with a lot of it and engineering teams they're they're building a lot of ai workflows for their business operators the tasks that are repetitive and require coordination between multiple people and systems and that they've looked to ai agents to help with this but..."
+    "offer": "We help IT and engineering teams deploy AI agents into production for repetitive, multi-system workflows."
   },
   {
     "id": "361893235433",
@@ -2364,7 +2364,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe014cca6a80b637da2722aaffe9bc60c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361818775279",
     "persona": "IT Leadership",
-    "offer": "Alright thank you so see your cio at pike i've been working with a lot of it and engineering teams mostly in the logistics and manufacturing space and i've been hearing the a common theme that i thought might resonate with you they wanna automate workflows for their business..."
+    "offer": ""
   },
   {
     "id": "361786680032",
@@ -2483,7 +2483,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa9d5fca0f7b21714f8f3003783db5a7b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361786580684",
     "persona": "IT Leadership",
-    "offer": "Thank you man so noticed you're a principal solutions architect at aws i was just trying i've been working with a couple of different it and engineering teams and i've been hearing a common theme that i thought you might resonate with so they wanna automate workflows for their..."
+    "offer": "We provide a platform to build and deploy AI agents faster with built-in governance."
   },
   {
     "id": "361874403040",
@@ -2517,7 +2517,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA41b24c0f0ecfe386c02b7127a40530f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361876191989",
     "persona": "IT Leadership",
-    "offer": "Run book we spoke about a month ago he'd asked me to get it back and talk i just have that on my calendar for today the reason that i was reaching out is and we talked a little bit about this word platform that helps organizations build and deploy agents to automate and the..."
+    "offer": "We help organizations build and deploy AI agents to automate manual operational coordination work."
   },
   {
     "id": 361872670433,
@@ -2534,7 +2534,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd1c8c077f33042ec726c8b3379cffbc6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361872670433",
     "persona": "IT / Engineering",
-    "offer": "Thank you so much okay joanne so i see your leading it team at pepsi and i'm working with a number of different enterprise it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business..."
+    "offer": "We help IT teams deploy AI agents faster with built-in governance and QA."
   },
   {
     "id": "361839975113",
@@ -2755,7 +2755,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa15e8deadbd6e164e32f1f50a9f24e2e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361846361792",
     "persona": "IT / Engineering",
-    "offer": "Great thank you so much michael so see you're a senior it infrastructure pm at ohio health and i've been working with the good amount of it and engineering teams now mostly in the logistics and manufacturing space but i've been hearing a common theme that i thought you might..."
+    "offer": "We help IT infrastructure teams automate manual operational workflows and coordination tasks."
   },
   {
     "id": 361830141666,
@@ -2772,7 +2772,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA727d88776724ca8af56b51edbc9cb7b5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361830141666",
     "persona": "IT Leadership",
-    "offer": "Okay what it with it regarding what kind of service it's whoever halo ai so will give you kind of a run rundown of what we do so we work with it and engineering teams in the logistics space and the problem we're trying to solve is to help these companies deploy ai agents faster..."
+    "offer": "We help IT and engineering teams deploy AI agents faster, reducing costs and implementation time."
   },
   {
     "id": "361813939935",
@@ -2823,7 +2823,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA738c7d429e4e7624939347ef93a0b181.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361642040051",
     "persona": "Director (Other)",
-    "offer": "Alright thank you so much tim so i see your senior your director of innovation at paul i'm working with a couple of different enterprise it and engineering teams mostly in the logistics and manufacturing space but i've been hearing a theme that i thought might resonate with you..."
+    "offer": "We help IT teams deploy AI agents faster to automate multi-system workflows."
   },
   {
     "id": "361607544545",
@@ -2942,7 +2942,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA050a3850370014171c80bf53499f74df.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361636581055",
     "persona": "Other",
-    "offer": "K that's perfect the so the reason i was reaching out to you specifically was is that our platform at run book we help organizations build and deploy agents to automate a lot of the work that lives on top of the data and or and coordinated effort that that slow teams down on a..."
+    "offer": "We help data teams build and deploy AI agents to automate manual operational work."
   },
   {
     "id": "361600290514",
@@ -3010,7 +3010,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb979a7e7de9b3a7d5c211daa3fb41717.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361537605306",
     "persona": "IT / Engineering",
-    "offer": "Thank you so much ken so see your leading tech ops green way i've been working with a number of enterprise it and engineering teams mostly currently in the logistics and manufacturing space and i've been hearing kinda a common theme that i thought you might resonate with their..."
+    "offer": "We help IT teams deploy AI agents to production faster with built-in governance."
   },
   {
     "id": 361564152508,
@@ -3044,7 +3044,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc70530efa9ea2f1eb3191a9667c2c101.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361571202757",
     "persona": "Technical IC",
-    "offer": "Run book yeah the reason i'm calling is we are a platform that helps seems yours build agents to deploy and automate a lot of the manual coordination work that your operations team and billing teams do on a day to day basis understand here of the enterprise architect over at la..."
+    "offer": "We help operations teams build and deploy AI agents using natural language without coding."
   },
   {
     "id": 361535437500,
@@ -3061,7 +3061,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA49b4544380665e68d0d5db2c9226b030.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361535437500",
     "persona": "Director (Other)",
-    "offer": "Thank you so much so see your associate director at par pharmaceutical i this might resonate with you so work with a ton of it and engineering teams most fleet now in the logistics and manufacturing space and these are these are companies who are trying to build more ai and i've..."
+    "offer": "We help engineering teams deploy AI agents faster for logistics and manufacturing automation."
   },
   {
     "id": "361546153664",
@@ -3163,7 +3163,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe2f8fc43ae7c1667e51d5c1ee6fa01db.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361584108264",
     "persona": "IT Leadership",
-    "offer": "Thank you so much jeff so i work for a company called rum book where san francisco start up we work with it and engineering teams mostly in the logistics and manufacturing space on mostly on the ai side so i've been hearing a common theme that maybe you would resonate with is..."
+    "offer": "We help engineering teams deploy AI agents faster with built-in governance and production reliability."
   },
   {
     "id": "361560141531",
@@ -3214,7 +3214,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5140782775081ffdcc99c56ad8b2187.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361516668608",
     "persona": "IT / Engineering",
-    "offer": "But yeah i understand you look after it pro projects for us this the reason i'm reaching out i work with a lot of folks yourself the they kinda fall into two buckets and the problems i hear are hey we're we're trying to help our operations team run faster and automate things for..."
+    "offer": "We help IT teams deploy AI agents to automate operational workflows with built-in reliability."
   },
   {
     "id": 361538826944,
@@ -3231,7 +3231,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6221ccd6ecf4dc47ab0c6a836da42ac6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361538826944",
     "persona": "Executive",
-    "offer": "Bernadette that's nice to be you so my name is brandon lia i work for a very small startup up in san francisco called run book and we are in this kind of ai we helped build ai agents for enterprises in the logistics manufacturing space and i was hoping to run a a challenge by..."
+    "offer": "We help enterprises build AI agents for logistics and manufacturing in less than a day."
   },
   {
     "id": 361522919136,
@@ -3248,7 +3248,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c7f2a2e92bd3534431f838961b53d24.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361522919136",
     "persona": "Operations Leadership",
-    "offer": "Run book we're we're a platform that helps automate a lot of the manual coordination work that slowed this"
+    "offer": "We automate manual operational coordination work for operations teams."
   },
   {
     "id": 361504432847,
@@ -3265,7 +3265,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAdc05cc35d75b9bec2b2a177b4252e511.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361504432847",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "We help IT teams deploy AI agents faster with built-in governance and production support."
   },
   {
     "id": "361500814066",
@@ -3316,7 +3316,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAabf3cdd129602dc40349f1cd64c62e16.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361517466355",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "We help IT teams deploy AI agents faster with built-in governance and production readiness."
   },
   {
     "id": "361470969549",
@@ -3367,7 +3367,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe9f54f805a3c65a750cac2a105bec414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361519118038",
     "persona": "IT / Engineering",
-    "offer": "Okay so ka my name is brad and lia i'm calling from a startup up in san francisco called run book we're in the logistics ai solution space for logistics so i've been working with a several enterprise it teams in this age of ai and the cut i've been hearing a common theme that i..."
+    "offer": "We help logistics teams deploy AI agents to production faster with built-in governance."
   },
   {
     "id": "361476238042",
@@ -3418,7 +3418,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA85ff4ec4dffc77373f42cbf1c323d406.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361478526652",
     "persona": "Operations Leadership",
-    "offer": "We're we're an ai company that helps automate a lot of the manual coordination work that your team execute on a day basis"
+    "offer": "We help operations teams automate manual coordination work with AI."
   },
   {
     "id": 361482116832,
@@ -3452,7 +3452,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf931d2eeb6071b26ace55ae8fd813964.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361465427687",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "We help IT teams automate manual operational tasks with a platform."
   },
   {
     "id": 361502332608,
@@ -3469,7 +3469,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c5dfc3ac1595b62ce0da6ce05c3f2c6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361502332608",
     "persona": "Other",
-    "offer": "Great thank you so much so the reason i called you i noticed that's your application development lead at ryder i've been i've been working with a bunch of enterprise it teams kind of in the logistics space and i've have been hearing a common theme that i thought you might..."
+    "offer": "We help IT teams deploy AI agents faster with production governance and maintenance support."
   },
   {
     "id": "361487516398",
@@ -3520,7 +3520,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb590d7a0df0ed0624638ff3be8cb5d4f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361485668048",
     "persona": "IT / Engineering",
-    "offer": "You alright thank you so i see your a program manager at logistics i've been working with a bunch of different enterprise it teams kind of in the logistics space and i've been hearing a common theme that i thought maybe you would resonate with it's their business teams that the..."
+    "offer": "We help IT teams deploy AI agents faster with built-in governance and production support."
   },
   {
     "id": "361517233876",
@@ -3588,7 +3588,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3b6f0212ba34df59d67f1228dfb41bdb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361454474940",
     "persona": "Operations Leadership",
-    "offer": "Yep totally the understand that you look after operations over central done book the company i'm with we provide a platform that helps deploy automation and agents for a lot of the manual coordination task that's slowed your team down on a day to day basis things i don't know..."
+    "offer": "We provide a platform to deploy AI agents that automate manual coordination tasks for operations teams."
   },
   {
     "id": "361042960085",
@@ -3656,7 +3656,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA000574c919fa9d58a9a04b3b4b94bab7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046501104",
     "persona": "IT Leadership",
-    "offer": "Thank you so i've noticed you're you're working on ai innovation and automation just many of the people that i'm speaking with today so i'm pretty much in the logistics ai space and from my conversation have been kinda hearing two common themes that i thought you might resonate..."
+    "offer": "We build AI agents to automate manual coordination tasks in logistics operations."
   },
   {
     "id": 361039310571,
@@ -3673,7 +3673,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8839ba3900c02515aa8417a8f4f364d0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361039310571",
     "persona": "Operations",
-    "offer": ""
+    "offer": "We help operations leaders automate day-to-day team tasks."
   },
   {
     "id": 361075559116,
@@ -3690,7 +3690,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA5e276246874f55e9fad2b3473d30ff9c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361075559116",
     "persona": "Operations",
-    "offer": "It's run book we are a platform that helps operations teams automate a lot of the manual coordination work they do between systems on a day basis that slow your team down using agent ai i'm curious if you've got any purview into that"
+    "offer": "We help operations teams automate manual coordination work between systems using AI agents."
   },
   {
     "id": 361094902495,
@@ -3707,7 +3707,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf1c1855075b6991c214edc73f9ced9f2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361094902495",
     "persona": "Operations Leadership",
-    "offer": "Thanks sean so i've been working with a lot of it and operations teams in this logistics space and i've been hearing two common themes that i thought might resonate with you one is their business teams that they're supporting are spending eighty percent or more of their time in..."
+    "offer": "We help operations teams deploy AI agents faster without heavy engineering investment."
   },
   {
     "id": "361084498642",
@@ -3809,7 +3809,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c6bb5eb3b3d77c8f9ce64bb441c13cd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046399685",
     "persona": "Director (Other)",
-    "offer": "Thank you so i'm working with a lot of it departments in the enterprise logistics space and i've been hearing kinda two common themes i thought might resonate with you one is their business teams they're spending eighty percent were more of their time in repetitive manual..."
+    "offer": "We help IT teams build and deploy trustworthy AI agents for manual workflows."
   },
   {
     "id": "361091218169",
@@ -3894,7 +3894,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc60532696fbe9f7d231d7639d15359fe.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361042771699",
     "persona": "IT / Engineering",
-    "offer": "Run book we're a platform that helps organizations deploy agents to automate a lot of the coordinated manual effort that operations see that close operations seems down wondering if that's something that touches your role at all"
+    "offer": "We help operations teams deploy AI agents to automate manual coordinated effort."
   },
   {
     "id": "361071789766",
@@ -3979,7 +3979,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb2dda02550393ec80d648543dbf863ac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360861691611",
     "persona": "IT / Engineering",
-    "offer": "Hey was thanks for calling me back this is this is chuck ga i was actually calling you out of the blue i'm calling you from a company called run book and if you if you a couple seconds i'll tell you why i called what we're doing is we're helping companies you guys deploy agents..."
+    "offer": "We help operations teams automate billing and carrier communication tasks with AI agents."
   },
   {
     "id": "360840909540",
@@ -4098,7 +4098,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbded11e71ad8773f37509cd9a9982ce2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360839022285",
     "persona": "IT / Engineering",
-    "offer": "From now run book we're an automation platform that helps deploy agents to execute the manual repetitive coordination task that operations teams have to go through on a day to day basis i'm curious if that's something you touch in devops and it"
+    "offer": "We help operations teams automate manual coordination tasks with AI agents."
   },
   {
     "id": 360823897808,
@@ -4115,7 +4115,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a997c042aced2d4f96d39014a9e1223.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360823897808",
     "persona": "IT / Engineering",
-    "offer": "Yeah sure so i understand it's you're the that you look after data and analytics at dan ross and the reason that i'm calling is i speak to a lot of folks on in your position who are working with their operations teams to sync up data across systems to reduce a lot of the manual..."
+    "offer": "We provide AI agents to automate manual operational coordination across systems."
   },
   {
     "id": "360854310630",
@@ -4149,7 +4149,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb92e6171cc7de1c96f1b5288a1132851.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360842581697",
     "persona": "Technical IC",
-    "offer": "Thank you so much so i'm working with a lot of it teams in this wonderful age of ai i'm sure you probably heard a lot about that stuff but i've been hearing two kinda common themes that i thought potentially would resonate with you given your role one is they're they're building..."
+    "offer": ""
   },
   {
     "id": 360857757401,
@@ -4166,7 +4166,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA268286b41b6bb9ce4f2d4253c6baba9e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360857757401",
     "persona": "Analyst / Specialist",
-    "offer": "Thanks so i've been working with a lot of it teams and in this age of ai and i've been hearing kind of two common themes that i thought my resonate with you given your role in systems applications one is their building agent workflows but trust and accuracy you can break down..."
+    "offer": "We help IT teams automate multi-system operational workflows with AI agents."
   },
   {
     "id": 360588752578,
@@ -4183,7 +4183,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd7131fcd94728ae49abc43b051ba429f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588752578",
     "persona": "Operations",
-    "offer": "Run book you and i spoke a couple weeks ago you'd asked me to give you a callback give you some time to give you a callback what we are is an automation platform that helps automate the manual coordination work that your dispatcher are do on a daily basis dispatch operations..."
+    "offer": "We help dispatch operations teams automate manual coordination work."
   },
   {
     "id": 360590525162,
@@ -4200,7 +4200,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe02b97901a59842c92a3a89b2f7a32ee.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360590525162",
     "persona": "Operations",
-    "offer": "Understand you look after decade operations over at maverick what run book is that we're a platform that helps automate a lot of the manual coordination test that go into an operation yours so think about carrier communication the out bill billing and encoding all that can be..."
+    "offer": "We automate manual operational coordination for dedicated operations teams using AI agents."
   },
   {
     "id": 360581535424,
@@ -4217,7 +4217,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb4b3dab5cbbdd5fce8d079ac30265a47.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360581535424",
     "persona": "Operations Leadership",
-    "offer": ""
+    "offer": "We help operations teams automate manual coordination between billing, dispatching, and carrier communication."
   },
   {
     "id": 360588532444,
@@ -4234,7 +4234,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA52d956f36111987b4377a8e872175a2c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588532444",
     "persona": "Operations Leadership",
-    "offer": ""
+    "offer": "We help operations teams implement agent automation to streamline workflows."
   },
   {
     "id": 360571129560,
@@ -4251,7 +4251,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4957a81ed1a0e914818c75ff55ee6fac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360571129560",
     "persona": "Director (Other)",
-    "offer": "Great the reason i'm calling i'm calling from run book we're an ai platform actually that helps automate a lot of the operational tasks that teams are doing on a day to day basis from dispatching the billing to carrier coordination i'm curious if that's something that you guys..."
+    "offer": "We automate operational tasks like dispatching, billing, and carrier coordination."
   },
   {
     "id": 360597499638,
@@ -4336,7 +4336,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfccaebfd207be084c97232f2736c1daf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360431190754",
     "persona": "IT Leadership",
-    "offer": "Yeah we are a platform that a serves as an orchestration layer for the data and infrastructure that you have to deploy agents that automate operational tasks so the things that exist at the end of your current automation automations that you've already invested in that exist..."
+    "offer": "We provide a platform that orchestrates data and infrastructure to deploy agents automating operational tasks."
   },
   {
     "id": 360350097107,
@@ -4353,7 +4353,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe453c78ed6f76a23fb5becbb14ee0a52.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360350097107",
     "persona": "Director (Other)",
-    "offer": ""
+    "offer": "We automate operational processes using generative AI."
   },
   {
     "id": 360435302099,
@@ -4387,7 +4387,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a1591a61a74ef51cde4e77e6d392414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360301072101",
     "persona": "IT Leadership",
-    "offer": "Okay well good i've been talking to a couple of different folks on your team what 'm calling from run book where we are as a platform that helps automate a lot of the manual coordination work that your operations teams are doing on a day to day basis sounds you have some updated..."
+    "offer": "We help operations teams automate manual coordination work with AI agents."
   },
   {
     "id": 360158840552,
@@ -4404,7 +4404,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA002695d9325af7e7519d1cc0c940c732.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360158840552",
     "persona": "IT Leadership",
-    "offer": "Sure so with companies that have t a tms or el or maybe you're an sap or something that know operations and dispatch teams will have to go through multiple systems to fill in orders or get an invoice out on the back end and so we're able to basically sit on top of the data..."
+    "offer": "We help operations and finance teams automate manual work across systems using AI agents."
   },
   {
     "id": "360171373283",
@@ -4472,7 +4472,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3d5c2158cb4c33fcd693e74d5dbac738.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360097848023",
     "persona": "Director (Other)",
-    "offer": "Yep no a hundred percent what we do is we help automate a lot of the tasks that operations teams are dealing with on a day to day basis so that could be billing be dispatching you we deploy these agents that give you a lot of that time back"
+    "offer": "We deploy AI agents to automate operations tasks like billing and dispatching."
   },
   {
     "id": "359736829641",
@@ -4540,7 +4540,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb5ae5bee3b73da789d52d5c5fa9621f7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359718654671",
     "persona": "Operations",
-    "offer": "Okay the reason i was calling you is that we are a platform that helps teams yours automate a lot of the manual coordination work that goes in between dispatch and billing curious if that's something you guys have issues with today if you looked at solutions for automating"
+    "offer": "We automate manual coordination work between dispatch and billing for operations teams."
   },
   {
     "id": "359722900208",
@@ -4591,7 +4591,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf4b25f6932d86ee55dff3b9c73875c75.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359570062033",
     "persona": "Other",
-    "offer": "Okay it's cool so i'll tell you i'm calling i'm the run book we're an organization that helps operations teams automate a lot of the manual coordination effort that goes into the day to day task with they that go into the operation on a day to day basis i'm curious if you guys..."
+    "offer": "We help operations teams automate manual coordination and day-to-day tasks."
   },
   {
     "id": "359605994227",
@@ -4625,7 +4625,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364cbed638259825cceb323fda508be3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359381665479",
     "persona": "Other",
-    "offer": "The reason i the reason the reason the reason i had called is i'm doing a bunch of research on an end that in the company i work for is called run book what we do is to work with it teams to help solve the problem of having operational leaders have to deal with manual day to day..."
+    "offer": "We help IT teams automate manual operational tasks using AI agents."
   },
   {
     "id": "359379965661",
@@ -4676,7 +4676,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65552df8f224a84269aded8a93d4d9b0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359364064989",
     "persona": "Operations",
-    "offer": ""
+    "offer": "We help operations teams automate manual task coordination across logistics systems."
   },
   {
     "id": "359353906883",
@@ -4710,7 +4710,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc854a0704825f3f5449f38259c6ef1f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359221165804",
     "persona": "IT / Engineering",
-    "offer": "Yeah first of my call is actually scheduled some time with you we're a platform that helps operations team reduce the manual tasks that they have to do on a day basis between systems by ninety seven percent with a agent k wondering if you guys have looked at that in the past"
+    "offer": "We help operations teams reduce manual tasks between systems by 97% with AI agents."
   },
   {
     "id": 358851312352,
@@ -4727,7 +4727,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1ee22edec27edb9eb64aa4bd432f3dd2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358851312352",
     "persona": "Operations",
-    "offer": "Yeah i yeah totally it could be for it's really horizontal i it really is things where folks are throwing bodies i guess at prop at specific workflows that happened on a day basis it could be an insurance company it could be a manufacturing company it could be a logistics..."
+    "offer": "We automate operational workflows like dispatch, driver coordination, and billing across systems."
   },
   {
     "id": 358663070432,
@@ -4795,7 +4795,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA817cf7ad33c7777b4657b077b8f6cbe0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358654043893",
     "persona": "IT Leadership",
-    "offer": "I'm i'm with run booked i doing some research check on you guys company your we're a platform that helps automate a lot of the coordination task that happened on outside of the automation you've already built and you guys done a lot of that with the pricing that you have your t..."
+    "offer": "We help logistics teams automate coordination tasks outside existing TMS systems."
   },
   {
     "id": "358644207299",
@@ -4829,7 +4829,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe8c8c7b718fdaed740c0313ad0e0aba9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414973656",
     "persona": "Executive",
-    "offer": "Run book we're a platform founded by the former founder of motive the fleet management company what we do is we provide we help we help companies y'all deploy agents to automate a lot of the tasks that exist on the edges of systems your tms and el and still require manual..."
+    "offer": "We help companies deploy AI agents to automate manual coordination tasks across TMS and ERP systems."
   },
   {
     "id": 358449854162,
@@ -4846,7 +4846,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAcfa46f0180dae8a14f9900c56e4be224.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358449854162",
     "persona": "IT / Engineering",
-    "offer": "Okay no front no problem that's that's totally fair one quick one quick question just to help gonna be directional accurate is it is there anything specifically that you guys are looking at ai to help optimize at this point and know i'm the reason i ask is we do a lot with..."
+    "offer": "We automate back office operations for fleet operators using AI \u2014 handling compliance, billing, and carrier reconciliation."
   },
   {
     "id": 358446212853,
@@ -4863,7 +4863,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3fc9588acafd09118d0d2c23a182b4ab.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358446212853",
     "persona": "Director (Other)",
-    "offer": "Yeah run book so i understand that you look after a fleet process improvement at keen and the reason that i was calling is run book is a platform that helps automate a lot of the back office and even dispatch oriented task that operators up you on a day to day basis using ai"
+    "offer": "We automate back office and dispatch tasks for fleet operators using AI."
   },
   {
     "id": 358414827240,
@@ -4880,7 +4880,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3de75e888a28dbe3f1ccf624f43d6f21.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414827240",
     "persona": "IT Leadership",
-    "offer": "It's joel calling you from run book been doing a lot of research on i see understand you guys have invested in modernizing the back end kind of data architecture that you guys have what we do is provide a platform that sits on top of that to deploy agents to automate a lot of..."
+    "offer": "We provide a platform to deploy AI agents automating operational coordination using natural language."
   },
   {
     "id": "358432988909",
@@ -4931,7 +4931,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA40479bf85cd5f303664666b592ba513c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358359611085",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "We help IT teams automate runbook execution and incident response workflows."
   },
   {
     "id": 357910316739,
@@ -4948,7 +4948,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0a8f04b92120afcfb608c837b5acb3c5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/357910316739",
     "persona": "Operations Leadership",
-    "offer": "It's ron book we're a platform that helps organizations deploy agents to automate the manual coordination task that happened between systems and logistics"
+    "offer": "We help organizations deploy AI agents to automate manual coordination between systems and logistics."
   },
   {
     "id": "357913837289",
@@ -5084,7 +5084,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAba2a64311da1d59704eaf51748e073d6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/355479115456",
     "persona": "Executive",
-    "offer": "It's interesting i don't know the framework that you guys are working with because i'm we're talking more about garbage trucks than eighteen wheelers but the editorial that go on with people overloading and things that how do you automate just the billing for that a lot of..."
+    "offer": ""
   },
   {
     "id": "355019098817",
@@ -5203,7 +5203,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364228eb180a62efd79e0079b0406a86.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353051495136",
     "persona": "Operations",
-    "offer": "We are a platform that works with companies bison who are built on really modern technology stacks to extend okay to the edges of those systems and automate a lot of the workflows that happen still in within at the edges of those systems within phone text email with ai agents..."
+    "offer": "We help logistics teams automate edge workflows using AI agents that extend modern tech stacks."
   },
   {
     "id": 353313151706,
@@ -5305,7 +5305,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c65c72046ee5b5c23e58c8d20fdf6a5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352964206277",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "We help AI solutions teams automate operational workflows with runbooks."
   },
   {
     "id": 352267068151,
@@ -5458,7 +5458,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8e61b4d6aed7bcad66a07c94bae3ae17.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348416113388",
     "persona": "IT Leadership",
-    "offer": "A company called run book we're founded by the former founder of motive the transportation manager fleet management solution what we do is we are providing agents or deploying agents for customers to help operationalize some of the frontline work that those teams are doing..."
+    "offer": "We help IT teams deploy AI agents faster with self-service workflow ownership."
   },
   {
     "id": 348414293736,
@@ -5492,7 +5492,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA239e9b4f212c5c89d170b673b04259d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348393224922",
     "persona": "Executive",
-    "offer": ""
+    "offer": "We help transportation networks optimize operations and reduce costs."
   },
   {
     "id": 348396717807,
@@ -5509,7 +5509,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA658ec9cc7d1ebefbd324d8f1233d558a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348396717807",
     "persona": "IT Leadership",
-    "offer": "Yeah so run book is a platform that helps automate a lot of the frontline operational work that's your team might be doing manually to coordinate with carriers of across systems we're using agent ai to basically automate that curious if you guys have thought about that i know..."
+    "offer": "We automate operational coordination gaps between systems using AI agents for logistics teams."
   },
   {
     "id": "348443019991",
@@ -5543,7 +5543,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e56cb36f8097762b5044e66bf20b7d1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348421380840",
     "persona": "IT / Engineering",
-    "offer": "Yeah so i understand you look after it over at center line the reason i'm calling is run book is a platform that helps automate a lot of the frontline work that your operations team does in coordination in manual communication on a day to day basis wondering if you're looking at..."
+    "offer": "We help operations teams automate frontline work and manual communication coordination with AI."
   },
   {
     "id": "348381346495",
@@ -5594,7 +5594,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8138047a6d98c91e5fb34f44adae4596.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/347870970583",
     "persona": "",
-    "offer": "Yeah i gotcha got you just while i got you now just for the last couple of seconds here is there do you guys have processes with poc to billing or tutorials assignment that is really manual today"
+    "offer": "We automate frontline operations work \u2014 manual coordination for loads via email, text, and phone."
   },
   {
     "id": "347866853100",
