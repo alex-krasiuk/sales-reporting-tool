@@ -87,6 +87,7 @@ export default function CallAnalytics() {
   const [filterOutcome, setFilterOutcome] = useState('All');
   const [filterRep, setFilterRep] = useState('All');
   const [filterVertical, setFilterVertical] = useState('All');
+  const [filterPersona, setFilterPersona] = useState('All');
   const [filterTag, setFilterTag] = useState('All');
   const [tags, setTags] = useState({});  // callId -> [tag1, tag2, ...]
   const [taggingProgress, setTaggingProgress] = useState(null); // null | { done, total }
@@ -149,14 +150,16 @@ export default function CallAnalytics() {
       const matchOutcome = filterOutcome === 'All' || row.outcome === filterOutcome;
       const matchRep = filterRep === 'All' || row.rep === filterRep;
       const matchVertical = filterVertical === 'All' || row.vertical === filterVertical;
+      const matchPersona = filterPersona === 'All' || row.persona === filterPersona;
       const matchTag = filterTag === 'All' || (tags[row.id] && tags[row.id].includes(filterTag));
-      return matchSearch && matchOutcome && matchRep && matchVertical && matchTag;
+      return matchSearch && matchOutcome && matchRep && matchVertical && matchPersona && matchTag;
     });
-  }, [rows, search, filterOutcome, filterRep, filterVertical, filterTag, tags]);
+  }, [rows, search, filterOutcome, filterRep, filterVertical, filterPersona, filterTag, tags]);
 
   // Unique reps and verticals for filters
   const reps = useMemo(() => ['All', ...new Set(rows.map(r => r.rep))], [rows]);
   const verticals = useMemo(() => ['All', ...new Set(rows.map(r => r.vertical).filter(Boolean).sort())], [rows]);
+  const personas = useMemo(() => ['All', ...new Set(rows.map(r => r.persona).filter(Boolean).sort())], [rows]);
   const allTags = useMemo(() => {
     const s = new Set();
     Object.values(tags).forEach(arr => arr.forEach(t => s.add(t)));
@@ -230,13 +233,14 @@ OBJECTION: <tag or None>` }]
 
   // Export CSV
   const exportCSV = () => {
-    const baseHeaders = ['Call ID', 'Date', 'Time', 'Rep', 'Contact', 'Title', 'Outcome', 'Vertical', 'Duration (s)', 'Tags', 'Transcript', 'Recording URL', 'HubSpot URL'];
+    const baseHeaders = ['Call ID', 'Date', 'Time', 'Rep', 'Contact', 'Title', 'Persona', 'Outcome', 'Vertical', 'Duration (s)', 'Offer Used', 'Tags', 'Transcript', 'Recording URL', 'HubSpot URL'];
     const customHeaders = customCols.map(c => c.name);
     const headers = [...baseHeaders, ...customHeaders];
     const csvRows = rows.map(r => {
       const base = [
-        r.id, r.date, r.time, r.rep, r.contactName || '', r.title || '', r.outcome, r.vertical || '',
+        r.id, r.date, r.time, r.rep, r.contactName || '', r.title || '', r.persona || '', r.outcome, r.vertical || '',
         Math.round(r.durationMs / 1000),
+        `"${(r.offer || '').replace(/"/g, '""')}"`,
         `"${(tags[r.id] || []).join('; ')}"`,
         `"${(r.transcript || '').replace(/"/g, '""')}"`,
         r.recordingUrl || '',
@@ -487,13 +491,16 @@ OBJECTION: <tag or None>` }]
         <select value={filterVertical} onChange={e => setFilterVertical(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 10px', fontSize: 13, color: '#374151' }}>
           {verticals.map(v => <option key={v} value={v}>{v === 'All' ? 'All Verticals' : v}</option>)}
         </select>
+        <select value={filterPersona} onChange={e => setFilterPersona(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 10px', fontSize: 13, color: '#374151' }}>
+          {personas.map(p => <option key={p} value={p}>{p === 'All' ? 'All Personas' : p}</option>)}
+        </select>
         {allTags.length > 1 && (
           <select value={filterTag} onChange={e => setFilterTag(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 10px', fontSize: 13, color: '#374151' }}>
             {allTags.map(t => <option key={t} value={t}>{t === 'All' ? 'All Tags' : t}</option>)}
           </select>
         )}
-        {(search || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterTag !== 'All') && (
-          <button onClick={() => { setSearch(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterTag('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
+        {(search || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterPersona !== 'All' || filterTag !== 'All') && (
+          <button onClick={() => { setSearch(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterPersona('All'); setFilterTag('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
         )}
         <button
           onClick={analyzeAllCalls}
@@ -532,9 +539,11 @@ OBJECTION: <tag or None>` }]
               <TH>Time</TH>
               <TH>Rep</TH>
               <TH>Contact</TH>
+              <TH>Persona</TH>
               <TH>Outcome</TH>
               <TH>Vertical</TH>
               <TH>Duration</TH>
+              <TH style={{ minWidth: 200 }}>Offer Used</TH>
               <TH style={{ minWidth: 180 }}>Tags / Insights</TH>
               <TH style={{ minWidth: 300 }}>Transcript</TH>
               <TH>Recording</TH>
@@ -600,6 +609,11 @@ OBJECTION: <tag or None>` }]
                       );
                     })() : <span style={{ color: '#d1d5db' }}>—</span>}
                   </TD>
+                  <TD style={{ fontSize: 11, whiteSpace: 'nowrap' }}>
+                    {row.persona ? (
+                      <span style={{ background: '#f0f9ff', color: '#0c4a6e', borderRadius: 4, padding: '2px 7px', fontWeight: 600 }}>{row.persona}</span>
+                    ) : <span style={{ color: '#d1d5db' }}>—</span>}
+                  </TD>
                   <TD>
                     <span style={{ background: oc.bg, color: oc.text, borderRadius: 5, padding: '3px 9px', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: 5 }}>
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: oc.dot, flexShrink: 0, display: 'inline-block' }} />
@@ -611,6 +625,13 @@ OBJECTION: <tag or None>` }]
                   </TD>
                   <TD style={{ fontVariantNumeric: 'tabular-nums', color: '#6b7280', whiteSpace: 'nowrap' }}>
                     {fmtDuration(row.durationMs)}
+                  </TD>
+                  <TD style={{ maxWidth: 220, fontSize: 11 }}>
+                    {row.offer ? (
+                      <div style={{ color: '#374151', lineHeight: 1.4, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+                        "{row.offer}"
+                      </div>
+                    ) : <span style={{ color: '#d1d5db' }}>—</span>}
                   </TD>
                   <TD style={{ minWidth: 180 }}>
                     {tags[row.id] ? (
@@ -688,7 +709,7 @@ OBJECTION: <tag or None>` }]
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={13 + customCols.length + 1} style={{ textAlign: 'center', padding: '48px 20px', color: '#9ca3af', fontSize: 14 }}>
+                <td colSpan={15 + customCols.length + 1} style={{ textAlign: 'center', padding: '48px 20px', color: '#9ca3af', fontSize: 14 }}>
                   No calls match your filters.
                 </td>
               </tr>
