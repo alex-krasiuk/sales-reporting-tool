@@ -7,6 +7,9 @@ const DISPOSITION_MAP = {
   '95d90a61-32bf-4d8d-9445-010e6ce6a055': 'Account to Pursue',
   'f76aed06-41e0-4b55-8f96-361bfd09bf0c': 'Follow up - interested',
   'e9a4df2f-3fcd-4f8a-bbd8-7634e48ca97c': 'No longer at company',
+  '91fd5005-2ed7-45dd-b8ec-f22511b5ece2': 'Wrong Contact - no referral',
+  '72a50c73-0b12-4595-9c31-5f197913be05': 'Wrong contact - referral',
+  '17b47fee-58de-441e-a44c-c6300d46f273': 'Wrong number',
 };
 
 const OWNER_MAP = {

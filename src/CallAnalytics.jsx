@@ -3,29 +3,49 @@ import { CALL_DATA } from "./callData.js";
 import useHubSpotCalls from "./useHubSpotCalls.js";
 
 const OUTCOME_COLORS = {
-  'Not Interested':        { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
-  'Meeting Booked':        { bg: '#dcfce7', text: '#16a34a', dot: '#22c55e' },
-  'Follow up - interested':{ bg: '#dbeafe', text: '#2563eb', dot: '#3b82f6' },
-  'Call me later':         { bg: '#fef3c7', text: '#d97706', dot: '#f59e0b' },
-  'Account to Pursue':    { bg: '#f0fdf4', text: '#15803d', dot: '#4ade80' },
-  'No longer at company':  { bg: '#f3f4f6', text: '#6b7280', dot: '#9ca3af' },
+  'Not Interested':              { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
+  'Meeting Booked':              { bg: '#dcfce7', text: '#16a34a', dot: '#22c55e' },
+  'Follow up - interested':      { bg: '#dbeafe', text: '#2563eb', dot: '#3b82f6' },
+  'Call me later':               { bg: '#fef3c7', text: '#d97706', dot: '#f59e0b' },
+  'Account to Pursue':           { bg: '#f0fdf4', text: '#15803d', dot: '#4ade80' },
+  'No longer at company':        { bg: '#f3f4f6', text: '#6b7280', dot: '#9ca3af' },
+  'Wrong Contact - no referral': { bg: '#fef3c7', text: '#92400e', dot: '#f59e0b' },
+  'Wrong contact - referral':    { bg: '#fef3c7', text: '#92400e', dot: '#f59e0b' },
+  'Wrong number':                { bg: '#e5e7eb', text: '#6b7280', dot: '#9ca3af' },
 };
 
-const TAG_COLORS = {
-  'Not the decision maker':   { bg: '#fef3c7', text: '#92400e' },
+// --- Reach Quality tags ---
+const REACH_TAGS = {
+  'Right person':        { bg: '#dcfce7', text: '#166534' },
+  'Right person, not ICP':{ bg: '#fef3c7', text: '#92400e' },
+  'Wrong person answered':{ bg: '#fed7aa', text: '#9a3412' },
+  'Wrong number':        { bg: '#e5e7eb', text: '#6b7280' },
+};
+
+// --- Pitch Progress tags ---
+const PITCH_TAGS = {
+  'Full pitch delivered':    { bg: '#dbeafe', text: '#1e40af' },
+  'Partial pitch - cut off': { bg: '#fecaca', text: '#dc2626' },
+  'No pitch - too busy':     { bg: '#fef9c3', text: '#854d0e' },
+  'No pitch - gatekeeper':   { bg: '#fed7aa', text: '#9a3412' },
+  'No pitch - wrong person': { bg: '#e5e7eb', text: '#6b7280' },
+};
+
+// --- Objection tags ---
+const OBJECTION_TAGS = {
   'Already has solution':     { bg: '#dbeafe', text: '#1e40af' },
+  'Not the decision maker':   { bg: '#fef3c7', text: '#92400e' },
   'No budget':                { bg: '#fee2e2', text: '#991b1b' },
   'Bad timing':               { bg: '#fce7f3', text: '#9d174d' },
   'No need/pain':             { bg: '#f3f4f6', text: '#374151' },
-  'Hung up / cut off':        { bg: '#fecaca', text: '#dc2626' },
   'Wants email/info first':   { bg: '#e0e7ff', text: '#3730a3' },
-  'Gatekeeper block':         { bg: '#fed7aa', text: '#9a3412' },
-  'Too busy right now':       { bg: '#fef9c3', text: '#854d0e' },
-  'Left company/wrong person':{ bg: '#e5e7eb', text: '#6b7280' },
+  'Happy with current setup': { bg: '#cffafe', text: '#155e75' },
   'Positive - meeting set':   { bg: '#dcfce7', text: '#166534' },
   'Positive - follow up':     { bg: '#d1fae5', text: '#065f46' },
   'Positive - interest shown':{ bg: '#cffafe', text: '#155e75' },
 };
+
+const ALL_TAG_COLORS = { ...REACH_TAGS, ...PITCH_TAGS, ...OBJECTION_TAGS };
 
 // --- Helpers ---
 const fmtDuration = (ms) => {
@@ -83,12 +103,31 @@ export default function CallAnalytics() {
     const notInterested = rows.filter(r => r.outcome === 'Not Interested').length;
     const meetingBooked = rows.filter(r => r.outcome === 'Meeting Booked').length;
     const followUp = rows.filter(r => r.outcome === 'Follow up - interested').length;
-    const withRecording = rows.filter(r => r.recordingUrl).length;
+    const wrongContact = rows.filter(r => r.outcome.startsWith('Wrong')).length;
     const withTranscript = rows.filter(r => r.transcript && r.transcript.length > 50).length;
     const avgMs = rows.reduce((a, r) => a + r.durationMs, 0) / total;
     const avgSec = Math.round(avgMs / 1000);
-    return { total, notInterested, meetingBooked, followUp, withRecording, withTranscript, avgSec };
+    return { total, notInterested, meetingBooked, followUp, wrongContact, withTranscript, avgSec };
   }, [rows]);
+
+  // Funnel stats from tags
+  const funnel = useMemo(() => {
+    const tagged = Object.keys(tags).length;
+    if (tagged === 0) return null;
+    const reachCounts = {};
+    const pitchCounts = {};
+    const objCounts = {};
+    Object.values(tags).forEach(arr => {
+      arr.forEach(t => {
+        if (REACH_TAGS[t]) reachCounts[t] = (reachCounts[t] || 0) + 1;
+        if (PITCH_TAGS[t]) pitchCounts[t] = (pitchCounts[t] || 0) + 1;
+        if (OBJECTION_TAGS[t]) objCounts[t] = (objCounts[t] || 0) + 1;
+      });
+    });
+    const rightPerson = (reachCounts['Right person'] || 0);
+    const fullPitch = (pitchCounts['Full pitch delivered'] || 0);
+    return { tagged, reachCounts, pitchCounts, objCounts, rightPerson, fullPitch };
+  }, [tags]);
 
   // Filtered rows
   const filtered = useMemo(() => {
@@ -122,10 +161,12 @@ export default function CallAnalytics() {
   // Analyze all calls with transcripts
   const analyzeAllCalls = async () => {
     if (!apiKey) { setApiError('Set your Anthropic API key first'); return; }
-    const toAnalyze = rows.filter(r => r.transcript && r.transcript.length > 100 && !tags[r.id]);
+    const toAnalyze = rows.filter(r => r.transcript && r.transcript.length > 50 && !tags[r.id]);
     if (toAnalyze.length === 0) return;
     setTaggingProgress({ done: 0, total: toAnalyze.length });
-    const tagList = Object.keys(TAG_COLORS).join(', ');
+    const reachList = Object.keys(REACH_TAGS).join(', ');
+    const pitchList = Object.keys(PITCH_TAGS).join(', ');
+    const objectionList = Object.keys(OBJECTION_TAGS).join(', ');
     const newTags = { ...tags };
     for (let i = 0; i < toAnalyze.length; i++) {
       const row = toAnalyze[i];
@@ -134,15 +175,22 @@ export default function CallAnalytics() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001', max_tokens: 150,
-            messages: [{ role: 'user', content: `Analyze this cold call transcript and pick 1-3 tags that best describe what happened. Only use tags from this list: ${tagList}\n\nCall outcome: ${row.outcome}\nTranscript:\n${row.transcript.slice(0, 2000)}\n\nReturn ONLY the tags, one per line. No bullets, no explanation.` }]
+            model: 'claude-haiku-4-5-20251001', max_tokens: 200,
+            messages: [{ role: 'user', content: `Analyze this cold call transcript across 3 dimensions. Pick EXACTLY ONE tag per dimension.\n\nREACH (did we get the right person?): ${reachList}\nPITCH (how far did the conversation go?): ${pitchList}\nOBJECTION (if rejected, why?): ${objectionList}\n\nCall outcome: ${row.outcome}\nContact title: ${row.title || 'Unknown'}\nTranscript:\n${row.transcript.slice(0, 2000)}\n\nReturn EXACTLY 3 lines:\nREACH: <tag>\nPITCH: <tag>\nOBJECTION: <tag or None>` }]
           })
         });
         if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
         const data = await res.json();
         const text = data.content?.[0]?.text || '';
-        const parsed = text.split('\n').map(l => l.trim()).filter(l => TAG_COLORS[l]);
-        newTags[row.id] = parsed.length > 0 ? parsed : ['No need/pain'];
+        const parsed = [];
+        for (const line of text.split('\n')) {
+          const match = line.match(/^(?:REACH|PITCH|OBJECTION):\s*(.+)/i);
+          if (match) {
+            const tag = match[1].trim();
+            if (tag !== 'None' && ALL_TAG_COLORS[tag]) parsed.push(tag);
+          }
+        }
+        newTags[row.id] = parsed.length > 0 ? parsed : ['Right person', 'Full pitch delivered'];
       } catch (e) {
         if (i === 0) { setApiError(`Tag analysis failed: ${e.message}`); setTaggingProgress(null); return; }
         newTags[row.id] = ['Error'];
@@ -363,20 +411,35 @@ export default function CallAnalytics() {
       {/* ── Stats Bar ── */}
       <div style={{ display: 'flex', gap: 10, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, overflowX: 'auto' }}>
         {[
-          { label: 'Total Calls', value: stats.total, color: '#4f46e5', icon: '📞' },
-          { label: 'Not Interested', value: stats.notInterested, color: '#dc2626', icon: '❌' },
-          { label: 'Meeting Booked', value: stats.meetingBooked, color: '#16a34a', icon: '✅' },
-          { label: 'Follow Up', value: stats.followUp, color: '#2563eb', icon: '🔄' },
-          { label: 'Avg Duration', value: `${Math.floor(stats.avgSec / 60)}m ${stats.avgSec % 60}s`, color: '#7c3aed', icon: '⏱' },
-          { label: 'Book Rate', value: `${Math.round((stats.meetingBooked / stats.total) * 100)}%`, color: '#0891b2', icon: '📊' },
-          { label: 'w/ Transcript', value: stats.withTranscript, color: '#059669', icon: '📝' },
+          { label: 'Total Calls', value: stats.total, color: '#4f46e5' },
+          { label: 'Not Interested', value: stats.notInterested, color: '#dc2626' },
+          { label: 'Meeting Booked', value: stats.meetingBooked, color: '#16a34a' },
+          { label: 'Follow Up', value: stats.followUp, color: '#2563eb' },
+          { label: 'Wrong Contact', value: stats.wrongContact, color: '#d97706' },
+          { label: 'Book Rate', value: `${stats.total ? Math.round((stats.meetingBooked / stats.total) * 100) : 0}%`, color: '#0891b2' },
+          { label: 'Avg Duration', value: `${Math.floor(stats.avgSec / 60)}m ${stats.avgSec % 60}s`, color: '#7c3aed' },
         ].map(s => (
-          <div key={s.label} style={{ background: s.color + '08', border: `1px solid ${s.color}22`, borderRadius: 9, padding: '7px 14px', textAlign: 'center', minWidth: 90, flexShrink: 0 }}>
-            <div style={{ fontSize: 11, marginBottom: 2 }}>{s.icon}</div>
+          <div key={s.label} style={{ background: s.color + '08', border: `1px solid ${s.color}22`, borderRadius: 9, padding: '7px 14px', textAlign: 'center', minWidth: 80, flexShrink: 0 }}>
             <div style={{ fontSize: 20, fontWeight: 800, color: s.color, lineHeight: 1 }}>{s.value}</div>
-            <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 2, whiteSpace: 'nowrap' }}>{s.label}</div>
+            <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 3, whiteSpace: 'nowrap' }}>{s.label}</div>
           </div>
         ))}
+        {funnel && (
+          <>
+            <div style={{ width: 1, background: '#e5e7eb', margin: '4px 4px', flexShrink: 0 }} />
+            {[
+              { label: 'Right Person', value: funnel.rightPerson, pct: `${Math.round(funnel.rightPerson / funnel.tagged * 100)}%`, color: '#16a34a' },
+              { label: 'Heard Pitch', value: funnel.fullPitch, pct: `${Math.round(funnel.fullPitch / funnel.tagged * 100)}%`, color: '#2563eb' },
+              { label: 'Pitch → Book', value: funnel.fullPitch ? `${Math.round(stats.meetingBooked / funnel.fullPitch * 100)}%` : '—', color: '#7c3aed' },
+            ].map(s => (
+              <div key={s.label} style={{ background: s.color + '08', border: `1px solid ${s.color}22`, borderRadius: 9, padding: '7px 14px', textAlign: 'center', minWidth: 90, flexShrink: 0 }}>
+                <div style={{ fontSize: 18, fontWeight: 800, color: s.color, lineHeight: 1 }}>{s.value}</div>
+                {s.pct && <div style={{ fontSize: 10, color: s.color, fontWeight: 600 }}>{s.pct}</div>}
+                <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 2, whiteSpace: 'nowrap' }}>{s.label}</div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
 
       {/* ── Filters ── */}
@@ -388,7 +451,7 @@ export default function CallAnalytics() {
           style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 12px', fontSize: 13, width: 260, outline: 'none' }}
         />
         <select value={filterOutcome} onChange={e => setFilterOutcome(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 10px', fontSize: 13, color: '#374151' }}>
-          {['All', 'Not Interested', 'Meeting Booked', 'Follow up - interested', 'Call me later', 'Account to Pursue', 'No longer at company'].map(o => <option key={o}>{o}</option>)}
+          {['All', 'Not Interested', 'Meeting Booked', 'Follow up - interested', 'Call me later', 'Account to Pursue', 'No longer at company', 'Wrong Contact - no referral', 'Wrong contact - referral', 'Wrong number'].map(o => <option key={o}>{o}</option>)}
         </select>
         <select value={filterRep} onChange={e => setFilterRep(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 10px', fontSize: 13, color: '#374151' }}>
           {reps.map(r => <option key={r}>{r}</option>)}
@@ -525,7 +588,7 @@ export default function CallAnalytics() {
                     {tags[row.id] ? (
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
                         {tags[row.id].map(tag => {
-                          const tc = TAG_COLORS[tag] || { bg: '#f3f4f6', text: '#374151' };
+                          const tc = ALL_TAG_COLORS[tag] || { bg: '#f3f4f6', text: '#374151' };
                           return <span key={tag} style={{ background: tc.bg, color: tc.text, borderRadius: 4, padding: '2px 7px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{tag}</span>;
                         })}
                       </div>
