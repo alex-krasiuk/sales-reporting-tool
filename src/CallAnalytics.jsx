@@ -16,33 +16,35 @@ const OUTCOME_COLORS = {
 
 // --- Reach Quality tags ---
 const REACH_TAGS = {
-  'Right person':        { bg: '#dcfce7', text: '#166534' },
-  'Right person, not ICP':{ bg: '#fef3c7', text: '#92400e' },
-  'Wrong person answered':{ bg: '#fed7aa', text: '#9a3412' },
-  'Wrong number':        { bg: '#e5e7eb', text: '#6b7280' },
+  'Right person, right target':    { bg: '#dcfce7', text: '#166534' },
+  'Right person, wrong department':{ bg: '#fef3c7', text: '#92400e' },
+  'Right person, not decision maker':{ bg: '#fde68a', text: '#78350f' },
+  'Wrong person answered':         { bg: '#fed7aa', text: '#9a3412' },
+  'Stale number':                  { bg: '#e5e7eb', text: '#6b7280' },
+  'Person left company':           { bg: '#f3f4f6', text: '#6b7280' },
 };
 
-// --- Pitch Progress tags ---
+// --- Pitch Outcome tags ---
 const PITCH_TAGS = {
-  'Full pitch delivered':    { bg: '#dbeafe', text: '#1e40af' },
-  'Partial pitch - cut off': { bg: '#fecaca', text: '#dc2626' },
-  'No pitch - too busy':     { bg: '#fef9c3', text: '#854d0e' },
-  'No pitch - gatekeeper':   { bg: '#fed7aa', text: '#9a3412' },
-  'No pitch - wrong person': { bg: '#e5e7eb', text: '#6b7280' },
+  'Full pitch delivered':      { bg: '#dbeafe', text: '#1e40af' },
+  'Partial pitch, cut off':    { bg: '#fecaca', text: '#dc2626' },
+  'No pitch, too busy':        { bg: '#fef9c3', text: '#854d0e' },
+  'No pitch, immediate rejection':{ bg: '#fee2e2', text: '#991b1b' },
+  'Callback requested':        { bg: '#e0e7ff', text: '#3730a3' },
 };
 
-// --- Objection tags ---
+// --- Objection / Why No tags ---
 const OBJECTION_TAGS = {
-  'Already has solution':     { bg: '#dbeafe', text: '#1e40af' },
-  'Not the decision maker':   { bg: '#fef3c7', text: '#92400e' },
-  'No budget':                { bg: '#fee2e2', text: '#991b1b' },
-  'Bad timing':               { bg: '#fce7f3', text: '#9d174d' },
-  'No need/pain':             { bg: '#f3f4f6', text: '#374151' },
-  'Wants email/info first':   { bg: '#e0e7ff', text: '#3730a3' },
-  'Happy with current setup': { bg: '#cffafe', text: '#155e75' },
-  'Positive - meeting set':   { bg: '#dcfce7', text: '#166534' },
-  'Positive - follow up':     { bg: '#d1fae5', text: '#065f46' },
-  'Positive - interest shown':{ bg: '#cffafe', text: '#155e75' },
+  'Happy with current setup':  { bg: '#cffafe', text: '#155e75' },
+  'No budget':                 { bg: '#fee2e2', text: '#991b1b' },
+  'Bad timing':                { bg: '#fce7f3', text: '#9d174d' },
+  'Not relevant to me':        { bg: '#f3f4f6', text: '#374151' },
+  'No pain felt':              { bg: '#e5e7eb', text: '#374151' },
+  'Wants proof/info first':    { bg: '#e0e7ff', text: '#3730a3' },
+  'Referred elsewhere':        { bg: '#fef3c7', text: '#92400e' },
+  'Meeting booked':            { bg: '#dcfce7', text: '#166534' },
+  'Follow up agreed':          { bg: '#d1fae5', text: '#065f46' },
+  'Interest shown':            { bg: '#cffafe', text: '#155e75' },
 };
 
 const ALL_TAG_COLORS = { ...REACH_TAGS, ...PITCH_TAGS, ...OBJECTION_TAGS };
@@ -124,9 +126,12 @@ export default function CallAnalytics() {
         if (OBJECTION_TAGS[t]) objCounts[t] = (objCounts[t] || 0) + 1;
       });
     });
-    const rightPerson = (reachCounts['Right person'] || 0);
+    const rightPerson = (reachCounts['Right person, right target'] || 0) + (reachCounts['Right person, wrong department'] || 0) + (reachCounts['Right person, not decision maker'] || 0);
+    const rightTarget = (reachCounts['Right person, right target'] || 0);
     const fullPitch = (pitchCounts['Full pitch delivered'] || 0);
-    return { tagged, reachCounts, pitchCounts, objCounts, rightPerson, fullPitch };
+    const partialPitch = (pitchCounts['Partial pitch, cut off'] || 0);
+    const heardPitch = fullPitch + partialPitch;
+    return { tagged, reachCounts, pitchCounts, objCounts, rightPerson, rightTarget, fullPitch, heardPitch };
   }, [tags]);
 
   // Filtered rows
@@ -175,8 +180,30 @@ export default function CallAnalytics() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001', max_tokens: 200,
-            messages: [{ role: 'user', content: `Analyze this cold call transcript across 3 dimensions. Pick EXACTLY ONE tag per dimension.\n\nREACH (did we get the right person?): ${reachList}\nPITCH (how far did the conversation go?): ${pitchList}\nOBJECTION (if rejected, why?): ${objectionList}\n\nCall outcome: ${row.outcome}\nContact title: ${row.title || 'Unknown'}\nTranscript:\n${row.transcript.slice(0, 2000)}\n\nReturn EXACTLY 3 lines:\nREACH: <tag>\nPITCH: <tag>\nOBJECTION: <tag or None>` }]
+            model: 'claude-haiku-4-5-20251001', max_tokens: 250,
+            messages: [{ role: 'user', content: `You are analyzing a cold call for RunBook (AP/billing automation for logistics). Classify this call across 3 dimensions. Pick EXACTLY ONE tag per dimension.
+
+REACH — Did we reach the right person?
+${reachList}
+Guidelines: "Right person, right target" = the person we wanted AND they handle the relevant area. "Right person, wrong department" = we got them but they do something unrelated (e.g. CTO of food science, not IT). "Right person, not decision maker" = right area but can't buy. "Wrong person answered" = someone else picked up the phone. "Stale number" = number no longer belongs to contact. "Person left company" = they no longer work there.
+
+PITCH — How far did the conversation get?
+${pitchList}
+Guidelines: "Full pitch delivered" = rep explained RunBook's value prop. "Partial pitch, cut off" = started but prospect hung up or stopped them. "No pitch, too busy" = prospect said they're in a meeting / busy. "No pitch, immediate rejection" = shut down before any pitch ("take me off your list"). "Callback requested" = prospect asked for email or to call back later.
+
+OBJECTION — If rejected or not interested, why? (use "None" if meeting booked or clearly positive)
+${objectionList}
+Guidelines: "Happy with current setup" = explicitly said current tools work fine. "No budget" = mentioned cost/budget. "Bad timing" = "not right now" / "maybe later". "Not relevant to me" = topic doesn't match their role. "No pain felt" = don't see the problem. "Wants proof/info first" = asked for email/materials. "Referred elsewhere" = gave a name or department. "Meeting booked" = scheduled a call. "Follow up agreed" = agreed to reconnect. "Interest shown" = positive signals but no firm next step.
+
+Call outcome: ${row.outcome}
+Contact: ${row.contactName || 'Unknown'} (${row.title || 'Unknown title'})
+Transcript:
+${row.transcript.slice(0, 2000)}
+
+Return EXACTLY 3 lines, using ONLY tags from the lists above:
+REACH: <tag>
+PITCH: <tag>
+OBJECTION: <tag or None>` }]
           })
         });
         if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
@@ -190,7 +217,7 @@ export default function CallAnalytics() {
             if (tag !== 'None' && ALL_TAG_COLORS[tag]) parsed.push(tag);
           }
         }
-        newTags[row.id] = parsed.length > 0 ? parsed : ['Right person', 'Full pitch delivered'];
+        newTags[row.id] = parsed.length > 0 ? parsed : ['Right person, right target', 'Full pitch delivered'];
       } catch (e) {
         if (i === 0) { setApiError(`Tag analysis failed: ${e.message}`); setTaggingProgress(null); return; }
         newTags[row.id] = ['Error'];
@@ -429,8 +456,9 @@ export default function CallAnalytics() {
             <div style={{ width: 1, background: '#e5e7eb', margin: '4px 4px', flexShrink: 0 }} />
             {[
               { label: 'Right Person', value: funnel.rightPerson, pct: `${Math.round(funnel.rightPerson / funnel.tagged * 100)}%`, color: '#16a34a' },
-              { label: 'Heard Pitch', value: funnel.fullPitch, pct: `${Math.round(funnel.fullPitch / funnel.tagged * 100)}%`, color: '#2563eb' },
-              { label: 'Pitch → Book', value: funnel.fullPitch ? `${Math.round(stats.meetingBooked / funnel.fullPitch * 100)}%` : '—', color: '#7c3aed' },
+              { label: 'Right Target', value: funnel.rightTarget, pct: `${Math.round(funnel.rightTarget / funnel.tagged * 100)}%`, color: '#059669' },
+              { label: 'Heard Pitch', value: funnel.heardPitch, pct: `${Math.round(funnel.heardPitch / funnel.tagged * 100)}%`, color: '#2563eb' },
+              { label: 'Pitch → Book', value: funnel.heardPitch ? `${Math.round(stats.meetingBooked / funnel.heardPitch * 100)}%` : '—', color: '#7c3aed' },
             ].map(s => (
               <div key={s.label} style={{ background: s.color + '08', border: `1px solid ${s.color}22`, borderRadius: 9, padding: '7px 14px', textAlign: 'center', minWidth: 90, flexShrink: 0 }}>
                 <div style={{ fontSize: 18, fontWeight: 800, color: s.color, lineHeight: 1 }}>{s.value}</div>
@@ -584,12 +612,21 @@ export default function CallAnalytics() {
                   <TD style={{ fontVariantNumeric: 'tabular-nums', color: '#6b7280', whiteSpace: 'nowrap' }}>
                     {fmtDuration(row.durationMs)}
                   </TD>
-                  <TD>
+                  <TD style={{ minWidth: 180 }}>
                     {tags[row.id] ? (
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-                        {tags[row.id].map(tag => {
-                          const tc = ALL_TAG_COLORS[tag] || { bg: '#f3f4f6', text: '#374151' };
-                          return <span key={tag} style={{ background: tc.bg, color: tc.text, borderRadius: 4, padding: '2px 7px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{tag}</span>;
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                        {[['Reach', REACH_TAGS], ['Pitch', PITCH_TAGS], ['Why', OBJECTION_TAGS]].map(([label, group]) => {
+                          const matching = tags[row.id].filter(t => group[t]);
+                          if (matching.length === 0) return null;
+                          return (
+                            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                              <span style={{ fontSize: 9, color: '#9ca3af', fontWeight: 700, width: 32, flexShrink: 0, textTransform: 'uppercase' }}>{label}</span>
+                              {matching.map(tag => {
+                                const tc = ALL_TAG_COLORS[tag] || { bg: '#f3f4f6', text: '#374151' };
+                                return <span key={tag} style={{ background: tc.bg, color: tc.text, borderRadius: 4, padding: '2px 6px', fontSize: 10, fontWeight: 600, whiteSpace: 'nowrap' }}>{tag}</span>;
+                              })}
+                            </div>
+                          );
                         })}
                       </div>
                     ) : (
