@@ -11,9 +11,21 @@ const OUTCOME_COLORS = {
   'No longer at company':  { bg: '#f3f4f6', text: '#6b7280', dot: '#9ca3af' },
 };
 
-// 151 real calls from HubSpot (Feb 24 - Apr 7, 2026)
-// Dispositions: Not Interested, Meeting Booked, Follow up interested, Call me later, Account to Pursue, No longer at company
-// Reps: Brandon Liao, Chuck Gartland | Duration >= 10s
+const TAG_COLORS = {
+  'Not the decision maker':   { bg: '#fef3c7', text: '#92400e' },
+  'Already has solution':     { bg: '#dbeafe', text: '#1e40af' },
+  'No budget':                { bg: '#fee2e2', text: '#991b1b' },
+  'Bad timing':               { bg: '#fce7f3', text: '#9d174d' },
+  'No need/pain':             { bg: '#f3f4f6', text: '#374151' },
+  'Hung up / cut off':        { bg: '#fecaca', text: '#dc2626' },
+  'Wants email/info first':   { bg: '#e0e7ff', text: '#3730a3' },
+  'Gatekeeper block':         { bg: '#fed7aa', text: '#9a3412' },
+  'Too busy right now':       { bg: '#fef9c3', text: '#854d0e' },
+  'Left company/wrong person':{ bg: '#e5e7eb', text: '#6b7280' },
+  'Positive - meeting set':   { bg: '#dcfce7', text: '#166534' },
+  'Positive - follow up':     { bg: '#d1fae5', text: '#065f46' },
+  'Positive - interest shown':{ bg: '#cffafe', text: '#155e75' },
+};
 
 // --- Helpers ---
 const fmtDuration = (ms) => {
@@ -53,6 +65,9 @@ export default function CallAnalytics() {
   const [filterOutcome, setFilterOutcome] = useState('All');
   const [filterRep, setFilterRep] = useState('All');
   const [filterVertical, setFilterVertical] = useState('All');
+  const [filterTag, setFilterTag] = useState('All');
+  const [tags, setTags] = useState({});  // callId -> [tag1, tag2, ...]
+  const [taggingProgress, setTaggingProgress] = useState(null); // null | { done, total }
   const [apiKey, setApiKey] = useState('');
   const [showApiInput, setShowApiInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -80,33 +95,75 @@ export default function CallAnalytics() {
     return rows.filter(row => {
       const q = search.toLowerCase();
       const matchSearch = !q ||
-        row.notes?.toLowerCase().includes(q) ||
         row.outcome?.toLowerCase().includes(q) ||
         row.rep?.toLowerCase().includes(q) ||
+        row.contactName?.toLowerCase().includes(q) ||
+        row.title?.toLowerCase().includes(q) ||
         row.transcript?.toLowerCase().includes(q) ||
         row.date?.includes(q) ||
         row.id.includes(q);
       const matchOutcome = filterOutcome === 'All' || row.outcome === filterOutcome;
       const matchRep = filterRep === 'All' || row.rep === filterRep;
       const matchVertical = filterVertical === 'All' || row.vertical === filterVertical;
-      return matchSearch && matchOutcome && matchRep && matchVertical;
+      const matchTag = filterTag === 'All' || (tags[row.id] && tags[row.id].includes(filterTag));
+      return matchSearch && matchOutcome && matchRep && matchVertical && matchTag;
     });
-  }, [rows, search, filterOutcome, filterRep, filterVertical]);
+  }, [rows, search, filterOutcome, filterRep, filterVertical, filterTag, tags]);
 
   // Unique reps and verticals for filters
   const reps = useMemo(() => ['All', ...new Set(rows.map(r => r.rep))], [rows]);
   const verticals = useMemo(() => ['All', ...new Set(rows.map(r => r.vertical).filter(Boolean).sort())], [rows]);
+  const allTags = useMemo(() => {
+    const s = new Set();
+    Object.values(tags).forEach(arr => arr.forEach(t => s.add(t)));
+    return ['All', ...Array.from(s).sort()];
+  }, [tags]);
+
+  // Analyze all calls with transcripts
+  const analyzeAllCalls = async () => {
+    if (!apiKey) { setApiError('Set your Anthropic API key first'); return; }
+    const toAnalyze = rows.filter(r => r.transcript && r.transcript.length > 100 && !tags[r.id]);
+    if (toAnalyze.length === 0) return;
+    setTaggingProgress({ done: 0, total: toAnalyze.length });
+    const tagList = Object.keys(TAG_COLORS).join(', ');
+    const newTags = { ...tags };
+    for (let i = 0; i < toAnalyze.length; i++) {
+      const row = toAnalyze[i];
+      try {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001', max_tokens: 150,
+            messages: [{ role: 'user', content: `Analyze this cold call transcript and pick 1-3 tags that best describe what happened. Only use tags from this list: ${tagList}\n\nCall outcome: ${row.outcome}\nTranscript:\n${row.transcript.slice(0, 2000)}\n\nReturn ONLY the tags, one per line. No bullets, no explanation.` }]
+          })
+        });
+        if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
+        const data = await res.json();
+        const text = data.content?.[0]?.text || '';
+        const parsed = text.split('\n').map(l => l.trim()).filter(l => TAG_COLORS[l]);
+        newTags[row.id] = parsed.length > 0 ? parsed : ['No need/pain'];
+      } catch (e) {
+        if (i === 0) { setApiError(`Tag analysis failed: ${e.message}`); setTaggingProgress(null); return; }
+        newTags[row.id] = ['Error'];
+      }
+      setTags({ ...newTags });
+      setTaggingProgress({ done: i + 1, total: toAnalyze.length });
+    }
+    setTaggingProgress(null);
+  };
 
   // Export CSV
   const exportCSV = () => {
-    const baseHeaders = ['Call ID', 'Time', 'Rep', 'Outcome', 'Duration (s)', 'Notes', 'Recording URL', 'HubSpot URL'];
+    const baseHeaders = ['Call ID', 'Date', 'Time', 'Rep', 'Contact', 'Title', 'Outcome', 'Vertical', 'Duration (s)', 'Tags', 'Transcript', 'Recording URL', 'HubSpot URL'];
     const customHeaders = customCols.map(c => c.name);
     const headers = [...baseHeaders, ...customHeaders];
     const csvRows = rows.map(r => {
       const base = [
-        r.id, r.time, r.rep, r.outcome,
+        r.id, r.date, r.time, r.rep, r.contactName || '', r.title || '', r.outcome, r.vertical || '',
         Math.round(r.durationMs / 1000),
-        `"${(r.notes || '').replace(/"/g, '""')}"`,
+        `"${(tags[r.id] || []).join('; ')}"`,
+        `"${(r.transcript || '').replace(/"/g, '""')}"`,
         r.recordingUrl || '',
         r.hsUrl || '',
       ];
@@ -149,7 +206,7 @@ export default function CallAnalytics() {
             max_tokens: 150,
             messages: [{
               role: 'user',
-              content: `You are analyzing a cold call record for a B2B sales team (RunBook — AP automation for logistics companies). ${prompt}\n\nCall data:\n- Outcome: ${row.outcome}\n- Duration: ${fmtDuration(row.durationMs)}\n- Notes/AI Summary: ${row.notes || '(none)'}\n- Transcript: ${row.transcript ? row.transcript.slice(0, 2000) : '(no transcript)'}\n\nRespond with ONLY the answer. Be concise (max 1-2 sentences, or a single word/phrase if that's all that's needed).`
+              content: `You are analyzing a cold call record for a B2B sales team (RunBook — AP automation for logistics companies). ${prompt}\n\nCall data:\n- Outcome: ${row.outcome}\n- Duration: ${fmtDuration(row.durationMs)}\n- Contact: ${row.contactName || 'Unknown'} (${row.title || 'Unknown title'})\n- Transcript: ${row.transcript ? row.transcript.slice(0, 2000) : '(no transcript)'}\n\nRespond with ONLY the answer. Be concise (max 1-2 sentences, or a single word/phrase if that's all that's needed).`
             }]
           })
         });
@@ -339,12 +396,25 @@ export default function CallAnalytics() {
         <select value={filterVertical} onChange={e => setFilterVertical(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 10px', fontSize: 13, color: '#374151' }}>
           {verticals.map(v => <option key={v} value={v}>{v === 'All' ? 'All Verticals' : v}</option>)}
         </select>
-        {(search || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All') && (
-          <button onClick={() => { setSearch(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
+        {allTags.length > 1 && (
+          <select value={filterTag} onChange={e => setFilterTag(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 10px', fontSize: 13, color: '#374151' }}>
+            {allTags.map(t => <option key={t} value={t}>{t === 'All' ? 'All Tags' : t}</option>)}
+          </select>
         )}
+        {(search || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterTag !== 'All') && (
+          <button onClick={() => { setSearch(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterTag('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
+        )}
+        <button
+          onClick={analyzeAllCalls}
+          disabled={!!taggingProgress || !apiKey}
+          style={{ background: taggingProgress ? '#e5e7eb' : 'linear-gradient(135deg, #f59e0b, #ef4444)', color: taggingProgress ? '#9ca3af' : 'white', border: 'none', borderRadius: 7, padding: '7px 13px', fontSize: 12, cursor: taggingProgress ? 'not-allowed' : 'pointer', fontWeight: 700 }}
+        >
+          {taggingProgress ? `Tagging ${taggingProgress.done}/${taggingProgress.total}...` : `🏷 Analyze Objections${!apiKey ? ' (need API key)' : ''}`}
+        </button>
         <div style={{ flex: 1 }} />
         <span style={{ fontSize: 12, color: '#9ca3af' }}>
           {filtered.length} of {rows.length} calls {filtered.length !== rows.length && '(filtered)'}
+          {Object.keys(tags).length > 0 && ` · ${Object.keys(tags).length} tagged`}
         </span>
         {processing && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: '#ede9fe', borderRadius: 7, padding: '6px 12px' }}>
@@ -370,11 +440,12 @@ export default function CallAnalytics() {
               <TH>Date</TH>
               <TH>Time</TH>
               <TH>Rep</TH>
+              <TH>Contact</TH>
               <TH>Outcome</TH>
               <TH>Vertical</TH>
               <TH>Duration</TH>
-              <TH style={{ minWidth: 280 }}>Notes / AI Summary</TH>
-              <TH style={{ minWidth: 200 }}>Transcript</TH>
+              <TH style={{ minWidth: 180 }}>Tags / Insights</TH>
+              <TH style={{ minWidth: 300 }}>Transcript</TH>
               <TH>Recording</TH>
               {customCols.map(c => (
                 <TH key={c.key} style={{ minWidth: 200, background: c.type === 'ai' ? '#f5f3ff' : '#eff6ff' }}>
@@ -412,7 +483,7 @@ export default function CallAnalytics() {
           <tbody>
             {filtered.map((row, i) => {
               const oc = OUTCOME_COLORS[row.outcome] || { bg: '#f3f4f6', text: '#6b7280', dot: '#9ca3af' };
-              const isExpanded = expandedRow === row.id;
+
               return (
                 <tr key={row.id} style={{ background: i % 2 === 0 ? 'white' : '#fafafa' }}>
                   <TD style={{ textAlign: 'center', color: '#9ca3af', fontSize: 11 }}>{i + 1}</TD>
@@ -426,6 +497,18 @@ export default function CallAnalytics() {
                       {row.rep.split(' ')[0]}
                     </div>
                   </TD>
+                  <TD style={{ fontSize: 12 }}>
+                    {row.contactName ? (() => {
+                      const parts = row.contactName.split(' ');
+                      const display = parts.length > 1 ? `${parts[0]} ${parts[parts.length-1][0]}.` : parts[0];
+                      return (
+                        <div>
+                          <a href={row.hsUrl.replace('/calls/','/contacts/').replace('/review/','/contact/')} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, color: '#4f46e5', textDecoration: 'none', fontSize: 12 }}>{display}</a>
+                          {row.title && <div style={{ color: '#9ca3af', fontSize: 11, marginTop: 1 }}>{row.title}</div>}
+                        </div>
+                      );
+                    })() : <span style={{ color: '#d1d5db' }}>—</span>}
+                  </TD>
                   <TD>
                     <span style={{ background: oc.bg, color: oc.text, borderRadius: 5, padding: '3px 9px', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: 5 }}>
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: oc.dot, flexShrink: 0, display: 'inline-block' }} />
@@ -438,44 +521,38 @@ export default function CallAnalytics() {
                   <TD style={{ fontVariantNumeric: 'tabular-nums', color: '#6b7280', whiteSpace: 'nowrap' }}>
                     {fmtDuration(row.durationMs)}
                   </TD>
-                  <TD style={{ maxWidth: 320 }}>
-                    {row.notes ? (
-                      <div>
-                        <div style={{
-                          overflow: isExpanded ? 'visible' : 'hidden',
-                          display: isExpanded ? 'block' : '-webkit-box',
-                          WebkitLineClamp: isExpanded ? undefined : 2,
-                          WebkitBoxOrient: 'vertical',
-                          lineHeight: '1.5',
-                          color: '#374151',
-                          fontSize: 12,
-                        }}>
-                          {row.notes}
-                        </div>
-                        {row.notes.length > 80 && (
-                          <button onClick={() => setExpandedRow(isExpanded ? null : row.id)} style={{ background: 'none', border: 'none', color: '#4f46e5', cursor: 'pointer', fontSize: 11, padding: 0, marginTop: 3 }}>
-                            {isExpanded ? '▲ less' : '▼ more'}
-                          </button>
-                        )}
+                  <TD>
+                    {tags[row.id] ? (
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                        {tags[row.id].map(tag => {
+                          const tc = TAG_COLORS[tag] || { bg: '#f3f4f6', text: '#374151' };
+                          return <span key={tag} style={{ background: tc.bg, color: tc.text, borderRadius: 4, padding: '2px 7px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{tag}</span>;
+                        })}
                       </div>
                     ) : (
-                      <span style={{ color: '#d1d5db', fontSize: 12 }}>—</span>
+                      <span style={{ color: '#d1d5db', fontSize: 11 }}>{taggingProgress ? '...' : '—'}</span>
                     )}
                   </TD>
-                  <TD style={{ maxWidth: 250 }}>
+                  <TD style={{ maxWidth: 350 }}>
                     {row.transcript && row.transcript.length > 50 ? (
                       <div>
                         <div style={{
-                          overflow: expandedRow === 'tx_'+row.id ? 'visible' : 'hidden',
-                          display: expandedRow === 'tx_'+row.id ? 'block' : '-webkit-box',
-                          WebkitLineClamp: expandedRow === 'tx_'+row.id ? undefined : 3,
+                          overflow: expandedRow === row.id ? 'visible' : 'hidden',
+                          display: expandedRow === row.id ? 'block' : '-webkit-box',
+                          WebkitLineClamp: expandedRow === row.id ? undefined : 3,
                           WebkitBoxOrient: 'vertical',
-                          lineHeight: '1.5', color: '#374151', fontSize: 11, whiteSpace: 'pre-wrap',
+                          lineHeight: '1.6', fontSize: 11,
                         }}>
-                          {row.transcript}
+                          {row.transcript.split('\n').map((line, li) => {
+                            const repMatch = line.match(/^(.+?)\s*\((Rep)\):\s*(.*)$/);
+                            const prospMatch = line.match(/^(.+?)\s*\((Prospect)\):\s*(.*)$/);
+                            if (repMatch) return <div key={li} style={{ marginBottom: 3 }}><span style={{ color: '#4f46e5', fontWeight: 600, fontSize: 10 }}>{repMatch[1]}:</span> <span style={{ color: '#374151' }}>{repMatch[3]}</span></div>;
+                            if (prospMatch) return <div key={li} style={{ marginBottom: 3 }}><span style={{ color: '#059669', fontWeight: 600, fontSize: 10 }}>{prospMatch[1]}:</span> <span style={{ color: '#374151' }}>{prospMatch[3]}</span></div>;
+                            return line ? <div key={li} style={{ color: '#6b7280', marginBottom: 2 }}>{line}</div> : null;
+                          })}
                         </div>
-                        <button onClick={() => setExpandedRow(expandedRow === 'tx_'+row.id ? null : 'tx_'+row.id)} style={{ background: 'none', border: 'none', color: '#4f46e5', cursor: 'pointer', fontSize: 11, padding: 0, marginTop: 3 }}>
-                          {expandedRow === 'tx_'+row.id ? '▲ less' : `▼ show transcript (${Math.round(row.transcript.length/100)*100}+ chars)`}
+                        <button onClick={() => setExpandedRow(expandedRow === row.id ? null : row.id)} style={{ background: 'none', border: 'none', color: '#4f46e5', cursor: 'pointer', fontSize: 11, padding: 0, marginTop: 3 }}>
+                          {expandedRow === row.id ? '▲ collapse' : '▼ expand transcript'}
                         </button>
                       </div>
                     ) : (
@@ -511,7 +588,7 @@ export default function CallAnalytics() {
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={11 + customCols.length + 1} style={{ textAlign: 'center', padding: '48px 20px', color: '#9ca3af', fontSize: 14 }}>
+                <td colSpan={13 + customCols.length + 1} style={{ textAlign: 'center', padding: '48px 20px', color: '#9ca3af', fontSize: 14 }}>
                   No calls match your filters.
                 </td>
               </tr>
