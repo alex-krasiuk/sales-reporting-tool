@@ -140,13 +140,13 @@ async function fetchAllCalls(token, sinceMs, beforeMs) {
 }
 
 async function fetchOwners(token) {
-  const res = await fetch('/hubspot-api/crm/v1/owners', {
+  const res = await fetch('/hubspot-api/crm/v3/owners', {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) throw new Error(`Owners API: ${res.status}`);
   const data = await res.json();
   const map = {};
-  data.forEach(o => { map[String(o.ownerId)] = `${o.firstName || ''} ${o.lastName || ''}`.trim() || `Owner ${o.ownerId}`; });
+  (data.results || []).forEach(o => { map[String(o.id)] = `${o.firstName || ''} ${o.lastName || ''}`.trim() || `Owner ${o.id}`; });
   return map;
 }
 
