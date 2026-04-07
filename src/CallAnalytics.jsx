@@ -84,6 +84,8 @@ export default function CallAnalytics() {
 
   const [customCols, setCustomCols] = useState([]);
   const [search, setSearch] = useState('');
+  const [filterDateFrom, setFilterDateFrom] = useState('');
+  const [filterDateTo, setFilterDateTo] = useState('');
   const [filterOutcome, setFilterOutcome] = useState('All');
   const [filterRep, setFilterRep] = useState('All');
   const [filterVertical, setFilterVertical] = useState('All');
@@ -100,41 +102,6 @@ export default function CallAnalytics() {
   const [processingProgress, setProcessingProgress] = useState(0);
   const [apiError, setApiError] = useState('');
 
-  // Stats
-  const stats = useMemo(() => {
-    const total = rows.length;
-    const notInterested = rows.filter(r => r.outcome === 'Not Interested').length;
-    const meetingBooked = rows.filter(r => r.outcome === 'Meeting Booked').length;
-    const followUp = rows.filter(r => r.outcome === 'Follow up - interested').length;
-    const wrongContact = rows.filter(r => r.outcome.startsWith('Wrong')).length;
-    const withTranscript = rows.filter(r => r.transcript && r.transcript.length > 50).length;
-    const avgMs = rows.reduce((a, r) => a + r.durationMs, 0) / total;
-    const avgSec = Math.round(avgMs / 1000);
-    return { total, notInterested, meetingBooked, followUp, wrongContact, withTranscript, avgSec };
-  }, [rows]);
-
-  // Funnel stats from tags
-  const funnel = useMemo(() => {
-    const tagged = Object.keys(tags).length;
-    if (tagged === 0) return null;
-    const reachCounts = {};
-    const pitchCounts = {};
-    const objCounts = {};
-    Object.values(tags).forEach(arr => {
-      arr.forEach(t => {
-        if (REACH_TAGS[t]) reachCounts[t] = (reachCounts[t] || 0) + 1;
-        if (PITCH_TAGS[t]) pitchCounts[t] = (pitchCounts[t] || 0) + 1;
-        if (OBJECTION_TAGS[t]) objCounts[t] = (objCounts[t] || 0) + 1;
-      });
-    });
-    const rightPerson = (reachCounts['Right person, right target'] || 0) + (reachCounts['Right person, wrong department'] || 0) + (reachCounts['Right person, not decision maker'] || 0);
-    const rightTarget = (reachCounts['Right person, right target'] || 0);
-    const fullPitch = (pitchCounts['Full pitch delivered'] || 0);
-    const partialPitch = (pitchCounts['Partial pitch, cut off'] || 0);
-    const heardPitch = fullPitch + partialPitch;
-    return { tagged, reachCounts, pitchCounts, objCounts, rightPerson, rightTarget, fullPitch, heardPitch };
-  }, [tags]);
-
   // Filtered rows
   const filtered = useMemo(() => {
     return rows.filter(row => {
@@ -147,14 +114,52 @@ export default function CallAnalytics() {
         row.transcript?.toLowerCase().includes(q) ||
         row.date?.includes(q) ||
         row.id.includes(q);
+      const matchDateFrom = !filterDateFrom || row.date >= filterDateFrom;
+      const matchDateTo = !filterDateTo || row.date <= filterDateTo;
       const matchOutcome = filterOutcome === 'All' || row.outcome === filterOutcome;
       const matchRep = filterRep === 'All' || row.rep === filterRep;
       const matchVertical = filterVertical === 'All' || row.vertical === filterVertical;
       const matchPersona = filterPersona === 'All' || row.persona === filterPersona;
       const matchTag = filterTag === 'All' || (tags[row.id] && tags[row.id].includes(filterTag));
-      return matchSearch && matchOutcome && matchRep && matchVertical && matchPersona && matchTag;
+      return matchSearch && matchDateFrom && matchDateTo && matchOutcome && matchRep && matchVertical && matchPersona && matchTag;
     });
-  }, [rows, search, filterOutcome, filterRep, filterVertical, filterPersona, filterTag, tags]);
+  }, [rows, search, filterDateFrom, filterDateTo, filterOutcome, filterRep, filterVertical, filterPersona, filterTag, tags]);
+
+  // Stats — computed from filtered rows so they reflect current filters
+  const stats = useMemo(() => {
+    const total = filtered.length;
+    const notInterested = filtered.filter(r => r.outcome === 'Not Interested').length;
+    const meetingBooked = filtered.filter(r => r.outcome === 'Meeting Booked').length;
+    const followUp = filtered.filter(r => r.outcome === 'Follow up - interested').length;
+    const wrongContact = filtered.filter(r => r.outcome.startsWith('Wrong')).length;
+    const avgMs = total ? filtered.reduce((a, r) => a + r.durationMs, 0) / total : 0;
+    const avgSec = Math.round(avgMs / 1000);
+    return { total, notInterested, meetingBooked, followUp, wrongContact, avgSec };
+  }, [filtered]);
+
+  // Funnel stats from tags — also scoped to filtered rows
+  const funnel = useMemo(() => {
+    const filteredIds = new Set(filtered.map(r => r.id));
+    const filteredTags = Object.entries(tags).filter(([id]) => filteredIds.has(id));
+    const tagged = filteredTags.length;
+    if (tagged === 0) return null;
+    const reachCounts = {};
+    const pitchCounts = {};
+    const objCounts = {};
+    filteredTags.forEach(([, arr]) => {
+      arr.forEach(t => {
+        if (REACH_TAGS[t]) reachCounts[t] = (reachCounts[t] || 0) + 1;
+        if (PITCH_TAGS[t]) pitchCounts[t] = (pitchCounts[t] || 0) + 1;
+        if (OBJECTION_TAGS[t]) objCounts[t] = (objCounts[t] || 0) + 1;
+      });
+    });
+    const rightPerson = (reachCounts['Right person, right target'] || 0) + (reachCounts['Right person, wrong department'] || 0) + (reachCounts['Right person, not decision maker'] || 0);
+    const rightTarget = (reachCounts['Right person, right target'] || 0);
+    const fullPitch = (pitchCounts['Full pitch delivered'] || 0);
+    const partialPitch = (pitchCounts['Partial pitch, cut off'] || 0);
+    const heardPitch = fullPitch + partialPitch;
+    return { tagged, reachCounts, pitchCounts, objCounts, rightPerson, rightTarget, fullPitch, heardPitch };
+  }, [filtered, tags]);
 
   // Unique reps and verticals for filters
   const reps = useMemo(() => ['All', ...new Set(rows.map(r => r.rep))], [rows]);
@@ -475,9 +480,12 @@ OBJECTION: <tag or None>` }]
       </div>
 
       {/* ── Filters ── */}
-      <div style={{ display: 'flex', gap: 8, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: 8, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, alignItems: 'center', flexWrap: 'wrap' }}>
+        <input type="date" value={filterDateFrom} onChange={e => setFilterDateFrom(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 8px', fontSize: 12, color: filterDateFrom ? '#374151' : '#9ca3af' }} title="From date" />
+        <span style={{ color: '#9ca3af', fontSize: 12 }}>–</span>
+        <input type="date" value={filterDateTo} onChange={e => setFilterDateTo(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 8px', fontSize: 12, color: filterDateTo ? '#374151' : '#9ca3af' }} title="To date" />
         <input
-          placeholder="🔍  Search notes, outcome, rep..."
+          placeholder="🔍  Search..."
           value={search}
           onChange={e => setSearch(e.target.value)}
           style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 12px', fontSize: 13, width: 260, outline: 'none' }}
@@ -499,8 +507,8 @@ OBJECTION: <tag or None>` }]
             {allTags.map(t => <option key={t} value={t}>{t === 'All' ? 'All Tags' : t}</option>)}
           </select>
         )}
-        {(search || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterPersona !== 'All' || filterTag !== 'All') && (
-          <button onClick={() => { setSearch(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterPersona('All'); setFilterTag('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
+        {(search || filterDateFrom || filterDateTo || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterPersona !== 'All' || filterTag !== 'All') && (
+          <button onClick={() => { setSearch(''); setFilterDateFrom(''); setFilterDateTo(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterPersona('All'); setFilterTag('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
         )}
         <button
           onClick={analyzeAllCalls}
