@@ -35,7 +35,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA16d239d8dd54e26485de71ddca6eebc0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363202818794",
     "persona": "",
-    "offer": "We help IT teams automate workflows and deploy AI agents faster for production."
+    "offer": "so you know i see you're working on it operations i i felt this might be relevant to you so i've been working with a number of it and engineering teams and there's a common theme of wanting to automate workflows for their business operator you know task that like like appointment scheduling handling accounts payable you know ones that are manual and require interacting with multiple systems and and people so they've kind of looked ai agents to help with this but getting those agents to work in production has been a challenge for them they either take a very long time to build or they're not very flexible with edge cases i was curious in your position if this is something you resonate with"
   },
   {
     "id": "363206407898",
@@ -137,7 +137,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfdcfbd8b811c3de5ec76003e9dc7022c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363209876168",
     "persona": "",
-    "offer": ""
+    "offer": "I didn't realize you know us I was hoping to you know share a bit about the challenges that we're seeing the teams where are trying to implement ai and how we solve it"
   },
   {
     "id": "363227487993",
@@ -205,7 +205,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe6a5f6c1d1f54bdac1b974902ad3363e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363150585591",
     "persona": "",
-    "offer": "We provide a platform to build and deploy AI agents faster with built-in QA and simulation."
+    "offer": "so so so that how how many like so that's that's super interesting and that's actually why i called is that you know our platform run book so basically it serves it as a platform to build and deploy these agents much more quickly to get through that list of of priorities and and be able to qa and simulate and make sure they're running properly you know get them done in in in in days not not weeks so that that's what i that's what i really was hoping to show you and so it's basically a platform that year team would take ownership of eventually right and be able to build out whether it it'd be like a a dedicated billing workflow or like a you know a appointment scheduling workflow things like that things like that and the complexity and the the orchestration is is what what our platform is and then you can use natural language to augment the the workflows or code code them in however you want but but the value for a team like yours is hey we have this foundation that has"
   },
   {
     "id": 363095824078,
@@ -222,7 +222,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb99c001c77958bf166052f9aefb51342.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363095824078",
     "persona": "Finance / AP",
-    "offer": "We help logistics finance teams automate billing and AP by collecting PODs and matching invoices to TMS."
+    "offer": "so i i've been working with finance and it teams in the logistics space to help them automate billing and accounts payable typically for teams who have to manually collect pods look up data various sources like spreadsheets and match it to their tms or crm before billing i was curious if this has been a friction point for your team or if you look to ai agents to help with this"
   },
   {
     "id": "363105275624",
@@ -273,7 +273,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65cdb9c9495e85385b39db901ecb2819.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363092523714",
     "persona": "Finance / AP",
-    "offer": "We help finance teams in logistics automate billing and accounts payable."
+    "offer": "so i i'm from a company called run book and i've been working with finance teams mostly in logistics to help them automate billing and accounts payable typically for teams who have to manually collect you know pods or work orders create invoices and match it to their tms or crm before billing i was curious if this is like a friction point for your team where if you look to ai agents to help with this"
   },
   {
     "id": 363091722971,
@@ -290,7 +290,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3d3a89f476576a398e3cc94c99c64151.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363091722971",
     "persona": "IT Leadership",
-    "offer": "We help logistics teams automate complex AI workflows and engineering processes."
+    "offer": "i've been working with a good amount of it and ai engineering teams in the logistics space right now and i've been seeing a common theme in regards to automating workflows like complex workloads"
   },
   {
     "id": "363097583315",
@@ -324,7 +324,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe3a9b55f2256ecbb08103ff8507c2d41.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363097747135",
     "persona": "IT / Engineering",
-    "offer": "We help data teams build and govern AI agents at scale."
+    "offer": "i i was trying to see if you guys have any like challenges when it comes to building ai agents like a lot of the manufacturing and consumer services companies that we work with and i was gonna share our approach and see you know if if it's something new to how you approach building agents and if we can help basically"
   },
   {
     "id": 363088001763,
@@ -341,7 +341,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87451e7ad6bcb2df0fa224145d2489b9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363088001763",
     "persona": "Technical IC",
-    "offer": "We help AI teams build and deploy agents faster with built-in governance and orchestration."
+    "offer": "so roger i see your a solutions architect at at len working on ai and i've been working with a good amount of it and ai and engineering teams right and and i've been hearing a common theme that i thought my resonate with you is that they wanna automate workflows for their business operators coordination pass like appointment scheduling service scheduling or like accounts payable you know the ones that it typically require touching multiple people touching multiple system communicating with multiple people and so they've looked at ai agents to help with this but getting those agents to work in production has been a challenge for them either they so too long to no or they're just not very flexible it comes to edge cases i was curious if this is something you know you've you've experienced or working on currently"
   },
   {
     "id": "363074847431",
@@ -460,7 +460,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7acd5933f3cff4cdf9d03584c5bbb366.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362937748175",
     "persona": "Technical IC",
-    "offer": "We help IT teams deploy AI agents faster for logistics and supply chain workflows."
+    "offer": "So i i see you're working on enterprise architecture at gordon and i thought this might be relevant to you so i've been working with a good number of it and engineering teams in the logistics and supply chain side of things and i've been hearing a common theme which is they they wanna automate workflows for their business operators coordination tasks that typically required you know touching multiple systems speaking to or emailing multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them they either take a long time to build or they're just not very flexible with edge cases i was curious if this is something that you resonate with on your role"
   },
   {
     "id": 362934932169,
@@ -477,7 +477,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb1287a8acc31e90a0e74fcd882045595.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362934932169",
     "persona": "IT Leadership",
-    "offer": "We help IT teams deploy AI agents faster to automate operational workflows across multiple systems."
+    "offer": "so you know i see your leading it team at brock and i've been working with a good amount of it and engineering teams in the logistics and manufacturing space and i've been hearing a common theme that i thought might resonate with you is that they wanna automate workflows for their business operators coordination tasks that are repetitive and typically require touching multiple systems and calling multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them it's either takes them a long time to build or they're not very flexible when it comes to edge cases i was curious if this is something that you resonate with"
   },
   {
     "id": "362957532906",
@@ -545,7 +545,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbfa599f2d14f9016ac2555d6b1ef9f48.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362927672041",
     "persona": "IT / Engineering",
-    "offer": "We help engineering teams deploy AI agents to automate repetitive manual workflows across systems."
+    "offer": "yeah james i see your leading commercial digital solutions and assuming that falls under it and i i've been working with the a good amount of it and engineering teams in the logistics and manufacturing space and i've been seeing a theme that i thought i resonate with you they wanna automate workflows for their business operators tasks at a repetitive manual and require touching multiple people systems and talking to multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them to governing them i was curious if this is something you have a hand in"
   },
   {
     "id": "362957289199",
@@ -596,7 +596,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe775ca59268483958c5cd95c887d4cb4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362924071614",
     "persona": "Executive",
-    "offer": "We provide a platform to build and deploy agents that automate manual operational coordination work."
+    "offer": "so the the company i'm calling for is called run book and and what we do is we provide organizations like you guys with a platform that helps build and deploy agents that handle the manual coordination work that's slow dispatch and operations teams down"
   },
   {
     "id": "362956602096",
@@ -732,7 +732,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e035f0897a3784a498493c4a3097d1c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362950752968",
     "persona": "Director (Other)",
-    "offer": "We help IT teams deploy AI agents faster with built-in governance and production readiness."
+    "offer": "so you know i see your leading it over at otis i've been working with a number of it and engineering teams right now in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with it is that they wanna automate workflows for their business operators you know tasks that are repetitive manual complex that requires coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them building trust in accuracy i was curious if this is something that you're experiencing right now"
   },
   {
     "id": "362949937898",
@@ -851,7 +851,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA33b019a39536808550bbdb34bbca8363.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362925116122",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams build and deploy AI agents for automating business workflows reliably."
+    "offer": "so i've been working with a number of it teams in the logistics in manufacturing space mostly but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex that it requires coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing it to implementing to building trust and accuracy"
   },
   {
     "id": "362925040321",
@@ -919,7 +919,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9381c030afb894dbfba15e3b6712f62d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362555414210",
     "persona": "Executive",
-    "offer": "We help teams build and deploy AI agents to automate daily operational tasks."
+    "offer": "we're a platform that helps folks build and employee agents that help automate a lot of the tasks that your team works on all day"
   },
   {
     "id": 362586077920,
@@ -970,7 +970,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA32143c1ad96d1d44edfa02bf13933ed7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362539175641",
     "persona": "IT Leadership",
-    "offer": "We help IT teams deploy AI agents to automate cross-system workflows."
+    "offer": "so you know i see your senior architect at it'll aws i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires coordination between multiple people and system and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them"
   },
   {
     "id": "362562513633",
@@ -1089,7 +1089,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5734f7e56da5d5ddd1749b92638a48c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362500558543",
     "persona": "Director (Other)",
-    "offer": "We provide a platform to build and deploy AI agents that automate operational coordination work."
+    "offer": "our company what we do is provide a platform that helps teams deploy build and deploy agents that automate a lot of the manual coordination work that flow operation teams do i feel like folks in your role get asked all the time to help bridge that gap and you know there's always trust and reliability issues that go on with these agents but we've felt something that lives closer to the business and it allows you guys to manage it so those trust issues go away"
   },
   {
     "id": 362567113402,
@@ -1106,7 +1106,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4f43817d664c50ad7d1c13574ae4b832.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362567113402",
     "persona": "IT Leadership",
-    "offer": "We help teams build and deploy AI agents to automate manual operational coordination tasks."
+    "offer": "we're a we're a platform that helps your team filled and play agents to operationalize a lot of manual coordination task that that your teams the slow team's is down wondering if you guys have looked at anything like that"
   },
   {
     "id": 362489731770,
@@ -1123,7 +1123,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7214f190c45081d21a451ce4901ad7c9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362489731770",
     "persona": "Executive",
-    "offer": "We help automation teams build and deploy agents."
+    "offer": "we are a platform that helps teams like yours build and deploy agents"
   },
   {
     "id": "362517809887",
@@ -1225,7 +1225,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9255f9f65efdd13fec22b84e139a2f4a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362364834504",
     "persona": "IT Leadership",
-    "offer": "We provide a platform to build and deploy AI agents with orchestration and governance for non-technical users."
+    "offer": "yeah yeah so we are in the ai agent space it's a platform for building ai agents it's a orchestration layer you know for all your agents it's supposed to make building agents easy for non technical users and also keep your agents in one place you know if you scale to thousands of agents we help keep things in control"
   },
   {
     "id": "362354035406",
@@ -1310,7 +1310,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA850cfecc25bc7ffcfce19eddb1f4b5e8.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362212771521",
     "persona": "IT / Engineering",
-    "offer": "We help IT and engineering teams deploy AI agents faster with built-in governance and production controls."
+    "offer": "i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires coordination between multiple people and systems and they've looked to ai agents to help with this but when i rolled those out you completely across them great so they run into problems like when it comes to bringing them to production from implementing them to designing them to building trust and accuracy to capture like the tribal knowledge so even maintaining them so i was curious if you know if this is something that you've experienced as you rolled out some of these agents"
   },
   {
     "id": "362129861329",
@@ -1344,7 +1344,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA189d41f807500115f64544db5ee5bdfd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362145872612",
     "persona": "Executive",
-    "offer": "We help IT and engineering teams deploy AI agents into production faster with built-in governance."
+    "offer": "so yeah i i totally get that it sounds like you guys are you know to probably something pretty good i i we what we do is it's a it's a product and a platform for building ai agents and it's also an orchestration layer for these agents you know the one value proposition which i think you probably solve is making building agents as easy as possible and non technical as possible so you know your business people can make those automate certain workflows but the second is is to keep your agents in one place so they have access to tribal knowledge"
   },
   {
     "id": 362174592760,
@@ -1463,7 +1463,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA39cf2f35dae9488eb7a6fef4094b8264.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362163719882",
     "persona": "Manager (Other)",
-    "offer": ""
+    "offer": "i see you're working on enterprise applications i i thought this might be relevant in regards to our work with number of different it and engineering teams in the early"
   },
   {
     "id": "362145667821",
@@ -1531,7 +1531,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb932731da59d02bb7384ce4a9f4d4238.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362157792957",
     "persona": "Director (Other)",
-    "offer": "We help IT teams deploy AI agents faster with built-in orchestration and governance."
+    "offer": "alright michael yeah i see your leading innovation analytics and i've been working with a number of it and engineering teams right now in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and require coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them implementing them to building trust and accuracy and maintaining them afterwards i was curious this is something your company's experiencing today"
   },
   {
     "id": 362166597359,
@@ -1650,7 +1650,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfa362fbd955663085793143135755f96.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362187948742",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams build and orchestrate AI agents at scale with simplified management."
+    "offer": "what we do is we simplify that whole process of building and orchestrating agents as these companies scale the fleet of agents that they have our concern is they might get out of control maintaining them becomes an issue and you end up spending a lot of engineering time on it our goal is to make that process simple"
   },
   {
     "id": "362110769905",
@@ -1701,7 +1701,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6fec2c2d4fcc122dd24339d14171b252.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362016227037",
     "persona": "Executive",
-    "offer": "We help IT teams build and deploy AI agents for workflow automation in production."
+    "offer": "so the company is called run book what based in san francisco it's a platform for building ai agents and it's also an orchestration layer for all those kind of agents either the ones you've build on our platform were the ones you already built so the value proposition are are two one is making you know building agents as easy as possible for even non technical people and two is to keep your agents in one place so they have access to your tribal knowledge and just to make sure they they work with each other well is this something that that would be interesting for you to explore"
   },
   {
     "id": "362015779540",
@@ -1803,7 +1803,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAede189d74555a364cd245f314a1683bf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362010112758",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents in production with built-in governance and enterprise alignment."
+    "offer": "I've been working with a number of IT and engineering teams and I've been hearing a common theme that I thought you might resonate with they wanna build or automate workflows for their business operators you know it's tasks that are repetitive and require coordination between multiple people and systems and they've looked at AI agents to help with this but getting those agents to work in production has been a problem for them from implementing them to designing them to floating trust and accuracy and maintaining them"
   },
   {
     "id": 362014471868,
@@ -1820,7 +1820,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd9725e618995ab30d94a6f7ad8e18bba.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014471868",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "so they wanna automate workflows for their business operators tasks that are repetitive manual and may require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them to building trust and accuracy and to maintaining them"
   },
   {
     "id": "362014865137",
@@ -1871,7 +1871,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87e6ae78e7f92ba9a6e9a55b78e8e4bc.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361972268755",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents faster that automate complex workflows with built-in production governance."
+    "offer": "yeah so sean i i see your a senior manager for it at h s and i've been working with a number of it and engineering leaders in the logistics space and there's a common theme that i thought you might resonate with you know they wanna automate their workflows for their business operators but the you know these these tasks are repetitive manual and they require coordination between different people and systems so they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them to building trust and accuracy and to even maintaining them so i i was curious if if this is something you have experienced currently"
   },
   {
     "id": 361985440464,
@@ -1905,7 +1905,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8614fe5bc14a6f80659dc7b868ad15af.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014595801",
     "persona": "Technical IC",
-    "offer": "We help enterprise teams deploy AI agents that automate workflows across multiple systems."
+    "offer": "we we're a company called run book the product is a platform for building ai agents and it's also an orchestration layer for any agents that you've already built so there's kinda two main value propositions one is making building agents as easy as"
   },
   {
     "id": "361985295097",
@@ -1939,7 +1939,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9165cd277781fa84f502d5ace3329e4e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362013511405",
     "persona": "Other",
-    "offer": "We help IT teams deploy AI agents to automate repetitive workflows across systems."
+    "offer": "so i i see you're your an it business partner at lineage i've been working with a number of different it and engineering teams mostly in the logistics space right now and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators tasks that are repetitive manual and require coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing it to designing it to building trust and even maintaining it i was curious if this is a challenge that you've experienced"
   },
   {
     "id": 362012375795,
@@ -1956,7 +1956,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd77817a673ab374e515608c78ba7c709.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012375795",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents for business workflow automation with built-in production reliability."
+    "offer": "i'm working with a good amount of it at engineering teams mostly in the logistics space and i've been hearing a comments theme email i thought you might resonate with they wanna automate workflows for their business operators you know tasks are repetitive manual and require coordination between people and systems and they've looked the ai agents to help with this but getting those agents to work in production has been a problem from implementing them to building trust and accuracy to maintaining them so i was curious if this is something you experienced or are experiencing today"
   },
   {
     "id": 362012352216,
@@ -1973,7 +1973,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1f6fc795041c1a8b3209858bd4e6a7d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012352216",
     "persona": "Executive",
-    "offer": "We help IT teams deploy AI agents faster with built-in orchestration for multi-agent workflows."
+    "offer": "they wanna automate workflows for their business operators and these are tasks that are repetitive manual and require a coordination between people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to maintaining them"
   },
   {
     "id": "361993264874",
@@ -2024,7 +2024,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb33959ccafa246a36d89562b4baa94a2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361966817978",
     "persona": "Director (Other)",
-    "offer": "We help deploy AI agents to automate business processes in operations and billing."
+    "offer": "we are at an organization that helps folks like y'all deploy agents to automate a lot of the business processes that slow teams down and operations in billing"
   },
   {
     "id": "361891660520",
@@ -2126,7 +2126,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3f318536d44befd301d17fee61db0961.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361975966425",
     "persona": "Director (Other)",
-    "offer": "We help organizations build and deploy AI agents."
+    "offer": "we're a company that helps organizations build and employ agent ai agents"
   },
   {
     "id": "361969889010",
@@ -2160,7 +2160,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA683b887d7fe55abc44df97ac50d9bcf6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361988883133",
     "persona": "Operations Leadership",
-    "offer": ""
+    "offer": "I'm calling you from a company called run book i'm calling you a bit out of blue but i can tell you why i reached out to you directly if you have a second"
   },
   {
     "id": 361891592913,
@@ -2177,7 +2177,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA754192b999d0a6564de87444f7652295.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361891592913",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents faster with governance and production reliability."
+    "offer": "i see you're a d for it focus on digital transformation at fedex i'm working with a good number of it and engineering teams in the logistics space and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators you know tasks that require talking to multiple people interacting with multiple systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them designing them to building trust and accuracy and to maintaining them"
   },
   {
     "id": 361992668904,
@@ -2194,7 +2194,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA138246bd80acfdf19d73f235e8453752.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992668904",
     "persona": "Operations Leadership",
-    "offer": "We help operations teams automate manual coordination using AI agents."
+    "offer": "so what our company does it is that we help you know teams like yours automate a lot of the manual coordination effort that goes in to things like billing dispatching and and getting you guys paid i guess but by doing by deploying ai agents that your team can build and take ownership"
   },
   {
     "id": 361992306372,
@@ -2211,7 +2211,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAaedf41c44ce8d972a1fdcecbfc126ca3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992306372",
     "persona": "IT Leadership",
-    "offer": "We help IT teams deploy AI agents faster for business workflow automation."
+    "offer": "so i'm working with a ton of it and engineering teams mostly in a logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for the business operators and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to even maintaining them i was curious this something you have you're experiencing today"
   },
   {
     "id": 361949147864,
@@ -2245,7 +2245,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87d2dabe7ed534942dac4198cc5bf65b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361963330283",
     "persona": "IT Leadership",
-    "offer": "We help IT and engineering teams deploy AI agents into production for repetitive, multi-system workflows."
+    "offer": "so i'm working with a lot of it and engineering teams you know they're building a lot of ai workflows for their business operators you know the tasks that are repetitive and require coordination between multiple people and systems and that they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them"
   },
   {
     "id": "361893235433",
@@ -2364,7 +2364,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe014cca6a80b637da2722aaffe9bc60c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361818775279",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "they wanna automate workflows for their business operators you know tasks that are repetitive manual and require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting them to work in production has been a problem for them from implementing them to building trust and accuracy to maintaining them"
   },
   {
     "id": "361786680032",
@@ -2483,7 +2483,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa9d5fca0f7b21714f8f3003783db5a7b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361786580684",
     "persona": "IT Leadership",
-    "offer": "We provide a platform to build and deploy AI agents faster with built-in governance."
+    "offer": "we're a a platform and orchestration layer to to basically build ai agents and make that process as easy as possible so you're probably worked with in the past you know that that coordination between the to architect the solution with your business operators you know some things lost gets loss in translation and it takes a while to spin up an agent just to bring into production so that's what we help with"
   },
   {
     "id": "361874403040",
@@ -2517,7 +2517,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA41b24c0f0ecfe386c02b7127a40530f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361876191989",
     "persona": "IT Leadership",
-    "offer": "We help organizations build and deploy AI agents to automate manual operational coordination work."
+    "offer": "we talked a little bit about this word platform that helps organizations build and deploy agents to automate and the manual coordinated work that told every day"
   },
   {
     "id": 361872670433,
@@ -2534,7 +2534,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd1c8c077f33042ec726c8b3379cffbc6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361872670433",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents faster with built-in governance and QA."
+    "offer": "what we do is ensure we simplify that process of building those agents you probably worked with or deployed engineers you know you have to coordinate with them to define success criteria architect solution and during that process you're working with your own business people your own engineers to set it up and what we do is with it's a platform and orchestration layer to to make building reliable agents as easy as possible so instead of working with your you your non technical operators can can use you know our platform to to write these agents themselves and so it writes the code it it qa itself and over time it maintains itself as well so you don't have to dedicate"
   },
   {
     "id": "361839975113",
@@ -2721,7 +2721,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8efd37315955a5ba6cd1dff68856290d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361817677509",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "i'm with a company called run book i was calling you a bit out of a blue here today do you think of a could borrow thirty seconds of your time to explain the reason for michael"
   },
   {
     "id": "361828375261",
@@ -2755,7 +2755,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa15e8deadbd6e164e32f1f50a9f24e2e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361846361792",
     "persona": "IT / Engineering",
-    "offer": "We help IT infrastructure teams automate manual operational workflows and coordination tasks."
+    "offer": "i see you're a senior it infrastructure pm at ohio health and i've been working with the good amount of it and engineering teams right now mostly in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with even in the health care space so they want to automate workflows for their business operators particularly in competitive and manual tasks that require coordination and"
   },
   {
     "id": 361830141666,
@@ -2772,7 +2772,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA727d88776724ca8af56b51edbc9cb7b5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361830141666",
     "persona": "IT Leadership",
-    "offer": "We help IT and engineering teams deploy AI agents faster, reducing costs and implementation time."
+    "offer": "we work with it and engineering teams in the logistics space and the problem we're trying to solve is to help these companies deploy ai agents faster instead of working with you know external ford deployed engineering teams i'm setting all that time of money on the engineering side business people can create these agents themselves so it's for efficiency in building ai agents and saving costs"
   },
   {
     "id": "361813939935",
@@ -2823,7 +2823,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA738c7d429e4e7624939347ef93a0b181.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361642040051",
     "persona": "Director (Other)",
-    "offer": "We help IT teams deploy AI agents faster to automate multi-system workflows."
+    "offer": "so i i could give you an overview of kind of what we do so we help companies deploy agents to automate workflows that typically require a human to communicate with multiple people multiple systems like navigating a portal downloading a certification verifying various pieces of information and the the the problem that we're trying to solve is if you work with forward deployed engineering teams from these other vendors is the the the gap of kinda architect the solution because it requires the to work with your engineers and then your engineers work with your business people so it's like a huge kind of a bottleneck to kinda coordinate and decide on what to build once you decide how to build it it takes a you know a couple steps to actually bring it into production so where we sit is is that part we we our goal is to remove engineering from the equation so you know you can imagine saving a lot of time and effort from your engineers to build something like an ai agent in house"
   },
   {
     "id": "361607544545",
@@ -2942,7 +2942,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA050a3850370014171c80bf53499f74df.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361636581055",
     "persona": "Other",
-    "offer": "We help data teams build and deploy AI agents to automate manual operational work."
+    "offer": "our platform at run book we help organizations build and deploy agents to automate a lot of the work that lives on top of the data and coordinated effort that slow teams down on a day to day basis"
   },
   {
     "id": "361600290514",
@@ -3010,7 +3010,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb979a7e7de9b3a7d5c211daa3fb41717.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361537605306",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents to production faster with built-in governance."
+    "offer": "so the the kind of pain that we're targeting is is that is you have to work with a vendors for to deployed engineering team you have to pull in your own engineers and also the business people attached to that team to figure out a solution to like architect it what we're trying to do is cut out the forward to put engineering model completely so instead of you know your your engineers and your business people you know collaborating with each each other to figure out what to build we make it very easy for your business people to write those agents themselves"
   },
   {
     "id": 361564152508,
@@ -3044,7 +3044,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc70530efa9ea2f1eb3191a9667c2c101.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361571202757",
     "persona": "Technical IC",
-    "offer": "We help operations teams build and deploy AI agents using natural language without coding."
+    "offer": "we are a platform that helps seems like yours build agents to deploy and automate a lot of the manual coordination work that your operations team and billing teams do on a day to day basis"
   },
   {
     "id": 361535437500,
@@ -3061,7 +3061,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA49b4544380665e68d0d5db2c9226b030.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361535437500",
     "persona": "Director (Other)",
-    "offer": "We help engineering teams deploy AI agents faster for logistics and manufacturing automation."
+    "offer": "so the kind of like pain that we're we're solving for companies building these ai workflows is i'm assuming you probably work with like four to deployed engineers or like you know other vendors to help build some of these workflows and the problem we're seeing is the turnaround time to build something like that involves you know your engineers their engineers your business people who kind of like know what's to fix like you said like that it's very targeted and that coordination like back and forth between those different parties takes a long time and it takes you know sometimes over a day over two days to to build something into production and what we're doing is we we help simplify that process and take out the engineers as many places as possible so we kind of enable the non technical people to to to build these workflows"
   },
   {
     "id": "361546153664",
@@ -3163,7 +3163,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe2f8fc43ae7c1667e51d5c1ee6fa01db.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361584108264",
     "persona": "IT Leadership",
-    "offer": "We help engineering teams deploy AI agents faster with built-in governance and production reliability."
+    "offer": "so i work for a company called rum book where we're a san francisco start up we work with it and engineering teams mostly in the logistics and manufacturing space you know mostly on the ai side so i've been hearing a common theme that maybe you would resonate with is their business teams are spending eighty percent or more of their time in repetitive and manually coordinated tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them you know from implementation to building trust to even maintaining it after it got implemented i was curious if you resonate with these kind of challenges"
   },
   {
     "id": "361560141531",
@@ -3214,7 +3214,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5140782775081ffdcc99c56ad8b2187.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361516668608",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents to automate operational workflows with built-in reliability."
+    "offer": "we're run book as a platform that helps deploy agents to automate those operational workflows"
   },
   {
     "id": 361538826944,
@@ -3231,7 +3231,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6221ccd6ecf4dc47ab0c6a836da42ac6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361538826944",
     "persona": "Executive",
-    "offer": "We help enterprises build AI agents for logistics and manufacturing in less than a day."
+    "offer": "so my name is brandon lia i work for a very small startup up in san francisco called run book and we are in this kind of ai we helped build ai agents for enterprises in the logistics manufacturing space and i was hoping to run like a challenge by peter you know i i i assume turner is you know building out some ai workflows and the time to build those workflows might be too long the point is we can help them build things in less than a day so i was hoping to just have a conversation with peter and you know poke around to see where the challenges is with ai is within your company"
   },
   {
     "id": 361522919136,
@@ -3248,7 +3248,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c7f2a2e92bd3534431f838961b53d24.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361522919136",
     "persona": "Operations Leadership",
-    "offer": "We automate manual operational coordination work for operations teams."
+    "offer": "we're a platform that helps automate a lot of the manual coordination work that slowed this"
   },
   {
     "id": 361504432847,
@@ -3265,7 +3265,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAdc05cc35d75b9bec2b2a177b4252e511.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361504432847",
     "persona": "IT Leadership",
-    "offer": "We help IT teams deploy AI agents faster with built-in governance and production support."
+    "offer": "the reason i've calling you i i see your you know you're an ip leader at i've been working with a couple of different enterprise it teams mostly currently in the logistics and manufacturing space and i've been hearing a theme that i thought you might resonate with is that their business teams the the the business teams that their it teams are supporting or spending you know eighty percent or more of their time in repetitive and manually coordinated tasks and they've looked to ai agents to help with this but getting them to work these agents to work in production is a problem from an implementation standpoint to building trust and maintaining them i was curious if this is something that you deal with"
   },
   {
     "id": "361500814066",
@@ -3316,7 +3316,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAabf3cdd129602dc40349f1cd64c62e16.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361517466355",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents faster with built-in governance and production readiness."
+    "offer": "in this age of ai you know i've been hearing a common theme that i thought would resonate with you given your current role it's that they they have business seems that they're supporting and these teams are spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked at ai agents to help with this but getting the those agents to work in production has been a problem from an implementation to building trust to you know maintaining the agents"
   },
   {
     "id": "361470969549",
@@ -3367,7 +3367,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe9f54f805a3c65a750cac2a105bec414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361519118038",
     "persona": "IT / Engineering",
-    "offer": "We help logistics teams deploy AI agents to production faster with built-in governance."
+    "offer": "the reason i'm calling you is because i've noticed like teams are taking like entire days or maybe two days to build an ai agent and bring it into production and our work is to shorten that process to less than a day the approach is something i would love to tell you more about but the idea is you know we're trying to kinda replace the four deployed engineering model where you know you have an engineer work with the business person to test to build these kind of ai workflows we're trying to cut out like the engineers involvement in that as much as we can because it's the most expensive part of the workflow"
   },
   {
     "id": "361476238042",
@@ -3418,7 +3418,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA85ff4ec4dffc77373f42cbf1c323d406.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361478526652",
     "persona": "Operations Leadership",
-    "offer": "We help operations teams automate manual coordination work with AI."
+    "offer": "we're an ai company that helps automate a lot of the manual coordination work that your team execute on a day to day basis"
   },
   {
     "id": 361482116832,
@@ -3452,7 +3452,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf931d2eeb6071b26ace55ae8fd813964.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361465427687",
     "persona": "IT Leadership",
-    "offer": "We help IT teams automate manual operational tasks with a platform."
+    "offer": "we're a platform that helps automate a lot the manual work that ops teams do"
   },
   {
     "id": 361502332608,
@@ -3469,7 +3469,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c5dfc3ac1595b62ce0da6ce05c3f2c6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361502332608",
     "persona": "Other",
-    "offer": "We help IT teams deploy AI agents faster with production governance and maintenance support."
+    "offer": "so the reason i called you you know i noticed that's your application development lead at ryder i've been working with a bunch of enterprise it teams kind of in the logistics space and i've been hearing a common theme that i thought you might resonate with it's they're the business thing that they're supporting are spending you know eighty percent or more of their time in repetitive and manual tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem from an implementation to trust to a maintenance standpoint i was curious if you have a hand in this or you know you resonate but with kind of this challenge"
   },
   {
     "id": "361487516398",
@@ -3503,7 +3503,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb0e590b0b834cf8554c3137e1beed9c4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361472586484",
     "persona": "Operations",
-    "offer": ""
+    "offer": "from a seed seed state startup in san francisco we're called run book in the logistics ai space"
   },
   {
     "id": 361485668048,
@@ -3520,7 +3520,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb590d7a0df0ed0624638ff3be8cb5d4f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361485668048",
     "persona": "IT / Engineering",
-    "offer": "We help IT teams deploy AI agents faster with built-in governance and production support."
+    "offer": "you know i see your a program manager at logistics i've been working with a a bunch of different enterprise it teams kind of in the logistics logistics space and i've been hearing a common theme that i thought maybe you would resonate with it's their their business teams that the it teams are supporting they're spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked to ai agents to to to help with this but getting them to work in production has been a problem you know from implementation to building trust to even like maintaining them i figured you know given you're in this kind of space the it space do do do you resonate with kind of these challenges"
   },
   {
     "id": "361517233876",
@@ -3588,7 +3588,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3b6f0212ba34df59d67f1228dfb41bdb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361454474940",
     "persona": "Operations Leadership",
-    "offer": "We provide a platform to deploy AI agents that automate manual coordination tasks for operations teams."
+    "offer": "we provide a platform that helps deploy automation and agents for a lot of the manual coordination task that's slowed your team down on a day to day basis things like track to trace dispatching could even go into like billing basically places where you're throwing on bodies and problems and people are spending eighty percent of their time doing manual work that could be automated"
   },
   {
     "id": "361042960085",
@@ -3656,7 +3656,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA000574c919fa9d58a9a04b3b4b94bab7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046501104",
     "persona": "IT Leadership",
-    "offer": "We build AI agents to automate manual coordination tasks in logistics operations."
+    "offer": "so the the model that we operate on is we basically come in for free we learn where your biggest blockers or bottlenecks are to find something that creates the most roi and typically we we see that value get created within about a week so we build an ai agent that works in about a week"
   },
   {
     "id": 361039310571,
@@ -3673,7 +3673,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8839ba3900c02515aa8417a8f4f364d0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361039310571",
     "persona": "Operations",
-    "offer": "We help operations leaders automate day-to-day team tasks."
+    "offer": "we're a platform that helps operations leaders automate a lot of the tasks that their teams do on a day to day basis"
   },
   {
     "id": 361075559116,
@@ -3690,7 +3690,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA5e276246874f55e9fad2b3473d30ff9c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361075559116",
     "persona": "Operations",
-    "offer": "We help operations teams automate manual coordination work between systems using AI agents."
+    "offer": "we are a platform that helps operations teams automate a lot of the manual coordination work they do between systems on a day basis that slow your team down using agent ai"
   },
   {
     "id": 361094902495,
@@ -3707,7 +3707,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf1c1855075b6991c214edc73f9ced9f2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361094902495",
     "persona": "Operations Leadership",
-    "offer": "We help operations teams deploy AI agents faster without heavy engineering investment."
+    "offer": "so you know i've been working with a lot of it and operations teams in this like logistics space and i've been hearing two common themes that i thought might resonate with you one is their business teams that they're supporting are spending eighty percent or more of their time in repetitive manual and coordinated tasks and two is they've tried to look at ai agents to automate some of this but trust and accuracy can break down very easily and the it teams just can't support them"
   },
   {
     "id": "361084498642",
@@ -3809,7 +3809,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c6bb5eb3b3d77c8f9ce64bb441c13cd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046399685",
     "persona": "Director (Other)",
-    "offer": "We help IT teams build and deploy trustworthy AI agents for manual workflows."
+    "offer": "so we build ai agents that handle the coordination work you know your team does that typically requires touching multiple systems like navigating portals you know checking like sort of certifications or whatever before getting enough context to make a decision so think of like you know workflows that require maybe in like a like a dispatch coordination right like they they they have to pull out"
   },
   {
     "id": "361091218169",
@@ -3894,7 +3894,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc60532696fbe9f7d231d7639d15359fe.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361042771699",
     "persona": "IT / Engineering",
-    "offer": "We help operations teams deploy AI agents to automate manual coordinated effort."
+    "offer": "we're a platform that helps organizations deploy agents to automate a lot of the manual effort that operations see that closes operations seems down wondering if that's something that touches your role at all"
   },
   {
     "id": "361071789766",
@@ -3979,7 +3979,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb2dda02550393ec80d648543dbf863ac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360861691611",
     "persona": "IT / Engineering",
-    "offer": "We help operations teams automate billing and carrier communication tasks with AI agents."
+    "offer": "what we're doing is we're helping companies like you guys deploy agents to automate a lot of the billing and like we're really billing and carrier communication like tasks that you know folks on your operations team spending eighty percent of your time going over and over again to to give back the the high value workers the time to do high value work"
   },
   {
     "id": "360840909540",
@@ -4098,7 +4098,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbded11e71ad8773f37509cd9a9982ce2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360839022285",
     "persona": "IT / Engineering",
-    "offer": "We help operations teams automate manual coordination tasks with AI agents."
+    "offer": "run book we're an automation platform that helps deploy agents to execute the manual repetitive coordination task that operations teams have to go through on a day to day basis"
   },
   {
     "id": 360823897808,
@@ -4115,7 +4115,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a997c042aced2d4f96d39014a9e1223.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360823897808",
     "persona": "IT / Engineering",
-    "offer": "We provide AI agents to automate manual operational coordination across systems."
+    "offer": "yeah sure so i understand it's you're the that you look after data and analytics at at dan ross and the reason that i'm calling is i speak to a lot of folks on in in your position who are you know working with their operations teams to sync up data across systems to reduce a lot of the manual effort that goes into coordinating the the repetitive task that they do on a day to day basis we're a platform that provides ai agents to to automate a lot of that work that sits at the kind orchestration layer of the data you have and and and allows agents to execute those those tasks for your operators"
   },
   {
     "id": "360854310630",
@@ -4149,7 +4149,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb92e6171cc7de1c96f1b5288a1132851.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360842581697",
     "persona": "Technical IC",
-    "offer": ""
+    "offer": "so i'm working with a lot of it teams you know in this wonderful age of ai i'm sure you probably heard a lot about that stuff but i've been hearing two kinda common themes that i thought potentially would resonate with you given your role one is they're building a lot of agent workflows but trust and accuracy you can break down very easily with ai and the second one is they're trying to build these like ai applications to help their operations teams because they spend you know maybe eighty percent of their time in manual coordination work you know i figured you might have something to do with one of these things is that right"
   },
   {
     "id": 360857757401,
@@ -4166,7 +4166,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA268286b41b6bb9ce4f2d4253c6baba9e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360857757401",
     "persona": "Analyst / Specialist",
-    "offer": "We help IT teams automate multi-system operational workflows with AI agents."
+    "offer": "so i've been working with a lot of like it teams and you know in this age of ai and i've been hearing kind of two common themes that i thought my resonate with you given your role in in systems applications one is their building agent workflows but trust and accuracy you can break down very easily in production and and two is they're trying to you know automate a lot things in their operations teams and that's because they're spending like eighty percent of their time and in manual coordination work i was curious if you're working on you know you know these things today"
   },
   {
     "id": 360588752578,
@@ -4183,7 +4183,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd7131fcd94728ae49abc43b051ba429f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588752578",
     "persona": "Operations",
-    "offer": "We help dispatch operations teams automate manual coordination work."
+    "offer": "what we are is an automation platform that helps automate the manual coordination work that your dispatcher are you know do on a daily basis dispatch operations teams"
   },
   {
     "id": 360590525162,
@@ -4200,7 +4200,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe02b97901a59842c92a3a89b2f7a32ee.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360590525162",
     "persona": "Operations",
-    "offer": "We automate manual operational coordination for dedicated operations teams using AI agents."
+    "offer": "what run book is is that we're a platform that helps automate a lot of the manual coordination test that go into an operation like yours so think about carrier communication the out like bill like billing and encoding all that can be automated when and you know executed by an ai agent take you from you know four or six hours down to five minutes to to get something invoice and build out for one of those customers to work for"
   },
   {
     "id": 360581535424,
@@ -4217,7 +4217,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb4b3dab5cbbdd5fce8d079ac30265a47.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360581535424",
     "persona": "Operations Leadership",
-    "offer": "We help operations teams automate manual coordination between billing, dispatching, and carrier communication."
+    "offer": "we're agent platform that helps automate a lot of the manual coordination task that folks do on operations team between billing dispatching and like communication between carriers and your customers"
   },
   {
     "id": 360588532444,
@@ -4234,7 +4234,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA52d956f36111987b4377a8e872175a2c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588532444",
     "persona": "Operations Leadership",
-    "offer": "We help operations teams implement agent automation to streamline workflows."
+    "offer": "we're talking about the agent automation stuff"
   },
   {
     "id": 360571129560,
@@ -4251,7 +4251,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4957a81ed1a0e914818c75ff55ee6fac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360571129560",
     "persona": "Director (Other)",
-    "offer": "We automate operational tasks like dispatching, billing, and carrier coordination."
+    "offer": "the reason i'm calling i'm calling from run book we're an ai platform actually that helps automate a lot of the operational tasks that teams are doing on a day to day basis from dispatching the billing to carrier coordination i'm curious if if that's something that you guys have looked at it keen and if if it's relevant to you"
   },
   {
     "id": 360597499638,
@@ -4336,7 +4336,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfccaebfd207be084c97232f2736c1daf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360431190754",
     "persona": "IT Leadership",
-    "offer": "We provide a platform that orchestrates data and infrastructure to deploy agents automating operational tasks."
+    "offer": "we are a platform that serves as an orchestration layer for the data and infrastructure that you have to deploy agents that automate operational tasks so the things that exist at the end of your current automations that you've already invested in that exist like email phone or customer portals that's what our agents are for to automate"
   },
   {
     "id": 360350097107,
@@ -4353,7 +4353,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe453c78ed6f76a23fb5becbb14ee0a52.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360350097107",
     "persona": "Director (Other)",
-    "offer": "We automate operational processes using generative AI."
+    "offer": "i know that i had sent you over some some information a little bit ago around run book what we're doing with gen automation was was hoping that we could find some time to connect and talk a little deeper about it"
   },
   {
     "id": 360435302099,
@@ -4387,7 +4387,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a1591a61a74ef51cde4e77e6d392414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360301072101",
     "persona": "IT Leadership",
-    "offer": "We help operations teams automate manual coordination work with AI agents."
+    "offer": "we are as a platform that helps automate a lot of the manual coordination work that your operations teams are doing on a day to day basis sounds like you have some updated systems where folks are still toggling between throughout the day agents can take care of that work and give them time back and focus on more higher value work"
   },
   {
     "id": 360158840552,
@@ -4404,7 +4404,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA002695d9325af7e7519d1cc0c940c732.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360158840552",
     "persona": "IT Leadership",
-    "offer": "We help operations and finance teams automate manual work across systems using AI agents."
+    "offer": "we're a data orchestration platform that helps you deploy and build agents that can automate a lot of the coordinated manual work your operations and finance teams doing on a day to day basis"
   },
   {
     "id": "360171373283",
@@ -4472,7 +4472,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3d5c2158cb4c33fcd693e74d5dbac738.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360097848023",
     "persona": "Director (Other)",
-    "offer": "We deploy AI agents to automate operations tasks like billing and dispatching."
+    "offer": "what we do is we help automate a lot of the tasks that that operations teams are dealing with on a day to day basis so that could be billing be dispatching you we deploy these agents that that give you a lot of that time back"
   },
   {
     "id": "359736829641",
@@ -4540,7 +4540,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb5ae5bee3b73da789d52d5c5fa9621f7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359718654671",
     "persona": "Operations",
-    "offer": "We automate manual coordination work between dispatch and billing for operations teams."
+    "offer": "we are a platform that helps teams like yours automate a lot of the manual coordination work that goes in between dispatch and billing"
   },
   {
     "id": "359722900208",
@@ -4591,7 +4591,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf4b25f6932d86ee55dff3b9c73875c75.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359570062033",
     "persona": "Other",
-    "offer": "We help operations teams automate manual coordination and day-to-day tasks."
+    "offer": "we're an organization that helps you know operations teams automate a lot of the manual coordination effort that goes into the day to day task with they that go into the operation on a day to day basis"
   },
   {
     "id": "359605994227",
@@ -4625,7 +4625,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364cbed638259825cceb323fda508be3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359381665479",
     "persona": "Other",
-    "offer": "We help IT teams automate manual operational tasks using AI agents."
+    "offer": "the reason i had called is i'm doing a bunch of research on an end that in the company i work for is called run book what we do is to work with it teams to help solve the problem of having operational like leaders have to deal with manual day to day task by automating them with with ai agents"
   },
   {
     "id": "359379965661",
@@ -4676,7 +4676,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65552df8f224a84269aded8a93d4d9b0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359364064989",
     "persona": "Operations",
-    "offer": "We help operations teams automate manual task coordination across logistics systems."
+    "offer": "I work with a lot of folks on the operation side of logistics companies who deal with having to manage and coordinate manual tasks all day moving between systems, and knowing how to handle a lot of that coordination."
   },
   {
     "id": "359353906883",
@@ -4710,7 +4710,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc854a0704825f3f5449f38259c6ef1f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359221165804",
     "persona": "IT / Engineering",
-    "offer": "We help operations teams reduce manual tasks between systems by 97% with AI agents."
+    "offer": "we're a platform that helps operations team reduce the manual tasks that they have to do on a day to day basis between systems by ninety seven percent with a agent"
   },
   {
     "id": 358851312352,
@@ -4727,7 +4727,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1ee22edec27edb9eb64aa4bd432f3dd2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358851312352",
     "persona": "Operations",
-    "offer": "We automate operational workflows like dispatch, driver coordination, and billing across systems."
+    "offer": "we're a platform that helps automate a lot of the operational tasks that teams are doing on a day to day basis whether it be like dispatch coordination driver coordination billing coordination things your team spending a lot of time on coordinating between systems that require manual effort"
   },
   {
     "id": 358663070432,
@@ -4795,7 +4795,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA817cf7ad33c7777b4657b077b8f6cbe0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358654043893",
     "persona": "IT Leadership",
-    "offer": "We help logistics teams automate coordination tasks outside existing TMS systems."
+    "offer": "we're a platform that helps automate a lot of the coordination task that happened on outside of the automation you've already built and you guys done a lot of that with the pricing that you have your t air tms i'm curious if you've looked at the gen solutions at this point"
   },
   {
     "id": "358644207299",
@@ -4829,7 +4829,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe8c8c7b718fdaed740c0313ad0e0aba9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414973656",
     "persona": "Executive",
-    "offer": "We help companies deploy AI agents to automate manual coordination tasks across TMS and ERP systems."
+    "offer": "we're a platform founded by the former founder of motive the fleet management company what we do is we provide we help companies like y'all deploy agents to automate a lot of the tasks that exist on the edges of systems like your tms and el and still require manual coordination with phone email and text"
   },
   {
     "id": 358449854162,
@@ -4846,7 +4846,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAcfa46f0180dae8a14f9900c56e4be224.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358449854162",
     "persona": "IT / Engineering",
-    "offer": "We automate back office operations for fleet operators using AI \u2014 handling compliance, billing, and carrier reconciliation."
+    "offer": "we're a platform that helps automate one of the back office desk for operators at fleets and the reason i reached out to you is i understood that you kinda sit in the middle of the business and it parts of the business at keen and i wanted to get your perspective on what we're working on and see if you guys are invested in ai at all at this point"
   },
   {
     "id": 358446212853,
@@ -4863,7 +4863,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3fc9588acafd09118d0d2c23a182b4ab.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358446212853",
     "persona": "Director (Other)",
-    "offer": "We automate back office and dispatch tasks for fleet operators using AI."
+    "offer": "run book is a platform that helps automate a lot of the back office and even dispatch oriented task that operators up you on a day to day basis using ai"
   },
   {
     "id": 358414827240,
@@ -4880,7 +4880,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3de75e888a28dbe3f1ccf624f43d6f21.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414827240",
     "persona": "IT Leadership",
-    "offer": "We provide a platform to deploy AI agents automating operational coordination using natural language."
+    "offer": "what we do is provide a platform that sits on top of that to deploy agents to automate a lot of the coordination and manual tasks that operation seems to do on a day to day basis"
   },
   {
     "id": "358432988909",
@@ -4931,7 +4931,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA40479bf85cd5f303664666b592ba513c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358359611085",
     "persona": "IT Leadership",
-    "offer": "We help IT teams automate runbook execution and incident response workflows."
+    "offer": ""
   },
   {
     "id": 357910316739,
@@ -4948,7 +4948,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0a8f04b92120afcfb608c837b5acb3c5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/357910316739",
     "persona": "Operations Leadership",
-    "offer": "We help organizations deploy AI agents to automate manual coordination between systems and logistics."
+    "offer": "we're a platform that helps organizations deploy agents to automate the manual coordination task that happened between systems and logistics"
   },
   {
     "id": "357913837289",
@@ -5084,7 +5084,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAba2a64311da1d59704eaf51748e073d6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/355479115456",
     "persona": "Executive",
-    "offer": ""
+    "offer": "I've been doing a lot of research on you guys understand that you guys have updated quite a bit and and would love to show you what we're working with here at run book"
   },
   {
     "id": "355019098817",
@@ -5203,7 +5203,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364228eb180a62efd79e0079b0406a86.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353051495136",
     "persona": "Operations",
-    "offer": "We help logistics teams automate edge workflows using AI agents that extend modern tech stacks."
+    "offer": "so we are a a platform that works with companies like bison who are built on you know really modern technology stacks to extend okay to the edges of those systems and automate a lot of the workflows that happen still in like within at the edges of those systems within phone text email with with ai agents"
   },
   {
     "id": 353313151706,
@@ -5220,7 +5220,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA13db493e3829841899291c6315e09ca1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353313151706",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "this is our well researched cold call can explain while i'm calling"
   },
   {
     "id": "353039973063",
@@ -5305,7 +5305,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c65c72046ee5b5c23e58c8d20fdf6a5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352964206277",
     "persona": "IT / Engineering",
-    "offer": "We help AI solutions teams automate operational workflows with runbooks."
+    "offer": "i just was try we had talked about the gentle k stuff you said you're building some things you wanted to take a look at run book or willing to take a look at what we're doing over here and see if there's just compare notes i guess"
   },
   {
     "id": 352267068151,
@@ -5458,7 +5458,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8e61b4d6aed7bcad66a07c94bae3ae17.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348416113388",
     "persona": "IT Leadership",
-    "offer": "We help IT teams deploy AI agents faster with self-service workflow ownership."
+    "offer": "what we do is we are providing agents or deploying agents for customers to help operationalize some of the frontline work that those teams are doing better are manual and coordinated with these systems on a day to day basis"
   },
   {
     "id": 348414293736,
@@ -5492,7 +5492,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA239e9b4f212c5c89d170b673b04259d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348393224922",
     "persona": "Executive",
-    "offer": "We help transportation networks optimize operations and reduce costs."
+    "offer": ""
   },
   {
     "id": 348396717807,
@@ -5509,7 +5509,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA658ec9cc7d1ebefbd324d8f1233d558a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348396717807",
     "persona": "IT Leadership",
-    "offer": "We automate operational coordination gaps between systems using AI agents for logistics teams."
+    "offer": "so run book is a platform that helps automate a lot of the frontline operational work that your team might be doing manually to coordinate with carriers across systems we're using agent ai to basically automate that"
   },
   {
     "id": "348443019991",
@@ -5543,7 +5543,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e56cb36f8097762b5044e66bf20b7d1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348421380840",
     "persona": "IT / Engineering",
-    "offer": "We help operations teams automate frontline work and manual communication coordination with AI."
+    "offer": "run book is a platform that helps automate a lot of the frontline work that your operations team does in coordination in manual communication on a day to day basis wondering if you're looking at ai to handle any those type of tasks right now"
   },
   {
     "id": "348381346495",
@@ -5594,7 +5594,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8138047a6d98c91e5fb34f44adae4596.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/347870970583",
     "persona": "",
-    "offer": "We automate frontline operations work \u2014 manual coordination for loads via email, text, and phone."
+    "offer": "we're a platform that's helping sit on top of like the mash and can actually automate a lot of the frontline line work that operations seems to spend a lot of time doing like the manual coordination for for loads in terms of email text and phone our agents actually automate that give your teams a time of time back"
   },
   {
     "id": "347866853100",
