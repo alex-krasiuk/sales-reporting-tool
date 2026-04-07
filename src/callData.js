@@ -35,7 +35,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA16d239d8dd54e26485de71ddca6eebc0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363202818794",
     "persona": "",
-    "offer": "hi kurt this is brandon with run book how are you sir"
+    "offer": ""
   },
   {
     "id": "363206407898",
@@ -137,7 +137,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfdcfbd8b811c3de5ec76003e9dc7022c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363209876168",
     "persona": "",
-    "offer": "this is brandon with run book how are you sir"
+    "offer": "yeah i didn't realize you know us i was hoping to you know share a bit about the challenges that we're seeing the teams where are trying to implement ai and how we solve it"
   },
   {
     "id": "363227487993",
@@ -205,7 +205,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe6a5f6c1d1f54bdac1b974902ad3363e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363150585591",
     "persona": "",
-    "offer": "hey i i wanted to follow up i know we talked briefly last week i think was on like friday but wanted to wanted to to find some time with you to talk through run booking and what you guys are doing in data and ai right now"
+    "offer": "so so so that how how many like so that's that's super interesting and that's actually why i called is that you know our platform run book so basically it serves it as a platform to build and deploy these agents much more quickly to get through that list of of priorities and and be able to qa and simulate and make sure they're running properly you..."
   },
   {
     "id": 363095824078,
@@ -222,7 +222,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb99c001c77958bf166052f9aefb51342.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363095824078",
     "persona": "Finance / AP",
-    "offer": "yeah i i see your you know supervising accounts payable team at at coco global yeah thought relevant"
+    "offer": "so i i've been working with finance and it teams in the logistics space to help them automate billing and accounts payable typically for teams who have to manually collect pods look up data various sources like spreadsheets and match it to their tms or crm before billing i was curious if this has been a friction point for your team or if you look..."
   },
   {
     "id": "363105275624",
@@ -273,7 +273,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65cdb9c9495e85385b39db901ecb2819.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363092523714",
     "persona": "Finance / AP",
-    "offer": "thank you so much so i i'm from a company called run book and i've been working with finance teams mostly in logistics to help them automate billing and accounts payable typically for teams who have to manually collect you know pods or work orders create invoices and match it to their tms or crm..."
+    "offer": "thank you so much so i i'm from a company called run book and i've been working with finance teams mostly in logistics to help them automate billing and accounts payable typically for teams who have to manually collect you know pods or work orders create invoices and match it to their tms or crm before billing i was curious if this is like a..."
   },
   {
     "id": 363091722971,
@@ -324,7 +324,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe3a9b55f2256ecbb08103ff8507c2d41.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363097747135",
     "persona": "IT / Engineering",
-    "offer": "yeah well i i see your leading data and analytics and i figured maybe you're supporting some ai projects this is about building ai agents i can expand a little more if you have like thirty seconds is it a consulting or what is it"
+    "offer": "i i was trying to see if you guys have any like challenges when it comes to building ai agents like a lot of the the manufacturing and and consumer services companies that we work with and i was gonna share our approach and see you know if if it's something new to to how you approach building agents and if if we can help basically"
   },
   {
     "id": 363088001763,
@@ -341,7 +341,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87451e7ad6bcb2df0fa224145d2489b9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363088001763",
     "persona": "Technical IC",
-    "offer": "thank you so much so roger i see your a solutions architect at at len working on ai and i've been working with a good amount of it and ai and engineering teams right and and i've been hearing a common theme that i thought my resonate with you is that they wanna automate workflows for their business..."
+    "offer": "thank you so much so roger i see your a solutions architect at at len working on ai and i've been working with a good amount of it and ai and engineering teams right and and i've been hearing a common theme that i thought my resonate with you is that they wanna automate workflows for their business operators coordination pass like appointment..."
   },
   {
     "id": "363074847431",
@@ -460,7 +460,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7acd5933f3cff4cdf9d03584c5bbb366.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362937748175",
     "persona": "Technical IC",
-    "offer": "thank you so much so i i see you're working on enterprise architecture at gordon and i thought this might be relevant to you so i've been working with a good number of it and engineering teams in the logistics and supply chain side of things and i've been hearing a common theme which is they they..."
+    "offer": "thank you so much so i i see you're working on enterprise architecture at gordon and i thought this might be relevant to you so i've been working with a good number of it and engineering teams in the logistics and supply chain side of things and i've been hearing a common theme which is they they wanna automate workflows for their business..."
   },
   {
     "id": 362934932169,
@@ -477,7 +477,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb1287a8acc31e90a0e74fcd882045595.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362934932169",
     "persona": "IT Leadership",
-    "offer": "christopher this is brandon with run book how are you"
+    "offer": "alright thank you christopher so you know i see your leading it team at brock and i've been working with a good amount of it and engineering teams in the logistics and manufacturing space and i've been hearing a common theme that i thought might resonate with you is that they wanna automate workflows for their business operators coordination tasks..."
   },
   {
     "id": "362957532906",
@@ -545,7 +545,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbfa599f2d14f9016ac2555d6b1ef9f48.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362927672041",
     "persona": "IT / Engineering",
-    "offer": "thank you so james i see your leading commercial digital solutions and assuming that falls under it and i i've been working with the a good amount of it and engineering teams in the logistics and manufacturing space and i've been seeing a theme that i thought i resonate with you they wanna automate..."
+    "offer": "thank you so james i see your leading commercial digital solutions and assuming that falls under it and i i've been working with the a good amount of it and engineering teams in the logistics and manufacturing space and i've been seeing a theme that i thought i resonate with you they wanna automate workflows for their business operators tasks at a..."
   },
   {
     "id": "362957289199",
@@ -596,7 +596,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe775ca59268483958c5cd95c887d4cb4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362924071614",
     "persona": "Executive",
-    "offer": "hi it's chuck ga with run book how are you"
+    "offer": "cool so the the company i'm calling for is called run book and and what we do is we provide organizations like you guys with a platform that helps build and deploy agents that handle the manual coordination work that's slow dispatch and operations teams down i you know i know that you look after systems integration at and feel only this to be..."
   },
   {
     "id": "362956602096",
@@ -732,7 +732,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e035f0897a3784a498493c4a3097d1c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362950752968",
     "persona": "Director (Other)",
-    "offer": "from a company called run book sean i'm calling you out of a blue do you mind if i borrow thirty seconds of your time to explain why i called you"
+    "offer": "good thanks sean so you know i see your leading it over at otis i've been working with a number of it and engineering teams right now in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with it is that they wanna automate workflows for their business operators you know tasks that are..."
   },
   {
     "id": "362949937898",
@@ -851,7 +851,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA33b019a39536808550bbdb34bbca8363.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362925116122",
     "persona": "IT / Engineering",
-    "offer": "hello hey good this is brandon with run book how are you"
+    "offer": "no worries yeah just thirty seconds and you can you can tell me whether or not it makes sense to continue your conversation good so i've been working with a number of it teams in the logistics in in manufacturing space mostly but i've been hearing a common theme that i thought you might resonate might you you might resonate with they wanna..."
   },
   {
     "id": "362925040321",
@@ -970,7 +970,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA32143c1ad96d1d44edfa02bf13933ed7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362539175641",
     "persona": "IT Leadership",
-    "offer": "hey grant this is brandon run book how are you"
+    "offer": "thanks grant so you know i see your senior architect at it'll aws i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires..."
   },
   {
     "id": "362562513633",
@@ -1021,7 +1021,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6c51a9e5c0ca1a6b45318f6c15a523dd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362521697993",
     "persona": "IT / Engineering",
-    "offer": "yeah yeah from from run book we chatted for about like five minutes about like you know your your thoughts on governance and architecture when it comes to building ai agents and then you had to hop off that you were driving somewhere"
+    "offer": ""
   },
   {
     "id": "362500779739",
@@ -1055,7 +1055,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7d57b471de6bd7d6ec6cb4f15c691ab1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362518027985",
     "persona": "IT Leadership",
-    "offer": "hey boyd this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": "362480974580",
@@ -1089,7 +1089,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5734f7e56da5d5ddd1749b92638a48c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362500558543",
     "persona": "Director (Other)",
-    "offer": "well look at i i i reached out to you specifically i understand that you're the director of enterprise systems over uni group our company what we do is provide a platform that helps teams deploy build and deploy agents that automate a lot of the manual coordination work that that flow operation..."
+    "offer": "well look at i i i reached out to you specifically i understand that you're the director of enterprise systems over uni group our company what we do is provide a platform that helps teams deploy build and deploy agents that automate a lot of the manual coordination work that that flow operation teams down i i feel like folks in your role get asked..."
   },
   {
     "id": 362567113402,
@@ -1123,7 +1123,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7214f190c45081d21a451ce4901ad7c9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362489731770",
     "persona": "Executive",
-    "offer": "thanks for speaking frank alright frank this you i got i sorry i couldn't hear it i couldn't hear it first frank this is chuck bartlett i'm calling you from run book i i know you look after automation at at lineage and the reason i'm calling you today out of the blue here it is that we are a a..."
+    "offer": "thanks for speaking frank alright frank this you i got i sorry i couldn't hear it i couldn't hear it first frank this is chuck bartlett i'm calling you from run book i i know you look after automation at at lineage and the reason i'm calling you today out of the blue here it is that we are a a platform that helps teams like yours build and deploy..."
   },
   {
     "id": "362517809887",
@@ -1225,7 +1225,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9255f9f65efdd13fec22b84e139a2f4a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362364834504",
     "persona": "IT Leadership",
-    "offer": "hi roberts hey michael this is brandon the run book are you good"
+    "offer": "yeah yeah so we are in the ai agent space it's a platform for building ai agents it's a orchestration layer you know for for all your agents it's supposed to make building agents easy for non technical users and also keep your agents in one place you know if you scale to thousands of agents we help keep things out of control out of control sort..."
   },
   {
     "id": "362354035406",
@@ -1259,7 +1259,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA133bb2084e227dd1145b11833bc8d2d0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362371753684",
     "persona": "IT Leadership",
-    "offer": "hello hey rem this is brandon run book how are you"
+    "offer": ""
   },
   {
     "id": "362370991827",
@@ -1310,7 +1310,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA850cfecc25bc7ffcfce19eddb1f4b5e8.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362212771521",
     "persona": "IT / Engineering",
-    "offer": "hello hey neil this is brandon with run book how are you"
+    "offer": "hi i appreciate it and yeah you tell me if it's relevant or not so i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and and complex in that it requires..."
   },
   {
     "id": "362129861329",
@@ -1446,7 +1446,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd320a5db9cfa23c9a4896ea10b0f0f51.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362165548777",
     "persona": "IT Leadership",
-    "offer": "ken this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": 362163719882,
@@ -1531,7 +1531,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb932731da59d02bb7384ce4a9f4d4238.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362157792957",
     "persona": "Director (Other)",
-    "offer": "hello hey michael this is brandon with run book how are you"
+    "offer": "alright michael yeah i see your leading innovation analytics and i've been working with a number of it and engineering teams right now in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive..."
   },
   {
     "id": 362166597359,
@@ -1548,7 +1548,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA01b86e3c2c7128784fc1815f9d9462e0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362166597359",
     "persona": "IT Leadership",
-    "offer": "hey scott this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": "362146801349",
@@ -1599,7 +1599,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe738278d7bea405d318801bf0e46a3de.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362188182233",
     "persona": "IT Leadership",
-    "offer": "hey yeah justin this is brandon with run book i called you two days ago when you were apartment shopping"
+    "offer": ""
   },
   {
     "id": 362171889351,
@@ -1650,7 +1650,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfa362fbd955663085793143135755f96.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362187948742",
     "persona": "IT / Engineering",
-    "offer": "yes sir my name is brandon lia i'm from a company called run book mike i'm calling you the blue here do you mind if i borrow thirty seconds to explain why i calling"
+    "offer": "so you know i see your you know meeting transformation at us radiology i've been working with a number of it and engineering teams and i've can here a common theme that i thought my resonate with you they wanna automate workflows for their business operators test that are repetitive manual and require coordination between multiple people and and..."
   },
   {
     "id": "362110769905",
@@ -1701,7 +1701,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6fec2c2d4fcc122dd24339d14171b252.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362016227037",
     "persona": "Executive",
-    "offer": "patrick this is brandon with run book how are you"
+    "offer": "thanks patrick so you know i see your ceo at envision i i've been working with a number of different it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows with their operators process at our competitive schedule fire coordination between multiple people and systems and..."
   },
   {
     "id": "362015779540",
@@ -1786,7 +1786,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc1ab53362c360b95edd4fd5ebe6ca05c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361985542878",
     "persona": "IT / Engineering",
-    "offer": "hey bruce this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": 362010112758,
@@ -1803,7 +1803,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAede189d74555a364cd245f314a1683bf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362010112758",
     "persona": "IT / Engineering",
-    "offer": "this is brandon with run book how you"
+    "offer": "but i've been i see your it manager at shell and i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna build or automate workflows for their business operators you know it's tasks that are repetitive and require coordination between multiple people and..."
   },
   {
     "id": 362014471868,
@@ -1820,7 +1820,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd9725e618995ab30d94a6f7ad8e18bba.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014471868",
     "persona": "IT / Engineering",
-    "offer": "nicholas this is brandon with run book how are you"
+    "offer": "yeah i i i see your it manager at health with a focus on ai i thought this would be relevant i'm working with a bunch of different it and engineering teams and i've been hearing a common theme that i thought you might resonate with are were you ready"
   },
   {
     "id": "362014865137",
@@ -1854,7 +1854,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAcbd3f1024b8ba66a81f78106c2836e21.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361939864269",
     "persona": "IT Leadership",
-    "offer": "hello hey ed this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": 361972268755,
@@ -1871,7 +1871,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87e6ae78e7f92ba9a6e9a55b78e8e4bc.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361972268755",
     "persona": "IT / Engineering",
-    "offer": "hello hey z sean this is brandon with run book how are you"
+    "offer": "yeah so sean i i see your a senior manager for it at h s and i've been working with a number of it and engineering leaders in the logistics space and there's a common theme that i thought you might resonate with you know they wanna automate their workflows for their business operators but the you know these these tasks are repetitive manual and..."
   },
   {
     "id": 361985440464,
@@ -1888,7 +1888,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a6e41b790f793567b367a321e276bd9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361985440464",
     "persona": "Technical IC",
-    "offer": "yeah and run book i'm calling you out of the blue here stacy if if i could borrow thirty seconds i could explain the reason for my call"
+    "offer": ""
   },
   {
     "id": 362014595801,
@@ -1905,7 +1905,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8614fe5bc14a6f80659dc7b868ad15af.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014595801",
     "persona": "Technical IC",
-    "offer": "yeah so s this is my name is brandon lia i'm with the company called run bookings in san francisco i was calling you out of the blue here do you think i could borrow thirty seconds for your time to explain the reason for my call"
+    "offer": "okay great so jean so so i noticed here a lead enterprise architect at bp and i've been working with several other enterprise it key and and engineering teams in the logistics and and manufacturing space mostly and i've been hearing a common theme that i thought you might resonate with given your role you know these they wanna automate key..."
   },
   {
     "id": "361985295097",
@@ -1939,7 +1939,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9165cd277781fa84f502d5ace3329e4e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362013511405",
     "persona": "Other",
-    "offer": "yeah my name is brandon lia i'm calling from a a san francisco startup called run book"
+    "offer": "great so thirty seconds so i i see you're your an it business partner at lineage i've been working with a number of different it and engineering teams mostly in the logistics space right now and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators tasks that are..."
   },
   {
     "id": 362012375795,
@@ -1956,7 +1956,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd77817a673ab374e515608c78ba7c709.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012375795",
     "persona": "IT / Engineering",
-    "offer": "thank you ex yeah oh so i see your it application development manager i'm working with a good amount of it at engineering teams mostly in the logistics space and i've been hearing a comments theme email i thought you might resonate with they wanna automate workflows for their business operators you..."
+    "offer": "thank you ex yeah oh so i see your it application development manager i'm working with a good amount of it at engineering teams mostly in the logistics space and i've been hearing a comments theme email i thought you might resonate with they wanna automate workflows for their business operators you know tasks are a repetitive manual and require..."
   },
   {
     "id": 362012352216,
@@ -1973,7 +1973,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1f6fc795041c1a8b3209858bd4e6a7d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012352216",
     "persona": "Executive",
-    "offer": "hi savannah this is brandon with run book calling you out of the blue here today do you think it i could borrow thirty seconds of your time to explain why i called"
+    "offer": "thank you savannah so i i see your chief strategy officer effective i've been working with a good amount of it and engineering teams mostly in currently in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators and these are tasks..."
   },
   {
     "id": "361993264874",
@@ -2024,7 +2024,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb33959ccafa246a36d89562b4baa94a2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361966817978",
     "persona": "Director (Other)",
-    "offer": "hello daniel hi it's chuck bartlett i'm calling from run book how are you"
+    "offer": "run book we are at an organization that helps folks like y'all deploy agents to automate a lot of the business processes that slow teams down and operations in in billing i i i saw that you look after the analytics and insights thought you might have some some thoughts on that i'm curious if you looked at anything in in the agent space at this..."
   },
   {
     "id": "361891660520",
@@ -2126,7 +2126,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3f318536d44befd301d17fee61db0961.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361975966425",
     "persona": "Director (Other)",
-    "offer": "hello hey john this is chuck ga with run book how are you"
+    "offer": ""
   },
   {
     "id": "361969889010",
@@ -2160,7 +2160,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA683b887d7fe55abc44df97ac50d9bcf6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361988883133",
     "persona": "Operations Leadership",
-    "offer": "hello this is john jeff is chuck ga i'm calling you from run book how are you"
+    "offer": ""
   },
   {
     "id": 361891592913,
@@ -2177,7 +2177,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA754192b999d0a6564de87444f7652295.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361891592913",
     "persona": "IT / Engineering",
-    "offer": "yeah thank thank you so i see you're a d for it focus on digital transformation at fedex i'm working with a good number of it and engineering teams in the logistics space and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business..."
+    "offer": "yeah thank thank you so i see you're a d for it focus on digital transformation at fedex i'm working with a good number of it and engineering teams in the logistics space and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators you know tasks that i require talking to..."
   },
   {
     "id": 361992668904,
@@ -2194,7 +2194,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA138246bd80acfdf19d73f235e8453752.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992668904",
     "persona": "Operations Leadership",
-    "offer": "alan hi is chuck art i'm calling here from run book how are you"
+    "offer": "alright okay so what what our company does it is that we help you know teams like yours automate a lot of the manual coordination effort that goes in to things like billing dispatching and and and and getting you guys paid i guess but by doing by deploying ai agents that your team can build and and take ownership i'm wondering if you guys have..."
   },
   {
     "id": 361992306372,
@@ -2211,7 +2211,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAaedf41c44ce8d972a1fdcecbfc126ca3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992306372",
     "persona": "IT Leadership",
-    "offer": "so i'm working with a ton of it and engineering teams mostly in a logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for the business operators and they've looked to ai agents to help with this but getting..."
+    "offer": "so i'm working with a ton of it and engineering teams mostly in a logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for the business operators and they've looked to ai agents to help with this but getting those agents to work in production has been a problem..."
   },
   {
     "id": 361949147864,
@@ -2228,7 +2228,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAee897e0903b5c1f6fc585cbbcdad04f1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361949147864",
     "persona": "Manager (Other)",
-    "offer": "hey sherry this is chuck with run book how are you"
+    "offer": ""
   },
   {
     "id": 361963330283,
@@ -2245,7 +2245,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87d2dabe7ed534942dac4198cc5bf65b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361963330283",
     "persona": "IT Leadership",
-    "offer": "so i'm working with a lot of it and engineering teams you know they're they're building a lot of ai workflows for their business operators you know the tasks that are repetitive and require coordination between multiple people and systems and that they've looked to ai agents to help with this but..."
+    "offer": "so i'm working with a lot of it and engineering teams you know they're they're building a lot of ai workflows for their business operators you know the tasks that are repetitive and require coordination between multiple people and systems and that they've looked to ai agents to help with this but getting those agents to work in production has been..."
   },
   {
     "id": "361893235433",
@@ -2364,7 +2364,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe014cca6a80b637da2722aaffe9bc60c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361818775279",
     "persona": "IT Leadership",
-    "offer": "alright thank you so i i see your cio at pike i've been working with a lot of it and engineering teams mostly in the logistics and manufacturing space and i've been hearing the a common theme that i thought might resonate with you they wanna automate workflows for their business operators you know..."
+    "offer": "alright thank you so i i see your cio at pike i've been working with a lot of it and engineering teams mostly in the logistics and manufacturing space and i've been hearing the a common theme that i thought might resonate with you they wanna automate workflows for their business operators you know tasks that are repetitive manual and require a..."
   },
   {
     "id": "361786680032",
@@ -2483,7 +2483,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa9d5fca0f7b21714f8f3003783db5a7b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361786580684",
     "persona": "IT Leadership",
-    "offer": "thank you man so i i noticed you're a principal solutions architect at aws i was just trying i've been working with a couple of different it and engineering teams and i've been hearing a common theme that i thought you might resonate with so they wanna automate workflows for their business..."
+    "offer": "thank you man so i i noticed you're a principal solutions architect at aws i was just trying i've been working with a couple of different it and engineering teams and i've been hearing a common theme that i thought you might resonate with so they wanna automate workflows for their business operators you know tasks that are repetitive manual and..."
   },
   {
     "id": "361874403040",
@@ -2517,7 +2517,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA41b24c0f0ecfe386c02b7127a40530f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361876191989",
     "persona": "IT Leadership",
-    "offer": "louise this is chuck ga i'm calling you from a run book how are you"
+    "offer": "run book we spoke about a month ago he'd asked me to get it back and talk i just have that on my calendar for today the reason that i was reaching out is and we talked a little bit about this word platform that helps organizations build and deploy agents to automate and the manual coordinated work that told every day"
   },
   {
     "id": 361872670433,
@@ -2534,7 +2534,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd1c8c077f33042ec726c8b3379cffbc6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361872670433",
     "persona": "IT / Engineering",
-    "offer": "thank you so much okay joanne so i see your leading it team at pepsi and i'm working with a number of different enterprise it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks..."
+    "offer": "thank you so much okay joanne so i see your leading it team at pepsi and i'm working with a number of different enterprise it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and require coordination..."
   },
   {
     "id": "361839975113",
@@ -2653,7 +2653,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA5d381cf96ac787f7771e8a72a9b72386.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361812549317",
     "persona": "IT Leadership",
-    "offer": "hello hey justin this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": "361879149252",
@@ -2704,7 +2704,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbf89cdcee51048a559c0bfa824e9a9a3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361832318655",
     "persona": "IT Leadership",
-    "offer": "fred this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": 361817677509,
@@ -2721,7 +2721,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8efd37315955a5ba6cd1dff68856290d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361817677509",
     "persona": "IT Leadership",
-    "offer": "this is brandon my name is brandon lia i'm with a company called run book i was calling you a bit out of a blue here today do you think of a could borrow thirty seconds of your time to explain the reason for michael"
+    "offer": ""
   },
   {
     "id": "361828375261",
@@ -2755,7 +2755,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa15e8deadbd6e164e32f1f50a9f24e2e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361846361792",
     "persona": "IT / Engineering",
-    "offer": "yes sir with run book where a seed start up in san francisco"
+    "offer": "great thank you so much michael so i i see you're a senior it infrastructure pm at ohio health and i've been working with the good amount of it and engineering teams right now mostly in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with even in the health care space so they want to..."
   },
   {
     "id": 361830141666,
@@ -2772,7 +2772,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA727d88776724ca8af56b51edbc9cb7b5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361830141666",
     "persona": "IT Leadership",
-    "offer": "hi there yes my name is brandon lia i'm from a company called run book i was trying to figure out a way to get in touch with rick i was wondering if you could help me out"
+    "offer": ""
   },
   {
     "id": "361813939935",
@@ -2823,7 +2823,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA738c7d429e4e7624939347ef93a0b181.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361642040051",
     "persona": "Director (Other)",
-    "offer": "alright thank you so much tim so i see your senior your director of innovation at paul i'm working with a a couple of different enterprise it and engineering teams mostly in the logistics and manufacturing space but i've been hearing a theme that i thought might resonate with you it's it's they..."
+    "offer": "alright thank you so much tim so i see your senior your director of innovation at paul i'm working with a a couple of different enterprise it and engineering teams mostly in the logistics and manufacturing space but i've been hearing a theme that i thought might resonate with you it's it's they have a lot of business processes that are very manual..."
   },
   {
     "id": "361607544545",
@@ -2891,7 +2891,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7cb06df11ec2f01bb20b9fd0a7c7efa1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361631200963",
     "persona": "Executive",
-    "offer": "this is chuck ga i'm calling you for a company called run book if you have a quick second i can let you know i called you"
+    "offer": ""
   },
   {
     "id": "361576343248",
@@ -2942,7 +2942,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA050a3850370014171c80bf53499f74df.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361636581055",
     "persona": "Other",
-    "offer": "this is chuck bartlett i'm calling you from run book how are you"
+    "offer": "k i mean that's perfect the the so the reason i was reaching out to you specifically was is that our platform at run book we we help organizations build and deploy agents to automate a lot of the work that lives on top of the data and and or and coordinated effort that that that slow teams down on a day to day basis i i feel like this is something..."
   },
   {
     "id": "361600290514",
@@ -2976,7 +2976,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5a7f3fe2a2077a8b72073f1210a3fac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361578104544",
     "persona": "IT / Engineering",
-    "offer": "i'm with a a san francisco start called run book"
+    "offer": ""
   },
   {
     "id": "361548390096",
@@ -3010,7 +3010,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb979a7e7de9b3a7d5c211daa3fb41717.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361537605306",
     "persona": "IT / Engineering",
-    "offer": "hey ken this is brandon with run arya with run book"
+    "offer": "thank you so much ken so i i see your leading tech ops green way you know i've been working with a number of enterprise it and engineering teams mostly currently in the logistics and manufacturing space and i've been hearing kinda a common theme that i thought you might resonate with their business teams you know there there's a lot of manual..."
   },
   {
     "id": 361564152508,
@@ -3027,7 +3027,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA465dd45c3de8554b9359b98b65d5d31a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361564152508",
     "persona": "IT Leadership",
-    "offer": "hi eric my name is brandon i'm with a startup up in san francisco call called run book i i am calling you a little bit out of the blue here today do you mind if i borrow thirty seconds a your time to"
+    "offer": ""
   },
   {
     "id": 361571202757,
@@ -3044,7 +3044,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc70530efa9ea2f1eb3191a9667c2c101.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361571202757",
     "persona": "Technical IC",
-    "offer": "mike hi this is chuck ga i'm calling you from run book how are you"
+    "offer": "run book yeah the the reason i'm calling is we are a platform that helps seems like yours build agents to deploy and automate a lot of the manual coordination work that your operations team and billing teams do on a day to day basis understand here of the enterprise architect over at at la i feel like this is something that that would touch your..."
   },
   {
     "id": 361535437500,
@@ -3061,7 +3061,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA49b4544380665e68d0d5db2c9226b030.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361535437500",
     "persona": "Director (Other)",
-    "offer": "right thank you so much so i i see your associate director at par pharmaceutical i this might resonate with you so i i work with a ton of it and engineering teams most fleet right now in the logistics and manufacturing space and these are these are companies who are trying to you know build more ai..."
+    "offer": "right thank you so much so i i see your associate director at par pharmaceutical i this might resonate with you so i i work with a ton of it and engineering teams most fleet right now in the logistics and manufacturing space and these are these are companies who are trying to you know build more ai and i've been hearing a common theme is that..."
   },
   {
     "id": "361546153664",
@@ -3163,7 +3163,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe2f8fc43ae7c1667e51d5c1ee6fa01db.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361584108264",
     "persona": "IT Leadership",
-    "offer": "hello hey jeff this is brandon lia with run book how are you"
+    "offer": "thank you so much jeff so i work for a company called rum book where where san francisco start up we work with it and engineering teams mostly in the logistics and manufacturing space you know on mostly on the ai side so i've been hearing a common theme that maybe you would resonate with is their business teams are you know spending eighty percent..."
   },
   {
     "id": "361560141531",
@@ -3214,7 +3214,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5140782775081ffdcc99c56ad8b2187.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361516668608",
     "persona": "IT / Engineering",
-    "offer": "hey rick this is chuck with run book how are you"
+    "offer": "but yeah i understand you look after it pro projects for us this the the reason i'm reaching out i work with a lot of folks like yourself the they kinda fall into two buckets and the problems i hear are hey we're we're trying to help our operations team run faster and automate things for them but but the ai models that we're using you know break..."
   },
   {
     "id": 361538826944,
@@ -3231,7 +3231,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6221ccd6ecf4dc47ab0c6a836da42ac6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361538826944",
     "persona": "Executive",
-    "offer": "bernadette that's nice to be you so my name is brandon lia i work for a very small startup up in san francisco called run book and we are in this kind of ai we we helped build ai agents for enterprises in the logistics manufacturing space and i was hoping to run like a like a challenge by peter you..."
+    "offer": "bernadette that's nice to be you so my name is brandon lia i work for a very small startup up in san francisco called run book and we are in this kind of ai we we helped build ai agents for enterprises in the logistics manufacturing space and i was hoping to run like a like a challenge by peter you know i i i assume turner is you know building out..."
   },
   {
     "id": 361522919136,
@@ -3248,7 +3248,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c7f2a2e92bd3534431f838961b53d24.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361522919136",
     "persona": "Operations Leadership",
-    "offer": "hello is that is that okay this is chuck ga i'm calling you from run book how are you"
+    "offer": "run book we're we're a platform that helps automate a lot of the manual coordination work that slowed this"
   },
   {
     "id": 361504432847,
@@ -3316,7 +3316,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAabf3cdd129602dc40349f1cd64c62e16.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361517466355",
     "persona": "IT / Engineering",
-    "offer": "at my run book dot com run book dot com a my run book m y run book r u n e o o k dot com"
+    "offer": ""
   },
   {
     "id": "361470969549",
@@ -3367,7 +3367,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe9f54f805a3c65a750cac2a105bec414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361519118038",
     "persona": "IT / Engineering",
-    "offer": "this is this is brandon with with run book i i i was giving you a call out of the blue i just wanted to make sure like i'm respectful of your time but do is this a good time to chat"
+    "offer": "okay so ka my name is brad and lia i'm calling from a startup up in san francisco called run book we're in the logistics like ai solution space for logistics so i've been working with a several enterprise it teams you know in this age of ai and the cut i've been hearing a common theme that i thought maybe you'd resonate with as a as a project..."
   },
   {
     "id": "361476238042",
@@ -3452,7 +3452,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf931d2eeb6071b26ace55ae8fd813964.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361465427687",
     "persona": "IT Leadership",
-    "offer": "hello hey carl this is chuck carlson i'm calling you from run book"
+    "offer": "run book we're a a platform that helps automate a lot the man"
   },
   {
     "id": 361502332608,
@@ -3469,7 +3469,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c5dfc3ac1595b62ce0da6ce05c3f2c6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361502332608",
     "persona": "Other",
-    "offer": "hey renee this is brandon with the company called run book calling you a little bit out of the blue here to that do you think i could borrow thirty seconds of your time so explain the reason for my call"
+    "offer": "great thank you so much so the reason i called you you know i noticed that's your application development lead at ryder i've been i've been working with a a bunch of enterprise it teams kind of in the logistics space and i've have been hearing a common theme that i thought you might resonate with it's they're they they're the business thing that..."
   },
   {
     "id": "361487516398",
@@ -3503,7 +3503,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb0e590b0b834cf8554c3137e1beed9c4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361472586484",
     "persona": "Operations",
-    "offer": "yes from a seed seed state startup in san francisco we're called run book in the logistics ai space so i'm i'm calling you yeah"
+    "offer": ""
   },
   {
     "id": 361485668048,
@@ -3520,7 +3520,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb590d7a0df0ed0624638ff3be8cb5d4f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361485668048",
     "persona": "IT / Engineering",
-    "offer": "yeah yeah you alright thank you so you know i see your a program manager at logistics i've been working with a a bunch of different enterprise it teams kind of in the logistics logistics space and i've been hearing a common theme that i thought maybe you would resonate with it's their their..."
+    "offer": "yeah yeah you alright thank you so you know i see your a program manager at logistics i've been working with a a bunch of different enterprise it teams kind of in the logistics logistics space and i've been hearing a common theme that i thought maybe you would resonate with it's their their business teams that the it teams are supporting they're..."
   },
   {
     "id": "361517233876",
@@ -3554,7 +3554,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe0d2337ec0929e1e6fb88a2a64acfb79.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361476162237",
     "persona": "Executive",
-    "offer": "hey misty hi this is chuck ga i'm calling in from run book quick second antonio"
+    "offer": ""
   },
   {
     "id": 361450879724,
@@ -3588,7 +3588,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3b6f0212ba34df59d67f1228dfb41bdb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361454474940",
     "persona": "Operations Leadership",
-    "offer": "yep yep totally the understand that you look after operations over central done book the company i'm with we provide a platform that helps deploy automation and agents for a lot of the the manual coordination task that's slowed your team down on a day to day basis things like i don't know track to..."
+    "offer": "yep yep totally the understand that you look after operations over central done book the company i'm with we provide a platform that helps deploy automation and agents for a lot of the the manual coordination task that's slowed your team down on a day to day basis things like i don't know track to trace dispatching could even can go into like bit..."
   },
   {
     "id": "361042960085",
@@ -3656,7 +3656,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA000574c919fa9d58a9a04b3b4b94bab7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046501104",
     "persona": "IT Leadership",
-    "offer": "hi lee this is brandon with gru arya i'm sorry with what who the start up in san francisco called run book i'm calling you run book sorry"
+    "offer": "thank you so you know i've noticed you're you're working on ai innovation and automation just like many of the people that i'm speaking with today so i'm pretty much in the logistics ai space and from my conversation have been kinda hearing two common themes that i thought you might resonate with one is the business teams that they're supporting..."
   },
   {
     "id": 361039310571,
@@ -3690,7 +3690,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA5e276246874f55e9fad2b3473d30ff9c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361075559116",
     "persona": "Operations",
-    "offer": "it's chuck art i'm calling from run book how are you"
+    "offer": "it's run book we are a platform that helps operations teams automate a lot of the manual coordination work they do between systems on a day basis that slow your team down using agent ai i'm curious if if you've got any purview into that"
   },
   {
     "id": 361094902495,
@@ -3707,7 +3707,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf1c1855075b6991c214edc73f9ced9f2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361094902495",
     "persona": "Operations Leadership",
-    "offer": "sean this is brandon with run book how are you"
+    "offer": "thanks sean so you know i've been working with a lot of it and operations teams in this like logistics space and i've been hearing two common themes that i thought might resonate with you one is their business teams that they're supporting are are spending eighty percent or more of their time in repetitive manual and coordinated tasks and two is..."
   },
   {
     "id": "361084498642",
@@ -3809,7 +3809,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c6bb5eb3b3d77c8f9ce64bb441c13cd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046399685",
     "persona": "Director (Other)",
-    "offer": "hey donald this is brandon with run arya what's who with run book we're a little startup up in san francisco i'm calling you a little bit out of the blue here today do you mind if i borrow thirty seconds of your time to explain the reason for my call"
+    "offer": "thank you so i'm working with you know a lot of it departments in the the enterprise logistics space and i've been hearing kinda two common themes i thought might resonate with you one is their their business teams they're spending eighty percent were more of their time in repetitive manual coordinated attacks and then two is they they're trying..."
   },
   {
     "id": "361091218169",
@@ -3877,7 +3877,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA81530f33ce92f1d7d214dfe3c8c19b32.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361053566672",
     "persona": "IT / Engineering",
-    "offer": "with the company called run book we're based in s nsf but hey i'm calling you out of the blue here and i wanna be respectful do you think i could borrow thirty seconds of your time to explain the reason for my call"
+    "offer": ""
   },
   {
     "id": 361042771699,
@@ -3945,7 +3945,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA50605a0807a444c388d425d9cde9ba26.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360842756802",
     "persona": "IT / Engineering",
-    "offer": "hi anna this is brandon with run book how are you"
+    "offer": ""
   },
   {
     "id": "360839116536",
@@ -3979,7 +3979,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb2dda02550393ec80d648543dbf863ac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360861691611",
     "persona": "IT / Engineering",
-    "offer": "hey i i was thanks for calling me back this is this is chuck ga i was actually calling you out of the blue i'm calling you from a company called run book and if you if you a couple seconds i'll tell you why i called what we're doing is we're helping companies like you guys deploy agents to automate..."
+    "offer": "hey i i was thanks for calling me back this is this is chuck ga i was actually calling you out of the blue i'm calling you from a company called run book and if you if you a couple seconds i'll tell you why i called what we're doing is we're helping companies like you guys deploy agents to automate a lot of the billing and like we're really..."
   },
   {
     "id": "360840909540",
@@ -4098,7 +4098,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbded11e71ad8773f37509cd9a9982ce2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360839022285",
     "persona": "IT / Engineering",
-    "offer": "yes travis hey this is chuck ga i'm calling you from run book how are you"
+    "offer": "from right now run book we're an automation platform that helps deploy agents to execute the manual repetitive coordination task that operations teams have to go through on a day to day basis i'm curious if that's something you touch in in devops and it"
   },
   {
     "id": 360823897808,
@@ -4115,7 +4115,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a997c042aced2d4f96d39014a9e1223.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360823897808",
     "persona": "IT / Engineering",
-    "offer": "this is chuck ga and i'm calling you from run book you got quick secretary can tell you why i'm calling"
+    "offer": "yeah sure so i understand it's you're the that you look after data and analytics at at dan ross and the reason that i'm calling is i speak to a lot of folks on in in your position who are you know working with their operations teams to sync up data across systems to reduce a lot of the manual effort that goes into coordinating the the repetitive..."
   },
   {
     "id": "360854310630",
@@ -4149,7 +4149,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb92e6171cc7de1c96f1b5288a1132851.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360842581697",
     "persona": "Technical IC",
-    "offer": "thank you so much so i'm working with a lot of it teams you know in this wonderful age of ai i'm sure you probably heard a lot about that stuff but i've been hearing two kinda common themes that i thought potentially would resonate with you given your role one is they're they're building a lot of..."
+    "offer": "thank you so much so i'm working with a lot of it teams you know in this wonderful age of ai i'm sure you probably heard a lot about that stuff but i've been hearing two kinda common themes that i thought potentially would resonate with you given your role one is they're they're building a lot of agent workflows but trust and accuracy you can..."
   },
   {
     "id": 360857757401,
@@ -4166,7 +4166,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA268286b41b6bb9ce4f2d4253c6baba9e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360857757401",
     "persona": "Analyst / Specialist",
-    "offer": "hey this is this is brandon with run book hey i'm calling you a little bit out of the blue here do you happen to have thirty seconds i can explain the reason for my call"
+    "offer": "thanks so i've been working with a lot of like it teams and you know in this age of ai and i've been hearing kind of two common themes that i thought my resonate with you given your role in in systems applications one is their building agent workflows but trust and accuracy you can break down very easily in production and and two is they're trying..."
   },
   {
     "id": 360588752578,
@@ -4183,7 +4183,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd7131fcd94728ae49abc43b051ba429f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588752578",
     "persona": "Operations",
-    "offer": "hey scott it's chuck art calling here from run book how are you"
+    "offer": "run book you and i spoke a couple weeks ago you'd asked me to give you a callback give you some time to give you a callback what what we are is an automation platform that helps automate the manual coordination work that your dispatcher are you know do on a daily basis dispatch operations teams so i'm curious if you guys looked at anything like..."
   },
   {
     "id": 360590525162,
@@ -4200,7 +4200,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe02b97901a59842c92a3a89b2f7a32ee.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360590525162",
     "persona": "Operations",
-    "offer": "hey andrew this is chuck ga i'm calling you from run book yeah quick a second"
+    "offer": "i i understand you look after decade operations over at maverick what run book is is that we're a platform that helps automate a lot of the manual coordination test that go into an operation like yours so think about carrier communication the out like bill like billing and encoding all that can be automated when and you know executed by an ai..."
   },
   {
     "id": 360581535424,
@@ -4217,7 +4217,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb4b3dab5cbbdd5fce8d079ac30265a47.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360581535424",
     "persona": "Operations Leadership",
-    "offer": "discount hey kyle oops excuse me kyle this is chuck ga i'm i'm calling you from run you have a quick second call me from ray run book we're agent platform that helps automate a lot of the manual coordination task that folks do on operations team between billing dispatching and like communication..."
+    "offer": "discount hey kyle oops excuse me kyle this is chuck ga i'm i'm calling you from run you have a quick second call me from ray run book we're agent platform that helps automate a lot of the manual coordination task that folks do on operations team between billing dispatching and like communication between carriers and and your customers"
   },
   {
     "id": 360588532444,
@@ -4234,7 +4234,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA52d956f36111987b4377a8e872175a2c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588532444",
     "persona": "Operations Leadership",
-    "offer": "hello mike mike hey it's chuck bartlett i'm calling from run book we spoke a couple weeks ago"
+    "offer": ""
   },
   {
     "id": 360571129560,
@@ -4251,7 +4251,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4957a81ed1a0e914818c75ff55ee6fac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360571129560",
     "persona": "Director (Other)",
-    "offer": "hi lynn this is chuck bartlett i'm calling you from run book you a quick second"
+    "offer": "great the reason i'm calling i'm calling from run book we're an ai platform actually that helps automate a lot of the operational tasks that teams are doing on a day to day basis from dispatching the billing to carrier coordination i'm curious if if that's something that you guys have looked at it keen and if if it's relevant to you"
   },
   {
     "id": 360597499638,
@@ -4268,7 +4268,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe32ddddc83d4e7c48ad07aac4a7020e0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360597499638",
     "persona": "Finance Leadership",
-    "offer": "hello hi lynn u well this is chuck ga i'm calling you from run book"
+    "offer": ""
   },
   {
     "id": "360614227654",
@@ -4336,7 +4336,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfccaebfd207be084c97232f2736c1daf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360431190754",
     "persona": "IT Leadership",
-    "offer": "carl this is chuck ga i'm calling you from a run book do you have a quick secretary tell you i'm calling run book"
+    "offer": "yeah we are a platform that a serves as an orchestration layer for the data and infrastructure that you have to deploy agents that automate operational tasks so the things that exist at the end of your current automation automations that you've already invested in that exist like email phone or customer portals you know that's what our we to play..."
   },
   {
     "id": 360350097107,
@@ -4353,7 +4353,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe453c78ed6f76a23fb5becbb14ee0a52.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360350097107",
     "persona": "Director (Other)",
-    "offer": "hello hey steve it's chuck cart with run book how are you"
+    "offer": "i'm doing well i appreciate you asking man hey i i wanted to follow up i know that i had sent you over some some information a little bit ago around run book what we're doing with gen automation was was hoping that we could find some time to connect and talk a little deeper about it"
   },
   {
     "id": 360435302099,
@@ -4370,7 +4370,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb99793f1fec3fa376687341444b5f8d0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360435302099",
     "persona": "IT Leadership",
-    "offer": "this is chuck ga i'm calling you from run book you have a quick second"
+    "offer": ""
   },
   {
     "id": 360301072101,
@@ -4387,7 +4387,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a1591a61a74ef51cde4e77e6d392414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360301072101",
     "persona": "IT Leadership",
-    "offer": "it's chuck ga i'm calling you from run book you have a quick second tell you who i'm calling"
+    "offer": "okay well good i've been talking to a couple of different folks on your team what i i'm calling from run book where we are as a platform that helps automate a lot of the manual coordination work that your operations teams are doing on a day to day basis sounds like you have some updated systems where folks are still toggling between throughout the..."
   },
   {
     "id": 360158840552,
@@ -4404,7 +4404,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA002695d9325af7e7519d1cc0c940c732.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360158840552",
     "persona": "IT Leadership",
-    "offer": "no worries what's that nothing this is chuck bartlett i'm calling you with run book we're a data orchestration platform that helps you deploy and bill a bit build agents that can automate a lot of the coordinated manual work your your operations and finance teams doing on a day to day basis curious..."
+    "offer": "no worries what's that nothing this is chuck bartlett i'm calling you with run book we're a data orchestration platform that helps you deploy and bill a bit build agents that can automate a lot of the coordinated manual work your your operations and finance teams doing on a day to day basis curious if that's something you've you've thought about..."
   },
   {
     "id": "360171373283",
@@ -4472,7 +4472,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3d5c2158cb4c33fcd693e74d5dbac738.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360097848023",
     "persona": "Director (Other)",
-    "offer": "hello hi hey steve it's chuck ga with run book"
+    "offer": "yep no a hundred percent what we do is we help automate a lot of the tasks that that operations teams are dealing with on a day to day basis so that could be billing be dispatching you we deploy these agents that that give you a lot of that time back"
   },
   {
     "id": "359736829641",
@@ -4591,7 +4591,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf4b25f6932d86ee55dff3b9c73875c75.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359570062033",
     "persona": "Other",
-    "offer": "okay it's cool so i'll tell you i'm calling i'm the run book we're an organization that helps you know operations teams automate a lot of the manual coordination effort that goes into the day to day task with they that go into the operation on a day to day basis i'm curious if you guys are having..."
+    "offer": "okay it's cool so i'll tell you i'm calling i'm the run book we're an organization that helps you know operations teams automate a lot of the manual coordination effort that goes into the day to day task with they that go into the operation on a day to day basis i'm curious if you guys are having an ai strategy or using anything like that today"
   },
   {
     "id": "359605994227",
@@ -4625,7 +4625,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364cbed638259825cceb323fda508be3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359381665479",
     "persona": "Other",
-    "offer": "the reason i the reason the reason the reason i had called is i'm doing a bunch of research on an end that in the company i work for is called run book what we do is to work with it teams to help solve the problem of having operational like leaders have to deal with manual day to day task by..."
+    "offer": ""
   },
   {
     "id": "359379965661",
@@ -4676,7 +4676,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65552df8f224a84269aded8a93d4d9b0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359364064989",
     "persona": "Operations",
-    "offer": "where's the old johnson yeah if you hear me hey john y hey john it's chuck guy that i'm calling from run book how you good joe"
+    "offer": ""
   },
   {
     "id": "359353906883",
@@ -4710,7 +4710,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc854a0704825f3f5449f38259c6ef1f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359221165804",
     "persona": "IT / Engineering",
-    "offer": "yeah jason is chuck ga i'm calling you from run book how are you"
+    "offer": "yeah first of my call is actually scheduled some time with you we're a platform that helps operations team reduce the manual tasks that they have to do on a day day basis between systems by ninety seven percent with a agent k wondering if you guys have looked at that in the past"
   },
   {
     "id": 358851312352,
@@ -4727,7 +4727,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1ee22edec27edb9eb64aa4bd432f3dd2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358851312352",
     "persona": "Operations",
-    "offer": "hi amy this is chuck ga i'm calling you from run book i think i left you a message yesterday costs maybe okay the the reason that i was reaching out is we're a platform that helps automate a lot of the operational tasks that teams are doing on a day to day basis other it be like dispatch..."
+    "offer": "hi amy this is chuck ga i'm calling you from run book i think i left you a message yesterday costs maybe okay the the reason that i was reaching out is we're a platform that helps automate a lot of the operational tasks that teams are doing on a day to day basis other it be like dispatch coordination driver coordination billing coordination things..."
   },
   {
     "id": 358663070432,
@@ -4744,7 +4744,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA37cbe1eed6a047be7236eb40fcac38d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358663070432",
     "persona": "Director (Other)",
-    "offer": "hey sorry i'm not catching at two late this is chuck bartlett i'm calling you from run book"
+    "offer": ""
   },
   {
     "id": "358705367746",
@@ -4795,7 +4795,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA817cf7ad33c7777b4657b077b8f6cbe0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358654043893",
     "persona": "IT Leadership",
-    "offer": "michael this is chuck ga i'm calling here from run book you had a quick second"
+    "offer": "i'm i'm with run booked you know i doing some research check on you guys company your we're a platform that helps automate a lot of the coordination task that happened on outside of the automation you've already built and you guys done a lot of that with the pricing that you have your t air tms i'm curious if you've looked at the gen solutions at..."
   },
   {
     "id": "358644207299",
@@ -4829,7 +4829,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe8c8c7b718fdaed740c0313ad0e0aba9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414973656",
     "persona": "Executive",
-    "offer": "daniel know hi this is chuck ga i'm calling you from run book do you a quick second"
+    "offer": "run book we're a platform founded by the former founder of motive the fleet management company what we do is we provide we help we help companies like y'all deploy agents to automate a lot of the tasks that exist on the edges of systems like your tms and el and still require manual coordination with phone email and text curious be if you if you're..."
   },
   {
     "id": 358449854162,
@@ -4846,7 +4846,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAcfa46f0180dae8a14f9900c56e4be224.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358449854162",
     "persona": "IT / Engineering",
-    "offer": "this is chuck garland sorry i just let i know if have the if i have the right number this is chuck ga i'm calling you from run book we're a platform that helps automate one of the back office desk for for operators at fleets yeah i the reason i reached out to you is i understood that you kinda sit..."
+    "offer": "this is chuck garland sorry i just let i know if have the if i have the right number this is chuck ga i'm calling you from run book we're a platform that helps automate one of the back office desk for for operators at fleets yeah i the reason i reached out to you is i understood that you kinda sit in the middle of the business and it parts of the..."
   },
   {
     "id": 358446212853,
@@ -4863,7 +4863,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3fc9588acafd09118d0d2c23a182b4ab.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358446212853",
     "persona": "Director (Other)",
-    "offer": "hi ryan this is chuck ga i'm calling you from run book do you have a quick second can tell you what i'm called"
+    "offer": "yeah run book so i understand that you look after a fleet process improvement at keen and and the reason that i was calling is run book is a platform that helps automate a lot of the back office and even dispatch oriented task that operators up you on a day to day basis using ai"
   },
   {
     "id": 358414827240,
@@ -4880,7 +4880,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3de75e888a28dbe3f1ccf624f43d6f21.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414827240",
     "persona": "IT Leadership",
-    "offer": "hi joel this is chuck ga i'm calling you from run book you have a quick moment and tell you i called"
+    "offer": "it's joel calling you from run book been doing a lot of research on i see understand you guys have have invested in modernizing the back end kind of data architecture that you guys have what we do is provide a platform that sits on top of that to deploy agents to automate a lot of the coordination and manual tasks that operation seems to do on a..."
   },
   {
     "id": "358432988909",
@@ -4931,7 +4931,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA40479bf85cd5f303664666b592ba513c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358359611085",
     "persona": "IT Leadership",
-    "offer": "britney hi this is chuck ga i'm calling you from run book you have a quick second"
+    "offer": ""
   },
   {
     "id": 357910316739,
@@ -4948,7 +4948,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0a8f04b92120afcfb608c837b5acb3c5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/357910316739",
     "persona": "Operations Leadership",
-    "offer": "george hi this is chuck ga i'm calling you from run book if you have a quick second i can tell you why i'm reaching out to you directly"
+    "offer": "it's ron book we're a platform that helps organizations deploy agents to automate the manual coordination task that happened between systems and logistics"
   },
   {
     "id": "357913837289",
@@ -5084,7 +5084,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAba2a64311da1d59704eaf51748e073d6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/355479115456",
     "persona": "Executive",
-    "offer": "i gotcha you i i i get you in and and i and look i understand about that i'm not trying to put more on your plate then you can handle just just actually looking for just thirty minutes somewhere whether it's this week next week it doesn't matter but you know i've been doing a lot of research on you..."
+    "offer": "like it it's interesting i don't know the framework that you guys are working with because i'm we're talking more about garbage trucks than like eighteen wheelers but the editorial that go on with people overloading and and things like that like how do you automate you know just the billing for that right like a lot of that that's just leakage..."
   },
   {
     "id": "355019098817",
@@ -5203,7 +5203,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364228eb180a62efd79e0079b0406a86.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353051495136",
     "persona": "Operations",
-    "offer": "i'm calling you from run book if you got a quick second i could tell you what why i'm calling it's so it's a call call but it's well researched"
+    "offer": "so so we are a a platform that works with companies like bison who are built on you know really modern technology stacks to extend okay to the edges of those systems and automate a lot of the workflows that happen still in like within at the edges of those systems within phone text email with with ai agents i'm curious if you're doing anything..."
   },
   {
     "id": 353313151706,
@@ -5220,7 +5220,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA13db493e3829841899291c6315e09ca1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353313151706",
     "persona": "IT / Engineering",
-    "offer": "chris this is chuck ga i'm calling you from run book if you got a quick second this is our well researched cold call can can explain while i'm calling"
+    "offer": ""
   },
   {
     "id": "353039973063",
@@ -5288,7 +5288,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb062cfb05e713effbefed527528b38d6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353079475902",
     "persona": "Operations",
-    "offer": "this chuck i'm calling you from run book we just texted on linkedin but you got a quick second"
+    "offer": ""
   },
   {
     "id": 352964206277,
@@ -5305,7 +5305,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c65c72046ee5b5c23e58c8d20fdf6a5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352964206277",
     "persona": "IT / Engineering",
-    "offer": "i just was try we we had talked about the gentle k stuff you said you're building some things you wanted to take a look at run book or willing to take a look at what we're doing over here and see if there's just compare notes i guess"
+    "offer": ""
   },
   {
     "id": 352267068151,
@@ -5322,7 +5322,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbb973fa5b805f10036d157a3543d5996.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352267068151",
     "persona": "IT / Engineering",
-    "offer": "hey bob this is chuck bartlett i'm calling you from run book you have a quick second"
+    "offer": ""
   },
   {
     "id": 352209529543,
@@ -5339,7 +5339,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0b2c6bf1da5613a0ba6e71d988bfe1ae.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352209529543",
     "persona": "Executive",
-    "offer": "run book sent you a linkedin connection the other day"
+    "offer": ""
   },
   {
     "id": 348957287123,
@@ -5356,7 +5356,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87db7705c230a0d4481f18ee176bc98a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348957287123",
     "persona": "Director (Other)",
-    "offer": "hey ken this is chuck ga i'm calling you from run book yeah you have a quick second"
+    "offer": ""
   },
   {
     "id": "348904534747",
@@ -5458,7 +5458,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8e61b4d6aed7bcad66a07c94bae3ae17.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348416113388",
     "persona": "IT Leadership",
-    "offer": "a company called run book we're founded by the the former founder of motive the transportation manager fleet management solution what we do is we are providing agents or deploying agents for customers to help operationalize some of the frontline work that those teams are are doing better are manual..."
+    "offer": ""
   },
   {
     "id": 348414293736,
@@ -5475,7 +5475,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA64da111ffbac8fdf8e3e721d2485d5f4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348414293736",
     "persona": "IT Leadership",
-    "offer": "hello hey mike hey whoever's is calling hey no mike this is chuck ga i'm calling you from run book if you have a quick second"
+    "offer": ""
   },
   {
     "id": 348393224922,
@@ -5492,7 +5492,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA239e9b4f212c5c89d170b673b04259d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348393224922",
     "persona": "Executive",
-    "offer": "dave this is chuck ga i've been reaching out to you i'm i'm i'm calling you from run book did you see the note i had sent yesterday"
+    "offer": ""
   },
   {
     "id": 348396717807,
@@ -5509,7 +5509,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA658ec9cc7d1ebefbd324d8f1233d558a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348396717807",
     "persona": "IT Leadership",
-    "offer": "yes jay this is chuck ga i'm calling you from run book you a quick second i tell you i'm calling"
+    "offer": "yeah so run book is a platform that helps automate a lot of the frontline operational work that's your team might be doing manually to coordinate with carriers of across systems we're using agent ai to basically automate that curious if you guys have thought about that i mean i know that you're on the physics and analytics side if that's something..."
   },
   {
     "id": "348443019991",
@@ -5543,7 +5543,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e56cb36f8097762b5044e66bf20b7d1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348421380840",
     "persona": "IT / Engineering",
-    "offer": "hey jason is chuck bartlett i'm calling from run booking you a quick second"
+    "offer": "yeah so i understand you look after i i it over at center line the reason i'm calling is run book is a platform that helps automate a lot of the frontline work that your operations team does in coordination in manual communication on a day to day basis wondering if you're looking at ai to handle any those type of tasks right now"
   },
   {
     "id": "348381346495",
@@ -5594,7 +5594,7 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8138047a6d98c91e5fb34f44adae4596.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/347870970583",
     "persona": "",
-    "offer": "hey hey stuart hey got start got quick second can tell you who i'm calling i'm i'm calling you from from ron book and no my understanding is that you look after operations over at over and calling is that we're a platform that's helping sit on top of like the mash and can actually automate a lot of..."
+    "offer": "hey hey stuart hey got start got quick second can tell you who i'm calling i'm i'm calling you from from ron book and no my understanding is that you look after operations over at over and calling is that we're a platform that's helping sit on top of like the mash and can actually automate a lot of the frontline line work that operations seems to..."
   },
   {
     "id": "347866853100",
