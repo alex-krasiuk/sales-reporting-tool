@@ -815,19 +815,10 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
                     const s = stages[row.id]?.[stageKey];
                     if (!s) return <TD key={stageKey}><span style={{ color: '#d1d5db', fontSize: 11 }}>{stagesProgress ? '...' : '—'}</span></TD>;
                     const isNone = s.success === null;
-                    const bg = isNone ? '#f3f4f6' : s.success ? '#dcfce7' : '#fee2e2';
-                    const dot = isNone ? '#9ca3af' : s.success ? '#22c55e' : '#ef4444';
-                    const label = isNone ? 'N/A' : s.success ? 'Passed' : 'Failed';
                     return (
                       <TD key={stageKey} style={{ fontSize: 11 }}>
-                        <div style={{ background: bg, borderRadius: 6, padding: '5px 8px', border: `1px solid ${isNone ? '#e5e7eb' : s.success ? '#bbf7d0' : '#fecaca'}` }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 3 }}>
-                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: dot, flexShrink: 0 }} />
-                            <span style={{ fontWeight: 700, fontSize: 10, color: isNone ? '#6b7280' : s.success ? '#166534' : '#991b1b' }}>{label}</span>
-                          </div>
-                          <div style={{ color: '#374151', lineHeight: 1.4 }}>
-                            {s.text || '—'}
-                          </div>
+                        <div style={{ color: '#374151', lineHeight: 1.4 }}>
+                          {s.text || '—'}
                         </div>
                       </TD>
                     );
