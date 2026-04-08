@@ -82,6 +82,21 @@ export default function CallAnalytics() {
     if (liveCalls.length > 0) setRows(liveCalls);
   }, [liveCalls]);
 
+  // Total dials (all calls including voicemail/no answer) — fetched from HubSpot
+  const [totalDials, setTotalDials] = useState(null);
+  useEffect(() => {
+    if (!hsToken) return;
+    (async () => {
+      try {
+        const data = await import('./hsApi.js').then(m => m.hsApiFetch('/crm/v3/objects/calls/search', hsToken, {
+          method: 'POST',
+          body: { filterGroups: [{ filters: [{ propertyName: 'hubspot_owner_id', operator: 'IN', values: ['163308867', '162266623'] }] }], limit: 1 }
+        }));
+        if (data.total) setTotalDials(data.total);
+      } catch {}
+    })();
+  }, [hsToken]);
+
   const [customCols, setCustomCols] = useState([]);
   const [search, setSearch] = useState('');
   const [filterDateFrom, setFilterDateFrom] = useState('');
@@ -555,6 +570,7 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
       {/* ── Stats Bar ── */}
       <div style={{ display: 'flex', gap: 10, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, overflowX: 'auto' }}>
         {[
+          ...(totalDials ? [{ label: 'Total Dials', value: totalDials.toLocaleString(), color: '#111827' }] : []),
           { label: 'Connects', value: stats.total, color: '#4f46e5' },
           { label: 'Not Interested', value: stats.notInterested, color: '#dc2626' },
           { label: 'Meeting Booked', value: stats.meetingBooked, color: '#16a34a' },
