@@ -261,7 +261,7 @@ OBJECTION: <tag or None>` }]
   // Analyze call stages: Ice Breaker, Hook, Objection
   const analyzeCallStages = async () => {
     if (!apiKey) { setApiError('Set your Anthropic API key first'); return; }
-    const toAnalyze = rows.filter(r => r.transcript && r.transcript.length > 100 && '(Rep):' === r.transcript.match(/\(Rep\):/)?.[0] && !stages[r.id]);
+    const toAnalyze = rows.filter(r => r.transcript && r.transcript.length > 100 && r.transcript.includes('(Rep):') && !stages[r.id]);
     if (toAnalyze.length === 0) return;
     setStagesProgress({ done: 0, total: toAnalyze.length });
     const newStages = { ...stages };
