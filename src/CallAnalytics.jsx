@@ -93,7 +93,15 @@ export default function CallAnalytics() {
   const [filterTag, setFilterTag] = useState('All');
   const [tags, setTags] = useState({});  // callId -> [tag1, tag2, ...]
   const [taggingProgress, setTaggingProgress] = useState(null); // null | { done, total }
-  const [stages, setStages] = useState({}); // callId -> { iceBreaker: {text,success}, hook: {text,success}, objection: {text,success} }
+  const [stages, setStages] = useState(() => {
+    const s = {};
+    CALL_DATA.forEach(d => {
+      if (d.iceBreaker || d.hook || d.objection) {
+        s[d.id] = { iceBreaker: d.iceBreaker, hook: d.hook, objection: d.objection };
+      }
+    });
+    return s;
+  });
   const [stagesProgress, setStagesProgress] = useState(null);
   const [filterIceBreaker, setFilterIceBreaker] = useState('All');
   const [filterHook, setFilterHook] = useState('All');

@@ -35,7 +35,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA16d239d8dd54e26485de71ddca6eebc0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363202818794",
     "persona": "",
-    "offer": "so you know i see you're working on it operations i i felt this might be relevant to you so i've been working with a number of it and engineering teams and there's a common theme of wanting to automate workflows for their business operator you know task that like like appointment scheduling handling accounts payable you know ones that are manual and require interacting with multiple systems and and people so they've kind of looked ai agents to help with this but getting those agents to work in production has been a challenge for them they either take a very long time to build or they're not very flexible with edge cases i was curious in your position if this is something you resonate with"
+    "offer": "so you know i see you're working on it operations i i felt this might be relevant to you so i've been working with a number of it and engineering teams and there's a common theme of wanting to automate workflows for their business operator you know task that like like appointment scheduling handling accounts payable you know ones that are manual and require interacting with multiple systems and and people so they've kind of looked ai agents to help with this but getting those agents to work in production has been a challenge for them they either take a very long time to build or they're not very flexible with edge cases i was curious in your position if this is something you resonate with",
+    "iceBreaker": {
+      "text": "\"Hi Kurt, this is Brandon with RunBook. Do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams who want to automate workflows like appointment scheduling and accounts payable, but they struggle getting AI agents to work in production because they take too long to build or aren't flexible with edge cases.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"What I have in place is working well and I'm happy with it and I'm not looking to change anything at this time.\"",
+      "success": false
+    }
   },
   {
     "id": "363206407898",
@@ -137,7 +149,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfdcfbd8b811c3de5ec76003e9dc7022c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363209876168",
     "persona": "",
-    "offer": "I didn't realize you know us I was hoping to you know share a bit about the challenges that we're seeing the teams where are trying to implement ai and how we solve it"
+    "offer": "I didn't realize you know us I was hoping to you know share a bit about the challenges that we're seeing the teams where are trying to implement ai and how we solve it",
+    "iceBreaker": {
+      "text": "\"This is Brandon with RunBook, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds to explain why I called you?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "\"I was hoping to share a bit about the challenges that we're seeing with teams trying to implement AI and how we solve it.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I haven't budgeted for it, I've looked at you, I know about your solutions but I prefer other solutions.\"",
+      "success": false
+    }
   },
   {
     "id": "363227487993",
@@ -205,7 +229,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe6a5f6c1d1f54bdac1b974902ad3363e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363150585591",
     "persona": "",
-    "offer": "so so so that how how many like so that's that's super interesting and that's actually why i called is that you know our platform run book so basically it serves it as a platform to build and deploy these agents much more quickly to get through that list of of priorities and and be able to qa and simulate and make sure they're running properly you know get them done in in in in days not not weeks so that that's what i that's what i really was hoping to show you and so it's basically a platform that year team would take ownership of eventually right and be able to build out whether it it'd be like a a dedicated billing workflow or like a you know a appointment scheduling workflow things like that things like that and the complexity and the the orchestration is is what what our platform is and then you can use natural language to augment the the workflows or code code them in however you want but but the value for a team like yours is hey we have this foundation that has"
+    "offer": "so so so that how how many like so that's that's super interesting and that's actually why i called is that you know our platform run book so basically it serves it as a platform to build and deploy these agents much more quickly to get through that list of of priorities and and be able to qa and simulate and make sure they're running properly you know get them done in in in in days not not weeks so that that's what i that's what i really was hoping to show you and so it's basically a platform that year team would take ownership of eventually right and be able to build out whether it it'd be like a a dedicated billing workflow or like a you know a appointment scheduling workflow things like that things like that and the complexity and the the orchestration is is what what our platform is and then you can use natural language to augment the the workflows or code code them in however you want but but the value for a team like yours is hey we have this foundation that has",
+    "iceBreaker": {
+      "text": "\"I wanted to follow up\u2014I know we talked briefly last week on Friday, and I wanted to find some time with you to talk through run booking and what you guys are doing in data and AI right now.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"Our platform runbook serves as a platform to build and deploy agents much more quickly, get them done in days not weeks, with QA and simulation built in, plus guardrails, security, and governance so your team can deploy as the business requires.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're super busy this week\u2014we have a release on the twenty-second/twenty-sixth, so we can't do it before at least a couple of weeks from now.\"",
+      "success": true
+    }
   },
   {
     "id": 363095824078,
@@ -222,7 +258,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb99c001c77958bf166052f9aefb51342.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363095824078",
     "persona": "Finance / AP",
-    "offer": "so i i've been working with finance and it teams in the logistics space to help them automate billing and accounts payable typically for teams who have to manually collect pods look up data various sources like spreadsheets and match it to their tms or crm before billing i was curious if this has been a friction point for your team or if you look to ai agents to help with this"
+    "offer": "so i i've been working with finance and it teams in the logistics space to help them automate billing and accounts payable typically for teams who have to manually collect pods look up data various sources like spreadsheets and match it to their tms or crm before billing i was curious if this has been a friction point for your team or if you look to ai agents to help with this",
+    "iceBreaker": {
+      "text": "\"I'm calling you a bit out of the blue, I just wanna be respectful here\u2014do you mind if I borrow thirty seconds of your time?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with finance and IT teams in logistics to help them automate billing and accounts payable by using AI agents to collect PODs, look up data from various sources, and match it to their TMS or CRM before billing.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I don't make any decisions about what system is written in or using, and this is my personal number\u2014I don't need to waste any of my time on that.\"",
+      "success": false
+    }
   },
   {
     "id": "363105275624",
@@ -273,7 +321,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65cdb9c9495e85385b39db901ecb2819.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363092523714",
     "persona": "Finance / AP",
-    "offer": "so i i'm from a company called run book and i've been working with finance teams mostly in logistics to help them automate billing and accounts payable typically for teams who have to manually collect you know pods or work orders create invoices and match it to their tms or crm before billing i was curious if this is like a friction point for your team where if you look to ai agents to help with this"
+    "offer": "so i i'm from a company called run book and i've been working with finance teams mostly in logistics to help them automate billing and accounts payable typically for teams who have to manually collect you know pods or work orders create invoices and match it to their tms or crm before billing i was curious if this is like a friction point for your team where if you look to ai agents to help with this",
+    "iceBreaker": {
+      "text": "\"Neeraj, this is Brandon with Gru calling you a bit out of the blue\u2014do you mind if I borrow 30 seconds to explain why I called?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I'm from Runbook and work with finance teams in logistics to automate billing and accounts payable, helping teams who manually collect PODs or work orders and match them to their TMS or CRM before billing.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I'm still relatively new to the team so I don't think I'd be helpful here, and I don't think we need your services at this time.\"",
+      "success": false
+    }
   },
   {
     "id": 363091722971,
@@ -290,7 +350,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3d3a89f476576a398e3cc94c99c64151.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363091722971",
     "persona": "IT Leadership",
-    "offer": "i've been working with a good amount of it and ai engineering teams in the logistics space right now and i've been seeing a common theme in regards to automating workflows like complex workloads"
+    "offer": "i've been working with a good amount of it and ai engineering teams in the logistics space right now and i've been seeing a common theme in regards to automating workflows like complex workloads",
+    "iceBreaker": {
+      "text": "\"I'm Brandon with Rum calling from California\u2014do you mind if I borrow 30 seconds of your time?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with AI and engineering teams in the logistics space and seeing a common theme around automating complex workflows.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We have that in house and I have all of my AI competence and competitor skills already available.\"",
+      "success": false
+    }
   },
   {
     "id": "363097583315",
@@ -324,7 +396,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe3a9b55f2256ecbb08103ff8507c2d41.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363097747135",
     "persona": "IT / Engineering",
-    "offer": "i i was trying to see if you guys have any like challenges when it comes to building ai agents like a lot of the manufacturing and consumer services companies that we work with and i was gonna share our approach and see you know if if it's something new to how you approach building agents and if we can help basically"
+    "offer": "i i was trying to see if you guys have any like challenges when it comes to building ai agents like a lot of the manufacturing and consumer services companies that we work with and i was gonna share our approach and see you know if if it's something new to how you approach building agents and if we can help basically",
+    "iceBreaker": {
+      "text": "\"Ba, this is Brandon with Rumble. You told me to call you back last week\u2014is this a good time now?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "\"We help with building AI agents, and I noticed you're leading data and analytics\u2014I figured you might be supporting some AI projects, especially around scaling and orchestrating agent fleets.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We are in pretty good shape with our internally developed team, and right now we're okay\u2014maybe we'll talk in Q3.\"",
+      "success": false
+    }
   },
   {
     "id": 363088001763,
@@ -341,7 +425,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87451e7ad6bcb2df0fa224145d2489b9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363088001763",
     "persona": "Technical IC",
-    "offer": "so roger i see your a solutions architect at at len working on ai and i've been working with a good amount of it and ai and engineering teams right and and i've been hearing a common theme that i thought my resonate with you is that they wanna automate workflows for their business operators coordination pass like appointment scheduling service scheduling or like accounts payable you know the ones that it typically require touching multiple people touching multiple system communicating with multiple people and so they've looked at ai agents to help with this but getting those agents to work in production has been a challenge for them either they so too long to no or they're just not very flexible it comes to edge cases i was curious if this is something you know you've you've experienced or working on currently"
+    "offer": "so roger i see your a solutions architect at at len working on ai and i've been working with a good amount of it and ai and engineering teams right and and i've been hearing a common theme that i thought my resonate with you is that they wanna automate workflows for their business operators coordination pass like appointment scheduling service scheduling or like accounts payable you know the ones that it typically require touching multiple people touching multiple system communicating with multiple people and so they've looked at ai agents to help with this but getting those agents to work in production has been a challenge for them either they so too long to no or they're just not very flexible it comes to edge cases i was curious if this is something you know you've you've experienced or working on currently",
+    "iceBreaker": {
+      "text": "\"Hey Raj, this is Brandon with One Book. I'm calling you out of the blue here\u2014just want to be respectful. Do you think I could borrow thirty seconds to explain why I called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with AI and engineering teams who want to automate workflows like appointment scheduling, service scheduling, and accounts payable, but they've found that getting AI agents to work in production is challenging\u2014either they take too long to build or they're not flexible with edge cases.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We already have all the expertise in house and we are doing everything in house right now. We are not having any third parties to help us with that.\"",
+      "success": false
+    }
   },
   {
     "id": "363074847431",
@@ -460,7 +556,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7acd5933f3cff4cdf9d03584c5bbb366.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362937748175",
     "persona": "Technical IC",
-    "offer": "So i i see you're working on enterprise architecture at gordon and i thought this might be relevant to you so i've been working with a good number of it and engineering teams in the logistics and supply chain side of things and i've been hearing a common theme which is they they wanna automate workflows for their business operators coordination tasks that typically required you know touching multiple systems speaking to or emailing multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them they either take a long time to build or they're just not very flexible with edge cases i was curious if this is something that you resonate with on your role"
+    "offer": "So i i see you're working on enterprise architecture at gordon and i thought this might be relevant to you so i've been working with a good number of it and engineering teams in the logistics and supply chain side of things and i've been hearing a common theme which is they they wanna automate workflows for their business operators coordination tasks that typically required you know touching multiple systems speaking to or emailing multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them they either take a long time to build or they're just not very flexible with edge cases i was curious if this is something that you resonate with on your role",
+    "iceBreaker": {
+      "text": "\"Listen, I'm calling you a bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams in logistics and supply chain who want to automate workflows using AI agents, but they're running into challenges getting those agents to work in production\u2014either they take too long to build or they're not flexible with edge cases.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"You're not trying anything in the agent space right now.\"",
+      "success": false
+    }
   },
   {
     "id": 362934932169,
@@ -477,7 +585,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb1287a8acc31e90a0e74fcd882045595.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362934932169",
     "persona": "IT Leadership",
-    "offer": "so you know i see your leading it team at brock and i've been working with a good amount of it and engineering teams in the logistics and manufacturing space and i've been hearing a common theme that i thought might resonate with you is that they wanna automate workflows for their business operators coordination tasks that are repetitive and typically require touching multiple systems and calling multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them it's either takes them a long time to build or they're not very flexible when it comes to edge cases i was curious if this is something that you resonate with"
+    "offer": "so you know i see your leading it team at brock and i've been working with a good amount of it and engineering teams in the logistics and manufacturing space and i've been hearing a common theme that i thought might resonate with you is that they wanna automate workflows for their business operators coordination tasks that are repetitive and typically require touching multiple systems and calling multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them it's either takes them a long time to build or they're not very flexible when it comes to edge cases i was curious if this is something that you resonate with",
+    "iceBreaker": {
+      "text": "\"Christopher, this is Brandon with Run Book. I'm calling a bit out of the blue here today and I wanna be respectful\u2014do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive workflows and coordination tasks across multiple systems using AI agents, but they struggle with getting those agents to work in production\u2014either it takes too long to build or they're not flexible with edge cases.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're probably about six months out from being ready for these conversations because we're still getting our data centralized in Microsoft Fabric and making sure it's accurate and properly cataloged before we can do much on the AI side.\"",
+      "success": true
+    }
   },
   {
     "id": "362957532906",
@@ -545,7 +665,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbfa599f2d14f9016ac2555d6b1ef9f48.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362927672041",
     "persona": "IT / Engineering",
-    "offer": "yeah james i see your leading commercial digital solutions and assuming that falls under it and i i've been working with the a good amount of it and engineering teams in the logistics and manufacturing space and i've been seeing a theme that i thought i resonate with you they wanna automate workflows for their business operators tasks at a repetitive manual and require touching multiple people systems and talking to multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them to governing them i was curious if this is something you have a hand in"
+    "offer": "yeah james i see your leading commercial digital solutions and assuming that falls under it and i i've been working with the a good amount of it and engineering teams in the logistics and manufacturing space and i've been seeing a theme that i thought i resonate with you they wanna automate workflows for their business operators tasks at a repetitive manual and require touching multiple people systems and talking to multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them to governing them i was curious if this is something you have a hand in",
+    "iceBreaker": {
+      "text": "\"James, this is Brandon with Runbook. I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds to explain why I called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with engineering and logistics teams who want to automate repetitive workflows across multiple systems using AI agents, but they struggle getting those agents to work in production\u2014design, implementation, governance\u2014and I was curious if this is something you have a hand in.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"No, I'm not [involved in that], and I'm not interested.\"",
+      "success": false
+    }
   },
   {
     "id": "362957289199",
@@ -596,7 +728,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe775ca59268483958c5cd95c887d4cb4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362924071614",
     "persona": "Executive",
-    "offer": "so the the company i'm calling for is called run book and and what we do is we provide organizations like you guys with a platform that helps build and deploy agents that handle the manual coordination work that's slow dispatch and operations teams down"
+    "offer": "so the the company i'm calling for is called run book and and what we do is we provide organizations like you guys with a platform that helps build and deploy agents that handle the manual coordination work that's slow dispatch and operations teams down",
+    "iceBreaker": {
+      "text": "\"I'm calling you a little bit out of the blue but I can tell you why I reached out to you directly.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We provide organizations with a platform that helps build and deploy agents that handle manual coordination work that slows dispatch and operations teams down, and bring this capability closer to the business through a foundational orchestration layer.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're a ginormous company that has all of those things in place already.\"",
+      "success": false
+    }
   },
   {
     "id": "362956602096",
@@ -732,7 +876,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e035f0897a3784a498493c4a3097d1c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362950752968",
     "persona": "Director (Other)",
-    "offer": "so you know i see your leading it over at otis i've been working with a number of it and engineering teams right now in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with it is that they wanna automate workflows for their business operators you know tasks that are repetitive manual complex that requires coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them building trust in accuracy i was curious if this is something that you're experiencing right now"
+    "offer": "so you know i see your leading it over at otis i've been working with a number of it and engineering teams right now in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with it is that they wanna automate workflows for their business operators you know tasks that are repetitive manual complex that requires coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them building trust in accuracy i was curious if this is something that you're experiencing right now",
+    "iceBreaker": {
+      "text": "\"Hi, I'm Brandon from RunBook. I'm calling out of the blue \u2014 do you mind if I borrow 30 seconds to explain why I called?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows using AI agents, but struggle getting those agents to work in production \u2014 I was curious if this is something you're experiencing.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're past that \u2014 we've already worked on this ahead of time, so at this point we're good.\"",
+      "success": false
+    }
   },
   {
     "id": "362949937898",
@@ -851,7 +1007,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA33b019a39536808550bbdb34bbca8363.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362925116122",
     "persona": "IT / Engineering",
-    "offer": "so i've been working with a number of it teams in the logistics in manufacturing space mostly but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex that it requires coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing it to implementing to building trust and accuracy"
+    "offer": "so i've been working with a number of it teams in the logistics in manufacturing space mostly but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex that it requires coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing it to implementing to building trust and accuracy",
+    "iceBreaker": {
+      "text": "\"I'm calling you a bit out of the blue here today do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We work with IT teams to help automate workflows and build AI agents that work reliably in production, capturing your business context across multiple people and systems.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're not too much into AI yet; we work with an MS vendor through a multi-year contract and currently only use Copilot as our AI tool.\"",
+      "success": false
+    }
   },
   {
     "id": "362925040321",
@@ -919,7 +1087,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9381c030afb894dbfba15e3b6712f62d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362555414210",
     "persona": "Executive",
-    "offer": "we're a platform that helps folks build and employee agents that help automate a lot of the tasks that your team works on all day"
+    "offer": "we're a platform that helps folks build and employee agents that help automate a lot of the tasks that your team works on all day",
+    "iceBreaker": {
+      "text": "Hi, it's Chuck Bartlett calling from RunBook.",
+      "success": false
+    },
+    "hook": {
+      "text": "We're a platform that helps folks build employee agents that automate a lot of the tasks that your team works on all day.",
+      "success": false
+    },
+    "objection": {
+      "text": "It's good Friday at five pm, not a good time, and I'm not interested.",
+      "success": false
+    }
   },
   {
     "id": 362586077920,
@@ -936,7 +1116,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA5566883f74a4647bb6cbd4a3ca545a3b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362586077920",
     "persona": "Director (Other)",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"I know I'm calling you a bit out of the blue, but would you mind if I borrow thirty seconds of your time to explain why I called?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I get so many calls and it's no funds, so maybe you can just put me on the do not call list.\"",
+      "success": false
+    }
   },
   {
     "id": "362544573119",
@@ -970,7 +1162,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA32143c1ad96d1d44edfa02bf13933ed7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362539175641",
     "persona": "IT Leadership",
-    "offer": "so you know i see your senior architect at it'll aws i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires coordination between multiple people and system and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them"
+    "offer": "so you know i see your senior architect at it'll aws i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires coordination between multiple people and system and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them",
+    "iceBreaker": {
+      "text": "\"My name is Brandon with Run Book, I'm calling you out of the blue here\u2014do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams hearing a common theme that you might resonate with\u2014they want to automate workflows for business operators using AI agents, but getting those agents to work in production has been a problem for them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Not interested in AI agents at all, and if I was, I would use our stuff and know how to do so.\"",
+      "success": false
+    }
   },
   {
     "id": "362562513633",
@@ -1021,7 +1225,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6c51a9e5c0ca1a6b45318f6c15a523dd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362521697993",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Brandon references a previous conversation from RunBook about governance and architecture for AI agents.",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "Carla is not feeling well and asks to defer the call to later.",
+      "success": true
+    }
   },
   {
     "id": "362500779739",
@@ -1055,7 +1271,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7d57b471de6bd7d6ec6cb4f15c691ab1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362518027985",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Brandon with Run Book in San Francisco, I know I'm calling a bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your Friday?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"This is my personal line and personal time\u2014I appreciate the invitation but I will decline.\"",
+      "success": false
+    }
   },
   {
     "id": "362480974580",
@@ -1089,7 +1317,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5734f7e56da5d5ddd1749b92638a48c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362500558543",
     "persona": "Director (Other)",
-    "offer": "our company what we do is provide a platform that helps teams deploy build and deploy agents that automate a lot of the manual coordination work that flow operation teams do i feel like folks in your role get asked all the time to help bridge that gap and you know there's always trust and reliability issues that go on with these agents but we've felt something that lives closer to the business and it allows you guys to manage it so those trust issues go away"
+    "offer": "our company what we do is provide a platform that helps teams deploy build and deploy agents that automate a lot of the manual coordination work that flow operation teams do i feel like folks in your role get asked all the time to help bridge that gap and you know there's always trust and reliability issues that go on with these agents but we've felt something that lives closer to the business and it allows you guys to manage it so those trust issues go away",
+    "iceBreaker": {
+      "text": "\"It's Chuck, I'm calling from Run. Well look, I reached out to you specifically because I understand you're the Director of Enterprise Systems over at Uni Group.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"What we do is provide a platform that helps teams build and deploy agents that automate manual coordination work that flow operation teams do, and we've built something that lives closer to the business so you can manage it and those trust issues go away.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're pretty solid on what we do, and we already have an orchestration layer and are working with a vendor to get off our mainframe, and we have a new technology platform as well, so we really don't need any assistance at this point.\"",
+      "success": false
+    }
   },
   {
     "id": 362567113402,
@@ -1106,7 +1346,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4f43817d664c50ad7d1c13574ae4b832.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362567113402",
     "persona": "IT Leadership",
-    "offer": "we're a we're a platform that helps your team filled and play agents to operationalize a lot of manual coordination task that that your teams the slow team's is down wondering if you guys have looked at anything like that"
+    "offer": "we're a we're a platform that helps your team filled and play agents to operationalize a lot of manual coordination task that that your teams the slow team's is down wondering if you guys have looked at anything like that",
+    "iceBreaker": {
+      "text": "\"This is Chuck with Run Book, how are you Doug?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps your team fill and play agents to operationalize a lot of manual coordination tasks that your teams slow down.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "\"No, I'm not interested, and you're calling my personal cell phone\u2014I want my name off your list.\"",
+      "success": false
+    }
   },
   {
     "id": 362489731770,
@@ -1123,7 +1375,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7214f190c45081d21a451ce4901ad7c9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362489731770",
     "persona": "Executive",
-    "offer": "we are a platform that helps teams like yours build and deploy agents"
+    "offer": "we are a platform that helps teams like yours build and deploy agents",
+    "iceBreaker": {
+      "text": "Hi Frank, this is Chuck Bartlett from Runbook. I know you look after automation at Lineage\u2014can I borrow a moment?",
+      "success": true
+    },
+    "hook": {
+      "text": "We are a platform that helps teams like yours build and deploy agents.",
+      "success": false
+    },
+    "objection": {
+      "text": "I'm not interested.",
+      "success": false
+    }
   },
   {
     "id": "362517809887",
@@ -1191,7 +1455,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA649189b7268758ec82018a177684f880.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362445064919",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hi Ron, this is Brandon with Rumble, how are you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I'm actually on a customer meeting, I won't be able to speak right now.\"",
+      "success": true
+    }
   },
   {
     "id": "362443280104",
@@ -1225,7 +1501,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9255f9f65efdd13fec22b84e139a2f4a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362364834504",
     "persona": "IT Leadership",
-    "offer": "yeah yeah so we are in the ai agent space it's a platform for building ai agents it's a orchestration layer you know for all your agents it's supposed to make building agents easy for non technical users and also keep your agents in one place you know if you scale to thousands of agents we help keep things in control"
+    "offer": "yeah yeah so we are in the ai agent space it's a platform for building ai agents it's a orchestration layer you know for all your agents it's supposed to make building agents easy for non technical users and also keep your agents in one place you know if you scale to thousands of agents we help keep things in control",
+    "iceBreaker": {
+      "text": "\"Hi Michael, this is Brandon from RunBook, a company in San Francisco\u2014are you good?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're in the AI agent space with a platform for building AI agents\u2014an orchestration layer that makes building agents easy for non-technical users and keeps your agents in one place.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Is it similar to [competitor platform]\u2014a visual automation platform to connect apps, design workflows, and build processes?\"",
+      "success": true
+    }
   },
   {
     "id": "362354035406",
@@ -1259,7 +1547,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA133bb2084e227dd1145b11833bc8d2d0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362371753684",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Brandon Lee with Runbook, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds to explain who I am and why I called?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"This is my personal cell phone, can you please opt this number out and reach me via email instead?\"",
+      "success": false
+    }
   },
   {
     "id": "362370991827",
@@ -1310,7 +1610,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA850cfecc25bc7ffcfce19eddb1f4b5e8.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362212771521",
     "persona": "IT / Engineering",
-    "offer": "i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires coordination between multiple people and systems and they've looked to ai agents to help with this but when i rolled those out you completely across them great so they run into problems like when it comes to bringing them to production from implementing them to designing them to building trust and accuracy to capture like the tribal knowledge so even maintaining them so i was curious if you know if this is something that you've experienced as you rolled out some of these agents"
+    "offer": "i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires coordination between multiple people and systems and they've looked to ai agents to help with this but when i rolled those out you completely across them great so they run into problems like when it comes to bringing them to production from implementing them to designing them to building trust and accuracy to capture like the tribal knowledge so even maintaining them so i was curious if you know if this is something that you've experienced as you rolled out some of these agents",
+    "iceBreaker": {
+      "text": "\"You know I'm calling you out of the blue here do you mind if I borrowed thirty seconds for your time to explain why I called?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams hearing a common theme about automating workflows for business operators\u2014repetitive, manual, complex tasks\u2014but they run into problems bringing AI agents to production like implementation, design, building trust and accuracy, and maintenance.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're part of United Health Group with billions in budget, work directly with Microsoft and their fast-track programs with 180 senior engineers devoted to us, so opt is probably not going to be one you'll break into\u2014your value is in mid-size players, not Fortune 10 companies.\"",
+      "success": false
+    }
   },
   {
     "id": "362129861329",
@@ -1344,7 +1656,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA189d41f807500115f64544db5ee5bdfd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362145872612",
     "persona": "Executive",
-    "offer": "so yeah i i totally get that it sounds like you guys are you know to probably something pretty good i i we what we do is it's a it's a product and a platform for building ai agents and it's also an orchestration layer for these agents you know the one value proposition which i think you probably solve is making building agents as easy as possible and non technical as possible so you know your business people can make those automate certain workflows but the second is is to keep your agents in one place so they have access to tribal knowledge"
+    "offer": "so yeah i i totally get that it sounds like you guys are you know to probably something pretty good i i we what we do is it's a it's a product and a platform for building ai agents and it's also an orchestration layer for these agents you know the one value proposition which i think you probably solve is making building agents as easy as possible and non technical as possible so you know your business people can make those automate certain workflows but the second is is to keep your agents in one place so they have access to tribal knowledge",
+    "iceBreaker": {
+      "text": "\"I'm calling you a bit out of the blue\u2014do you mind if I borrow thirty seconds of your time to explain what I called about?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We have a product and platform for building AI agents and an orchestration layer that makes building agents as easy and non-technical as possible so your business people can automate workflows, and keeps your agents in one place with access to tribal knowledge.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 362174592760,
@@ -1361,7 +1685,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAcfedcfc1a64f38bea098386ab2305766.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362174592760",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"My name is Brandon Lia with a company called Gru. Do you mind if I borrow thirty seconds of your time to explain why I called?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"It's not the right time today, next week something.\"",
+      "success": false
+    }
   },
   {
     "id": "362147599054",
@@ -1446,7 +1782,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd320a5db9cfa23c9a4896ea10b0f0f51.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362165548777",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Ken, this is Brandon with Runbook. I'm calling you a bit out of the blue here today\u2014do you mind if I borrow 30 seconds to explain why?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "No longer with the company",
+      "success": false
+    }
   },
   {
     "id": 362163719882,
@@ -1463,7 +1811,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA39cf2f35dae9488eb7a6fef4094b8264.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362163719882",
     "persona": "Manager (Other)",
-    "offer": "i see you're working on enterprise applications i i thought this might be relevant in regards to our work with number of different it and engineering teams in the early"
+    "offer": "i see you're working on enterprise applications i i thought this might be relevant in regards to our work with number of different it and engineering teams in the early",
+    "iceBreaker": {
+      "text": "\"I'm calling you out of the blue here, do you mind if I borrow thirty seconds of your time to explain why?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I see you're working on enterprise applications and I thought this might be relevant regarding our work with a number of different IT and engineering teams.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I just don't think I can offer you anything that will be helpful for my company, I'm not authorized.\"",
+      "success": false
+    }
   },
   {
     "id": "362145667821",
@@ -1531,7 +1891,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb932731da59d02bb7384ce4a9f4d4238.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362157792957",
     "persona": "Director (Other)",
-    "offer": "alright michael yeah i see your leading innovation analytics and i've been working with a number of it and engineering teams right now in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and require coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them implementing them to building trust and accuracy and maintaining them afterwards i was curious this is something your company's experiencing today"
+    "offer": "alright michael yeah i see your leading innovation analytics and i've been working with a number of it and engineering teams right now in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and require coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them implementing them to building trust and accuracy and maintaining them afterwards i was curious this is something your company's experiencing today",
+    "iceBreaker": {
+      "text": "\"I'm calling you out of the blue here\u2014I wanna be respectful\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows using AI agents, but they struggle getting those agents to work in production\u2014designing, implementing, building trust, accuracy, and maintaining them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We just did an SMB conversion in November and we're still trying to get our heads above water, and I'm already working with several AI companies to stack on top of SAP, so I'm not willing to add any additional companies right now.\"",
+      "success": false
+    }
   },
   {
     "id": 362166597359,
@@ -1548,7 +1920,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA01b86e3c2c7128784fc1815f9d9462e0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362166597359",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Scott, I'm calling you out of the blue\u2014could I borrow thirty seconds to explain why I called you?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"No thanks, can you take me off your list?\"",
+      "success": false
+    }
   },
   {
     "id": "362146801349",
@@ -1599,7 +1983,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe738278d7bea405d318801bf0e46a3de.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362188182233",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hey Justin, this is Brandon with Run Book\u2014I called you two days ago when you were apartment shopping.",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "I'm literally not even a month into my position, haven't done anything yet, still evaluating, and not ready.",
+      "success": false
+    }
   },
   {
     "id": 362171889351,
@@ -1650,7 +2046,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfa362fbd955663085793143135755f96.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362187948742",
     "persona": "IT / Engineering",
-    "offer": "what we do is we simplify that whole process of building and orchestrating agents as these companies scale the fleet of agents that they have our concern is they might get out of control maintaining them becomes an issue and you end up spending a lot of engineering time on it our goal is to make that process simple"
+    "offer": "what we do is we simplify that whole process of building and orchestrating agents as these companies scale the fleet of agents that they have our concern is they might get out of control maintaining them becomes an issue and you end up spending a lot of engineering time on it our goal is to make that process simple",
+    "iceBreaker": {
+      "text": "\"My name is Brandon Lia from a company called Runbook, and I'm calling because I see your digital transformation work at US Radiology\u2014do you mind if I borrow thirty seconds to explain why I'm calling?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We help IT and engineering teams automate repetitive manual workflows using AI agents, and we simplify the process of building and orchestrating those agents as companies scale.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We already have our standard workflows and AI functioning to help us get that done, and I'm retiring soon so this is out of my scope.\"",
+      "success": false
+    }
   },
   {
     "id": "362110769905",
@@ -1701,7 +2109,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6fec2c2d4fcc122dd24339d14171b252.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362016227037",
     "persona": "Executive",
-    "offer": "so the company is called run book what based in san francisco it's a platform for building ai agents and it's also an orchestration layer for all those kind of agents either the ones you've build on our platform were the ones you already built so the value proposition are are two one is making you know building agents as easy as possible for even non technical people and two is to keep your agents in one place so they have access to your tribal knowledge and just to make sure they they work with each other well is this something that that would be interesting for you to explore"
+    "offer": "so the company is called run book what based in san francisco it's a platform for building ai agents and it's also an orchestration layer for all those kind of agents either the ones you've build on our platform were the ones you already built so the value proposition are are two one is making you know building agents as easy as possible for even non technical people and two is to keep your agents in one place so they have access to your tribal knowledge and just to make sure they they work with each other well is this something that that would be interesting for you to explore",
+    "iceBreaker": {
+      "text": "Patrick, this is Brandon with Runbook calling you out of the blue\u2014do you think I could borrow thirty seconds of your time to explain why I called?",
+      "success": true
+    },
+    "hook": {
+      "text": "We work with IT and engineering teams automating workflows with AI agents, and we've built a platform to make building agents easier and keep them orchestrated in one place so they work together reliably.",
+      "success": true
+    },
+    "objection": {
+      "text": "Not at this time, but it's good to know what's out there.",
+      "success": false
+    }
   },
   {
     "id": "362015779540",
@@ -1769,7 +2189,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA56dc25da3e9111ed8e37570db6a9ccaf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361967386329",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Rep introduced himself as Brandon and asked if he was speaking with Mohammed.",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 361985542878,
@@ -1786,7 +2218,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc1ab53362c360b95edd4fd5ebe6ca05c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361985542878",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hey Bruce, this is Brandon with Run Book\u2014how are you?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"If this is a sales call I don't take unsolicited sales calls.\"",
+      "success": false
+    }
   },
   {
     "id": 362010112758,
@@ -1803,7 +2247,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAede189d74555a364cd245f314a1683bf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362010112758",
     "persona": "IT / Engineering",
-    "offer": "I've been working with a number of IT and engineering teams and I've been hearing a common theme that I thought you might resonate with they wanna build or automate workflows for their business operators you know it's tasks that are repetitive and require coordination between multiple people and systems and they've looked at AI agents to help with this but getting those agents to work in production has been a problem for them from implementing them to designing them to floating trust and accuracy and maintaining them"
+    "offer": "I've been working with a number of IT and engineering teams and I've been hearing a common theme that I thought you might resonate with they wanna build or automate workflows for their business operators you know it's tasks that are repetitive and require coordination between multiple people and systems and they've looked at AI agents to help with this but getting those agents to work in production has been a problem for them from implementing them to designing them to floating trust and accuracy and maintaining them",
+    "iceBreaker": {
+      "text": "Hi, I'm Brandon with RunBook based in San Francisco\u2014I'm calling you out of the blue. Do you mind if I borrow 30 seconds of your time to explain why I called?",
+      "success": true
+    },
+    "hook": {
+      "text": "We work with IT and engineering teams to help automate repetitive workflows and business tasks using AI agents, but many struggle with getting those agents to work reliably in production environments.",
+      "success": true
+    },
+    "objection": {
+      "text": "Anything you're doing from an AI perspective has to align with your architecture strategy and governance\u2014without proper architectural alignment and rigor, you'll run into production problems.",
+      "success": true
+    }
   },
   {
     "id": 362014471868,
@@ -1820,7 +2276,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd9725e618995ab30d94a6f7ad8e18bba.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014471868",
     "persona": "IT / Engineering",
-    "offer": "so they wanna automate workflows for their business operators tasks that are repetitive manual and may require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them to building trust and accuracy and to maintaining them"
+    "offer": "so they wanna automate workflows for their business operators tasks that are repetitive manual and may require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them to building trust and accuracy and to maintaining them",
+    "iceBreaker": {
+      "text": "\"Brandon Lia with Run Book calling out of the blue\u2014do you think I could borrow thirty seconds of your time to explain what I call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I work with IT and engineering teams automating repetitive workflows using AI agents, but they struggle getting those agents to work in production with trust, accuracy, and maintenance.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're probably not looking for any partnerships with something like this right now, and are you actively building AI agents?\"",
+      "success": false
+    }
   },
   {
     "id": "362014865137",
@@ -1854,7 +2322,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAcbd3f1024b8ba66a81f78106c2836e21.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361939864269",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"I'm calling you out of the blue here, do you mind if I borrow thirty seconds of your time to explain why?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a company called Run Book and we're sending out on LinkedIn.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I don't know what that is\" and \"No thank you.\"",
+      "success": false
+    }
   },
   {
     "id": 361972268755,
@@ -1871,7 +2351,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87e6ae78e7f92ba9a6e9a55b78e8e4bc.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361972268755",
     "persona": "IT / Engineering",
-    "offer": "yeah so sean i i see your a senior manager for it at h s and i've been working with a number of it and engineering leaders in the logistics space and there's a common theme that i thought you might resonate with you know they wanna automate their workflows for their business operators but the you know these these tasks are repetitive manual and they require coordination between different people and systems so they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them to building trust and accuracy and to even maintaining them so i i was curious if if this is something you have experienced currently"
+    "offer": "yeah so sean i i see your a senior manager for it at h s and i've been working with a number of it and engineering leaders in the logistics space and there's a common theme that i thought you might resonate with you know they wanna automate their workflows for their business operators but the you know these these tasks are repetitive manual and they require coordination between different people and systems so they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them to building trust and accuracy and to even maintaining them so i i was curious if if this is something you have experienced currently",
+    "iceBreaker": {
+      "text": "\"My name is Brandon with Runbook, a startup in San Francisco. Do you mind if I borrow thirty seconds to explain why I called?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering leaders in logistics who want to automate workflows with AI agents, but they struggle with getting those agents to work in production\u2014from implementation to building trust, accuracy, and maintenance.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're good for now in this space. We have enough resources and people working on this already.\"",
+      "success": false
+    }
   },
   {
     "id": 361985440464,
@@ -1888,7 +2380,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a6e41b790f793567b367a321e276bd9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361985440464",
     "persona": "Technical IC",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"I'm Brandon Lia with Run Book, and I'm calling you out of the blue here Stacy\u2014if I could borrow 30 seconds I could explain the reason for my call.\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"Call me back, I'm busy right now.\"",
+      "success": false
+    }
   },
   {
     "id": 362014595801,
@@ -1905,7 +2409,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8614fe5bc14a6f80659dc7b868ad15af.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014595801",
     "persona": "Technical IC",
-    "offer": "we we're a company called run book the product is a platform for building ai agents and it's also an orchestration layer for any agents that you've already built so there's kinda two main value propositions one is making building agents as easy as"
+    "offer": "we we're a company called run book the product is a platform for building ai agents and it's also an orchestration layer for any agents that you've already built so there's kinda two main value propositions one is making building agents as easy as",
+    "iceBreaker": {
+      "text": "\"This is Brandon Lia with Run Bookings in San Francisco\u2014do you think I could borrow thirty seconds to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've noticed you're a Lead Enterprise Architect at BP, and I've been working with enterprise IT and engineering teams in logistics and manufacturing who want to automate repetitive workflows using AI agents, but struggle with getting those agents to work in production.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We have already built those workflows and we're in the process of building AI for it\u2014we're trying to build independent agents at this point.\"",
+      "success": true
+    }
   },
   {
     "id": "361985295097",
@@ -1939,7 +2455,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9165cd277781fa84f502d5ace3329e4e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362013511405",
     "persona": "Other",
-    "offer": "so i i see you're your an it business partner at lineage i've been working with a number of different it and engineering teams mostly in the logistics space right now and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators tasks that are repetitive manual and require coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing it to designing it to building trust and even maintaining it i was curious if this is a challenge that you've experienced"
+    "offer": "so i i see you're your an it business partner at lineage i've been working with a number of different it and engineering teams mostly in the logistics space right now and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators tasks that are repetitive manual and require coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing it to designing it to building trust and even maintaining it i was curious if this is a challenge that you've experienced",
+    "iceBreaker": {
+      "text": "\"Can I borrow thirty seconds of your time to explain why I called?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams to automate workflows using AI agents, but getting those agents to work in production has been a problem\u2014implementing, designing, building trust, and maintaining them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"No not really and I'm not really interested.\"",
+      "success": false
+    }
   },
   {
     "id": 362012375795,
@@ -1956,7 +2484,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd77817a673ab374e515608c78ba7c709.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012375795",
     "persona": "IT / Engineering",
-    "offer": "i'm working with a good amount of it at engineering teams mostly in the logistics space and i've been hearing a comments theme email i thought you might resonate with they wanna automate workflows for their business operators you know tasks are repetitive manual and require coordination between people and systems and they've looked the ai agents to help with this but getting those agents to work in production has been a problem from implementing them to building trust and accuracy to maintaining them so i was curious if this is something you experienced or are experiencing today"
+    "offer": "i'm working with a good amount of it at engineering teams mostly in the logistics space and i've been hearing a comments theme email i thought you might resonate with they wanna automate workflows for their business operators you know tasks are repetitive manual and require coordination between people and systems and they've looked the ai agents to help with this but getting those agents to work in production has been a problem from implementing them to building trust and accuracy to maintaining them so i was curious if this is something you experienced or are experiencing today",
+    "iceBreaker": {
+      "text": "\"I'm calling you a bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your time to explain why I called?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I'm working with IT engineering teams in logistics who want to automate workflows using AI agents, but they're running into problems getting those agents to work in production\u2014from implementation to building trust and accuracy to maintaining them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're not actually experiencing that issue\u2014we're building automated stuff using Power Automate and other tools, and we have experienced consultants helping us get up to speed.\"",
+      "success": false
+    }
   },
   {
     "id": 362012352216,
@@ -1973,7 +2513,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1f6fc795041c1a8b3209858bd4e6a7d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362012352216",
     "persona": "Executive",
-    "offer": "they wanna automate workflows for their business operators and these are tasks that are repetitive manual and require a coordination between people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to maintaining them"
+    "offer": "they wanna automate workflows for their business operators and these are tasks that are repetitive manual and require a coordination between people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to maintaining them",
+    "iceBreaker": {
+      "text": "\"Hi Savannah, this is Brandon with Runbook calling you out of the blue\u2014do you think I could borrow thirty seconds of your time to explain why I called?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows with AI agents, but they're struggling to get those agents working in production\u2014from implementation to building trust to maintaining them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're two companies coming together and integrating right now, so our biggest issue is that integration work\u2014call us back in six months when that's done.\"",
+      "success": true
+    }
   },
   {
     "id": "361993264874",
@@ -2024,7 +2576,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb33959ccafa246a36d89562b4baa94a2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361966817978",
     "persona": "Director (Other)",
-    "offer": "we are at an organization that helps folks like y'all deploy agents to automate a lot of the business processes that slow teams down and operations in billing"
+    "offer": "we are at an organization that helps folks like y'all deploy agents to automate a lot of the business processes that slow teams down and operations in billing",
+    "iceBreaker": {
+      "text": "Hi Daniel, it's Chuck Bartlett from RunBook\u2014we help organizations deploy agents to automate business processes in operations and billing, and I thought you might have some thoughts on that.",
+      "success": true
+    },
+    "hook": {
+      "text": "We help folks like you deploy agents to automate a lot of the business processes that slow teams down in operations and billing.",
+      "success": true
+    },
+    "objection": {
+      "text": "I'm retiring, that's the reason why.",
+      "success": false
+    }
   },
   {
     "id": "361891660520",
@@ -2058,7 +2622,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe800817a8291ca7ef7227f054b83d79b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361993072351",
     "persona": "Executive",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Bernadette, I was wondering if my email went through to Devin.",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "None",
+      "success": null
+    }
   },
   {
     "id": "361992685270",
@@ -2126,7 +2702,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3f318536d44befd301d17fee61db0961.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361975966425",
     "persona": "Director (Other)",
-    "offer": "we're a company that helps organizations build and employ agent ai agents"
+    "offer": "we're a company that helps organizations build and employ agent ai agents",
+    "iceBreaker": {
+      "text": "\"Hello, this is Chuck Ga with Runbook, how are you?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"You can just get take me off here call list please thank you\"",
+      "success": false
+    }
   },
   {
     "id": "361969889010",
@@ -2160,7 +2748,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA683b887d7fe55abc44df97ac50d9bcf6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361988883133",
     "persona": "Operations Leadership",
-    "offer": "I'm calling you from a company called run book i'm calling you a bit out of blue but i can tell you why i reached out to you directly if you have a second"
+    "offer": "I'm calling you from a company called run book i'm calling you a bit out of blue but i can tell you why i reached out to you directly if you have a second",
+    "iceBreaker": {
+      "text": "\"This is Chuck Hartland calling from a company called Run Book. I'm calling you a bit out of the blue but I can tell you why I'm reaching out to you directly if you have a second.\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I don't right now I apologize\" / \"No thank you I'm not interested\"",
+      "success": false
+    }
   },
   {
     "id": 361891592913,
@@ -2177,7 +2777,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA754192b999d0a6564de87444f7652295.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361891592913",
     "persona": "IT / Engineering",
-    "offer": "i see you're a d for it focus on digital transformation at fedex i'm working with a good number of it and engineering teams in the logistics space and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators you know tasks that require talking to multiple people interacting with multiple systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them designing them to building trust and accuracy and to maintaining them"
+    "offer": "i see you're a d for it focus on digital transformation at fedex i'm working with a good number of it and engineering teams in the logistics space and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators you know tasks that require talking to multiple people interacting with multiple systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them designing them to building trust and accuracy and to maintaining them",
+    "iceBreaker": {
+      "text": "\"I see you're a Director for IT focus on digital transformation at FedEx\u2014could I borrow thirty seconds to explain why I'm calling?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I'm working with IT and engineering teams in logistics who want to automate workflows with AI agents, but they struggle getting those agents to work in production\u2014from implementation to building trust and accuracy.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 361992668904,
@@ -2194,7 +2806,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA138246bd80acfdf19d73f235e8453752.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992668904",
     "persona": "Operations Leadership",
-    "offer": "so what our company does it is that we help you know teams like yours automate a lot of the manual coordination effort that goes in to things like billing dispatching and and getting you guys paid i guess but by doing by deploying ai agents that your team can build and take ownership"
+    "offer": "so what our company does it is that we help you know teams like yours automate a lot of the manual coordination effort that goes in to things like billing dispatching and and getting you guys paid i guess but by doing by deploying ai agents that your team can build and take ownership",
+    "iceBreaker": {
+      "text": "\"Alan, I know I'm calling you a bit out of the blue here, but if we got a couple of seconds, I'll tell you why I reached out to you directly.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We help teams like yours automate manual coordination effort in billing, dispatching, and getting paid by deploying AI agents that your team can build and take ownership of.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Our corporate tech team runs with all that\u2014we don't make those decisions locally in ops.\"",
+      "success": false
+    }
   },
   {
     "id": 361992306372,
@@ -2211,7 +2835,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAaedf41c44ce8d972a1fdcecbfc126ca3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361992306372",
     "persona": "IT Leadership",
-    "offer": "so i'm working with a ton of it and engineering teams mostly in a logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for the business operators and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to even maintaining them i was curious this something you have you're experiencing today"
+    "offer": "so i'm working with a ton of it and engineering teams mostly in a logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for the business operators and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to even maintaining them i was curious this something you have you're experiencing today",
+    "iceBreaker": {
+      "text": "Greg, this is Brandon with Rum Arya\u2014I'm calling you out of the blue today, do you mind if I borrow thirty seconds of your time to explain?",
+      "success": true
+    },
+    "hook": {
+      "text": "I work with IT and engineering teams in logistics and manufacturing who want to automate workflows with AI agents, but they struggle getting those agents to work in production\u2014implementation, trust, and maintenance\u2014and we have a platform to build AI agents very quickly so non-technical people can build them.",
+      "success": true
+    },
+    "objection": {
+      "text": "No, it's not something I'm experiencing, and we have something in-house already.",
+      "success": false
+    }
   },
   {
     "id": 361949147864,
@@ -2228,7 +2864,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAee897e0903b5c1f6fc585cbbcdad04f1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361949147864",
     "persona": "Manager (Other)",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hey Sherry, this is Chuck with Runbook, how are you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I'm in the middle of a problem, can you try to call back in about an hour?\"",
+      "success": true
+    }
   },
   {
     "id": 361963330283,
@@ -2245,7 +2893,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87d2dabe7ed534942dac4198cc5bf65b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361963330283",
     "persona": "IT Leadership",
-    "offer": "so i'm working with a lot of it and engineering teams you know they're building a lot of ai workflows for their business operators you know the tasks that are repetitive and require coordination between multiple people and systems and that they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them"
+    "offer": "so i'm working with a lot of it and engineering teams you know they're building a lot of ai workflows for their business operators you know the tasks that are repetitive and require coordination between multiple people and systems and that they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them",
+    "iceBreaker": {
+      "text": "\"You mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I'm working with IT and engineering teams building AI workflows for business operators\u2014repetitive tasks requiring coordination between multiple people and systems\u2014and they've looked to AI agents to help, but getting those agents to work in production has been a problem.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": "361893235433",
@@ -2279,7 +2939,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc513bbbad6b27b981d61a5ca5248802d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361891329743",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hey Ben, this is Brandon with Gru Arya, is this a cold call?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "Let's not do that, thank you.",
+      "success": null
+    }
   },
   {
     "id": "361792295660",
@@ -2347,7 +3019,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbd58371353f4865fe349102b4aaf0df2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361813527246",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Daniel, this is Brandon over at Rumble.",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "I was expecting a call from a vendor for a support issue, can you call me back tomorrow?",
+      "success": false
+    }
   },
   {
     "id": 361818775279,
@@ -2364,7 +3048,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe014cca6a80b637da2722aaffe9bc60c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361818775279",
     "persona": "IT Leadership",
-    "offer": "they wanna automate workflows for their business operators you know tasks that are repetitive manual and require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting them to work in production has been a problem for them from implementing them to building trust and accuracy to maintaining them"
+    "offer": "they wanna automate workflows for their business operators you know tasks that are repetitive manual and require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting them to work in production has been a problem for them from implementing them to building trust and accuracy to maintaining them",
+    "iceBreaker": {
+      "text": "\"Hi John, this is Brandon with WrongBook, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds of your time?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive workflows with AI agents, but they struggle getting them to work in production, build trust, and maintain them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I don't pick out workflow tools\u2014I manage people, budgets, and technology profiles; people who work for me do that, and this is my fifteenth call in four hours.\"",
+      "success": false
+    }
   },
   {
     "id": "361786680032",
@@ -2483,7 +3179,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa9d5fca0f7b21714f8f3003783db5a7b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361786580684",
     "persona": "IT Leadership",
-    "offer": "we're a a platform and orchestration layer to to basically build ai agents and make that process as easy as possible so you're probably worked with in the past you know that that coordination between the to architect the solution with your business operators you know some things lost gets loss in translation and it takes a while to spin up an agent just to bring into production so that's what we help with"
+    "offer": "we're a a platform and orchestration layer to to basically build ai agents and make that process as easy as possible so you're probably worked with in the past you know that that coordination between the to architect the solution with your business operators you know some things lost gets loss in translation and it takes a while to spin up an agent just to bring into production so that's what we help with",
+    "iceBreaker": {
+      "text": "\"Hi, this is Brandon with Rumble Book\u2014do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform and orchestration layer to build AI agents that automate repetitive manual workflows requiring coordination between multiple people and systems, making the process easier to architect and bring into production.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"There's a lot of players in this space right now\u2014are you guys an AWS partner, and is this a hosting platform for agents or more of a workflow builder?\"",
+      "success": true
+    }
   },
   {
     "id": "361874403040",
@@ -2517,7 +3225,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA41b24c0f0ecfe386c02b7127a40530f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361876191989",
     "persona": "IT Leadership",
-    "offer": "we talked a little bit about this word platform that helps organizations build and deploy agents to automate and the manual coordinated work that told every day"
+    "offer": "we talked a little bit about this word platform that helps organizations build and deploy agents to automate and the manual coordinated work that told every day",
+    "iceBreaker": {
+      "text": "\"Louise, this is Chuck from Runbook\u2014we spoke about a month ago and you asked me to get back in touch today.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We have a platform that helps organizations build and deploy agents to automate manual coordinated work, and it can serve as an orchestration layer on top of your systems during migration so agents can navigate between old and new systems without manual handoffs.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're going the other way around\u2014we're putting everything in place so we don't have that problem of navigating between old and new systems.\"",
+      "success": true
+    }
   },
   {
     "id": 361872670433,
@@ -2534,7 +3254,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd1c8c077f33042ec726c8b3379cffbc6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361872670433",
     "persona": "IT / Engineering",
-    "offer": "what we do is ensure we simplify that process of building those agents you probably worked with or deployed engineers you know you have to coordinate with them to define success criteria architect solution and during that process you're working with your own business people your own engineers to set it up and what we do is with it's a platform and orchestration layer to to make building reliable agents as easy as possible so instead of working with your you your non technical operators can can use you know our platform to to write these agents themselves and so it writes the code it it qa itself and over time it maintains itself as well so you don't have to dedicate"
+    "offer": "what we do is ensure we simplify that process of building those agents you probably worked with or deployed engineers you know you have to coordinate with them to define success criteria architect solution and during that process you're working with your own business people your own engineers to set it up and what we do is with it's a platform and orchestration layer to to make building reliable agents as easy as possible so instead of working with your you your non technical operators can can use you know our platform to to write these agents themselves and so it writes the code it it qa itself and over time it maintains itself as well so you don't have to dedicate",
+    "iceBreaker": {
+      "text": "\"Hi Joanne, my name is Brandon with Rum Book. Do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We work with enterprise IT teams to simplify building and deploying AI agents for automating repetitive workflows, addressing the common challenges of implementation, trust, accuracy, and maintenance that teams face.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": "361839975113",
@@ -2653,7 +3385,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA5d381cf96ac787f7771e8a72a9b72386.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361812549317",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"I'm calling you out of the blue here and I wanna be respectful\u2014do you think I could borrow thirty seconds of your time to explain?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"We're apartment shopping right now so now it's not a good time.\"",
+      "success": false
+    }
   },
   {
     "id": "361879149252",
@@ -2704,7 +3448,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbf89cdcee51048a559c0bfa824e9a9a3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361832318655",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Fred, this is Brandon with Run Book, a San Francisco startup.",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 361817677509,
@@ -2721,7 +3477,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8efd37315955a5ba6cd1dff68856290d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361817677509",
     "persona": "IT Leadership",
-    "offer": "i'm with a company called run book i was calling you a bit out of a blue here today do you think of a could borrow thirty seconds of your time to explain the reason for michael"
+    "offer": "i'm with a company called run book i was calling you a bit out of a blue here today do you think of a could borrow thirty seconds of your time to explain the reason for michael",
+    "iceBreaker": {
+      "text": "Hi Joe, this is Brandon Lia with RunBook\u2014I'm calling you out of the blue. Do you think I could borrow 30 seconds to explain the reason for my call?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "I'm actually out of the office the next couple weeks so now it's not a good time.",
+      "success": false
+    }
   },
   {
     "id": "361828375261",
@@ -2755,7 +3523,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAa15e8deadbd6e164e32f1f50a9f24e2e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361846361792",
     "persona": "IT / Engineering",
-    "offer": "i see you're a senior it infrastructure pm at ohio health and i've been working with the good amount of it and engineering teams right now mostly in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with even in the health care space so they want to automate workflows for their business operators particularly in competitive and manual tasks that require coordination and"
+    "offer": "i see you're a senior it infrastructure pm at ohio health and i've been working with the good amount of it and engineering teams right now mostly in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with even in the health care space so they want to automate workflows for their business operators particularly in competitive and manual tasks that require coordination and",
+    "iceBreaker": {
+      "text": "\"I'm calling you a little bit out of the blue and I wanna be respectful\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I work with IT and engineering teams in logistics and manufacturing who want to automate workflows for their business operators, particularly in competitive and manual tasks that require coordination\u2014I thought you might resonate with this in the healthcare space.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 361830141666,
@@ -2772,7 +3552,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA727d88776724ca8af56b51edbc9cb7b5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361830141666",
     "persona": "IT Leadership",
-    "offer": "we work with it and engineering teams in the logistics space and the problem we're trying to solve is to help these companies deploy ai agents faster instead of working with you know external ford deployed engineering teams i'm setting all that time of money on the engineering side business people can create these agents themselves so it's for efficiency in building ai agents and saving costs"
+    "offer": "we work with it and engineering teams in the logistics space and the problem we're trying to solve is to help these companies deploy ai agents faster instead of working with you know external ford deployed engineering teams i'm setting all that time of money on the engineering side business people can create these agents themselves so it's for efficiency in building ai agents and saving costs",
+    "iceBreaker": {
+      "text": "\"Hi, my name is Brandon Lia from a company called Runbook. I was trying to figure out a way to get in touch with Rick. Could you help me out?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We work with IT and engineering teams in the logistics space to help them deploy AI agents faster. Instead of working with external teams, business people can create these agents themselves for efficiency and cost savings.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"He's not real good with cold calls. You might want to take a message or give him a link to your website, or it might be better to speak with someone on his team.\"",
+      "success": true
+    }
   },
   {
     "id": "361813939935",
@@ -2806,7 +3598,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA206ec19dfeca96117d8f660838c98f39.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361842690787",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hey Paul, this is Brandon with Runbook. How are you?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "This is my personal cell, so please don't ever use this number for sales calls.",
+      "success": false
+    }
   },
   {
     "id": 361642040051,
@@ -2823,7 +3627,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA738c7d429e4e7624939347ef93a0b181.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361642040051",
     "persona": "Director (Other)",
-    "offer": "so i i could give you an overview of kind of what we do so we help companies deploy agents to automate workflows that typically require a human to communicate with multiple people multiple systems like navigating a portal downloading a certification verifying various pieces of information and the the the problem that we're trying to solve is if you work with forward deployed engineering teams from these other vendors is the the the gap of kinda architect the solution because it requires the to work with your engineers and then your engineers work with your business people so it's like a huge kind of a bottleneck to kinda coordinate and decide on what to build once you decide how to build it it takes a you know a couple steps to actually bring it into production so where we sit is is that part we we our goal is to remove engineering from the equation so you know you can imagine saving a lot of time and effort from your engineers to build something like an ai agent in house"
+    "offer": "so i i could give you an overview of kind of what we do so we help companies deploy agents to automate workflows that typically require a human to communicate with multiple people multiple systems like navigating a portal downloading a certification verifying various pieces of information and the the the problem that we're trying to solve is if you work with forward deployed engineering teams from these other vendors is the the the gap of kinda architect the solution because it requires the to work with your engineers and then your engineers work with your business people so it's like a huge kind of a bottleneck to kinda coordinate and decide on what to build once you decide how to build it it takes a you know a couple steps to actually bring it into production so where we sit is is that part we we our goal is to remove engineering from the equation so you know you can imagine saving a lot of time and effort from your engineers to build something like an ai agent in house",
+    "iceBreaker": {
+      "text": "\"I'm calling you a little bit out of the blue here today\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We help companies deploy AI agents to automate workflows that require human coordination across multiple people and systems, removing the friction and engineering overhead typically needed to get these into production.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Are you building AI agents today or implementing any kind of AI tools?\"",
+      "success": true
+    }
   },
   {
     "id": "361607544545",
@@ -2891,7 +3707,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7cb06df11ec2f01bb20b9fd0a7c7efa1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361631200963",
     "persona": "Executive",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Chuck from Run Book. If you have a quick second I can let you know why I called you.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"Is this a sales call?\" followed by \"No, just thank you very much.\"",
+      "success": false
+    }
   },
   {
     "id": "361576343248",
@@ -2942,7 +3770,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA050a3850370014171c80bf53499f74df.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361636581055",
     "persona": "Other",
-    "offer": "our platform at run book we help organizations build and deploy agents to automate a lot of the work that lives on top of the data and coordinated effort that slow teams down on a day to day basis"
+    "offer": "our platform at run book we help organizations build and deploy agents to automate a lot of the work that lives on top of the data and coordinated effort that slow teams down on a day to day basis",
+    "iceBreaker": {
+      "text": "\"This is Chuck Bartlett from Run Book, I'm calling you out of the blue because I understood that you look after data and analytics at Radiant\u2014is that right?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"Our platform helps organizations build and deploy agents to automate work that lives on top of the data layer and coordinates effort that slows teams down day to day.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I just don't like AI.\"",
+      "success": false
+    }
   },
   {
     "id": "361600290514",
@@ -2976,7 +3816,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5a7f3fe2a2077a8b72073f1210a3fac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361578104544",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Steve, this is Brandon from a San Francisco startup called Run Book\u2014how are you?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "This is my personal phone.",
+      "success": false
+    }
   },
   {
     "id": "361548390096",
@@ -3010,7 +3862,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb979a7e7de9b3a7d5c211daa3fb41717.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361537605306",
     "persona": "IT / Engineering",
-    "offer": "so the the kind of pain that we're targeting is is that is you have to work with a vendors for to deployed engineering team you have to pull in your own engineers and also the business people attached to that team to figure out a solution to like architect it what we're trying to do is cut out the forward to put engineering model completely so instead of you know your your engineers and your business people you know collaborating with each each other to figure out what to build we make it very easy for your business people to write those agents themselves"
+    "offer": "so the the kind of pain that we're targeting is is that is you have to work with a vendors for to deployed engineering team you have to pull in your own engineers and also the business people attached to that team to figure out a solution to like architect it what we're trying to do is cut out the forward to put engineering model completely so instead of you know your your engineers and your business people you know collaborating with each each other to figure out what to build we make it very easy for your business people to write those agents themselves",
+    "iceBreaker": {
+      "text": "\"We're a little startup in San Francisco, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds of your time to explain my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We help enterprise IT and engineering teams get AI agents into production by eliminating the four-to-put engineering model, allowing business people to write agents themselves instead of requiring vendor collaboration and your own engineers.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I'm in the middle of AI tools for a big healthcare company implementing a second version\u2014not at the point of exploring a different vendor.\"",
+      "success": true
+    }
   },
   {
     "id": 361564152508,
@@ -3027,7 +3891,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA465dd45c3de8554b9359b98b65d5d31a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361564152508",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Eric, my name is Brandon with a startup in San Francisco called Run Book, and I'm calling you a little out of the blue here today\u2014do you mind if I borrow thirty seconds of your time?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "I'm not buying anything, I have no money.",
+      "success": false
+    }
   },
   {
     "id": 361571202757,
@@ -3044,7 +3920,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc70530efa9ea2f1eb3191a9667c2c101.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361571202757",
     "persona": "Technical IC",
-    "offer": "we are a platform that helps seems like yours build agents to deploy and automate a lot of the manual coordination work that your operations team and billing teams do on a day to day basis"
+    "offer": "we are a platform that helps seems like yours build agents to deploy and automate a lot of the manual coordination work that your operations team and billing teams do on a day to day basis",
+    "iceBreaker": {
+      "text": "Hi, this is Chuck from Runbook \u2014 I'm calling because we help teams build agents to deploy and automate manual coordination work, and I'm curious if you're working on anything in agent automation at this point.",
+      "success": true
+    },
+    "hook": {
+      "text": "We serve as an orchestration layer over your data and systems, giving teams ownership to create and deploy agents using natural language without coding, with governance and guardrails to move things to production faster \u2014 especially valuable in your early design phase.",
+      "success": true
+    },
+    "objection": {
+      "text": "We're hitting up against a financial constraint today and I'm not authorized \u2014 every time I ask for money they give me a no.",
+      "success": true
+    }
   },
   {
     "id": 361535437500,
@@ -3061,7 +3949,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA49b4544380665e68d0d5db2c9226b030.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361535437500",
     "persona": "Director (Other)",
-    "offer": "so the kind of like pain that we're we're solving for companies building these ai workflows is i'm assuming you probably work with like four to deployed engineers or like you know other vendors to help build some of these workflows and the problem we're seeing is the turnaround time to build something like that involves you know your engineers their engineers your business people who kind of like know what's to fix like you said like that it's very targeted and that coordination like back and forth between those different parties takes a long time and it takes you know sometimes over a day over two days to to build something into production and what we're doing is we we help simplify that process and take out the engineers as many places as possible so we kind of enable the non technical people to to to build these workflows"
+    "offer": "so the kind of like pain that we're we're solving for companies building these ai workflows is i'm assuming you probably work with like four to deployed engineers or like you know other vendors to help build some of these workflows and the problem we're seeing is the turnaround time to build something like that involves you know your engineers their engineers your business people who kind of like know what's to fix like you said like that it's very targeted and that coordination like back and forth between those different parties takes a long time and it takes you know sometimes over a day over two days to to build something into production and what we're doing is we we help simplify that process and take out the engineers as many places as possible so we kind of enable the non technical people to to to build these workflows",
+    "iceBreaker": {
+      "text": "\"I'm calling you out of the blue and I want to be respectful \u2014 can I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We help IT and engineering teams automate manual coordination tasks by enabling non-technical people to build AI workflows, reducing turnaround time from days to faster deployment.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Not experiencing that right now, and AI adoption has to be focused and make sense for the business, not across the board.\"",
+      "success": true
+    }
   },
   {
     "id": "361546153664",
@@ -3163,7 +4063,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe2f8fc43ae7c1667e51d5c1ee6fa01db.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361584108264",
     "persona": "IT Leadership",
-    "offer": "so i work for a company called rum book where we're a san francisco start up we work with it and engineering teams mostly in the logistics and manufacturing space you know mostly on the ai side so i've been hearing a common theme that maybe you would resonate with is their business teams are spending eighty percent or more of their time in repetitive and manually coordinated tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them you know from implementation to building trust to even maintaining it after it got implemented i was curious if you resonate with these kind of challenges"
+    "offer": "so i work for a company called rum book where we're a san francisco start up we work with it and engineering teams mostly in the logistics and manufacturing space you know mostly on the ai side so i've been hearing a common theme that maybe you would resonate with is their business teams are spending eighty percent or more of their time in repetitive and manually coordinated tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them you know from implementation to building trust to even maintaining it after it got implemented i was curious if you resonate with these kind of challenges",
+    "iceBreaker": {
+      "text": "\"I'm calling you out of the blue and was hoping to follow up, maybe thirty seconds of your time to explain the reason for the call.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We work with IT and engineering teams in logistics and manufacturing on the AI side, helping with business teams spending 80% of their time on repetitive manually coordinated tasks, and we help get AI agents to work in production\u2014from implementation to building trust to maintaining it.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We've got some good processes already in place.\"",
+      "success": false
+    }
   },
   {
     "id": "361560141531",
@@ -3214,7 +4126,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc5140782775081ffdcc99c56ad8b2187.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361516668608",
     "persona": "IT / Engineering",
-    "offer": "we're run book as a platform that helps deploy agents to automate those operational workflows"
+    "offer": "we're run book as a platform that helps deploy agents to automate those operational workflows",
+    "iceBreaker": {
+      "text": "\"Hey Rick, this is Chuck with Runbook. I understand you look after IT projects for your company.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We work with folks like yourself who want to automate operational workflows, but AI models break and can't be trusted\u2014Runbook helps deploy agents to automate those workflows reliably.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 361538826944,
@@ -3231,7 +4155,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA6221ccd6ecf4dc47ab0c6a836da42ac6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361538826944",
     "persona": "Executive",
-    "offer": "so my name is brandon lia i work for a very small startup up in san francisco called run book and we are in this kind of ai we helped build ai agents for enterprises in the logistics manufacturing space and i was hoping to run like a challenge by peter you know i i i assume turner is you know building out some ai workflows and the time to build those workflows might be too long the point is we can help them build things in less than a day so i was hoping to just have a conversation with peter and you know poke around to see where the challenges is with ai is within your company"
+    "offer": "so my name is brandon lia i work for a very small startup up in san francisco called run book and we are in this kind of ai we helped build ai agents for enterprises in the logistics manufacturing space and i was hoping to run like a challenge by peter you know i i i assume turner is you know building out some ai workflows and the time to build those workflows might be too long the point is we can help them build things in less than a day so i was hoping to just have a conversation with peter and you know poke around to see where the challenges is with ai is within your company",
+    "iceBreaker": {
+      "text": "\"Hi, this is Brandon Lia with Run Book, a small AI startup in San Francisco. Can I have a quick conversation with Peter to explore where AI workflow challenges might exist in your company?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We help enterprises in logistics and manufacturing build AI agents and workflows in less than a day, versus the typical longer timeline.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"You should send an email with a brief outline of what you do, and if Peter is intrigued he'll call you back.\"",
+      "success": true
+    }
   },
   {
     "id": 361522919136,
@@ -3248,7 +4184,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c7f2a2e92bd3534431f838961b53d24.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361522919136",
     "persona": "Operations Leadership",
-    "offer": "we're a platform that helps automate a lot of the manual coordination work that slowed this"
+    "offer": "we're a platform that helps automate a lot of the manual coordination work that slowed this",
+    "iceBreaker": {
+      "text": "\"Hi, this is Chuck Ga from Runbook, how are you?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I don't have time for this.\"",
+      "success": false
+    }
   },
   {
     "id": 361504432847,
@@ -3265,7 +4213,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAdc05cc35d75b9bec2b2a177b4252e511.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361504432847",
     "persona": "IT Leadership",
-    "offer": "the reason i've calling you i i see your you know you're an ip leader at i've been working with a couple of different enterprise it teams mostly currently in the logistics and manufacturing space and i've been hearing a theme that i thought you might resonate with is that their business teams the the the business teams that their it teams are supporting or spending you know eighty percent or more of their time in repetitive and manually coordinated tasks and they've looked to ai agents to help with this but getting them to work these agents to work in production is a problem from an implementation standpoint to building trust and maintaining them i was curious if this is something that you deal with"
+    "offer": "the reason i've calling you i i see your you know you're an ip leader at i've been working with a couple of different enterprise it teams mostly currently in the logistics and manufacturing space and i've been hearing a theme that i thought you might resonate with is that their business teams the the the business teams that their it teams are supporting or spending you know eighty percent or more of their time in repetitive and manually coordinated tasks and they've looked to ai agents to help with this but getting them to work these agents to work in production is a problem from an implementation standpoint to building trust and maintaining them i was curious if this is something that you deal with",
+    "iceBreaker": {
+      "text": "\"Hi, my name is Brandon Lia, I'm calling from a startup in San Francisco, do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with enterprise IT teams in logistics and manufacturing who spend 80% of their time on repetitive manual tasks, and while they've looked to AI agents to help, getting them to work in production is a problem from an implementation standpoint, building trust, and maintaining them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We have a well developed and ongoing internal framework and solutions that address this, so we will not be interested to discuss this further.\"",
+      "success": false
+    }
   },
   {
     "id": "361500814066",
@@ -3316,7 +4276,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAabf3cdd129602dc40349f1cd64c62e16.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361517466355",
     "persona": "IT / Engineering",
-    "offer": "in this age of ai you know i've been hearing a common theme that i thought would resonate with you given your current role it's that they they have business seems that they're supporting and these teams are spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked at ai agents to help with this but getting the those agents to work in production has been a problem from an implementation to building trust to you know maintaining the agents"
+    "offer": "in this age of ai you know i've been hearing a common theme that i thought would resonate with you given your current role it's that they they have business seems that they're supporting and these teams are spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked at ai agents to help with this but getting the those agents to work in production has been a problem from an implementation to building trust to you know maintaining the agents",
+    "iceBreaker": {
+      "text": "\"I'm Brandon Lia calling from a startup in San Francisco, and I want to be respectful\u2014do you mind if I borrow thirty seconds to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"Enterprise IT teams in logistics are spending 80% of their time on repetitive manual tasks and struggle to get AI agents into production, but we've developed an approach that removes the need for expensive deployed engineers by automating the implementation process.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": "361470969549",
@@ -3367,7 +4339,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe9f54f805a3c65a750cac2a105bec414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361519118038",
     "persona": "IT / Engineering",
-    "offer": "the reason i'm calling you is because i've noticed like teams are taking like entire days or maybe two days to build an ai agent and bring it into production and our work is to shorten that process to less than a day the approach is something i would love to tell you more about but the idea is you know we're trying to kinda replace the four deployed engineering model where you know you have an engineer work with the business person to test to build these kind of ai workflows we're trying to cut out like the engineers involvement in that as much as we can because it's the most expensive part of the workflow"
+    "offer": "the reason i'm calling you is because i've noticed like teams are taking like entire days or maybe two days to build an ai agent and bring it into production and our work is to shorten that process to less than a day the approach is something i would love to tell you more about but the idea is you know we're trying to kinda replace the four deployed engineering model where you know you have an engineer work with the business person to test to build these kind of ai workflows we're trying to cut out like the engineers involvement in that as much as we can because it's the most expensive part of the workflow",
+    "iceBreaker": {
+      "text": "\"I'm Brandon with RunBook, I'm calling out of the blue and just wanted to make sure I'm respectful of your time\u2014is this a good time to chat?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're an AI logistics solution startup, and I've noticed business teams spend 80% of their time on repetitive manual tasks and struggle to get AI agents working in production\u2014I was curious if this rings true for you as a project manager.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're not allowed to use a lot of AI agents for PM work, and we're only building something in house but not allowed to use external tools.\"",
+      "success": true
+    }
   },
   {
     "id": "361476238042",
@@ -3418,7 +4402,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA85ff4ec4dffc77373f42cbf1c323d406.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361478526652",
     "persona": "Operations Leadership",
-    "offer": "we're an ai company that helps automate a lot of the manual coordination work that your team execute on a day to day basis"
+    "offer": "we're an ai company that helps automate a lot of the manual coordination work that your team execute on a day to day basis",
+    "iceBreaker": {
+      "text": "\"This is Chuck Bartlett from Run, can I tell you who I'm calling from in a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're an AI company that helps automate a lot of the manual coordination work that your team executes on a day-to-day basis.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We've got our own AI department, I'm all set.\"",
+      "success": false
+    }
   },
   {
     "id": 361482116832,
@@ -3435,7 +4431,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe2a2c534c08325603c9f4e7d243d10cd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361482116832",
     "persona": "Director (Other)",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"I'm calling you a little bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I actually do not have time; I'm working on a major issue right now.\"",
+      "success": false
+    }
   },
   {
     "id": 361465427687,
@@ -3452,7 +4460,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf931d2eeb6071b26ace55ae8fd813964.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361465427687",
     "persona": "IT Leadership",
-    "offer": "we're a platform that helps automate a lot the manual work that ops teams do"
+    "offer": "we're a platform that helps automate a lot the manual work that ops teams do",
+    "iceBreaker": {
+      "text": "\"Hello, this is Chuck Carlson calling from Runbook.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps automate a lot of the manual [work].\"",
+      "success": false
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 361502332608,
@@ -3469,7 +4489,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA7c5dfc3ac1595b62ce0da6ce05c3f2c6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361502332608",
     "persona": "Other",
-    "offer": "so the reason i called you you know i noticed that's your application development lead at ryder i've been working with a bunch of enterprise it teams kind of in the logistics space and i've been hearing a common theme that i thought you might resonate with it's they're the business thing that they're supporting are spending you know eighty percent or more of their time in repetitive and manual tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem from an implementation to trust to a maintenance standpoint i was curious if you have a hand in this or you know you resonate but with kind of this challenge"
+    "offer": "so the reason i called you you know i noticed that's your application development lead at ryder i've been working with a bunch of enterprise it teams kind of in the logistics space and i've been hearing a common theme that i thought you might resonate with it's they're the business thing that they're supporting are spending you know eighty percent or more of their time in repetitive and manual tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem from an implementation to trust to a maintenance standpoint i was curious if you have a hand in this or you know you resonate but with kind of this challenge",
+    "iceBreaker": {
+      "text": "\"Hey Renee, this is Brandon with Run Book calling you a little bit out of the blue here\u2014do you think I could borrow thirty seconds of your time so I can explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with enterprise IT teams in logistics and hearing a common theme that enterprise teams are spending 80% or more of their time on repetitive manual tasks, they've looked to AI agents to help but getting those agents to work in production has been a problem from implementation to trust to maintenance standpoint.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Unfortunately we're not really looking for that solution, I don't know what to value you for.\"",
+      "success": false
+    }
   },
   {
     "id": "361487516398",
@@ -3503,7 +4535,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb0e590b0b834cf8554c3137e1beed9c4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361472586484",
     "persona": "Operations",
-    "offer": "from a seed seed state startup in san francisco we're called run book in the logistics ai space"
+    "offer": "from a seed seed state startup in san francisco we're called run book in the logistics ai space",
+    "iceBreaker": {
+      "text": "\"Hey Kurt, this is Brandon from Rumble, a seed-stage startup in San Francisco called Runbook in the logistics AI space.\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I'm all good if this is a sales call, I appreciate it though, thank you.\"",
+      "success": false
+    }
   },
   {
     "id": 361485668048,
@@ -3520,7 +4564,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb590d7a0df0ed0624638ff3be8cb5d4f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361485668048",
     "persona": "IT / Engineering",
-    "offer": "you know i see your a program manager at logistics i've been working with a a bunch of different enterprise it teams kind of in the logistics logistics space and i've been hearing a common theme that i thought maybe you would resonate with it's their their business teams that the it teams are supporting they're spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked to ai agents to to to help with this but getting them to work in production has been a problem you know from implementation to building trust to even like maintaining them i figured you know given you're in this kind of space the it space do do do you resonate with kind of these challenges"
+    "offer": "you know i see your a program manager at logistics i've been working with a a bunch of different enterprise it teams kind of in the logistics logistics space and i've been hearing a common theme that i thought maybe you would resonate with it's their their business teams that the it teams are supporting they're spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked to ai agents to to to help with this but getting them to work in production has been a problem you know from implementation to building trust to even like maintaining them i figured you know given you're in this kind of space the it space do do do you resonate with kind of these challenges",
+    "iceBreaker": {
+      "text": "\"Hi Anu, this is Brandon with Rumble Arya\u2014I'm calling a little bit out of the blue here today, could I borrow like thirty seconds to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with enterprise IT teams in logistics and hearing a common theme\u2014business teams are spending 80% of their time in repetitive manual coordinated tasks, they've looked to AI agents to help but getting them to work in production has been a problem, from implementation to building trust to maintaining them.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"May I know who you are, can you ping me anything on LinkedIn so I can start and see, and I'm not directly part of the AI agents team.\"",
+      "success": true
+    }
   },
   {
     "id": "361517233876",
@@ -3554,7 +4610,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe0d2337ec0929e1e6fb88a2a64acfb79.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361476162237",
     "persona": "Executive",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Misty, this is Chuck calling from Runbook, can I borrow a quick second?",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "None",
+      "success": null
+    }
   },
   {
     "id": 361450879724,
@@ -3571,7 +4639,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA961a9d2eb3131b28a9bff985c4c2e8cb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361450879724",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Chuck Ga from Runbook. If you have a quick second, I can tell you why I'm calling.\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"Too busy and not interested.\"",
+      "success": false
+    }
   },
   {
     "id": 361454474940,
@@ -3588,7 +4668,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3b6f0212ba34df59d67f1228dfb41bdb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361454474940",
     "persona": "Operations Leadership",
-    "offer": "we provide a platform that helps deploy automation and agents for a lot of the manual coordination task that's slowed your team down on a day to day basis things like track to trace dispatching could even go into like billing basically places where you're throwing on bodies and problems and people are spending eighty percent of their time doing manual work that could be automated"
+    "offer": "we provide a platform that helps deploy automation and agents for a lot of the manual coordination task that's slowed your team down on a day to day basis things like track to trace dispatching could even go into like billing basically places where you're throwing on bodies and problems and people are spending eighty percent of their time doing manual work that could be automated",
+    "iceBreaker": {
+      "text": "\"This is Chuck Bartlett from Run\u2014can I tell you what I'm calling about in just a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We provide a platform that helps deploy automation and agents for manual coordination tasks like track and trace, dispatching, and billing\u2014places where teams spend 80% of their time on manual work that could be automated.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"My role as VP is strictly over operations; we have a CIO heavily involved in automation and AI, so you'd need to call them, not me.\"",
+      "success": false
+    }
   },
   {
     "id": "361042960085",
@@ -3639,7 +4731,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA826f0effa1d5291a3ccfbef608439df3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361093137092",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Lee, this is Chuck Art with Runbook. How are you?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "I literally just got another call from a guy from Runbook. I just hung up with them to answer your call.",
+      "success": false
+    }
   },
   {
     "id": 361046501104,
@@ -3656,7 +4760,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA000574c919fa9d58a9a04b3b4b94bab7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046501104",
     "persona": "IT Leadership",
-    "offer": "so the the model that we operate on is we basically come in for free we learn where your biggest blockers or bottlenecks are to find something that creates the most roi and typically we we see that value get created within about a week so we build an ai agent that works in about a week"
+    "offer": "so the the model that we operate on is we basically come in for free we learn where your biggest blockers or bottlenecks are to find something that creates the most roi and typically we we see that value get created within about a week so we build an ai agent that works in about a week",
+    "iceBreaker": {
+      "text": "\"I'm calling you very much out of the blue here\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I'm in the logistics AI space and I've noticed business teams are spending 80% of their time on repetitive manual tasks, and while they're implementing AI agents to automate, trust and accuracy can break down in production\u2014does this ring true for what you're working on?\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're not looking for new vendors and we're on a purchasing freeze at the moment, so maybe if you give me a call next quarter that might be a better time.\"",
+      "success": true
+    }
   },
   {
     "id": 361039310571,
@@ -3673,7 +4789,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8839ba3900c02515aa8417a8f4f364d0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361039310571",
     "persona": "Operations",
-    "offer": "we're a platform that helps operations leaders automate a lot of the tasks that their teams do on a day to day basis"
+    "offer": "we're a platform that helps operations leaders automate a lot of the tasks that their teams do on a day to day basis",
+    "iceBreaker": {
+      "text": "\"Hi Lynn, this is Chuck from Runbook\u2014can I help you, can you hear me?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps operations leaders automate a lot of the tasks that their teams do on a day-to-day basis.\"",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I'm not interested, I'm really sorry.\"",
+      "success": false
+    }
   },
   {
     "id": 361075559116,
@@ -3690,7 +4818,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA5e276246874f55e9fad2b3473d30ff9c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361075559116",
     "persona": "Operations",
-    "offer": "we are a platform that helps operations teams automate a lot of the manual coordination work they do between systems on a day basis that slow your team down using agent ai"
+    "offer": "we are a platform that helps operations teams automate a lot of the manual coordination work they do between systems on a day basis that slow your team down using agent ai",
+    "iceBreaker": {
+      "text": "Hi, it's Chuck Art calling from Runbook\u2014how are you?",
+      "success": true
+    },
+    "hook": {
+      "text": "We're a platform that helps operations teams automate manual coordination work between systems using agent AI.",
+      "success": true
+    },
+    "objection": {
+      "text": "I'm slammed today and don't have time to go over this, and I don't think we're interested.",
+      "success": false
+    }
   },
   {
     "id": 361094902495,
@@ -3707,7 +4847,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf1c1855075b6991c214edc73f9ced9f2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361094902495",
     "persona": "Operations Leadership",
-    "offer": "so you know i've been working with a lot of it and operations teams in this like logistics space and i've been hearing two common themes that i thought might resonate with you one is their business teams that they're supporting are spending eighty percent or more of their time in repetitive manual and coordinated tasks and two is they've tried to look at ai agents to automate some of this but trust and accuracy can break down very easily and the it teams just can't support them"
+    "offer": "so you know i've been working with a lot of it and operations teams in this like logistics space and i've been hearing two common themes that i thought might resonate with you one is their business teams that they're supporting are spending eighty percent or more of their time in repetitive manual and coordinated tasks and two is they've tried to look at ai agents to automate some of this but trust and accuracy can break down very easily and the it teams just can't support them",
+    "iceBreaker": {
+      "text": "\"I'm Brandon with Runbook, a small startup in San Francisco calling out of the blue \u2014 do you mind if I borrow thirty seconds to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"IT and operations teams in logistics are spending 80% of their time on repetitive manual tasks, and while they've tried AI agents to automate this, trust and accuracy break down and IT can't support them \u2014 I was curious if this is something you might have a hand in.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"It's probably not anything of interest \u2014 we're building out some tools right now so we're already mid-stride on that front, and the window isn't really open at the moment.\"",
+      "success": true
+    }
   },
   {
     "id": "361084498642",
@@ -3775,7 +4927,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA19f916d21bc9e65f88248b720ee19f2c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361041034975",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Rep called and immediately said \"Oh sorry, I got the wrong number.\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "None",
+      "success": null
+    }
   },
   {
     "id": "361079059143",
@@ -3809,7 +4973,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c6bb5eb3b3d77c8f9ce64bb441c13cd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361046399685",
     "persona": "Director (Other)",
-    "offer": "so we build ai agents that handle the coordination work you know your team does that typically requires touching multiple systems like navigating portals you know checking like sort of certifications or whatever before getting enough context to make a decision so think of like you know workflows that require maybe in like a like a dispatch coordination right like they they they have to pull out"
+    "offer": "so we build ai agents that handle the coordination work you know your team does that typically requires touching multiple systems like navigating portals you know checking like sort of certifications or whatever before getting enough context to make a decision so think of like you know workflows that require maybe in like a like a dispatch coordination right like they they they have to pull out",
+    "iceBreaker": {
+      "text": "\"Hey Donald, this is Brandon with Run Arya, a startup in San Francisco calling a bit out of the blue\u2014do you mind if I borrow thirty seconds to explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We build AI agents that handle coordination work across multiple systems, like navigating portals and checking certifications before making decisions\u2014common pain points in enterprise logistics.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I work with financial applications, not logistics, and my team is a support team for financial assistance.\"",
+      "success": true
+    }
   },
   {
     "id": "361091218169",
@@ -3877,7 +5053,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA81530f33ce92f1d7d214dfe3c8c19b32.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361053566672",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Charles, this is Brandon with Runbook. We're based in San Francisco. I'm calling you out of the blue and I want to be respectful\u2014could I borrow 30 seconds to explain the reason for my call?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "I'm right in the middle of something and I get so many unsolicited calls that it kills my world.",
+      "success": false
+    }
   },
   {
     "id": 361042771699,
@@ -3894,7 +5082,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc60532696fbe9f7d231d7639d15359fe.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361042771699",
     "persona": "IT / Engineering",
-    "offer": "we're a platform that helps organizations deploy agents to automate a lot of the manual effort that operations see that closes operations seems down wondering if that's something that touches your role at all"
+    "offer": "we're a platform that helps organizations deploy agents to automate a lot of the manual effort that operations see that closes operations seems down wondering if that's something that touches your role at all",
+    "iceBreaker": {
+      "text": "\"This is Chuck calling from Run Book\u2014can I ask you a quick question?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps organizations deploy agents to automate coordinated manual effort that operations teams handle, wondering if that touches your role at all.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": "361071789766",
@@ -3945,7 +5145,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA50605a0807a444c388d425d9cde9ba26.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360842756802",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Anna, this is Brandon with RunBook. I'm calling you out of the blue so you probably don't know who we are, but could I possibly borrow thirty seconds of your time to explain the reason for my call?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "If this is a sales call I'm not interested. You can take me off the list.",
+      "success": false
+    }
   },
   {
     "id": "360839116536",
@@ -3979,7 +5191,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb2dda02550393ec80d648543dbf863ac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360861691611",
     "persona": "IT / Engineering",
-    "offer": "what we're doing is we're helping companies like you guys deploy agents to automate a lot of the billing and like we're really billing and carrier communication like tasks that you know folks on your operations team spending eighty percent of your time going over and over again to to give back the the high value workers the time to do high value work"
+    "offer": "what we're doing is we're helping companies like you guys deploy agents to automate a lot of the billing and like we're really billing and carrier communication like tasks that you know folks on your operations team spending eighty percent of your time going over and over again to to give back the the high value workers the time to do high value work",
+    "iceBreaker": {
+      "text": "\"Hey Preston, this is Chuck from Runbook\u2014I'm calling you out of the blue. Can I tell you why I called and what we're doing in a couple seconds?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're helping companies like you deploy agents to automate billing and carrier communication tasks so your operations team can focus on high-value work instead of spending 80% of their time on repetitive work.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I'm not the owner\u2014I'm actually the owner of Triumph Financial. I just worked here previously as an employee.\"",
+      "success": false
+    }
   },
   {
     "id": "360840909540",
@@ -4047,7 +5271,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1bc80ee521fb628461c31a77f45508c9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360813385461",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hi Benjamin, this is Chuck Ga calling from Run\u2014how are you?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"We're not interested.\"",
+      "success": false
+    }
   },
   {
     "id": "360854391520",
@@ -4098,7 +5334,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbded11e71ad8773f37509cd9a9982ce2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360839022285",
     "persona": "IT / Engineering",
-    "offer": "run book we're an automation platform that helps deploy agents to execute the manual repetitive coordination task that operations teams have to go through on a day to day basis"
+    "offer": "run book we're an automation platform that helps deploy agents to execute the manual repetitive coordination task that operations teams have to go through on a day to day basis",
+    "iceBreaker": {
+      "text": "\"Hi, this is Chuck from Runbook. How are you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're an automation platform that helps deploy agents to execute manual repetitive coordination tasks that operations teams go through day to day.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're not in a position to spend money on new tooling right now\u2014we just locked in a bunch of stuff and need to hold off for six to eight months.\"",
+      "success": true
+    }
   },
   {
     "id": 360823897808,
@@ -4115,7 +5363,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a997c042aced2d4f96d39014a9e1223.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360823897808",
     "persona": "IT / Engineering",
-    "offer": "yeah sure so i understand it's you're the that you look after data and analytics at at dan ross and the reason that i'm calling is i speak to a lot of folks on in in your position who are you know working with their operations teams to sync up data across systems to reduce a lot of the manual effort that goes into coordinating the the repetitive task that they do on a day to day basis we're a platform that provides ai agents to to automate a lot of that work that sits at the kind orchestration layer of the data you have and and and allows agents to execute those those tasks for your operators"
+    "offer": "yeah sure so i understand it's you're the that you look after data and analytics at at dan ross and the reason that i'm calling is i speak to a lot of folks on in in your position who are you know working with their operations teams to sync up data across systems to reduce a lot of the manual effort that goes into coordinating the the repetitive task that they do on a day to day basis we're a platform that provides ai agents to to automate a lot of that work that sits at the kind orchestration layer of the data you have and and and allows agents to execute those those tasks for your operators",
+    "iceBreaker": {
+      "text": "\"This is Chuck from Runbook\u2014got a quick second? Can I tell you why I'm calling?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We provide AI agents to automate repetitive tasks and sync data across systems to reduce manual effort for your operations teams.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're not interested at the moment, thank you.\"",
+      "success": false
+    }
   },
   {
     "id": "360854310630",
@@ -4149,7 +5409,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb92e6171cc7de1c96f1b5288a1132851.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360842581697",
     "persona": "Technical IC",
-    "offer": "so i'm working with a lot of it teams you know in this wonderful age of ai i'm sure you probably heard a lot about that stuff but i've been hearing two kinda common themes that i thought potentially would resonate with you given your role one is they're building a lot of agent workflows but trust and accuracy you can break down very easily with ai and the second one is they're trying to build these like ai applications to help their operations teams because they spend you know maybe eighty percent of their time in manual coordination work you know i figured you might have something to do with one of these things is that right"
+    "offer": "so i'm working with a lot of it teams you know in this wonderful age of ai i'm sure you probably heard a lot about that stuff but i've been hearing two kinda common themes that i thought potentially would resonate with you given your role one is they're building a lot of agent workflows but trust and accuracy you can break down very easily with ai and the second one is they're trying to build these like ai applications to help their operations teams because they spend you know maybe eighty percent of their time in manual coordination work you know i figured you might have something to do with one of these things is that right",
+    "iceBreaker": {
+      "text": "James, this is Brandon\u2014I'm calling a little out of the blue here and I want to be respectful. Could I borrow 30 seconds of your time to explain the reason for my call?",
+      "success": true
+    },
+    "hook": {
+      "text": "I'm working with a lot of IT teams on AI agent workflows and AI applications to help operations teams reduce manual coordination work, and I thought one of these might resonate with your role as a systems integration developer.",
+      "success": true
+    },
+    "objection": {
+      "text": "I can't give that information out, but you have a wonderful day.",
+      "success": false
+    }
   },
   {
     "id": 360857757401,
@@ -4166,7 +5438,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA268286b41b6bb9ce4f2d4253c6baba9e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360857757401",
     "persona": "Analyst / Specialist",
-    "offer": "so i've been working with a lot of like it teams and you know in this age of ai and i've been hearing kind of two common themes that i thought my resonate with you given your role in in systems applications one is their building agent workflows but trust and accuracy you can break down very easily in production and and two is they're trying to you know automate a lot things in their operations teams and that's because they're spending like eighty percent of their time and in manual coordination work i was curious if you're working on you know you know these things today"
+    "offer": "so i've been working with a lot of like it teams and you know in this age of ai and i've been hearing kind of two common themes that i thought my resonate with you given your role in in systems applications one is their building agent workflows but trust and accuracy you can break down very easily in production and and two is they're trying to you know automate a lot things in their operations teams and that's because they're spending like eighty percent of their time and in manual coordination work i was curious if you're working on you know you know these things today",
+    "iceBreaker": {
+      "text": "\"Hey, this is Brandon with Runbook\u2014I'm calling you a little bit out of the blue here. Do you happen to have thirty seconds so I can explain the reason for my call?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been working with a lot of IT teams, and I'm hearing two common themes: they're building agent workflows but trust and accuracy break down in production, and they're trying to automate operations work because they're spending 80% of their time on manual coordination.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I'm not interested right now, and I'm about to go to meetings, so I really can't talk to you. Plus, I wouldn't be the person you need to talk to anyway.\"",
+      "success": false
+    }
   },
   {
     "id": 360588752578,
@@ -4183,7 +5467,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAd7131fcd94728ae49abc43b051ba429f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588752578",
     "persona": "Operations",
-    "offer": "what we are is an automation platform that helps automate the manual coordination work that your dispatcher are you know do on a daily basis dispatch operations teams"
+    "offer": "what we are is an automation platform that helps automate the manual coordination work that your dispatcher are you know do on a daily basis dispatch operations teams",
+    "iceBreaker": {
+      "text": "Hey Scott, it's Chuck Art calling from Runbook\u2014you and I spoke a couple weeks ago and you'd asked me to give you a callback.",
+      "success": true
+    },
+    "hook": {
+      "text": "We're an automation platform that helps automate the manual coordination work that your dispatchers do on a daily basis with dispatch operations teams.",
+      "success": true
+    },
+    "objection": {
+      "text": "We're happy with everything we got, so if you could just take me off your list.",
+      "success": false
+    }
   },
   {
     "id": 360590525162,
@@ -4200,7 +5496,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe02b97901a59842c92a3a89b2f7a32ee.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360590525162",
     "persona": "Operations",
-    "offer": "what run book is is that we're a platform that helps automate a lot of the manual coordination test that go into an operation like yours so think about carrier communication the out like bill like billing and encoding all that can be automated when and you know executed by an ai agent take you from you know four or six hours down to five minutes to to get something invoice and build out for one of those customers to work for"
+    "offer": "what run book is is that we're a platform that helps automate a lot of the manual coordination test that go into an operation like yours so think about carrier communication the out like bill like billing and encoding all that can be automated when and you know executed by an ai agent take you from you know four or six hours down to five minutes to to get something invoice and build out for one of those customers to work for",
+    "iceBreaker": {
+      "text": "Hey Andrew, this is Chuck from Run Book\u2014can I borrow a quick second?",
+      "success": true
+    },
+    "hook": {
+      "text": "We're a platform that automates manual coordination tasks in operations like billing, encoding, and carrier communication\u2014taking what normally takes 4-6 hours down to 5 minutes using AI agents.",
+      "success": true
+    },
+    "objection": {
+      "text": "We've already got a lot of the systems built out and I'm not really over the decision-making for that.",
+      "success": false
+    }
   },
   {
     "id": 360581535424,
@@ -4217,7 +5525,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb4b3dab5cbbdd5fce8d079ac30265a47.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360581535424",
     "persona": "Operations Leadership",
-    "offer": "we're agent platform that helps automate a lot of the manual coordination task that folks do on operations team between billing dispatching and like communication between carriers and your customers"
+    "offer": "we're agent platform that helps automate a lot of the manual coordination task that folks do on operations team between billing dispatching and like communication between carriers and your customers",
+    "iceBreaker": {
+      "text": "\"Hi Kyle, this is Chuck from Runbook\u2014we're an agent platform that helps automate manual coordination tasks on operations teams between billing, dispatching, and communication. Do you have a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We service the orchestration layer to integrate with all your systems and allow your team to take ownership of building it faster.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're doing a lot of it today, so we're good right now.\"",
+      "success": false
+    }
   },
   {
     "id": 360588532444,
@@ -4234,7 +5554,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA52d956f36111987b4377a8e872175a2c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360588532444",
     "persona": "Operations Leadership",
-    "offer": "we're talking about the agent automation stuff"
+    "offer": "we're talking about the agent automation stuff",
+    "iceBreaker": {
+      "text": "\"Hey Mike, it's Chuck Bartlett calling from Run Book\u2014we spoke a couple weeks ago. Can we meet with you and Chris, or communicate via email about the agent automation stuff?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "We're talking about agent automation stuff that we discussed previously.",
+      "success": true
+    },
+    "objection": {
+      "text": "We're getting too many innovations on this and it's overwhelming, so we're hitting pause and will reach out when it's practical for us to investigate further.",
+      "success": false
+    }
   },
   {
     "id": 360571129560,
@@ -4251,7 +5583,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4957a81ed1a0e914818c75ff55ee6fac.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360571129560",
     "persona": "Director (Other)",
-    "offer": "the reason i'm calling i'm calling from run book we're an ai platform actually that helps automate a lot of the operational tasks that teams are doing on a day to day basis from dispatching the billing to carrier coordination i'm curious if if that's something that you guys have looked at it keen and if if it's relevant to you"
+    "offer": "the reason i'm calling i'm calling from run book we're an ai platform actually that helps automate a lot of the operational tasks that teams are doing on a day to day basis from dispatching the billing to carrier coordination i'm curious if if that's something that you guys have looked at it keen and if if it's relevant to you",
+    "iceBreaker": {
+      "text": "\"Hi Lynn, this is Chuck Bartlett from Run Book\u2014can I grab a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're an AI platform that helps automate operational tasks like dispatching, billing, and carrier coordination.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We already have a supplier.\"",
+      "success": false
+    }
   },
   {
     "id": 360597499638,
@@ -4268,7 +5612,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe32ddddc83d4e7c48ad07aac4a7020e0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360597499638",
     "persona": "Finance Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hi Lynn, this is Chuck from Runbook.\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"You called my personal cell phone\u2014do not ever call me back.\"",
+      "success": false
+    }
   },
   {
     "id": "360614227654",
@@ -4336,7 +5692,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAfccaebfd207be084c97232f2736c1daf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360431190754",
     "persona": "IT Leadership",
-    "offer": "we are a platform that serves as an orchestration layer for the data and infrastructure that you have to deploy agents that automate operational tasks so the things that exist at the end of your current automations that you've already invested in that exist like email phone or customer portals that's what our agents are for to automate"
+    "offer": "we are a platform that serves as an orchestration layer for the data and infrastructure that you have to deploy agents that automate operational tasks so the things that exist at the end of your current automations that you've already invested in that exist like email phone or customer portals that's what our agents are for to automate",
+    "iceBreaker": {
+      "text": "\"Carl, this is Chuck from Runbook\u2014do you have a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that serves as an orchestration layer for your data and infrastructure to deploy agents that automate operational tasks at the end of your current automations like email, phone, or customer portals.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"It's probably a bit early for us\u2014we're updating backend systems, need good data, and need to integrate with systems first before leveraging agent tools.\"",
+      "success": true
+    }
   },
   {
     "id": 360350097107,
@@ -4353,7 +5721,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe453c78ed6f76a23fb5becbb14ee0a52.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360350097107",
     "persona": "Director (Other)",
-    "offer": "i know that i had sent you over some some information a little bit ago around run book what we're doing with gen automation was was hoping that we could find some time to connect and talk a little deeper about it"
+    "offer": "i know that i had sent you over some some information a little bit ago around run book what we're doing with gen automation was was hoping that we could find some time to connect and talk a little deeper about it",
+    "iceBreaker": {
+      "text": "\"I wanted to follow up\u2014I had sent you over some information a little bit ago around RunBook and what we're doing with Gen automation, and I was hoping we could find some time to connect and talk a little deeper about it.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "RunBook helps with Gen automation to improve analytics operations.",
+      "success": true
+    },
+    "objection": {
+      "text": "\"It's probably gonna be a while\u2014I get so much stuff going on in the next month or so, I got honestly no time for anything extra at this point.\"",
+      "success": true
+    }
   },
   {
     "id": 360435302099,
@@ -4370,7 +5750,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb99793f1fec3fa376687341444b5f8d0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360435302099",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Chuck from Runbook, do you have a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I'm retired.\"",
+      "success": false
+    }
   },
   {
     "id": 360301072101,
@@ -4387,7 +5779,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA9a1591a61a74ef51cde4e77e6d392414.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360301072101",
     "persona": "IT Leadership",
-    "offer": "we are as a platform that helps automate a lot of the manual coordination work that your operations teams are doing on a day to day basis sounds like you have some updated systems where folks are still toggling between throughout the day agents can take care of that work and give them time back and focus on more higher value work"
+    "offer": "we are as a platform that helps automate a lot of the manual coordination work that your operations teams are doing on a day to day basis sounds like you have some updated systems where folks are still toggling between throughout the day agents can take care of that work and give them time back and focus on more higher value work",
+    "iceBreaker": {
+      "text": "\"Hi Dan, it's Chuck from Runbook\u2014do you have a quick second? I'm calling to tell you who I'm calling.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps automate manual coordination work your operations teams do daily, so agents can toggle between fewer systems and focus on higher-value work.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I don't know how you got my personal cell phone, but send me an email instead and we can talk next week or the week after.\"",
+      "success": true
+    }
   },
   {
     "id": 360158840552,
@@ -4404,7 +5808,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA002695d9325af7e7519d1cc0c940c732.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360158840552",
     "persona": "IT Leadership",
-    "offer": "we're a data orchestration platform that helps you deploy and build agents that can automate a lot of the coordinated manual work your operations and finance teams doing on a day to day basis"
+    "offer": "we're a data orchestration platform that helps you deploy and build agents that can automate a lot of the coordinated manual work your operations and finance teams doing on a day to day basis",
+    "iceBreaker": {
+      "text": "\"This is Chuck Bartlett with Run Book, a data orchestration platform that helps you deploy and build agents to automate coordinated manual work your operations and finance teams do daily\u2014curious if that's something you've thought about?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We sit on top of your data and analytics infrastructure to automate tasks across multiple systems like TMS, ERP, or SAP, so your skilled teams focus on exceptions rather than routine order fulfillment and invoicing.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Most of our orders come in through API or EDI, so most of our billing is automated along with dispatch and CX, so I don't think this would benefit us.\"",
+      "success": false
+    }
   },
   {
     "id": "360171373283",
@@ -4438,7 +5854,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbd512615fa11fce430f943662915248a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360141685469",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Kyle, it's Chuck Ga from Run. Can you spare me a quick second?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "No thank you.",
+      "success": null
+    }
   },
   {
     "id": "360101230292",
@@ -4472,7 +5900,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3d5c2158cb4c33fcd693e74d5dbac738.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360097848023",
     "persona": "Director (Other)",
-    "offer": "what we do is we help automate a lot of the tasks that that operations teams are dealing with on a day to day basis so that could be billing be dispatching you we deploy these agents that that give you a lot of that time back"
+    "offer": "what we do is we help automate a lot of the tasks that that operations teams are dealing with on a day to day basis so that could be billing be dispatching you we deploy these agents that that give you a lot of that time back",
+    "iceBreaker": {
+      "text": "Chuck introduces himself as Chuck Ga with Runbook, mentions he's called a couple times, and tries to find time to connect.",
+      "success": true
+    },
+    "hook": {
+      "text": "We help automate tasks that operations teams deal with daily\u2014like billing and dispatching\u2014by deploying agents that give you back a lot of that time.",
+      "success": true
+    },
+    "objection": {
+      "text": "We don't have the appetite to do anything new right now because we're onboarding too much business.",
+      "success": true
+    }
   },
   {
     "id": "359736829641",
@@ -4540,7 +5980,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb5ae5bee3b73da789d52d5c5fa9621f7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359718654671",
     "persona": "Operations",
-    "offer": "we are a platform that helps teams like yours automate a lot of the manual coordination work that goes in between dispatch and billing"
+    "offer": "we are a platform that helps teams like yours automate a lot of the manual coordination work that goes in between dispatch and billing",
+    "iceBreaker": {
+      "text": "\"Hey Sig, you're the Director of Operations over at Barn, right?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps teams like yours automate manual coordination work between dispatch and billing.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We got that fairly automatic, it's fairly streamlined, so at this point I'm not interested.\"",
+      "success": false
+    }
   },
   {
     "id": "359722900208",
@@ -4591,7 +6043,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAf4b25f6932d86ee55dff3b9c73875c75.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359570062033",
     "persona": "Other",
-    "offer": "we're an organization that helps you know operations teams automate a lot of the manual coordination effort that goes into the day to day task with they that go into the operation on a day to day basis"
+    "offer": "we're an organization that helps you know operations teams automate a lot of the manual coordination effort that goes into the day to day task with they that go into the operation on a day to day basis",
+    "iceBreaker": {
+      "text": "\"This is Chuck from a company called Run; I help operations teams automate manual coordination effort in day-to-day tasks.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're an organization that helps operations teams automate a lot of the manual coordination effort that goes into day-to-day tasks; are you guys having an AI strategy or using anything like that today?\"",
+      "success": false
+    },
+    "objection": {
+      "text": "\"We're not interested, please delete my number.\"",
+      "success": false
+    }
   },
   {
     "id": "359605994227",
@@ -4625,7 +6089,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364cbed638259825cceb323fda508be3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359381665479",
     "persona": "Other",
-    "offer": "the reason i had called is i'm doing a bunch of research on an end that in the company i work for is called run book what we do is to work with it teams to help solve the problem of having operational like leaders have to deal with manual day to day task by automating them with with ai agents"
+    "offer": "the reason i had called is i'm doing a bunch of research on an end that in the company i work for is called run book what we do is to work with it teams to help solve the problem of having operational like leaders have to deal with manual day to day task by automating them with with ai agents",
+    "iceBreaker": {
+      "text": "Hi Ryan, this is Chuck with Runbook\u2014I was trying to reach Jose but got your number instead; do you have a moment?",
+      "success": true
+    },
+    "hook": {
+      "text": "We work with IT teams to help solve the problem of operational leaders dealing with manual day-to-day tasks by automating them with AI agents.",
+      "success": true
+    },
+    "objection": {
+      "text": "I'm not involved in those discussions and don't have information on AI investments\u2014those decisions are made way above us.",
+      "success": false
+    }
   },
   {
     "id": "359379965661",
@@ -4676,7 +6152,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA65552df8f224a84269aded8a93d4d9b0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359364064989",
     "persona": "Operations",
-    "offer": "I work with a lot of folks on the operation side of logistics companies who deal with having to manage and coordinate manual tasks all day moving between systems, and knowing how to handle a lot of that coordination."
+    "offer": "I work with a lot of folks on the operation side of logistics companies who deal with having to manage and coordinate manual tasks all day moving between systems, and knowing how to handle a lot of that coordination.",
+    "iceBreaker": {
+      "text": "\"Hey John, it's Chuck Guy calling from RunBook. I know I'm calling out of the blue, but can I grab a quick minute?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I work with folks on the operations side of logistics companies who deal with coordinating manual tasks all day and moving between systems.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": "359353906883",
@@ -4710,7 +6198,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAc854a0704825f3f5449f38259c6ef1f9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359221165804",
     "persona": "IT / Engineering",
-    "offer": "we're a platform that helps operations team reduce the manual tasks that they have to do on a day to day basis between systems by ninety seven percent with a agent"
+    "offer": "we're a platform that helps operations team reduce the manual tasks that they have to do on a day to day basis between systems by ninety seven percent with a agent",
+    "iceBreaker": {
+      "text": "\"Yeah Jason, this is Chuck Ga calling from Runbook\u2014how are you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps operations teams reduce manual tasks between systems by 97 percent, and I was wondering if you guys have looked at that in the past.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're really small and don't have any need for this right now\u2014we're lean and just doing things by hand.\"",
+      "success": false
+    }
   },
   {
     "id": 358851312352,
@@ -4727,7 +6227,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA1ee22edec27edb9eb64aa4bd432f3dd2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358851312352",
     "persona": "Operations",
-    "offer": "we're a platform that helps automate a lot of the operational tasks that teams are doing on a day to day basis whether it be like dispatch coordination driver coordination billing coordination things your team spending a lot of time on coordinating between systems that require manual effort"
+    "offer": "we're a platform that helps automate a lot of the operational tasks that teams are doing on a day to day basis whether it be like dispatch coordination driver coordination billing coordination things your team spending a lot of time on coordinating between systems that require manual effort",
+    "iceBreaker": {
+      "text": "Hi Amy, this is Chuck from Runbook. I left you a message yesterday and wanted to reach out about automating operational tasks your team is doing day to day.",
+      "success": true
+    },
+    "hook": {
+      "text": "We're a platform that helps automate operational tasks like dispatch coordination, driver coordination, and billing coordination by mapping workflows and automating them across systems.",
+      "success": true
+    },
+    "objection": {
+      "text": "We've got a massive IT department that's doing modernization work now, some of it we build some of it we buy.",
+      "success": true
+    }
   },
   {
     "id": 358663070432,
@@ -4744,7 +6256,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA37cbe1eed6a047be7236eb40fcac38d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358663070432",
     "persona": "Director (Other)",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hey Julie, sorry for catching you late\u2014this is Chuck Bartlett from Run Book. I used to work with you guys at my previous company.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"We're not interested right now.\"",
+      "success": false
+    }
   },
   {
     "id": "358705367746",
@@ -4795,7 +6319,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA817cf7ad33c7777b4657b077b8f6cbe0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358654043893",
     "persona": "IT Leadership",
-    "offer": "we're a platform that helps automate a lot of the coordination task that happened on outside of the automation you've already built and you guys done a lot of that with the pricing that you have your t air tms i'm curious if you've looked at the gen solutions at this point"
+    "offer": "we're a platform that helps automate a lot of the coordination task that happened on outside of the automation you've already built and you guys done a lot of that with the pricing that you have your t air tms i'm curious if you've looked at the gen solutions at this point",
+    "iceBreaker": {
+      "text": "\"This is Chuck from Runbook, do you have a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps automate coordination tasks outside of the automation you've already built with your pricing and TMS.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I'm coming into Atlanta right now so I can't really talk.\"",
+      "success": true
+    }
   },
   {
     "id": "358644207299",
@@ -4829,7 +6365,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAe8c8c7b718fdaed740c0313ad0e0aba9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414973656",
     "persona": "Executive",
-    "offer": "we're a platform founded by the former founder of motive the fleet management company what we do is we provide we help companies like y'all deploy agents to automate a lot of the tasks that exist on the edges of systems like your tms and el and still require manual coordination with phone email and text"
+    "offer": "we're a platform founded by the former founder of motive the fleet management company what we do is we provide we help companies like y'all deploy agents to automate a lot of the tasks that exist on the edges of systems like your tms and el and still require manual coordination with phone email and text",
+    "iceBreaker": {
+      "text": "Hi, this is Chuck from Runbook \u2014 do you have a quick second?",
+      "success": true
+    },
+    "hook": {
+      "text": "We're a platform founded by the former founder of Motive that helps companies deploy agents to automate tasks on the edges of systems like your TMS and ERP that still require manual coordination with phone, email, and text.",
+      "success": true
+    },
+    "objection": {
+      "text": "NONE",
+      "success": null
+    }
   },
   {
     "id": 358449854162,
@@ -4846,7 +6394,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAcfa46f0180dae8a14f9900c56e4be224.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358449854162",
     "persona": "IT / Engineering",
-    "offer": "we're a platform that helps automate one of the back office desk for operators at fleets and the reason i reached out to you is i understood that you kinda sit in the middle of the business and it parts of the business at keen and i wanted to get your perspective on what we're working on and see if you guys are invested in ai at all at this point"
+    "offer": "we're a platform that helps automate one of the back office desk for operators at fleets and the reason i reached out to you is i understood that you kinda sit in the middle of the business and it parts of the business at keen and i wanted to get your perspective on what we're working on and see if you guys are invested in ai at all at this point",
+    "iceBreaker": {
+      "text": "\"Hi Christie, this is Chuck Garland calling from RunBook, we're a platform that helps automate back office operations for fleet operators, and I wanted to get your perspective on what we're working on.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We do a lot with compliance documentation, billing automation, and carrier reconciliation across different lines to help optimize operations.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"There's a lot of cyber risk out there and I'm not taking the chance of talking to somebody that maybe I shouldn't.\"",
+      "success": false
+    }
   },
   {
     "id": 358446212853,
@@ -4863,7 +6423,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3fc9588acafd09118d0d2c23a182b4ab.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358446212853",
     "persona": "Director (Other)",
-    "offer": "run book is a platform that helps automate a lot of the back office and even dispatch oriented task that operators up you on a day to day basis using ai"
+    "offer": "run book is a platform that helps automate a lot of the back office and even dispatch oriented task that operators up you on a day to day basis using ai",
+    "iceBreaker": {
+      "text": "\"Hi, this is Chuck from Runbook\u2014do you have a quick second so I can tell you what I'm calling about?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"Runbook is a platform that helps automate a lot of back office and dispatch-oriented tasks that operators use on a day-to-day basis using AI.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"I don't do dispatch\u2014I'm in the fleet maintenance side of things.\"",
+      "success": false
+    }
   },
   {
     "id": 358414827240,
@@ -4880,7 +6452,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA3de75e888a28dbe3f1ccf624f43d6f21.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358414827240",
     "persona": "IT Leadership",
-    "offer": "what we do is provide a platform that sits on top of that to deploy agents to automate a lot of the coordination and manual tasks that operation seems to do on a day to day basis"
+    "offer": "what we do is provide a platform that sits on top of that to deploy agents to automate a lot of the coordination and manual tasks that operation seems to do on a day to day basis",
+    "iceBreaker": {
+      "text": "\"Hi Joel, this is Chuck from Run Book\u2014do you have a quick moment?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We provide a platform that sits on top of your data architecture to deploy agents and automate coordination and manual tasks, giving your team control to build flows using natural language.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're already using Automation Anywhere and writing our own agents with open source, and we feel very comfortable with what we've got and have no interest in adding anything else.\"",
+      "success": false
+    }
   },
   {
     "id": "358432988909",
@@ -4931,7 +6515,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA40479bf85cd5f303664666b592ba513c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358359611085",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Britney, this is Chuck from RunBook\u2014do you have a quick second?",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "I'm in the middle of something.",
+      "success": true
+    }
   },
   {
     "id": 357910316739,
@@ -4948,7 +6544,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0a8f04b92120afcfb608c837b5acb3c5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/357910316739",
     "persona": "Operations Leadership",
-    "offer": "we're a platform that helps organizations deploy agents to automate the manual coordination task that happened between systems and logistics"
+    "offer": "we're a platform that helps organizations deploy agents to automate the manual coordination task that happened between systems and logistics",
+    "iceBreaker": {
+      "text": "\"Hi, this is Chuck from Run Book. If you have a quick second, I can tell you why I'm reaching out to you directly.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that helps organizations deploy agents to automate the manual coordination tasks that happen between systems and logistics.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're going to implement a new TMS in Q3, so we need to utilize all the automation and data in the cloud first, understand where our holes are, and then maybe look outside\u2014but for now I'm not going to look at anything.\"",
+      "success": false
+    }
   },
   {
     "id": "357913837289",
@@ -5033,7 +6641,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA4fcb3c18d2ae5926bc4a7ebb84f1cc08.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/357801790150",
     "persona": "Executive",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Chuck from Run\u2014do you have a quick moment right now?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I'm in a conference call right now, you'll have to try to give me a call tomorrow.\"",
+      "success": true
+    }
   },
   {
     "id": "357810015985",
@@ -5084,7 +6704,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAba2a64311da1d59704eaf51748e073d6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/355479115456",
     "persona": "Executive",
-    "offer": "I've been doing a lot of research on you guys understand that you guys have updated quite a bit and and would love to show you what we're working with here at run book"
+    "offer": "I've been doing a lot of research on you guys understand that you guys have updated quite a bit and and would love to show you what we're working with here at run book",
+    "iceBreaker": {
+      "text": "Hey Andy, it's Chuck Bartlett calling back from Runbook\u2014did you get the note I sent? I'm looking for just 30 minutes sometime this week or next to show you what we're working with.",
+      "success": true
+    },
+    "hook": {
+      "text": "We've been doing a lot of research on your company and have been working with sanitation and waste companies lately, particularly around automation and billing for logistics to prevent margin leakage.",
+      "success": true
+    },
+    "objection": {
+      "text": "I can't commit to a time right now until we get things stable with this new Florida business, but I'm definitely interested in talking.",
+      "success": true
+    }
   },
   {
     "id": "355019098817",
@@ -5203,7 +6835,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA364228eb180a62efd79e0079b0406a86.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353051495136",
     "persona": "Operations",
-    "offer": "so we are a a platform that works with companies like bison who are built on you know really modern technology stacks to extend okay to the edges of those systems and automate a lot of the workflows that happen still in like within at the edges of those systems within phone text email with with ai agents"
+    "offer": "so we are a a platform that works with companies like bison who are built on you know really modern technology stacks to extend okay to the edges of those systems and automate a lot of the workflows that happen still in like within at the edges of those systems within phone text email with with ai agents",
+    "iceBreaker": {
+      "text": "\"I'm calling you from Runbook if you got a quick second I could tell you why I'm calling\u2014it's well researched.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We're a platform that works with companies like yours built on modern tech stacks to extend to the edges and automate workflows with AI agents across phone, text, email.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"A lot of the work we do is fairly complex, especially transportation and customer-facing communication\u2014AI is going to be fairly black and white on the message.\"",
+      "success": true
+    }
   },
   {
     "id": 353313151706,
@@ -5220,7 +6864,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA13db493e3829841899291c6315e09ca1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353313151706",
     "persona": "IT / Engineering",
-    "offer": "this is our well researched cold call can explain while i'm calling"
+    "offer": "this is our well researched cold call can explain while i'm calling",
+    "iceBreaker": {
+      "text": "\"Chris, this is Chuck from RunBook\u2014if you got a quick second, this is a well-researched cold call and I can explain why I'm calling.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I'm not the day\"",
+      "success": null
+    }
   },
   {
     "id": "353039973063",
@@ -5288,7 +6944,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAb062cfb05e713effbefed527528b38d6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353079475902",
     "persona": "Operations",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Chuck from Run Book, we just texted on LinkedIn, but do you have a quick second?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"Just take my name off your list.\"",
+      "success": false
+    }
   },
   {
     "id": 352964206277,
@@ -5305,7 +6973,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8c65c72046ee5b5c23e58c8d20fdf6a5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352964206277",
     "persona": "IT / Engineering",
-    "offer": "i just was try we had talked about the gentle k stuff you said you're building some things you wanted to take a look at run book or willing to take a look at what we're doing over here and see if there's just compare notes i guess"
+    "offer": "i just was try we had talked about the gentle k stuff you said you're building some things you wanted to take a look at run book or willing to take a look at what we're doing over here and see if there's just compare notes i guess",
+    "iceBreaker": {
+      "text": "Mark, it's Chuck with Run Book. We talked last week and I sent you a note, but I never heard back\u2014I was hoping we could get some time.",
+      "success": true
+    },
+    "hook": {
+      "text": "We talked about the Genteel K stuff you're building, and I wanted to see if you'd be willing to take a look at what we're doing at Run Book and compare notes.",
+      "success": true
+    },
+    "objection": {
+      "text": "Your email went straight to spam, so I never got it.",
+      "success": true
+    }
   },
   {
     "id": 352267068151,
@@ -5322,7 +7002,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CAbb973fa5b805f10036d157a3543d5996.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352267068151",
     "persona": "IT / Engineering",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hey Bob, this is Chuck Bartlett from Run Book. Do you have a quick second?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I don't have time right now.\"",
+      "success": true
+    }
   },
   {
     "id": 352209529543,
@@ -5339,7 +7031,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0b2c6bf1da5613a0ba6e71d988bfe1ae.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/352209529543",
     "persona": "Executive",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hey Cathy, this is Chuck from Run\u2014Runbook sent you a LinkedIn connection the other day. Do you have a quick second?",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "Not a good time",
+      "success": null
+    }
   },
   {
     "id": 348957287123,
@@ -5356,7 +7060,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA87db7705c230a0d4481f18ee176bc98a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348957287123",
     "persona": "Director (Other)",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hey Ken, this is Chuck from Runbook\u2014do you have a quick second?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"Sorry, no\"",
+      "success": false
+    }
   },
   {
     "id": "348904534747",
@@ -5458,7 +7174,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8e61b4d6aed7bcad66a07c94bae3ae17.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348416113388",
     "persona": "IT Leadership",
-    "offer": "what we do is we are providing agents or deploying agents for customers to help operationalize some of the frontline work that those teams are doing better are manual and coordinated with these systems on a day to day basis"
+    "offer": "what we do is we are providing agents or deploying agents for customers to help operationalize some of the frontline work that those teams are doing better are manual and coordinated with these systems on a day to day basis",
+    "iceBreaker": {
+      "text": "\"Hey Tim, this is Chuck from Runbook. Do you have a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We deploy AI agents to help operationalize frontline work and manual coordinated tasks, and we differentiate on usability\u2014you can take ownership and deploy workflows yourself.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We're already working with Happy Robot and we're really happy with what they offer and the flexibility they give us.\"",
+      "success": true
+    }
   },
   {
     "id": 348414293736,
@@ -5475,7 +7203,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA64da111ffbac8fdf8e3e721d2485d5f4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348414293736",
     "persona": "IT Leadership",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "Hi Mike, this is Chuck calling from RunBook\u2014if you have a quick second.",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "Not for unsolicited calls.",
+      "success": false
+    }
   },
   {
     "id": 348393224922,
@@ -5492,7 +7232,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA239e9b4f212c5c89d170b673b04259d4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348393224922",
     "persona": "Executive",
-    "offer": ""
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"This is Chuck from RunBook. Did you see the note I sent yesterday?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I really don't have time for this. I'm not ready for that conversation right now.\"",
+      "success": true
+    }
   },
   {
     "id": 348396717807,
@@ -5509,7 +7261,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA658ec9cc7d1ebefbd324d8f1233d558a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348396717807",
     "persona": "IT Leadership",
-    "offer": "so run book is a platform that helps automate a lot of the frontline operational work that your team might be doing manually to coordinate with carriers across systems we're using agent ai to basically automate that"
+    "offer": "so run book is a platform that helps automate a lot of the frontline operational work that your team might be doing manually to coordinate with carriers across systems we're using agent ai to basically automate that",
+    "iceBreaker": {
+      "text": "\"Hi, this is Chuck from Runbook\u2014can I get a quick second to tell you why I'm calling?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"Runbook automates frontline operational work and coordinates with carriers across systems using agent AI to fill gaps between systems that still require manual work like phone calls, emails, and portal access.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"We've already built our own in-house AI system to automate a bunch of functions.\"",
+      "success": false
+    }
   },
   {
     "id": "348443019991",
@@ -5543,7 +7307,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA0e56cb36f8097762b5044e66bf20b7d1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348421380840",
     "persona": "IT / Engineering",
-    "offer": "run book is a platform that helps automate a lot of the frontline work that your operations team does in coordination in manual communication on a day to day basis wondering if you're looking at ai to handle any those type of tasks right now"
+    "offer": "run book is a platform that helps automate a lot of the frontline work that your operations team does in coordination in manual communication on a day to day basis wondering if you're looking at ai to handle any those type of tasks right now",
+    "iceBreaker": {
+      "text": "\"Hey Jason, this is Chuck Bartlett calling from Run Book\u2014can I borrow a quick second?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"Run Book is a platform that helps automate frontline work, operations coordination, and manual communication\u2014wondering if you're looking at AI to handle any of those tasks right now?\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"At this point we're not looking at any solution.\"",
+      "success": false
+    }
   },
   {
     "id": "348381346495",
@@ -5594,7 +7370,19 @@ export const CALL_DATA = [
     "recordingUrl": "https://recording.nooks.in/CA8138047a6d98c91e5fb34f44adae4596.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/347870970583",
     "persona": "",
-    "offer": "we're a platform that's helping sit on top of like the mash and can actually automate a lot of the frontline line work that operations seems to spend a lot of time doing like the manual coordination for for loads in terms of email text and phone our agents actually automate that give your teams a time of time back"
+    "offer": "we're a platform that's helping sit on top of like the mash and can actually automate a lot of the frontline line work that operations seems to spend a lot of time doing like the manual coordination for for loads in terms of email text and phone our agents actually automate that give your teams a time of time back",
+    "iceBreaker": {
+      "text": "\"Hey Stuart, got a quick second? I'm calling from Ron Book\u2014we're a platform that automates frontline work and manual coordination for loads via email, text, and phone to give your teams time back.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I've been researching your systems and believe your current tech stack is indicative of customers who have the most success with us, so I'd like to understand your regional workflows to take to corporate leadership.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"All software and technology decisions are made at corporate, and I don't have that much time to offer\u2014just refer to tech support.\"",
+      "success": false
+    }
   },
   {
     "id": "347866853100",
