@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { hsApiFetch } from './hsApi.js';
 
 const DISPOSITION_MAP = {
   'a12225bd-f90c-43bb-aa10-4b7875a05937': 'Not Interested',
@@ -74,27 +75,14 @@ async function fetchCalls(token, afterTimestamp) {
   let hasMore = true;
 
   while (hasMore) {
-    const res = await fetch('/hubspot-api/crm/v3/objects/calls/search', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        filterGroups,
-        properties,
-        sorts: [{ propertyName: 'hs_timestamp', direction: 'DESCENDING' }],
-        limit: 200,
-        after: offset || undefined,
-      }),
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.message || `HubSpot API error: ${res.status}`);
-    }
-
-    const data = await res.json();
+    const body = {
+      filterGroups,
+      properties,
+      sorts: [{ propertyName: 'hs_timestamp', direction: 'DESCENDING' }],
+      limit: 200,
+      after: offset || undefined,
+    };
+    const data = await hsApiFetch('/crm/v3/objects/calls/search', token, { method: 'POST', body });
     allResults.push(...(data.results || []));
 
     if (data.paging?.next?.after) {

@@ -93,6 +93,11 @@ export default function CallAnalytics() {
   const [filterTag, setFilterTag] = useState('All');
   const [tags, setTags] = useState({});  // callId -> [tag1, tag2, ...]
   const [taggingProgress, setTaggingProgress] = useState(null); // null | { done, total }
+  const [stages, setStages] = useState({}); // callId -> { iceBreaker: {text,success}, hook: {text,success}, objection: {text,success} }
+  const [stagesProgress, setStagesProgress] = useState(null);
+  const [filterIceBreaker, setFilterIceBreaker] = useState('All');
+  const [filterHook, setFilterHook] = useState('All');
+  const [filterObjection, setFilterObjection] = useState('All');
   const [apiKey, setApiKey] = useState('');
   const [showApiInput, setShowApiInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -121,9 +126,13 @@ export default function CallAnalytics() {
       const matchVertical = filterVertical === 'All' || row.vertical === filterVertical;
       const matchPersona = filterPersona === 'All' || row.persona === filterPersona;
       const matchTag = filterTag === 'All' || (tags[row.id] && tags[row.id].includes(filterTag));
-      return matchSearch && matchDateFrom && matchDateTo && matchOutcome && matchRep && matchVertical && matchPersona && matchTag;
+      const s = stages[row.id];
+      const matchIB = filterIceBreaker === 'All' || (s && ((filterIceBreaker === 'Passed' && s.iceBreaker?.success) || (filterIceBreaker === 'Failed' && s.iceBreaker?.success === false)));
+      const matchHk = filterHook === 'All' || (s && ((filterHook === 'Passed' && s.hook?.success) || (filterHook === 'Failed' && s.hook?.success === false)));
+      const matchObj = filterObjection === 'All' || (s && ((filterObjection === 'Handled' && s.objection?.success) || (filterObjection === 'Lost' && s.objection?.success === false) || (filterObjection === 'None' && s.objection?.success === null)));
+      return matchSearch && matchDateFrom && matchDateTo && matchOutcome && matchRep && matchVertical && matchPersona && matchTag && matchIB && matchHk && matchObj;
     });
-  }, [rows, search, filterDateFrom, filterDateTo, filterOutcome, filterRep, filterVertical, filterPersona, filterTag, tags]);
+  }, [rows, search, filterDateFrom, filterDateTo, filterOutcome, filterRep, filterVertical, filterPersona, filterTag, tags, filterIceBreaker, filterHook, filterObjection, stages]);
 
   // Stats — computed from filtered rows so they reflect current filters
   const stats = useMemo(() => {
@@ -160,6 +169,19 @@ export default function CallAnalytics() {
     const heardPitch = fullPitch + partialPitch;
     return { tagged, reachCounts, pitchCounts, objCounts, rightPerson, rightTarget, fullPitch, heardPitch };
   }, [filtered, tags]);
+
+  // Stage funnel stats — scoped to filtered rows
+  const stageFunnel = useMemo(() => {
+    const filteredIds = new Set(filtered.map(r => r.id));
+    const filteredStages = Object.entries(stages).filter(([id]) => filteredIds.has(id));
+    const total = filteredStages.length;
+    if (total === 0) return null;
+    const ibPassed = filteredStages.filter(([, s]) => s.iceBreaker?.success).length;
+    const hookPassed = filteredStages.filter(([, s]) => s.hook?.success).length;
+    const objHandled = filteredStages.filter(([, s]) => s.objection?.success === true).length;
+    const objLost = filteredStages.filter(([, s]) => s.objection?.success === false).length;
+    return { total, ibPassed, hookPassed, objHandled, objLost };
+  }, [filtered, stages]);
 
   // Unique reps and verticals for filters
   const reps = useMemo(() => ['All', ...new Set(rows.map(r => r.rep))], [rows]);
@@ -234,6 +256,84 @@ OBJECTION: <tag or None>` }]
       setTaggingProgress({ done: i + 1, total: toAnalyze.length });
     }
     setTaggingProgress(null);
+  };
+
+  // Analyze call stages: Ice Breaker, Hook, Objection
+  const analyzeCallStages = async () => {
+    if (!apiKey) { setApiError('Set your Anthropic API key first'); return; }
+    const toAnalyze = rows.filter(r => r.transcript && r.transcript.length > 100 && '(Rep):' === r.transcript.match(/\(Rep\):/)?.[0] && !stages[r.id]);
+    if (toAnalyze.length === 0) return;
+    setStagesProgress({ done: 0, total: toAnalyze.length });
+    const newStages = { ...stages };
+    for (let i = 0; i < toAnalyze.length; i++) {
+      const row = toAnalyze[i];
+      try {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001', max_tokens: 300,
+            messages: [{ role: 'user', content: `You are an expert cold call analyst. Analyze this B2B cold call transcript and break it into 3 stages.
+
+STAGE 1 — ICE BREAKER (the intro + permission ask)
+This is everything from "Hi, this is [rep]" up to and including the prospect's response to the permission ask ("can I borrow 30 seconds?").
+- Extract: What the rep said to open and ask for time. Use their actual words, cleaned up slightly.
+- Success: TRUE if the prospect agreed to listen or stayed on the line. FALSE if they immediately refused, said "no time", or hung up before any pitch.
+
+STAGE 2 — HOOK (the value proposition / reason for calling)
+This is where the rep explains what they do and why it's relevant to the prospect.
+- Extract: The core pitch/value prop the rep delivered. Use their actual words, cleaned up.
+- Success: TRUE if the rep finished delivering the hook AND the prospect responded to it (even if negatively — an objection means they heard it). FALSE if the prospect cut them off mid-pitch, hung up, or the call never reached this stage.
+- If call ended before hook, write "Never reached hook" for the text.
+
+STAGE 3 — OBJECTION (prospect's pushback + rep's handling)
+This is the prospect's reason for saying no and how the rep responded.
+- Extract: The specific objection the prospect raised. Use their actual words.
+- Success: TRUE if the rep overcame the objection (got a meeting, follow-up, or kept the conversation going). FALSE if the objection ended the call. Use NONE if no objection was raised (meeting booked smoothly, or call ended before this stage).
+- If no objection, write "None" for the text.
+
+Call outcome: ${row.outcome}
+Contact: ${row.contactName || 'Unknown'} (${row.title || 'Unknown title'})
+
+Transcript:
+${row.transcript.slice(0, 2500)}
+
+Respond in EXACTLY this format (6 lines, no extra text):
+ICE_BREAKER_TEXT: [1 sentence max]
+ICE_BREAKER_SUCCESS: [TRUE or FALSE]
+HOOK_TEXT: [1 sentence max]
+HOOK_SUCCESS: [TRUE or FALSE]
+OBJECTION_TEXT: [1 sentence max]
+OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
+          })
+        });
+        if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
+        const data = await res.json();
+        const text = data.content?.[0]?.text || '';
+        const parsed = { iceBreaker: { text: '', success: false }, hook: { text: '', success: false }, objection: { text: '', success: null } };
+        for (const line of text.split('\n')) {
+          const m = line.match(/^(ICE_BREAKER_TEXT|ICE_BREAKER_SUCCESS|HOOK_TEXT|HOOK_SUCCESS|OBJECTION_TEXT|OBJECTION_SUCCESS):\s*(.+)/i);
+          if (!m) continue;
+          const [, key, val] = m;
+          const v = val.trim();
+          switch (key.toUpperCase()) {
+            case 'ICE_BREAKER_TEXT': parsed.iceBreaker.text = v; break;
+            case 'ICE_BREAKER_SUCCESS': parsed.iceBreaker.success = v.toUpperCase() === 'TRUE'; break;
+            case 'HOOK_TEXT': parsed.hook.text = v; break;
+            case 'HOOK_SUCCESS': parsed.hook.success = v.toUpperCase() === 'TRUE'; break;
+            case 'OBJECTION_TEXT': parsed.objection.text = v; break;
+            case 'OBJECTION_SUCCESS': parsed.objection.success = v.toUpperCase() === 'NONE' ? null : v.toUpperCase() === 'TRUE'; break;
+          }
+        }
+        newStages[row.id] = parsed;
+      } catch (e) {
+        if (i === 0) { setApiError(`Stage analysis failed: ${e.message}`); setStagesProgress(null); return; }
+        newStages[row.id] = { iceBreaker: { text: 'Error', success: false }, hook: { text: 'Error', success: false }, objection: { text: 'Error', success: null } };
+      }
+      setStages({ ...newStages });
+      setStagesProgress({ done: i + 1, total: toAnalyze.length });
+    }
+    setStagesProgress(null);
   };
 
   // Export CSV
@@ -477,6 +577,23 @@ OBJECTION: <tag or None>` }]
             ))}
           </>
         )}
+        {stageFunnel && (
+          <>
+            <div style={{ width: 1, background: '#e5e7eb', margin: '4px 4px', flexShrink: 0 }} />
+            {[
+              { label: 'IB Passed', value: stageFunnel.ibPassed, pct: `${Math.round(stageFunnel.ibPassed / stageFunnel.total * 100)}%`, color: '#16a34a' },
+              { label: 'Hook Passed', value: stageFunnel.hookPassed, pct: `${Math.round(stageFunnel.hookPassed / stageFunnel.total * 100)}%`, color: '#2563eb' },
+              { label: 'Obj Handled', value: stageFunnel.objHandled, pct: `${Math.round(stageFunnel.objHandled / stageFunnel.total * 100)}%`, color: '#7c3aed' },
+              { label: 'Obj Lost', value: stageFunnel.objLost, pct: `${Math.round(stageFunnel.objLost / stageFunnel.total * 100)}%`, color: '#dc2626' },
+            ].map(s => (
+              <div key={s.label} style={{ background: s.color + '08', border: `1px solid ${s.color}22`, borderRadius: 9, padding: '7px 14px', textAlign: 'center', minWidth: 80, flexShrink: 0 }}>
+                <div style={{ fontSize: 18, fontWeight: 800, color: s.color, lineHeight: 1 }}>{s.value}</div>
+                {s.pct && <div style={{ fontSize: 10, color: s.color, fontWeight: 600 }}>{s.pct}</div>}
+                <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 2, whiteSpace: 'nowrap' }}>{s.label}</div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
 
       {/* ── Filters ── */}
@@ -507,20 +624,40 @@ OBJECTION: <tag or None>` }]
             {allTags.map(t => <option key={t} value={t}>{t === 'All' ? 'All Tags' : t}</option>)}
           </select>
         )}
-        {(search || filterDateFrom || filterDateTo || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterPersona !== 'All' || filterTag !== 'All') && (
-          <button onClick={() => { setSearch(''); setFilterDateFrom(''); setFilterDateTo(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterPersona('All'); setFilterTag('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
+        {Object.keys(stages).length > 0 && (
+          <>
+            <select value={filterIceBreaker} onChange={e => setFilterIceBreaker(e.target.value)} style={{ border: '1px solid #bbf7d0', borderRadius: 7, padding: '7px 8px', fontSize: 12, color: '#374151', background: '#f0fdf4' }}>
+              {['All', 'Passed', 'Failed'].map(v => <option key={v}>{v === 'All' ? 'IB: All' : `IB: ${v}`}</option>)}
+            </select>
+            <select value={filterHook} onChange={e => setFilterHook(e.target.value)} style={{ border: '1px solid #bfdbfe', borderRadius: 7, padding: '7px 8px', fontSize: 12, color: '#374151', background: '#eff6ff' }}>
+              {['All', 'Passed', 'Failed'].map(v => <option key={v}>{v === 'All' ? 'Hook: All' : `Hook: ${v}`}</option>)}
+            </select>
+            <select value={filterObjection} onChange={e => setFilterObjection(e.target.value)} style={{ border: '1px solid #fecaca', borderRadius: 7, padding: '7px 8px', fontSize: 12, color: '#374151', background: '#fef2f2' }}>
+              {['All', 'Handled', 'Lost', 'None'].map(v => <option key={v}>{v === 'All' ? 'Obj: All' : `Obj: ${v}`}</option>)}
+            </select>
+          </>
+        )}
+        {(search || filterDateFrom || filterDateTo || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterPersona !== 'All' || filterTag !== 'All' || filterIceBreaker !== 'All' || filterHook !== 'All' || filterObjection !== 'All') && (
+          <button onClick={() => { setSearch(''); setFilterDateFrom(''); setFilterDateTo(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterPersona('All'); setFilterTag('All'); setFilterIceBreaker('All'); setFilterHook('All'); setFilterObjection('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
         )}
         <button
           onClick={analyzeAllCalls}
-          disabled={!!taggingProgress || !apiKey}
+          disabled={!!taggingProgress || !!stagesProgress || !apiKey}
           style={{ background: taggingProgress ? '#e5e7eb' : 'linear-gradient(135deg, #f59e0b, #ef4444)', color: taggingProgress ? '#9ca3af' : 'white', border: 'none', borderRadius: 7, padding: '7px 13px', fontSize: 12, cursor: taggingProgress ? 'not-allowed' : 'pointer', fontWeight: 700 }}
         >
-          {taggingProgress ? `Tagging ${taggingProgress.done}/${taggingProgress.total}...` : `🏷 Analyze Objections${!apiKey ? ' (need API key)' : ''}`}
+          {taggingProgress ? `Tagging ${taggingProgress.done}/${taggingProgress.total}...` : `🏷 Tags${!apiKey ? ' (key)' : ''}`}
+        </button>
+        <button
+          onClick={analyzeCallStages}
+          disabled={!!stagesProgress || !!taggingProgress || !apiKey}
+          style={{ background: stagesProgress ? '#e5e7eb' : 'linear-gradient(135deg, #4f46e5, #7c3aed)', color: stagesProgress ? '#9ca3af' : 'white', border: 'none', borderRadius: 7, padding: '7px 13px', fontSize: 12, cursor: stagesProgress ? 'not-allowed' : 'pointer', fontWeight: 700 }}
+        >
+          {stagesProgress ? `Stages ${stagesProgress.done}/${stagesProgress.total}...` : `📊 Analyze Stages${!apiKey ? ' (key)' : ''}`}
         </button>
         <div style={{ flex: 1 }} />
         <span style={{ fontSize: 12, color: '#9ca3af' }}>
           {filtered.length} of {rows.length} calls {filtered.length !== rows.length && '(filtered)'}
-          {Object.keys(tags).length > 0 && ` · ${Object.keys(tags).length} tagged`}
+          {Object.keys(stages).length > 0 && ` · ${Object.keys(stages).length} staged`}
         </span>
         {processing && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: '#ede9fe', borderRadius: 7, padding: '6px 12px' }}>
@@ -553,6 +690,9 @@ OBJECTION: <tag or None>` }]
               <TH>Duration</TH>
               <TH style={{ minWidth: 200 }}>Offer Used</TH>
               <TH style={{ minWidth: 180 }}>Tags / Insights</TH>
+              <TH style={{ minWidth: 160 }}>Ice Breaker</TH>
+              <TH style={{ minWidth: 160 }}>Hook</TH>
+              <TH style={{ minWidth: 160 }}>Objection</TH>
               <TH style={{ minWidth: 300 }}>Transcript</TH>
               <TH>Recording</TH>
               {customCols.map(c => (
@@ -662,6 +802,28 @@ OBJECTION: <tag or None>` }]
                       <span style={{ color: '#d1d5db', fontSize: 11 }}>{taggingProgress ? '...' : '—'}</span>
                     )}
                   </TD>
+                  {/* Ice Breaker / Hook / Objection stage cells */}
+                  {['iceBreaker', 'hook', 'objection'].map(stageKey => {
+                    const s = stages[row.id]?.[stageKey];
+                    if (!s) return <TD key={stageKey}><span style={{ color: '#d1d5db', fontSize: 11 }}>{stagesProgress ? '...' : '—'}</span></TD>;
+                    const isNone = s.success === null;
+                    const bg = isNone ? '#f3f4f6' : s.success ? '#dcfce7' : '#fee2e2';
+                    const dot = isNone ? '#9ca3af' : s.success ? '#22c55e' : '#ef4444';
+                    const label = isNone ? 'N/A' : s.success ? 'Passed' : 'Failed';
+                    return (
+                      <TD key={stageKey} style={{ fontSize: 11 }}>
+                        <div style={{ background: bg, borderRadius: 6, padding: '5px 8px', border: `1px solid ${isNone ? '#e5e7eb' : s.success ? '#bbf7d0' : '#fecaca'}` }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 3 }}>
+                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: dot, flexShrink: 0 }} />
+                            <span style={{ fontWeight: 700, fontSize: 10, color: isNone ? '#6b7280' : s.success ? '#166534' : '#991b1b' }}>{label}</span>
+                          </div>
+                          <div style={{ color: '#374151', lineHeight: 1.4, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                            {s.text || '—'}
+                          </div>
+                        </div>
+                      </TD>
+                    );
+                  })}
                   <TD style={{ maxWidth: 350 }}>
                     {row.transcript && row.transcript.length > 50 ? (
                       <div>
@@ -717,7 +879,7 @@ OBJECTION: <tag or None>` }]
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={15 + customCols.length + 1} style={{ textAlign: 'center', padding: '48px 20px', color: '#9ca3af', fontSize: 14 }}>
+                <td colSpan={18 + customCols.length + 1} style={{ textAlign: 'center', padding: '48px 20px', color: '#9ca3af', fontSize: 14 }}>
                   No calls match your filters.
                 </td>
               </tr>

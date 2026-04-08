@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
+import { hsApiFetch } from './hsApi.js';
 
 // --- Disposition classification ---
 const CONNECTED_GUIDS = new Set([
@@ -124,13 +125,7 @@ async function fetchAllCalls(token, sinceMs, beforeMs) {
       limit: 200,
     };
     if (after) body.after = after;
-    const res = await fetch('/hubspot-api/crm/v3/objects/calls/search', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) throw new Error(`HubSpot calls API: ${res.status}`);
-    const data = await res.json();
+    const data = await hsApiFetch('/crm/v3/objects/calls/search', token, { method: 'POST', body });
     allResults.push(...(data.results || []));
     if (data.paging?.next?.after) { after = data.paging.next.after; }
     else break;
@@ -140,11 +135,7 @@ async function fetchAllCalls(token, sinceMs, beforeMs) {
 }
 
 async function fetchOwners(token) {
-  const res = await fetch('/hubspot-api/crm/v3/owners', {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) throw new Error(`Owners API: ${res.status}`);
-  const data = await res.json();
+  const data = await hsApiFetch('/crm/v3/owners', token);
   const map = {};
   (data.results || []).forEach(o => { map[String(o.id)] = `${o.firstName || ''} ${o.lastName || ''}`.trim() || `Owner ${o.id}`; });
   return map;
@@ -154,13 +145,9 @@ async function batchAssociations(token, callIds) {
   const map = {};
   for (let i = 0; i < callIds.length; i += 100) {
     const batch = callIds.slice(i, i + 100);
-    const res = await fetch('/hubspot-api/crm/v4/associations/calls/contacts/batch/read', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ inputs: batch.map(id => ({ id })) }),
-    });
-    if (!res.ok) continue;
-    const data = await res.json();
+    let data;
+    try { data = await hsApiFetch('/crm/v4/associations/calls/contacts/batch/read', token, { method: 'POST', body: { inputs: batch.map(id => ({ id })) } }); }
+    catch { continue; }
     (data.results || []).forEach(r => {
       const callId = String(r.from?.id);
       const tos = r.to || [];
@@ -175,13 +162,9 @@ async function batchContacts(token, contactIds) {
   const unique = [...new Set(contactIds)];
   for (let i = 0; i < unique.length; i += 100) {
     const batch = unique.slice(i, i + 100);
-    const res = await fetch('/hubspot-api/crm/v3/objects/contacts/batch/read', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ inputs: batch.map(id => ({ id })), properties: ['buyer_persona', 'seniority_level', 'associatedcompanyid', 'firstname', 'lastname', 'jobtitle'] }),
-    });
-    if (!res.ok) continue;
-    const data = await res.json();
+    let data;
+    try { data = await hsApiFetch('/crm/v3/objects/contacts/batch/read', token, { method: 'POST', body: { inputs: batch.map(id => ({ id })), properties: ['buyer_persona', 'seniority_level', 'associatedcompanyid', 'firstname', 'lastname', 'jobtitle'] } }); }
+    catch { continue; }
     (data.results || []).forEach(c => { map[String(c.id)] = c.properties; });
   }
   return map;
@@ -192,13 +175,9 @@ async function batchCompanies(token, companyIds) {
   const unique = [...new Set(companyIds.filter(Boolean))];
   for (let i = 0; i < unique.length; i += 100) {
     const batch = unique.slice(i, i + 100);
-    const res = await fetch('/hubspot-api/crm/v3/objects/companies/batch/read', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ inputs: batch.map(id => ({ id })), properties: ['vertical', 'name'] }),
-    });
-    if (!res.ok) continue;
-    const data = await res.json();
+    let data;
+    try { data = await hsApiFetch('/crm/v3/objects/companies/batch/read', token, { method: 'POST', body: { inputs: batch.map(id => ({ id })), properties: ['vertical', 'name'] } }); }
+    catch { continue; }
     (data.results || []).forEach(c => { map[String(c.id)] = c.properties; });
   }
   return map;
