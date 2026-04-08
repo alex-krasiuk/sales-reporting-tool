@@ -164,9 +164,10 @@ export default function CallAnalytics() {
     const meetingBooked = filtered.filter(r => r.outcome === 'Meeting Booked').length;
     const followUp = filtered.filter(r => r.outcome === 'Follow up - interested').length;
     const wrongContact = filtered.filter(r => r.outcome.startsWith('Wrong')).length;
+    const wrongNumber = filtered.filter(r => r.outcome === 'Wrong number').length;
     const avgMs = total ? filtered.reduce((a, r) => a + r.durationMs, 0) / total : 0;
     const avgSec = Math.round(avgMs / 1000);
-    return { total, notInterested, meetingBooked, followUp, wrongContact, avgSec };
+    return { total, notInterested, meetingBooked, followUp, wrongContact, wrongNumber, avgSec };
   }, [filtered]);
 
   // Funnel stats from tags — also scoped to filtered rows
@@ -576,6 +577,7 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
           { label: 'Meeting Booked', value: stats.meetingBooked, color: '#16a34a' },
           { label: 'Follow Up', value: stats.followUp, color: '#2563eb' },
           { label: 'Wrong Contact', value: stats.wrongContact, color: '#d97706' },
+          { label: 'Wrong # Rate', value: `${stats.total ? Math.round((stats.wrongNumber / stats.total) * 100) : 0}%`, color: '#ef4444' },
           { label: 'Book Rate', value: `${stats.total ? Math.round((stats.meetingBooked / stats.total) * 100) : 0}%`, color: '#0891b2' },
           { label: 'Avg Duration', value: `${Math.floor(stats.avgSec / 60)}m ${stats.avgSec % 60}s`, color: '#7c3aed' },
         ].map(s => (
