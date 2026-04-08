@@ -825,7 +825,7 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
                             <span style={{ width: 6, height: 6, borderRadius: '50%', background: dot, flexShrink: 0 }} />
                             <span style={{ fontWeight: 700, fontSize: 10, color: isNone ? '#6b7280' : s.success ? '#166534' : '#991b1b' }}>{label}</span>
                           </div>
-                          <div style={{ color: '#374151', lineHeight: 1.4, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                          <div style={{ color: '#374151', lineHeight: 1.4 }}>
                             {s.text || '—'}
                           </div>
                         </div>
