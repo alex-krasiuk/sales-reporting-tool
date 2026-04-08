@@ -555,7 +555,7 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
       {/* ── Stats Bar ── */}
       <div style={{ display: 'flex', gap: 10, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, overflowX: 'auto' }}>
         {[
-          { label: 'Total Calls', value: stats.total, color: '#4f46e5' },
+          { label: 'Connects', value: stats.total, color: '#4f46e5' },
           { label: 'Not Interested', value: stats.notInterested, color: '#dc2626' },
           { label: 'Meeting Booked', value: stats.meetingBooked, color: '#16a34a' },
           { label: 'Follow Up', value: stats.followUp, color: '#2563eb' },
