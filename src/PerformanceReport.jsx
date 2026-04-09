@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { hsApiFetch } from './hsApi.js';
 
 // --- Disposition classification ---
@@ -216,47 +216,42 @@ function KPICard({ label, value, sub, bg }) {
 
 // --- Main component ---
 export default function PerformanceReport({ hsToken }) {
-  const CACHE_KEY = 'perf_report_cache';
-  const CACHE_TTL = 3 * 24 * 60 * 60 * 1000; // 3 days
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [report, setReport] = useState(() => {
-    try {
-      const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
-      if (cached && Date.now() - cached.ts < CACHE_TTL) return cached.data;
-    } catch {}
-    return null;
-  });
+  const [report, setReport] = useState(null);
   const [progress, setProgress] = useState('');
-  const [cacheAge, setCacheAge] = useState(() => {
-    try { const c = JSON.parse(localStorage.getItem(CACHE_KEY)); return c?.ts || null; } catch { return null; }
-  });
 
-  const loadReport = useCallback(async (force) => {
+  // Date range picker — defaults to current week (Monday to today)
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const mondayStr = (() => { const m = getMonday(new Date()); return m.toISOString().slice(0, 10); })();
+  const [dateFrom, setDateFrom] = useState(mondayStr);
+  const [dateTo, setDateTo] = useState(todayStr);
+
+  const loadReport = useCallback(async () => {
     if (!hsToken) { setError('Set HubSpot token to load report'); return; }
-    // Use cache if fresh and not forced
-    if (!force && report) return;
     setLoading(true); setError(''); setProgress('Fetching owners...');
 
     try {
-      // Dates
-      const now = new Date();
-      const thisMonday = getMonday(now);
-      const lastMonday = new Date(thisMonday); lastMonday.setUTCDate(lastMonday.getUTCDate() - 7);
-      const thisMondayMs = thisMonday.getTime();
-      const lastMondayMs = lastMonday.getTime();
+      // Dates from picker
+      const fromDate = new Date(dateFrom + 'T00:00:00Z');
+      const toDate = new Date(dateTo + 'T23:59:59Z');
+      const fromMs = fromDate.getTime();
+      const toMs = toDate.getTime() + 1; // +1ms to include end of day
+      // Previous period (same length) for comparison
+      const periodMs = toMs - fromMs;
+      const prevFromMs = fromMs - periodMs;
+      const prevToMs = fromMs;
 
       // Step 1: Owners
       const owners = await fetchOwners(hsToken);
       setProgress(`Fetching this week's calls...`);
 
-      // Step 2: This week's calls
-      const thisWeekCalls = await fetchAllCalls(hsToken, thisMondayMs, null);
-      setProgress(`Got ${thisWeekCalls.length} calls. Fetching last week...`);
+      // Step 2: Selected period calls
+      const thisWeekCalls = await fetchAllCalls(hsToken, fromMs, toMs);
+      setProgress(`Got ${thisWeekCalls.length} calls. Fetching previous period...`);
 
-      // Step 8: Last week's calls
-      const lastWeekCalls = await fetchAllCalls(hsToken, lastMondayMs, thisMondayMs);
+      // Previous period for comparison
+      const lastWeekCalls = await fetchAllCalls(hsToken, prevFromMs, prevToMs);
       setProgress(`Fetching contact associations for ${thisWeekCalls.length} calls...`);
 
       // Step 4: Contact associations
@@ -357,7 +352,7 @@ export default function PerformanceReport({ hsToken }) {
       const connRateDelta = thisConnRate - lastConnRate;
 
       const reportData = {
-        periodLabel: `Week of ${fmtDate(thisMonday.toISOString())} (WTD)`,
+        periodLabel: dateFrom === dateTo ? fmtDate(dateFrom) : `${fmtDate(dateFrom)} – ${fmtDate(dateTo)}`,
         totalDials, connections, meetings, dialsPerDay, uniqueCompanies: uniqueCompanies.size,
         dispositionCounts, byDay,
         byRep: Object.fromEntries(Object.entries(byRep).map(([k, v]) => [k, { ...v, dates: [...v.dates] }])),
@@ -366,40 +361,61 @@ export default function PerformanceReport({ hsToken }) {
         connectRate: thisConnRate,
       };
       setReport(reportData);
-      localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: reportData }));
-      setCacheAge(Date.now());
+      // Report loaded
       setProgress('');
     } catch (e) {
       setError(e.message);
     } finally {
       setLoading(false);
     }
-  }, [hsToken]);
+  }, [hsToken, dateFrom, dateTo]);
 
-  useEffect(() => { if (hsToken) loadReport(); }, [hsToken, loadReport]);
+  // Auto-load on first mount if token is set
+  useEffect(() => { if (hsToken && !report) loadReport(); }, []);
+
+  // Date picker bar — always visible
+  const datePicker = (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0 }}>
+      <span style={{ fontSize: 12, fontWeight: 600, color: '#374151' }}>Period:</span>
+      <input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 10px', fontSize: 12, color: '#374151' }} />
+      <span style={{ color: '#9ca3af', fontSize: 12 }}>–</span>
+      <input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 10px', fontSize: 12, color: '#374151' }} />
+      <button onClick={loadReport} disabled={loading || !hsToken} style={{ background: loading ? '#e5e7eb' : '#4f46e5', color: loading ? '#9ca3af' : 'white', border: 'none', borderRadius: 6, padding: '6px 16px', fontSize: 12, fontWeight: 700, cursor: loading ? 'not-allowed' : 'pointer' }}>
+        {loading ? `Loading... ${progress}` : 'Load Report'}
+      </button>
+      {[['Today', todayStr, todayStr], ['This Week', mondayStr, todayStr], ['Yesterday', (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })(), (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })()]].map(([label, from, to]) => (
+        <button key={label} onClick={() => { setDateFrom(from); setDateTo(to); }} style={{ background: dateFrom === from && dateTo === to ? '#eef2ff' : '#f3f4f6', border: `1px solid ${dateFrom === from && dateTo === to ? '#c7d2fe' : '#e5e7eb'}`, borderRadius: 6, padding: '5px 10px', fontSize: 11, cursor: 'pointer', color: '#374151', fontWeight: dateFrom === from && dateTo === to ? 700 : 400 }}>{label}</button>
+      ))}
+      {error && <span style={{ color: '#dc2626', fontSize: 12 }}>{error}</span>}
+    </div>
+  );
 
   if (!hsToken) {
-    return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#9ca3af', fontSize: 14 }}>Set your HubSpot token in the top bar to load the report.</div>;
+    return <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {datePicker}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af', fontSize: 14 }}>Set your HubSpot token in the top bar to load the report.</div>
+    </div>;
+  }
+  if (!report && !loading) {
+    return <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {datePicker}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af', fontSize: 14 }}>Select a date range and click "Load Report".</div>
+    </div>;
   }
   if (loading) {
-    return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', flexDirection: 'column', gap: 12 }}>
-      <div style={{ fontSize: 14, color: '#6b7280' }}>{progress || 'Loading...'}</div>
-      <div style={{ width: 200, height: 4, background: '#e5e7eb', borderRadius: 2 }}><div style={{ height: '100%', background: '#4f46e5', borderRadius: 2, width: '60%', animation: 'pulse 1.5s infinite' }} /></div>
+    return <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {datePicker}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 12 }}>
+        <div style={{ fontSize: 14, color: '#6b7280' }}>{progress || 'Loading...'}</div>
+        <div style={{ width: 200, height: 4, background: '#e5e7eb', borderRadius: 2 }}><div style={{ height: '100%', background: '#4f46e5', borderRadius: 2, width: '60%', animation: 'pulse 1.5s infinite' }} /></div>
+      </div>
     </div>;
   }
-  if (error) {
-    return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', flexDirection: 'column', gap: 12 }}>
-      <div style={{ color: '#dc2626', fontSize: 14 }}>{error}</div>
-      <button onClick={() => loadReport(true)} style={{ background: '#4f46e5', color: 'white', border: 'none', borderRadius: 6, padding: '8px 16px', cursor: 'pointer', fontSize: 13 }}>Retry</button>
-    </div>;
-  }
-  if (!report) return null;
 
   const r = report;
   const delta = (n) => n > 0 ? `↑ +${n} vs last wk` : n < 0 ? `↓ ${n} vs last wk` : '— same as last wk';
   const deltaPp = (n) => n > 0 ? `↑ +${n.toFixed(1)}pp vs last wk` : n < 0 ? `↓ ${n.toFixed(1)}pp vs last wk` : '— same as last wk';
 
-  const W = { name: 200, num: 90, pct: 120 };
   const vertCols = ['Vertical', 'Dials', 'Connections', 'Connect Rate', 'Meetings'];
   const vertWidths = [200, 90, 90, 120, 90];
   const repCols = ['Rep', 'Dials', 'Dials/Day', 'Connections', 'Connect Rate', 'Meetings', 'Meeting Rate'];
@@ -424,14 +440,12 @@ export default function PerformanceReport({ hsToken }) {
   const sortedOutcomes = outcomeOrder.filter(o => r.dispositionCounts[o]);
 
   return (
-    <div style={{ height: '100%', overflow: 'auto', padding: '0 24px 40px' }}>
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {datePicker}
+      <div style={{ flex: 1, overflow: 'auto', padding: '0 24px 40px' }}>
       {/* Title */}
       <div style={{ background: S.headerBg, color: S.headerText, padding: '16px 20px', borderRadius: 8, marginTop: 16, fontSize: 15, fontWeight: 700 }}>
         Runbook — Nooks Call Performance | {r.periodLabel}
-        <span style={{ float: 'right', display: 'flex', alignItems: 'center', gap: 10 }}>
-          {cacheAge && <span style={{ fontSize: 10, color: '#9ca3af' }}>Cached {new Date(cacheAge).toLocaleString()}</span>}
-          <button onClick={() => loadReport(true)} style={{ background: '#374151', color: '#d1d5db', border: 'none', borderRadius: 5, padding: '4px 12px', cursor: 'pointer', fontSize: 11 }}>↻ Refresh</button>
-        </span>
       </div>
 
       {/* ========== SECTION 1: OVERVIEW ========== */}
@@ -547,6 +561,7 @@ export default function PerformanceReport({ hsToken }) {
       )}
 
       <div style={{ height: 40 }} />
+      </div>
     </div>
   );
 }
