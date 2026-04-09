@@ -76,7 +76,7 @@ function getMonday(date) {
 }
 
 function fmtDate(dateStr) {
-  const d = new Date(dateStr);
+  const d = new Date(dateStr + 'T12:00:00');
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
