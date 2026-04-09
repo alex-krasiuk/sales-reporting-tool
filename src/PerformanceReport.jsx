@@ -113,15 +113,15 @@ async function fetchAllCalls(token, sinceMs, beforeMs) {
   while (true) {
     const filters = [
       { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
-      { propertyName: 'hs_createdate', operator: 'GTE', value: String(sinceMs) },
+      { propertyName: 'hs_timestamp', operator: 'GTE', value: String(sinceMs) },
     ];
     if (beforeMs) {
-      filters.push({ propertyName: 'hs_createdate', operator: 'LT', value: String(beforeMs) });
+      filters.push({ propertyName: 'hs_timestamp', operator: 'LT', value: String(beforeMs) });
     }
     const body = {
       filterGroups: [{ filters }],
-      properties: ['hs_call_disposition', 'hs_createdate', 'hubspot_owner_id'],
-      sorts: [{ propertyName: 'hs_createdate', direction: 'DESCENDING' }],
+      properties: ['hs_call_disposition', 'hs_timestamp', 'hubspot_owner_id'],
+      sorts: [{ propertyName: 'hs_timestamp', direction: 'DESCENDING' }],
       limit: 200,
     };
     if (after) body.after = after;
@@ -277,7 +277,7 @@ export default function PerformanceReport({ hsToken }) {
         const callId = String(call.id);
         const disposition = classifyDisposition(p.hs_call_disposition || '');
         const rep = owners[p.hubspot_owner_id] || 'Unknown';
-        const date = new Date(p.hs_createdate);
+        const date = new Date(p.hs_timestamp || p.hs_createdate);
         const pacificDate = new Date(date.getTime() - 7 * 60 * 60 * 1000); // UTC-7
         const dateStr = pacificDate.toISOString().slice(0, 10);
         const dayOfWeek = DAYS[pacificDate.getUTCDay()];
