@@ -106,7 +106,11 @@ export default function CallAnalytics() {
   const [filterVertical, setFilterVertical] = useState('All');
   const [filterPersona, setFilterPersona] = useState('All');
   const [filterTag, setFilterTag] = useState('All');
-  const [tags, setTags] = useState({});  // callId -> [tag1, tag2, ...]
+  const [tags, setTags] = useState(() => {
+    const t = {};
+    CALL_DATA.forEach(d => { if (d.tags) t[d.id] = d.tags; });
+    return t;
+  });
   const [taggingProgress, setTaggingProgress] = useState(null); // null | { done, total }
   const [stages, setStages] = useState(() => {
     const s = {};
