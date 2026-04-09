@@ -165,9 +165,12 @@ export default function CallAnalytics() {
     const followUp = filtered.filter(r => r.outcome === 'Follow up - interested').length;
     const wrongContact = filtered.filter(r => r.outcome.startsWith('Wrong')).length;
     const wrongNumber = filtered.filter(r => r.outcome === 'Wrong number').length;
+    const wrongContactOnly = filtered.filter(r => r.outcome.startsWith('Wrong') && r.outcome !== 'Wrong number').length;
+    const accountToPursue = filtered.filter(r => r.outcome === 'Account to Pursue').length;
+    const noLonger = filtered.filter(r => r.outcome === 'No longer at company').length;
     const avgMs = total ? filtered.reduce((a, r) => a + r.durationMs, 0) / total : 0;
     const avgSec = Math.round(avgMs / 1000);
-    return { total, notInterested, meetingBooked, followUp, wrongContact, wrongNumber, avgSec };
+    return { total, notInterested, meetingBooked, followUp, wrongContact, wrongNumber, wrongContactOnly, accountToPursue, noLonger, avgSec };
   }, [filtered]);
 
   // Funnel stats from tags — also scoped to filtered rows
@@ -621,6 +624,49 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
           </>
         )}
       </div>
+
+      {/* ── Disposition Bar ── */}
+      {stats.total > 0 && (
+        <div style={{ padding: '8px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0 }}>
+          <div style={{ display: 'flex', height: 28, borderRadius: 6, overflow: 'hidden', border: '1px solid #e5e7eb' }}>
+            {[
+              { label: 'Meeting Booked', count: stats.meetingBooked, color: '#16a34a', bg: '#dcfce7' },
+              { label: 'Follow Up', count: stats.followUp, color: '#2563eb', bg: '#dbeafe' },
+              { label: 'Account to Pursue', count: stats.accountToPursue, color: '#059669', bg: '#d1fae5' },
+              { label: 'Not Interested', count: stats.notInterested, color: '#dc2626', bg: '#fee2e2' },
+              { label: 'Wrong Contact', count: stats.wrongContactOnly, color: '#d97706', bg: '#fef3c7' },
+              { label: 'Wrong Number', count: stats.wrongNumber, color: '#ef4444', bg: '#fecaca' },
+              { label: 'Other', count: stats.noLonger, color: '#6b7280', bg: '#f3f4f6' },
+            ].filter(s => s.count > 0).map(s => {
+              const pct = (s.count / stats.total * 100);
+              return (
+                <div key={s.label} title={`${s.label}: ${s.count} (${pct.toFixed(1)}%)`} style={{
+                  width: `${pct}%`, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  borderRight: '1px solid white', cursor: 'default', minWidth: pct > 4 ? 0 : 0,
+                }}>
+                  {pct >= 8 && <span style={{ fontSize: 10, fontWeight: 700, color: s.color, whiteSpace: 'nowrap' }}>{s.label} {Math.round(pct)}%</span>}
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ display: 'flex', gap: 12, marginTop: 5, flexWrap: 'wrap' }}>
+            {[
+              { label: 'Meeting Booked', count: stats.meetingBooked, color: '#16a34a', bg: '#dcfce7' },
+              { label: 'Follow Up', count: stats.followUp, color: '#2563eb', bg: '#dbeafe' },
+              { label: 'Account to Pursue', count: stats.accountToPursue, color: '#059669', bg: '#d1fae5' },
+              { label: 'Not Interested', count: stats.notInterested, color: '#dc2626', bg: '#fee2e2' },
+              { label: 'Wrong Contact', count: stats.wrongContactOnly, color: '#d97706', bg: '#fef3c7' },
+              { label: 'Wrong Number', count: stats.wrongNumber, color: '#ef4444', bg: '#fecaca' },
+            ].filter(s => s.count > 0).map(s => (
+              <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <span style={{ width: 8, height: 8, borderRadius: 2, background: s.bg, border: `1px solid ${s.color}40`, flexShrink: 0 }} />
+                <span style={{ fontSize: 10, color: '#6b7280' }}>{s.label}</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: s.color }}>{s.count} ({Math.round(s.count / stats.total * 100)}%)</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* ── Filters ── */}
       <div style={{ display: 'flex', gap: 8, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, alignItems: 'center', flexWrap: 'wrap' }}>
