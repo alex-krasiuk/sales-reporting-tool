@@ -97,6 +97,39 @@ export default function CallAnalytics() {
   const [apiKey, setApiKey] = useState('');
   const [showApiInput, setShowApiInput] = useState(false);
   const [apiError, setApiError] = useState('');
+  const [customCols, setCustomCols] = useState([]);
+  const [search, setSearch] = useState('');
+  const [filterDateFrom, setFilterDateFrom] = useState('');
+  const [filterDateTo, setFilterDateTo] = useState('');
+  const [filterOutcome, setFilterOutcome] = useState('All');
+  const [filterRep, setFilterRep] = useState('All');
+  const [filterVertical, setFilterVertical] = useState('All');
+  const [filterPersona, setFilterPersona] = useState('All');
+  const [filterTag, setFilterTag] = useState('All');
+  const [tags, setTags] = useState(() => {
+    const t = {};
+    CALL_DATA.forEach(d => { if (d.tags) t[d.id] = d.tags; });
+    return t;
+  });
+  const [taggingProgress, setTaggingProgress] = useState(null);
+  const [stages, setStages] = useState(() => {
+    const s = {};
+    CALL_DATA.forEach(d => {
+      if (d.iceBreaker || d.hook || d.objection) {
+        s[d.id] = { iceBreaker: d.iceBreaker, hook: d.hook, objection: d.objection };
+      }
+    });
+    return s;
+  });
+  const [stagesProgress, setStagesProgress] = useState(null);
+  const [filterIceBreaker, setFilterIceBreaker] = useState('All');
+  const [filterHook, setFilterHook] = useState('All');
+  const [filterObjection, setFilterObjection] = useState('All');
+  const [showModal, setShowModal] = useState(false);
+  const [expandedRow, setExpandedRow] = useState(null);
+  const [colForm, setColForm] = useState({ name: '', type: 'ai', prompt: '', formula: '' });
+  const [processing, setProcessing] = useState(null);
+  const [processingProgress, setProcessingProgress] = useState(0);
 
   // --- Manual Sync Pipeline ---
   const VALID_DISPOSITIONS = [
@@ -314,39 +347,7 @@ ${transcript.slice(0, 2500)}` }]
     }
   }, [hsToken, apiKey, rows, stages, tags]);
 
-  const [customCols, setCustomCols] = useState([]);
-  const [search, setSearch] = useState('');
-  const [filterDateFrom, setFilterDateFrom] = useState('');
-  const [filterDateTo, setFilterDateTo] = useState('');
-  const [filterOutcome, setFilterOutcome] = useState('All');
-  const [filterRep, setFilterRep] = useState('All');
-  const [filterVertical, setFilterVertical] = useState('All');
-  const [filterPersona, setFilterPersona] = useState('All');
-  const [filterTag, setFilterTag] = useState('All');
-  const [tags, setTags] = useState(() => {
-    const t = {};
-    CALL_DATA.forEach(d => { if (d.tags) t[d.id] = d.tags; });
-    return t;
-  });
-  const [taggingProgress, setTaggingProgress] = useState(null); // null | { done, total }
-  const [stages, setStages] = useState(() => {
-    const s = {};
-    CALL_DATA.forEach(d => {
-      if (d.iceBreaker || d.hook || d.objection) {
-        s[d.id] = { iceBreaker: d.iceBreaker, hook: d.hook, objection: d.objection };
-      }
-    });
-    return s;
-  });
-  const [stagesProgress, setStagesProgress] = useState(null);
-  const [filterIceBreaker, setFilterIceBreaker] = useState('All');
-  const [filterHook, setFilterHook] = useState('All');
-  const [filterObjection, setFilterObjection] = useState('All');
-  const [showModal, setShowModal] = useState(false);
-  const [expandedRow, setExpandedRow] = useState(null);
-  const [colForm, setColForm] = useState({ name: '', type: 'ai', prompt: '', formula: '' });
-  const [processing, setProcessing] = useState(null);
-  const [processingProgress, setProcessingProgress] = useState(0);
+  // (all useState declarations are above the sync pipeline)
 
   // Filtered rows
   const filtered = useMemo(() => {
