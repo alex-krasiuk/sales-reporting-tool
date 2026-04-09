@@ -94,6 +94,10 @@ export default function CallAnalytics() {
     })();
   }, [hsToken]);
 
+  const [apiKey, setApiKey] = useState('');
+  const [showApiInput, setShowApiInput] = useState(false);
+  const [apiError, setApiError] = useState('');
+
   // --- Manual Sync Pipeline ---
   const VALID_DISPOSITIONS = [
     'a12225bd-f90c-43bb-aa10-4b7875a05937', '81180310-0202-4b44-8417-168bd57e399a',
@@ -338,14 +342,11 @@ ${transcript.slice(0, 2500)}` }]
   const [filterIceBreaker, setFilterIceBreaker] = useState('All');
   const [filterHook, setFilterHook] = useState('All');
   const [filterObjection, setFilterObjection] = useState('All');
-  const [apiKey, setApiKey] = useState('');
-  const [showApiInput, setShowApiInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [expandedRow, setExpandedRow] = useState(null);
   const [colForm, setColForm] = useState({ name: '', type: 'ai', prompt: '', formula: '' });
   const [processing, setProcessing] = useState(null);
   const [processingProgress, setProcessingProgress] = useState(0);
-  const [apiError, setApiError] = useState('');
 
   // Filtered rows
   const filtered = useMemo(() => {
