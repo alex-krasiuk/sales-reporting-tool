@@ -235,11 +235,12 @@ export default function PerformanceReport({ hsToken }) {
     setLoading(true); setError(''); setProgress('Fetching owners...');
 
     try {
-      // Dates from picker
-      const fromDate = new Date(dateFrom + 'T00:00:00Z');
-      const toDate = new Date(dateTo + 'T23:59:59Z');
+      // Dates from picker — use Pacific time (UTC-7) boundaries
+      const fromDate = new Date(dateFrom + 'T07:00:00Z'); // midnight Pacific = 7am UTC
+      const toDate = new Date(dateTo + 'T07:00:00Z');
+      toDate.setUTCDate(toDate.getUTCDate() + 1); // end of day Pacific = next day 7am UTC
       const fromMs = fromDate.getTime();
-      const toMs = toDate.getTime() + 1; // +1ms to include end of day
+      const toMs = toDate.getTime();
       // Previous period (same length) for comparison
       const periodMs = toMs - fromMs;
       const prevFromMs = fromMs - periodMs;
@@ -277,8 +278,9 @@ export default function PerformanceReport({ hsToken }) {
         const disposition = classifyDisposition(p.hs_call_disposition || '');
         const rep = owners[p.hubspot_owner_id] || 'Unknown';
         const date = new Date(p.hs_createdate);
-        const dateStr = date.toISOString().slice(0, 10);
-        const dayOfWeek = DAYS[date.getUTCDay()];
+        const pacificDate = new Date(date.getTime() - 7 * 60 * 60 * 1000); // UTC-7
+        const dateStr = pacificDate.toISOString().slice(0, 10);
+        const dayOfWeek = DAYS[pacificDate.getUTCDay()];
 
         const contactId = callToContact[callId];
         const contact = contactId ? contacts[contactId] : null;
