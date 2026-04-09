@@ -76,10 +76,16 @@ export default function CallAnalytics() {
   const [showHsInput, setShowHsInput] = useState(false);
   const { calls: liveCalls, loading: hsLoading, error: hsError, lastSync, refresh } = useHubSpotCalls(hsToken);
 
-  // Use live data if available, fall back to static
+  // Use static data as base, merge in any NEW live calls (don't overwrite enriched static data)
   const [rows, setRows] = useState(CALL_DATA);
   useEffect(() => {
-    if (liveCalls.length > 0) setRows(liveCalls);
+    if (liveCalls.length > 0) {
+      const existingIds = new Set(CALL_DATA.map(d => d.id));
+      const newCalls = liveCalls.filter(c => !existingIds.has(c.id));
+      if (newCalls.length > 0) {
+        setRows(prev => [...newCalls, ...prev]);
+      }
+    }
   }, [liveCalls]);
 
   // Total dials (all calls including voicemail/no answer) — fetched from HubSpot
