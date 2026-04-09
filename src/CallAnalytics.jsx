@@ -574,19 +574,19 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
       {/* ── Stats Bar ── */}
       <div style={{ display: 'flex', gap: 10, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, overflowX: 'auto' }}>
         {[
-          ...(totalDials ? [{ label: 'Total Dials', value: totalDials.toLocaleString(), color: '#111827' }] : []),
-          { label: 'Connects', value: stats.total, color: '#4f46e5' },
-          { label: 'Not Interested', value: stats.notInterested, color: '#dc2626' },
-          { label: 'Meeting Booked', value: stats.meetingBooked, color: '#16a34a' },
-          { label: 'Follow Up', value: stats.followUp, color: '#2563eb' },
-          { label: 'Wrong Contact', value: stats.wrongContact, color: '#d97706' },
-          { label: 'Wrong # Rate', value: `${stats.total ? Math.round((stats.wrongNumber / stats.total) * 100) : 0}%`, color: '#ef4444' },
-          { label: 'Book Rate', value: `${stats.total ? Math.round((stats.meetingBooked / stats.total) * 100) : 0}%`, color: '#0891b2' },
-          { label: 'Avg Duration', value: `${Math.floor(stats.avgSec / 60)}m ${stats.avgSec % 60}s`, color: '#7c3aed' },
+          ...(totalDials ? [{ label: 'Total Dials', value: totalDials.toLocaleString(), color: '#111827', pct: null }] : []),
+          { label: 'Connects', value: stats.total, color: '#4f46e5', pct: totalDials ? `${Math.round(stats.total / totalDials * 100)}%` : null },
+          { label: 'Not Interested', value: stats.notInterested, color: '#dc2626', pct: stats.total ? `${Math.round(stats.notInterested / stats.total * 100)}%` : null },
+          { label: 'Meeting Booked', value: stats.meetingBooked, color: '#16a34a', pct: stats.total ? `${Math.round(stats.meetingBooked / stats.total * 100)}%` : null },
+          { label: 'Follow Up', value: stats.followUp, color: '#2563eb', pct: stats.total ? `${Math.round(stats.followUp / stats.total * 100)}%` : null },
+          { label: 'Wrong Contact', value: stats.wrongContact, color: '#d97706', pct: stats.total ? `${Math.round(stats.wrongContact / stats.total * 100)}%` : null },
+          { label: 'Wrong Number', value: stats.wrongNumber, color: '#ef4444', pct: stats.total ? `${Math.round(stats.wrongNumber / stats.total * 100)}%` : null },
+          { label: 'Avg Duration', value: `${Math.floor(stats.avgSec / 60)}m ${stats.avgSec % 60}s`, color: '#7c3aed', pct: null },
         ].map(s => (
           <div key={s.label} style={{ background: s.color + '08', border: `1px solid ${s.color}22`, borderRadius: 9, padding: '7px 14px', textAlign: 'center', minWidth: 80, flexShrink: 0 }}>
             <div style={{ fontSize: 20, fontWeight: 800, color: s.color, lineHeight: 1 }}>{s.value}</div>
-            <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 3, whiteSpace: 'nowrap' }}>{s.label}</div>
+            {s.pct && <div style={{ fontSize: 11, fontWeight: 600, color: s.color, marginTop: 2, opacity: 0.7 }}>{s.pct}</div>}
+            <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 2, whiteSpace: 'nowrap' }}>{s.label}</div>
           </div>
         ))}
         {funnel && (
@@ -624,49 +624,6 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
           </>
         )}
       </div>
-
-      {/* ── Disposition Bar ── */}
-      {stats.total > 0 && (
-        <div style={{ padding: '8px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0 }}>
-          <div style={{ display: 'flex', height: 28, borderRadius: 6, overflow: 'hidden', border: '1px solid #e5e7eb' }}>
-            {[
-              { label: 'Meeting Booked', count: stats.meetingBooked, color: '#16a34a', bg: '#dcfce7' },
-              { label: 'Follow Up', count: stats.followUp, color: '#2563eb', bg: '#dbeafe' },
-              { label: 'Account to Pursue', count: stats.accountToPursue, color: '#059669', bg: '#d1fae5' },
-              { label: 'Not Interested', count: stats.notInterested, color: '#dc2626', bg: '#fee2e2' },
-              { label: 'Wrong Contact', count: stats.wrongContactOnly, color: '#d97706', bg: '#fef3c7' },
-              { label: 'Wrong Number', count: stats.wrongNumber, color: '#ef4444', bg: '#fecaca' },
-              { label: 'Other', count: stats.noLonger, color: '#6b7280', bg: '#f3f4f6' },
-            ].filter(s => s.count > 0).map(s => {
-              const pct = (s.count / stats.total * 100);
-              return (
-                <div key={s.label} title={`${s.label}: ${s.count} (${pct.toFixed(1)}%)`} style={{
-                  width: `${pct}%`, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  borderRight: '1px solid white', cursor: 'default', minWidth: pct > 4 ? 0 : 0,
-                }}>
-                  {pct >= 8 && <span style={{ fontSize: 10, fontWeight: 700, color: s.color, whiteSpace: 'nowrap' }}>{s.label} {Math.round(pct)}%</span>}
-                </div>
-              );
-            })}
-          </div>
-          <div style={{ display: 'flex', gap: 12, marginTop: 5, flexWrap: 'wrap' }}>
-            {[
-              { label: 'Meeting Booked', count: stats.meetingBooked, color: '#16a34a', bg: '#dcfce7' },
-              { label: 'Follow Up', count: stats.followUp, color: '#2563eb', bg: '#dbeafe' },
-              { label: 'Account to Pursue', count: stats.accountToPursue, color: '#059669', bg: '#d1fae5' },
-              { label: 'Not Interested', count: stats.notInterested, color: '#dc2626', bg: '#fee2e2' },
-              { label: 'Wrong Contact', count: stats.wrongContactOnly, color: '#d97706', bg: '#fef3c7' },
-              { label: 'Wrong Number', count: stats.wrongNumber, color: '#ef4444', bg: '#fecaca' },
-            ].filter(s => s.count > 0).map(s => (
-              <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <span style={{ width: 8, height: 8, borderRadius: 2, background: s.bg, border: `1px solid ${s.color}40`, flexShrink: 0 }} />
-                <span style={{ fontSize: 10, color: '#6b7280' }}>{s.label}</span>
-                <span style={{ fontSize: 10, fontWeight: 700, color: s.color }}>{s.count} ({Math.round(s.count / stats.total * 100)}%)</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* ── Filters ── */}
       <div style={{ display: 'flex', gap: 8, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, alignItems: 'center', flexWrap: 'wrap' }}>

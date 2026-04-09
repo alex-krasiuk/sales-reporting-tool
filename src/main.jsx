@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import CallAnalytics from './CallAnalytics.jsx'
 import PerformanceReport from './PerformanceReport.jsx'
+import AnalyticsCharts from './AnalyticsCharts.jsx'
 
 function App() {
   const [tab, setTab] = useState('calls');
@@ -12,7 +13,7 @@ function App() {
     <div style={{ fontFamily: "'Inter', -apple-system, sans-serif", height: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       {/* Tab bar */}
       <div style={{ display: 'flex', background: '#1f2937', flexShrink: 0 }}>
-        {[['calls', 'Call Database'], ['report', 'Performance Report']].map(([key, label]) => (
+        {[['calls', 'Call Database'], ['report', 'Performance Report'], ['analytics', 'Analytics']].map(([key, label]) => (
           <button key={key} onClick={() => setTab(key)} style={{
             padding: '10px 24px', fontSize: 13, fontWeight: 600, cursor: 'pointer', border: 'none',
             background: tab === key ? '#4f46e5' : 'transparent',
@@ -35,6 +36,7 @@ function App() {
       <div style={{ flex: 1, overflow: 'hidden' }}>
         {tab === 'calls' && <CallAnalytics />}
         {tab === 'report' && <PerformanceReport hsToken={hsToken} />}
+        {tab === 'analytics' && <AnalyticsCharts />}
       </div>
     </div>
   );
