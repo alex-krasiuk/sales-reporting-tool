@@ -221,11 +221,14 @@ export default function PerformanceReport({ hsToken }) {
   const [report, setReport] = useState(null);
   const [progress, setProgress] = useState('');
 
-  // Date range picker — defaults to current week (Monday to today)
+  // Date range picker — always use current date on mount
+  const [dateFrom, setDateFrom] = useState(() => {
+    const m = getMonday(new Date()); return m.toISOString().slice(0, 10);
+  });
+  const [dateTo, setDateTo] = useState(() => new Date().toISOString().slice(0, 10));
+  // Computed fresh each render for preset buttons
   const todayStr = new Date().toISOString().slice(0, 10);
   const mondayStr = (() => { const m = getMonday(new Date()); return m.toISOString().slice(0, 10); })();
-  const [dateFrom, setDateFrom] = useState(mondayStr);
-  const [dateTo, setDateTo] = useState(todayStr);
 
   const loadReport = useCallback(async () => {
     if (!hsToken) { setError('Set HubSpot token to load report'); return; }
@@ -445,7 +448,7 @@ export default function PerformanceReport({ hsToken }) {
       <div style={{ flex: 1, overflow: 'auto', padding: '0 24px 40px' }}>
       {/* Title */}
       <div style={{ background: S.headerBg, color: S.headerText, padding: '16px 20px', borderRadius: 8, marginTop: 16, fontSize: 15, fontWeight: 700 }}>
-        Runbook — Nooks Call Performance | {r.periodLabel}
+        Runbook — Nooks Call Performance | {dateFrom === dateTo ? fmtDate(dateFrom) : `${fmtDate(dateFrom)} – ${fmtDate(dateTo)}`}
       </div>
 
       {/* ========== SECTION 1: OVERVIEW ========== */}
