@@ -1,205 +1,329 @@
 import { useState, useMemo } from 'react';
 import { CALL_DATA } from './callData.js';
 
-// --- Group calls by date and compute daily metrics ---
-function computeDailyMetrics(data) {
-  const byDate = {};
-  data.forEach(d => {
-    if (!d.date) return;
-    if (!byDate[d.date]) byDate[d.date] = { dials: 0, connects: 0, meetings: 0, wrongNumber: 0, interest: 0, notInterested: 0 };
-    byDate[d.date].dials++;
-    byDate[d.date].connects++;
-    if (d.outcome === 'Meeting Booked') byDate[d.date].meetings++;
-    if (d.outcome === 'Wrong number') byDate[d.date].wrongNumber++;
-    if (d.outcome === 'Follow up - interested' || d.outcome === 'Account to Pursue') byDate[d.date].interest++;
-    if (d.outcome === 'Not Interested') byDate[d.date].notInterested++;
-  });
-
-  return Object.entries(byDate)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([date, d]) => ({
-      date,
-      label: new Date(date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-      meetingRate: d.connects ? (d.meetings / d.connects * 100) : 0,
-      wrongNumberRate: d.connects ? (d.wrongNumber / d.connects * 100) : 0,
-      interestRate: d.connects ? (d.interest / d.connects * 100) : 0,
-      notInterestedRate: d.connects ? (d.notInterested / d.connects * 100) : 0,
-      meetings: d.meetings,
-      wrongNumbers: d.wrongNumber,
-      interest: d.interest,
-      connects: d.connects,
-    }));
+// --- Objection categorization ---
+function categorizeObjection(text) {
+  if (!text || text === 'None' || text === 'NONE') return null;
+  const t = text.toLowerCase();
+  if (/happy|current.*(setup|solution|method)|working (well|fine)|satisfied|what i have.*works|in place.*working/.test(t)) return 'Happy with current setup';
+  if (/already|in-house|internally|building.*ourselves|have.*partner|our.*team.*does/.test(t)) return 'Already have solution / in-house';
+  if (/budget|fund|cost|haven.t budgeted|no money/.test(t)) return 'No budget';
+  if (/busy|meeting|no time|not.*(right|good) time|middle of|between meetings/.test(t)) return 'Too busy / bad timing';
+  if (/personal.*(phone|number|line|time)|don.t discuss work/.test(t)) return 'Personal phone / DNC';
+  if (/cold call|don.t take|take me off|do not call|not interested|no thanks|no thank/.test(t)) return 'Immediate rejection';
+  if (/email|send.*info|send.*over|forward/.test(t)) return 'Send info / email first';
+  if (/wrong|not the (right|decision)|not authorized|don.t make.*decision|not.*my.*area|corporate.*runs/.test(t)) return 'Wrong person / not decision maker';
+  if (/new.*to|just started|don.t think.*helpful|can.t offer/.test(t)) return 'Too new / can\'t help';
+  if (/retir|no longer|left.*company|not.*here anymore/.test(t)) return 'Person left / retired';
+  if (/six months|not.*ready|coming together|integrat/.test(t)) return 'Not ready yet / timing';
+  if (/who are you|don.t know what|what is that/.test(t)) return 'Didn\'t understand offer';
+  return 'Other';
 }
 
-// --- SVG Line Chart ---
-function LineChart({ data, dataKey, color, title, currentValue, unit, height = 180 }) {
-  if (data.length === 0) return null;
-  const W = 600, H = height, PAD = { top: 10, right: 20, bottom: 30, left: 40 };
+// --- SVG Mini Line Chart ---
+function MiniChart({ data, dataKey, color, height = 120 }) {
+  if (data.length < 2) return <div style={{ height, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#d1d5db', fontSize: 12 }}>Not enough data</div>;
+  const W = 500, H = height, PAD = { top: 8, right: 10, bottom: 24, left: 36 };
   const plotW = W - PAD.left - PAD.right;
   const plotH = H - PAD.top - PAD.bottom;
-
   const values = data.map(d => d[dataKey]);
-  const maxVal = Math.max(...values, 1);
-  const yMax = Math.ceil(maxVal / 10) * 10 || 10; // Round up to nearest 10
+  const maxVal = Math.max(...values, 5);
+  const yMax = Math.ceil(maxVal / 10) * 10 || 10;
 
   const points = data.map((d, i) => ({
-    x: PAD.left + (data.length === 1 ? plotW / 2 : (i / (data.length - 1)) * plotW),
+    x: PAD.left + (i / (data.length - 1)) * plotW,
     y: PAD.top + plotH - (d[dataKey] / yMax) * plotH,
-    val: d[dataKey],
-    label: d.label,
+    val: d[dataKey], label: d.label,
   }));
-
   const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
-  // Area fill
   const areaD = pathD + ` L ${points[points.length - 1].x} ${PAD.top + plotH} L ${points[0].x} ${PAD.top + plotH} Z`;
 
-  // Y axis ticks
-  const yTicks = [0, yMax / 2, yMax];
-
   return (
-    <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 280 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-        <span style={{ fontSize: 13, fontWeight: 700, color: '#1f2937' }}>{title}</span>
-        <span style={{ fontSize: 22, fontWeight: 800, color }}>{currentValue}{unit}</span>
-      </div>
-      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto' }}>
-        {/* Grid lines */}
-        {yTicks.map(tick => {
-          const y = PAD.top + plotH - (tick / yMax) * plotH;
-          return (
-            <g key={tick}>
-              <line x1={PAD.left} y1={y} x2={W - PAD.right} y2={y} stroke="#f3f4f6" strokeWidth={1} />
-              <text x={PAD.left - 6} y={y + 3} textAnchor="end" fontSize={10} fill="#9ca3af">{Math.round(tick)}{unit}</text>
-            </g>
-          );
-        })}
-        {/* Area fill */}
-        <path d={areaD} fill={color} opacity={0.08} />
-        {/* Line */}
-        <path d={pathD} fill="none" stroke={color} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-        {/* Dots */}
-        {points.map((p, i) => (
-          <g key={i}>
-            <circle cx={p.x} cy={p.y} r={4} fill="white" stroke={color} strokeWidth={2} />
-            {/* Show value on hover area */}
-            <title>{p.label}: {p.val.toFixed(1)}{unit}</title>
-          </g>
-        ))}
-        {/* X axis labels */}
-        {data.map((d, i) => {
-          const x = PAD.left + (data.length === 1 ? plotW / 2 : (i / (data.length - 1)) * plotW);
-          // Show every label if < 10 points, otherwise every other
-          if (data.length > 10 && i % 2 !== 0 && i !== data.length - 1) return null;
-          return (
-            <text key={i} x={x} y={H - 5} textAnchor="middle" fontSize={9} fill="#9ca3af">{d.label}</text>
-          );
-        })}
-      </svg>
+    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto' }}>
+      {[0, yMax / 2, yMax].map(tick => {
+        const y = PAD.top + plotH - (tick / yMax) * plotH;
+        return <g key={tick}><line x1={PAD.left} y1={y} x2={W - PAD.right} y2={y} stroke="#f3f4f6" strokeWidth={1} /><text x={PAD.left - 4} y={y + 3} textAnchor="end" fontSize={9} fill="#9ca3af">{Math.round(tick)}%</text></g>;
+      })}
+      <path d={areaD} fill={color} opacity={0.06} />
+      <path d={pathD} fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      {points.map((p, i) => <g key={i}><circle cx={p.x} cy={p.y} r={3} fill="white" stroke={color} strokeWidth={1.5} /><title>{p.label}: {p.val.toFixed(1)}%</title></g>)}
+      {data.map((d, i) => {
+        if (data.length > 12 && i % 2 !== 0 && i !== data.length - 1) return null;
+        const x = PAD.left + (i / (data.length - 1)) * plotW;
+        return <text key={i} x={x} y={H - 4} textAnchor="middle" fontSize={8} fill="#9ca3af">{d.label}</text>;
+      })}
+    </svg>
+  );
+}
+
+// --- Metric Card ---
+function MetricCard({ label, value, sub, color, big }) {
+  return (
+    <div style={{ background: color + '08', border: `1px solid ${color}18`, borderRadius: 10, padding: big ? '16px 20px' : '12px 16px', flex: 1, minWidth: big ? 140 : 100 }}>
+      <div style={{ fontSize: big ? 32 : 22, fontWeight: 800, color, lineHeight: 1 }}>{value}</div>
+      {sub && <div style={{ fontSize: 11, color, opacity: 0.6, marginTop: 3, fontWeight: 600 }}>{sub}</div>}
+      <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 4 }}>{label}</div>
     </div>
   );
 }
 
-// --- Main Component ---
+// --- Objection Bar ---
+function ObjBar({ label, count, total, color }) {
+  const pct = total ? (count / total * 100) : 0;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+      <div style={{ width: 180, fontSize: 12, color: '#374151', fontWeight: 500, textAlign: 'right', flexShrink: 0 }}>{label}</div>
+      <div style={{ flex: 1, height: 20, background: '#f3f4f6', borderRadius: 4, overflow: 'hidden' }}>
+        <div style={{ width: `${pct}%`, height: '100%', background: color, borderRadius: 4, minWidth: count > 0 ? 2 : 0 }} />
+      </div>
+      <div style={{ width: 60, fontSize: 12, fontWeight: 700, color, textAlign: 'right' }}>{count} <span style={{ fontWeight: 400, color: '#9ca3af' }}>({Math.round(pct)}%)</span></div>
+    </div>
+  );
+}
+
+// --- Call Highlight Card ---
+function HighlightCard({ icon, label, call, color }) {
+  if (!call) return null;
+  return (
+    <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 8, padding: '12px 14px', flex: 1, minWidth: 250 }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>{icon} {label}</div>
+      <div style={{ fontSize: 13, fontWeight: 600, color: '#1f2937' }}>{call.contactName || 'Unknown'}</div>
+      <div style={{ fontSize: 11, color: '#6b7280' }}>{call.title || ''} {call.vertical ? `· ${call.vertical}` : ''}</div>
+      <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 4 }}>{call.rep} · {call.time} · {Math.round(call.durationMs / 1000)}s</div>
+      {call.offer && <div style={{ fontSize: 11, color: '#374151', marginTop: 6, fontStyle: 'italic', lineHeight: 1.4 }}>"{call.offer.slice(0, 120)}{call.offer.length > 120 ? '...' : ''}"</div>}
+      {call.recordingUrl && <a href={call.recordingUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: '#4f46e5', textDecoration: 'none', fontWeight: 600, marginTop: 6, display: 'inline-block' }}>▶ Listen</a>}
+    </div>
+  );
+}
+
+// --- Main ---
 export default function AnalyticsCharts() {
   const todayStr = new Date().toISOString().slice(0, 10);
-  const twoWeeksAgo = (() => { const d = new Date(); d.setDate(d.getDate() - 14); return d.toISOString().slice(0, 10); })();
-  const [dateFrom, setDateFrom] = useState(twoWeeksAgo);
+  const mondayStr = (() => { const d = new Date(); const day = d.getDay(); d.setDate(d.getDate() - (day === 0 ? 6 : day - 1)); return d.toISOString().slice(0, 10); })();
+  const [dateFrom, setDateFrom] = useState(mondayStr);
   const [dateTo, setDateTo] = useState(todayStr);
 
-  const filteredData = useMemo(() => {
-    return CALL_DATA.filter(d => d.date && d.date >= dateFrom && d.date <= dateTo);
-  }, [dateFrom, dateTo]);
+  const filtered = useMemo(() => CALL_DATA.filter(d => d.date && d.date >= dateFrom && d.date <= dateTo), [dateFrom, dateTo]);
 
-  const daily = useMemo(() => computeDailyMetrics(filteredData), [filteredData]);
+  // --- Core metrics ---
+  const total = filtered.length;
+  const wrongNumber = filtered.filter(d => d.outcome === 'Wrong number').length;
+  const wrongContact = filtered.filter(d => d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').length;
+  const realConvos = filtered.filter(d => !d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').length;
+  const meetings = filtered.filter(d => d.outcome === 'Meeting Booked').length;
+  const followUp = filtered.filter(d => d.outcome === 'Follow up - interested').length;
+  const notInterested = filtered.filter(d => d.outcome === 'Not Interested').length;
+  const accountPursue = filtered.filter(d => d.outcome === 'Account to Pursue').length;
+  const positive = meetings + followUp + accountPursue;
 
-  // Current averages for the period
-  const avgMeetingRate = daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0;
-  const avgWrongRate = daily.length ? (daily.reduce((a, d) => a + d.wrongNumberRate, 0) / daily.length) : 0;
-  const avgInterestRate = daily.length ? (daily.reduce((a, d) => a + d.interestRate, 0) / daily.length) : 0;
-  const avgNotIntRate = daily.length ? (daily.reduce((a, d) => a + d.notInterestedRate, 0) / daily.length) : 0;
+  // --- Per rep ---
+  const reps = {};
+  filtered.forEach(d => {
+    const r = d.rep;
+    if (!reps[r]) reps[r] = { dials: 0, wrongNumber: 0, wrongContact: 0, realConvos: 0, meetings: 0, followUp: 0, notInterested: 0, heardPitch: 0 };
+    reps[r].dials++;
+    if (d.outcome === 'Wrong number') reps[r].wrongNumber++;
+    else if (d.outcome.startsWith('Wrong')) reps[r].wrongContact++;
+    else reps[r].realConvos++;
+    if (d.outcome === 'Meeting Booked') reps[r].meetings++;
+    if (d.outcome === 'Follow up - interested') reps[r].followUp++;
+    if (d.outcome === 'Not Interested') reps[r].notInterested++;
+    if (d.hook?.success) reps[r].heardPitch++;
+  });
+
+  // --- Pitch funnel ---
+  const withStages = filtered.filter(d => d.iceBreaker?.text);
+  const ibPassed = withStages.filter(d => d.iceBreaker?.success).length;
+  const hookPassed = withStages.filter(d => d.hook?.success).length;
+  const heardPitchTotal = hookPassed;
+
+  // --- Objection aggregation ---
+  const objCounts = {};
+  filtered.forEach(d => {
+    const cat = categorizeObjection(d.objection?.text);
+    if (cat) objCounts[cat] = (objCounts[cat] || 0) + 1;
+  });
+  const sortedObjs = Object.entries(objCounts).sort((a, b) => b[1] - a[1]);
+  const totalObjs = sortedObjs.reduce((a, [, v]) => a + v, 0);
+
+  // --- Daily trend data ---
+  const daily = useMemo(() => {
+    const byDate = {};
+    filtered.forEach(d => {
+      if (!d.date) return;
+      if (!byDate[d.date]) byDate[d.date] = { connects: 0, meetings: 0, wrongNumber: 0, interest: 0, notInterested: 0, realConvos: 0 };
+      byDate[d.date].connects++;
+      if (d.outcome === 'Meeting Booked') byDate[d.date].meetings++;
+      if (d.outcome === 'Wrong number') byDate[d.date].wrongNumber++;
+      if (d.outcome === 'Follow up - interested' || d.outcome === 'Account to Pursue') byDate[d.date].interest++;
+      if (d.outcome === 'Not Interested') byDate[d.date].notInterested++;
+      if (!d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number') byDate[d.date].realConvos++;
+    });
+    return Object.entries(byDate).sort(([a], [b]) => a.localeCompare(b)).map(([date, d]) => ({
+      date, label: new Date(date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      meetingRate: d.connects ? (d.meetings / d.connects * 100) : 0,
+      wrongNumberRate: d.connects ? (d.wrongNumber / d.connects * 100) : 0,
+      interestRate: d.connects ? (d.interest / d.connects * 100) : 0,
+      realConvoRate: d.connects ? (d.realConvos / d.connects * 100) : 0,
+      ...d,
+    }));
+  }, [filtered]);
+
+  // --- Highlights ---
+  const meetingCalls = filtered.filter(d => d.outcome === 'Meeting Booked').sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+  const longestConvo = [...filtered].filter(d => !d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').sort((a, b) => b.durationMs - a.durationMs)[0];
+  const latestFollowUp = filtered.filter(d => d.outcome === 'Follow up - interested').sort((a, b) => b.timestamp.localeCompare(a.timestamp))[0];
 
   // Quick presets
-  const mondayStr = (() => {
-    const d = new Date();
-    const day = d.getDay();
-    const diff = day === 0 ? 6 : day - 1;
-    d.setDate(d.getDate() - diff);
-    return d.toISOString().slice(0, 10);
-  })();
-  const yesterdayStr = (() => { const d = new Date(); d.setDate(d.getDate() - 1); return d.toISOString().slice(0, 10); })();
+  const yesterdayStr = (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
 
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column', fontFamily: "'Inter', -apple-system, sans-serif" }}>
       {/* Date picker */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 24px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: 'white', borderBottom: '1px solid #e5e7eb', flexShrink: 0, flexWrap: 'wrap' }}>
         <span style={{ fontSize: 12, fontWeight: 600, color: '#374151' }}>Period:</span>
-        <input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 10px', fontSize: 12, color: '#374151' }} />
-        <span style={{ color: '#9ca3af', fontSize: 12 }}>–</span>
-        <input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 10px', fontSize: 12, color: '#374151' }} />
-        {[['Last 7d', (() => { const d = new Date(); d.setDate(d.getDate()-7); return d.toISOString().slice(0,10); })(), todayStr],
-          ['Last 14d', twoWeeksAgo, todayStr],
-          ['This Week', mondayStr, todayStr],
-          ['Yesterday', yesterdayStr, yesterdayStr],
+        <input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '5px 8px', fontSize: 12 }} />
+        <span style={{ color: '#9ca3af' }}>–</span>
+        <input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '5px 8px', fontSize: 12 }} />
+        {[['Today', todayStr, todayStr], ['Yesterday', yesterdayStr, yesterdayStr], ['This Week', mondayStr, todayStr],
+          ['Last 14d', (() => { const d = new Date(); d.setDate(d.getDate()-14); return d.toISOString().slice(0,10); })(), todayStr],
           ['All Time', '2026-02-01', todayStr],
         ].map(([label, from, to]) => (
           <button key={label} onClick={() => { setDateFrom(from); setDateTo(to); }} style={{
             background: dateFrom === from && dateTo === to ? '#eef2ff' : '#f3f4f6',
             border: `1px solid ${dateFrom === from && dateTo === to ? '#c7d2fe' : '#e5e7eb'}`,
-            borderRadius: 6, padding: '5px 10px', fontSize: 11, cursor: 'pointer', color: '#374151',
+            borderRadius: 6, padding: '4px 10px', fontSize: 11, cursor: 'pointer', color: '#374151',
             fontWeight: dateFrom === from && dateTo === to ? 700 : 400,
           }}>{label}</button>
         ))}
         <div style={{ flex: 1 }} />
-        <span style={{ fontSize: 12, color: '#9ca3af' }}>{daily.length} days · {filteredData.length} connects</span>
+        <span style={{ fontSize: 11, color: '#9ca3af' }}>{total} connects · {daily.length} days</span>
       </div>
 
-      {/* Charts */}
-      <div style={{ flex: 1, overflow: 'auto', padding: 20 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, maxWidth: 1200 }}>
-          <LineChart
-            data={daily} dataKey="meetingRate" color="#16a34a"
-            title="Meeting Booked Rate" currentValue={avgMeetingRate.toFixed(1)} unit="%"
-          />
-          <LineChart
-            data={daily} dataKey="wrongNumberRate" color="#ef4444"
-            title="Wrong Number Rate" currentValue={avgWrongRate.toFixed(1)} unit="%"
-          />
-          <LineChart
-            data={daily} dataKey="interestRate" color="#2563eb"
-            title="Interest Rate (Follow Up + Account to Pursue)" currentValue={avgInterestRate.toFixed(1)} unit="%"
-          />
-          <LineChart
-            data={daily} dataKey="notInterestedRate" color="#d97706"
-            title="Not Interested Rate" currentValue={avgNotIntRate.toFixed(1)} unit="%"
-          />
-        </div>
+      <div style={{ flex: 1, overflow: 'auto', padding: 20, background: '#f8fafc' }}>
+        <div style={{ maxWidth: 1200 }}>
 
-        {/* Daily breakdown table */}
-        <div style={{ marginTop: 24, background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', maxWidth: 1200 }}>
-          <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Daily Breakdown</div>
-          <div style={{ display: 'flex', background: '#eff6ff', fontWeight: 700, fontSize: 11, color: '#1f2937', borderBottom: '1px solid #dbeafe' }}>
-            {['Date', 'Connects', 'Meetings', 'Mtg Rate', 'Wrong #', 'W# Rate', 'Interest', 'Int Rate', 'Not Int', 'NI Rate'].map((h, i) => (
-              <div key={h} style={{ width: i === 0 ? 100 : 90, padding: '8px 10px', textAlign: i === 0 ? 'left' : 'right' }}>{h}</div>
-            ))}
+          {/* ===== ROW 1: KEY METRICS ===== */}
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 16 }}>
+            <MetricCard label="Total Connects" value={total} color="#4f46e5" big />
+            <MetricCard label="Real Conversations" value={realConvos} sub={`${total ? Math.round(realConvos / total * 100) : 0}% of connects`} color="#059669" big />
+            <MetricCard label="Wrong Numbers" value={wrongNumber} sub={`${total ? Math.round(wrongNumber / total * 100) : 0}% of connects`} color="#ef4444" big />
+            <MetricCard label="Meetings Booked" value={meetings} sub={realConvos ? `${Math.round(meetings / realConvos * 100)}% of real convos` : ''} color="#16a34a" big />
+            <MetricCard label="Follow Up + Pursue" value={positive - meetings} sub={`${total ? Math.round((positive - meetings) / total * 100) : 0}% of connects`} color="#2563eb" big />
           </div>
-          {daily.map((d, i) => (
-            <div key={d.date} style={{ display: 'flex', fontSize: 12, borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
-              {[
-                { v: d.label, w: 100, align: 'left' },
-                { v: d.connects, w: 90 },
-                { v: d.meetings, w: 90 },
-                { v: `${d.meetingRate.toFixed(0)}%`, w: 90, color: d.meetingRate > 0 ? '#16a34a' : '#9ca3af' },
-                { v: d.wrongNumbers, w: 90 },
-                { v: `${d.wrongNumberRate.toFixed(0)}%`, w: 90, color: d.wrongNumberRate > 40 ? '#ef4444' : d.wrongNumberRate > 20 ? '#d97706' : '#374151' },
-                { v: d.interest, w: 90 },
-                { v: `${d.interestRate.toFixed(0)}%`, w: 90, color: d.interestRate > 0 ? '#2563eb' : '#9ca3af' },
-                { v: filteredData.filter(r => r.date === d.date && r.outcome === 'Not Interested').length, w: 90 },
-                { v: `${d.notInterestedRate.toFixed(0)}%`, w: 90, color: '#d97706' },
-              ].map((cell, j) => (
-                <div key={j} style={{ width: cell.w, padding: '6px 10px', textAlign: cell.align || 'right', color: cell.color || '#374151', fontWeight: cell.color ? 600 : 400 }}>{cell.v}</div>
+
+          {/* ===== ROW 2: REP COMPARISON ===== */}
+          <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', marginBottom: 16, overflow: 'hidden' }}>
+            <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Rep Comparison</div>
+            <div style={{ display: 'flex', background: '#eff6ff', fontWeight: 700, fontSize: 11, borderBottom: '1px solid #dbeafe' }}>
+              {['Rep', 'Connects', 'Real Convos', 'Wrong #', 'W# Rate', 'Heard Pitch', 'Meetings', 'Follow Up', 'Not Int'].map((h, i) => (
+                <div key={h} style={{ flex: i === 0 ? 2 : 1, padding: '8px 12px', textAlign: i === 0 ? 'left' : 'center', color: '#1f2937' }}>{h}</div>
               ))}
             </div>
-          ))}
+            {Object.entries(reps).sort((a, b) => b[1].dials - a[1].dials).map(([rep, d], i) => (
+              <div key={rep} style={{ display: 'flex', fontSize: 12, borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
+                <div style={{ flex: 2, padding: '10px 12px', fontWeight: 700, color: '#1f2937' }}>{rep}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>{d.dials}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#059669', fontWeight: 600 }}>{d.realConvos} <span style={{ color: '#9ca3af', fontWeight: 400 }}>({d.dials ? Math.round(d.realConvos / d.dials * 100) : 0}%)</span></div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>{d.wrongNumber}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: d.dials && d.wrongNumber / d.dials > 0.4 ? '#ef4444' : '#374151', fontWeight: 600 }}>{d.dials ? Math.round(d.wrongNumber / d.dials * 100) : 0}%</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#2563eb', fontWeight: 600 }}>{d.heardPitch}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#16a34a', fontWeight: 700 }}>{d.meetings}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#2563eb' }}>{d.followUp}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#dc2626' }}>{d.notInterested}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* ===== ROW 3: PITCH FUNNEL + TOP OBJECTIONS ===== */}
+          <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+            {/* Pitch funnel */}
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 280 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Pitch Funnel</div>
+              {withStages.length > 0 ? (
+                <div>
+                  {[
+                    { label: 'Connected (with transcripts)', value: withStages.length, pct: 100, color: '#4f46e5' },
+                    { label: 'Ice Breaker Passed', value: ibPassed, pct: withStages.length ? Math.round(ibPassed / withStages.length * 100) : 0, color: '#059669' },
+                    { label: 'Heard Full Pitch', value: heardPitchTotal, pct: withStages.length ? Math.round(heardPitchTotal / withStages.length * 100) : 0, color: '#2563eb' },
+                    { label: 'Meeting Booked', value: meetings, pct: heardPitchTotal ? Math.round(meetings / heardPitchTotal * 100) : 0, color: '#16a34a', note: 'of those who heard pitch' },
+                  ].map(s => (
+                    <div key={s.label} style={{ marginBottom: 8 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
+                        <span style={{ color: '#374151' }}>{s.label}</span>
+                        <span style={{ fontWeight: 700, color: s.color }}>{s.value} ({s.pct}%){s.note ? ` ${s.note}` : ''}</span>
+                      </div>
+                      <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
+                        <div style={{ width: `${Math.min(s.pct, 100)}%`, height: '100%', background: s.color, borderRadius: 4, opacity: 0.7 }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No stage data for this period</div>}
+            </div>
+
+            {/* Top objections */}
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Top Objections</div>
+              {sortedObjs.length > 0 ? sortedObjs.slice(0, 8).map(([obj, count]) => (
+                <ObjBar key={obj} label={obj} count={count} total={totalObjs} color={
+                  obj.includes('Happy') || obj.includes('Already') ? '#2563eb' :
+                  obj.includes('Wrong') ? '#d97706' :
+                  obj.includes('rejection') || obj.includes('DNC') ? '#ef4444' :
+                  obj.includes('budget') ? '#dc2626' :
+                  '#6b7280'
+                } />
+              )) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No objection data for this period</div>}
+            </div>
+          </div>
+
+          {/* ===== ROW 4: CALL HIGHLIGHTS ===== */}
+          <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', marginBottom: 16 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Call Highlights</div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              {meetingCalls[0] && <HighlightCard icon="✅" label="Meeting Booked" call={meetingCalls[0]} color="#16a34a" />}
+              {meetingCalls[1] && <HighlightCard icon="✅" label="Meeting Booked" call={meetingCalls[1]} color="#16a34a" />}
+              {longestConvo && <HighlightCard icon="⏱" label="Longest Conversation" call={longestConvo} color="#7c3aed" />}
+              {latestFollowUp && <HighlightCard icon="🔄" label="Latest Follow Up" call={latestFollowUp} color="#2563eb" />}
+              {!meetingCalls[0] && !longestConvo && <div style={{ color: '#9ca3af', fontSize: 12 }}>No notable calls in this period</div>}
+            </div>
+          </div>
+
+          {/* ===== ROW 5: DAILY TREND CHARTS ===== */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 16 }}>
+            {[
+              { key: 'realConvoRate', color: '#059669', title: 'Real Conversation Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.realConvoRate, 0) / daily.length) : 0 },
+              { key: 'wrongNumberRate', color: '#ef4444', title: 'Wrong Number Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.wrongNumberRate, 0) / daily.length) : 0 },
+              { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
+              { key: 'interestRate', color: '#2563eb', title: 'Interest Rate (Follow Up + Pursue)', avg: daily.length ? (daily.reduce((a, d) => a + d.interestRate, 0) / daily.length) : 0 },
+            ].map(chart => (
+              <div key={chart.key} style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '14px 16px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1f2937' }}>{chart.title}</span>
+                  <span style={{ fontSize: 18, fontWeight: 800, color: chart.color }}>{chart.avg.toFixed(1)}%</span>
+                </div>
+                <MiniChart data={daily} dataKey={chart.key} color={chart.color} />
+              </div>
+            ))}
+          </div>
+
+          {/* ===== ROW 6: MEETINGS LIST ===== */}
+          {meetingCalls.length > 0 && (
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
+              <div style={{ background: '#16a34a', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Meetings Booked ({meetingCalls.length})</div>
+              {meetingCalls.map((c, i) => (
+                <div key={c.id} style={{ display: 'flex', padding: '10px 16px', borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white', fontSize: 12, alignItems: 'center', gap: 16 }}>
+                  <span style={{ color: '#9ca3af', width: 60, flexShrink: 0 }}>{new Date(c.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                  <span style={{ fontWeight: 600, color: '#1f2937', width: 160, flexShrink: 0 }}>{c.contactName || 'Unknown'}</span>
+                  <span style={{ color: '#6b7280', width: 180, flexShrink: 0 }}>{c.title || ''}</span>
+                  <span style={{ color: '#6b7280', flex: 1 }}>{c.vertical || ''}</span>
+                  <span style={{ color: '#4f46e5', width: 100, flexShrink: 0 }}>{c.rep.split(' ')[0]}</span>
+                  {c.recordingUrl && <a href={c.recordingUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#4f46e5', textDecoration: 'none', fontWeight: 600, fontSize: 11 }}>▶ Listen</a>}
+                </div>
+              ))}
+            </div>
+          )}
+
         </div>
       </div>
     </div>
