@@ -1,8 +1,313 @@
-// Auto-generated from HubSpot - 2026-04-08
-// 367 calls: Account to Pursue, Follow up - interested, Meeting Booked, No longer at company, Not Interested, Wrong Contact - no referral, Wrong contact - referral, Wrong number
+// Auto-generated from HubSpot - 2026-04-09
+// 380 calls: Account to Pursue, Follow up - interested, Meeting Booked, No longer at company, Not Interested, Wrong Contact - no referral, Wrong contact - referral, Wrong number
 // Reps: Brandon Liao, Chuck Gartland | Duration >= 10s
 
 export const CALL_DATA = [
+  {
+    "id": "363648026330",
+    "date": "2026-04-09",
+    "time": "11:55 AM",
+    "timestamp": "2026-04-09T18:55:25.024Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Logistics & Freight",
+    "title": "Vice President Information Technology -Business Readiness",
+    "contactName": "Rich Johnson",
+    "durationMs": 15873,
+    "transcript": "[BL - Call] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 18:55:25 UTC",
+    "recordingUrl": "https://recording.nooks.in/CAd42e9610790ee59510e216ac839667b7.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363648026330",
+    "persona": "IT Leadership",
+    "offer": ""
+  },
+  {
+    "id": "363649137341",
+    "date": "2026-04-09",
+    "time": "11:46 AM",
+    "timestamp": "2026-04-09T18:46:46.248Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Logistics & Freight",
+    "title": "Director of Technology",
+    "contactName": "Brian Folan",
+    "durationMs": 21349,
+    "transcript": "[BL - Call] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 18:46:46 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon called Brian to introduce RunBook but realized he had the wrong number.\n- Brian confirmed that he is not the person Brandon was trying to reach.\n- No follow-up or further engagement was established as the call ended shortly after the identification error.",
+    "recordingUrl": "https://recording.nooks.in/CA756428a7d75acbc4146a3f105df4904a.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363649137341",
+    "persona": "IT Leadership",
+    "offer": ""
+  },
+  {
+    "id": "363656754901",
+    "date": "2026-04-09",
+    "time": "11:31 AM",
+    "timestamp": "2026-04-09T18:31:02.004Z",
+    "rep": "Brandon Liao",
+    "outcome": "Not Interested",
+    "vertical": "Out of Scope",
+    "title": "Executive Vice President, Chief Information Officer",
+    "contactName": "Katrina R. Redmond",
+    "durationMs": 32670,
+    "transcript": "Brandon (Rep): Hi, this is Brandon.\nKatrina (Prospect): Hi Brandon, I got a missed call from you?\nBrandon (Rep): Yeah, yes this is Brandon, I was trying to reach Katrina.\nKatrina (Prospect): This is she.\nBrandon (Rep): Yeah Katrina, how are you?\nKatrina (Prospect): I'm okay.\nBrandon (Rep): It's here Katrina, I was giving you a cold call, I just wanna be respectful before I were before I go into it, do you mind if I brought",
+    "recordingUrl": "https://recording.nooks.in/CA37618091dfff3fdab10db0bd2ce38d6b.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363656754901",
+    "persona": "IT Leadership",
+    "offer": "",
+    "iceBreaker": {
+      "text": "Brandon introduced himself, confirmed he was calling Katrina, and asked permission to continue (\"do you mind if I brought...\").",
+      "success": true
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "None",
+      "success": "NONE"
+    }
+  },
+  {
+    "id": "363642386162",
+    "date": "2026-04-09",
+    "time": "11:29 AM",
+    "timestamp": "2026-04-09T18:29:32.466Z",
+    "rep": "Brandon Liao",
+    "outcome": "Not Interested",
+    "vertical": "Out of Scope",
+    "title": "AVP Enterprise Business Applications (ERP/EPM)",
+    "contactName": "Holly Salunkhe",
+    "durationMs": 16134,
+    "transcript": "Holly (Prospect): this is holly\nBrandon (Rep): hey holly this is brandon with run book how are you\nHolly (Prospect): i am doing well but i don't take cold calls thank you\nBrandon (Rep): what it's a good way to reach you ali",
+    "recordingUrl": "https://recording.nooks.in/CAe7528c9b97a6e829d9f98a67b08f2edc.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363642386162",
+    "persona": "",
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"Hey Holly, this is Brandon with Run Book, how are you?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"I don't take cold calls\"",
+      "success": false
+    }
+  },
+  {
+    "id": "363684995789",
+    "date": "2026-04-09",
+    "time": "10:10 AM",
+    "timestamp": "2026-04-09T17:10:38.611Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong contact - referral",
+    "vertical": "Logistics & Freight",
+    "title": "Manager Enterprise Application Integration",
+    "contactName": "Scott Ward",
+    "durationMs": 70770,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-09 17:10:38 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon called Scott to discuss automation solutions for enterprise applications at Ryder.\n- Scott indicated that they do not work with AI agents or automation workflows, stating their focus is solely on external integration work.\n- Brandon acknowledged that Scott was not the right person to discuss their services and thanked them for their time.",
+    "recordingUrl": "https://recording.nooks.in/CA550d5e78963aaf4ca634d04f9dac404f.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363684995789",
+    "persona": "Operations",
+    "offer": ""
+  },
+  {
+    "id": "363678313154",
+    "date": "2026-04-09",
+    "time": "9:53 AM",
+    "timestamp": "2026-04-09T16:53:42.752Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Field Service Trades",
+    "title": "Director, Application Delivery",
+    "contactName": "Jeffrey Rios",
+    "durationMs": 76729,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 16:53:42 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA689fe71b6f1c8db1307f182c5b90ac2f.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363678313154",
+    "persona": "Director (Other)",
+    "offer": ""
+  },
+  {
+    "id": "363625319132",
+    "date": "2026-04-09",
+    "time": "9:49 AM",
+    "timestamp": "2026-04-09T16:49:45.080Z",
+    "rep": "Brandon Liao",
+    "outcome": "Not Interested",
+    "vertical": "Warehouse & Distribution",
+    "title": "Director, Engineering (Implementation, Startups & Solutions)",
+    "contactName": "John Woodhatch",
+    "durationMs": 34533,
+    "transcript": "Brandon (Rep): hello\nJohn (Prospect): hey\nBrandon (Rep): john this is brandon with run book how you sir\nJohn (Prospect): who with run book run i don't know what that is\nBrandon (Rep): yeah john i i kind of expected that i was calling you out of the blue here do you mind if i borrow thirty seconds per time to explain who we are and why i gave you a call\nJohn (Prospect): no i'd not really need didn't answer my question who are you\nBrandon (Rep): yeah yeah yeah yeah so we are a startup up based in san francisco in the logistics state",
+    "recordingUrl": "https://recording.nooks.in/CAff684f27435bf32f07ab491e53620785.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363625319132",
+    "persona": "Director (Other)",
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"John, this is Brandon with RunBook. Do you mind if I borrow 30 seconds to explain who we are and why I called?\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "\"Who are you?\" / prospect didn't recognize the company name and rejected the permission ask before rep could fully explain.",
+      "success": false
+    }
+  },
+  {
+    "id": "363645648626",
+    "date": "2026-04-09",
+    "time": "9:40 AM",
+    "timestamp": "2026-04-09T16:40:20.827Z",
+    "rep": "Brandon Liao",
+    "outcome": "Meeting Booked",
+    "vertical": "Out of Scope",
+    "title": "SAP Delivery Leader for AI Automation Project",
+    "contactName": "Ramana Thatikonda, MBA, ITIL, CO, PS, CPM",
+    "durationMs": 411948,
+    "transcript": "Brandon (Rep): hello\nRomano (Prospect): hey roman\nBrandon (Rep): romano this is brandon with run book how are you\nRomano (Prospect): brandon with which company\nBrandon (Rep): with run book run book\nRomano (Prospect): not recorded work please\nBrandon (Rep): yeah ramona yeah no you probably don't know about us i was calling you out of the blue here do you mind if i borrow with thirty seconds of your time to explain yeah why why i called you\nRomano (Prospect): okay great\nBrandon (Rep): thank you so much mana yeah so i you i see you're delivering sap and you're working on some ai automations at eco lab i thought that this call might be relevant to you so i've been working with a number of it and and ai engineering teams kind of the manufacturing and field service heavy spaces and so the team i've i've heard is they they wanna automate workflows for their business operation operations with ai agents so handling things like appointment scheduling crew dispatch ordered to cash maybe demand planning as well but you know the typically things that require coordination between systems and people but building those agents and getting them to work in production and to get them to handle edge cases has been a challenge for them i was curious if you have you know run into similar challenges before and we'll love to help it so\nRomano (Prospect): got it so you do agent automations what does your company do\nBrandon (Rep): yeah so the company is so the product is is a platform for building ai agents you can build agents with no code so basically your business operators can kind of like write their instructions themselves and it's also an orchestration layer for all your agents so you know it it governs them it ensures that they run with business logic in mind but yeah the the the main buying proposition is to help you build agents quickly let's let your business people do it themselves and two is to keep your agents in one place so you know they could they have access to tribal knowledge they have access to governance\nRomano (Prospect): is it like the zap\nBrandon (Rep): not really but you can think of it kind of it's not zap at all you know zapier and probably some of the other automation or agent builders you've seen are kind of like follow the boxes and arrows where you have to give a clear steps on how to handle you know different steps what we find is it's not very flexible and you know when it when you bring into to production you run into edge cases and you need flexibility to handle those edge cases so that's kinda where we differentiate\nRomano (Prospect): okay alright i mean i don't know how i can help here but oh yeah i'm just trying to understand how i can help you here\nBrandon (Rep): yep yeah i i i would love to like show you the platform and kinda run you through a demo and then share some use cases we've seen as well are you are you working on the finance side of the things i saw that in the in a previous role but not sure what you're working on currently\nRomano (Prospect): yeah we can we can set up some time probably early next week after two pm perfect time and then i can understand like what you guys are doing and we can take it from there yeah i i i'm a delaware lead right yeah so we work in we have i work or i manage finance order to cash\nBrandon (Rep): okay yep\nRomano (Prospect): and customer master data like three different work streams yeah\nBrandon (Rep): okay cool whereas if the cash is a big one for us like you get an invoice and you have to confirm discrepancies and you have to like get people to to pay and chase them down that that is something we actually run into a lot so if that's a use case i happy to make that kind of the main focus of our meeting as well\nRomano (Prospect): okay okay sure i mean yeah i don't know what's your calendar but i'm available generally after two pm phosphate fine\nBrandon (Rep): okay i'll send you an an meeting invite is the the email i have for you is roman romano dot tat at v lab dot com is that right\nRomano (Prospect): that's right mh k alright oh i'm sending you an email first so where did you get my email\nBrandon (Rep): that is interesting i kinda guest because eco lab i assume the the format was like first all last name\nRomano (Prospect): okay yep k let me send that over did you get my email just now\nBrandon (Rep): yes oh perfect okay and then you said after two pm on monday let me check my calendar yeah that works yeah and you're in pacific right you're ceo we'll see at seattle\nRomano (Prospect): yes okay yep we can do on monday sure\nBrandon (Rep): okay i okay i just sent you that invitation for monday the thirteenth at two pm k it's not distributed but probably sixth yeah we'll probably get there very soon so i'll i'll pull in one of my colleagues we've just worked with a good amount of of these like order to cash kinda use cases and we'll we'll plan to show you the platform and we'll try to share some other use cases maybe you you see something you like and you get inspired we would love to kind of explore potentially other projects you're working on as well but yeah that's that's kinda what you should expect i'll send you send over like an agenda as well before it\nRomano (Prospect): okay yeah sounds good thank you brandon\nBrandon (Rep): alright perfect yeah and romano when you get that when you get that invite just give me a favor and and confirm it for me please but yeah thought i'll talk to you with yeah i'll talk to you monday\nRomano (Prospect): yes okay thank",
+    "recordingUrl": "https://recording.nooks.in/CA1b43db4464feb8cf6a84d35deb7da89f.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363645648626",
+    "persona": "",
+    "offer": "yeah so the product is is a platform for building ai agents you can build agents with no code so basically your business operators can kind of like write their instructions themselves and it's also an orchestration layer for all your agents so you know it it governs them it ensures that they run with business logic in mind but yeah the the the main buying proposition is to help you build agents quickly let's let your business people do it themselves and two is to keep your agents in one place so you know they could they have access to tribal knowledge they have access to governance",
+    "iceBreaker": {
+      "text": "\"Romano this is brandon with run book... do you mind if i borrow thirty seconds of your time to explain why i called you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We build a no-code platform for creating AI agents that automate workflows like appointment scheduling, crew dispatch, and order-to-cash, with orchestration and governance to handle edge cases in production.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Is it like Zapier?\" followed by \"I don't know how I can help here.\"",
+      "success": true
+    }
+  },
+  {
+    "id": "363625205496",
+    "date": "2026-04-09",
+    "time": "9:22 AM",
+    "timestamp": "2026-04-09T16:22:02.224Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Meeting Booked",
+    "vertical": "Freight Forwarder",
+    "title": "VP of Technology, Contract Logistics and Ground",
+    "contactName": "Steve Harder",
+    "durationMs": 122053,
+    "transcript": "Steve (Prospect): this is steve\n\nChuck (Rep): hey steve this is chuck ga i'm calling you from run book how are you\n\nSteve (Prospect): i'm good how are you\n\nChuck (Rep): i'm i'm i'm doing well i i i appreciate you asking steven i'm not calling you a bit out of the blue here but the the reason that calling you specifically the company work for a run book you know we we're helping teams like yours deploy build and deploy against agents to automate a lot of the manual core coordination work that logistics and and field services teams because i slow them down i i i feel like that's something that would touch your role curious if you looked at anything like that in the past\n\nSteve (Prospect): yeah i'm at we've we've looked at a number of different different things yeah i i'm actually in between meetings right now so it's not a great time but maybe can you do you have my email address do you mind i send the\n\nChuck (Rep): yeah yeah i i i i happy to do that i i don't wanna take up too much your time would would rather just show it to you the the differentiation here of of us in different system i've just two seconds to tell you real quick is that we're we're trying to bring this closer to the business and that means that we're the platform that we're building or that we've built you know allows your team to actually go and build and deploy these agents using natural language and not have to be code so we'll we'll just love to show you our approach our founder was the guy who founded motive the guy who helped him build this on the tech side is the guy who ran ai and ml at discord\n\nSteve (Prospect): yeah i mean it'd be shouldn't taking a look maybe if he can drop me an email with some suggested dates and times for for next week and then i can can check on schedule on this side\n\nChuck (Rep): yeah you got it you got it steve looking forward to it i appreciate you it's sorry for for taking away from meeting\n\nSteve (Prospect): alright thank you sir\n\nChuck (Rep): you got it cheers",
+    "recordingUrl": "https://recording.nooks.in/CA87c379da2aeb2fdc234ed9c8287a3c2f.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363625205496",
+    "persona": "IT Leadership",
+    "offer": "we're helping teams like yours deploy build and deploy against agents to automate a lot of the manual core coordination work that logistics and and field services teams because i slow them down, and we're bringing this closer to the business with a platform that allows your team to actually go and build and deploy these agents using natural language and not have to be code.",
+    "iceBreaker": {
+      "text": "\"Hey Steve, this is Chuck from RunBook—I'm calling you out of the blue because we're helping teams like yours deploy AI agents to automate manual work in logistics and field services.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"Our platform lets your team build and deploy agents using natural language without coding, and our founder built Motive with AI/ML expertise from Discord's team.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"Steve is between meetings and asks for an email instead of committing to a call.\"",
+      "success": true
+    }
+  },
+  {
+    "id": "363681384133",
+    "date": "2026-04-09",
+    "time": "9:17 AM",
+    "timestamp": "2026-04-09T16:17:45.241Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Not Interested",
+    "vertical": "Logistics & Freight",
+    "title": "Vice President IT Global Warehouse Solutions",
+    "contactName": "Johan Berghs",
+    "durationMs": 44420,
+    "transcript": "Aaron (Rep): Hello, Aaron Chuck here with Runbook. I don't call you a bit out of the blue. Is it okay if we chat?\n\nProspect: Yeah, sure, sure.\n\nAaron (Rep): You know, I understand that you look after IT for the mobile warehousing at CE. What we do is we help teams automate a lot of the manual coordination work by deploying agents that fall year team down on a day to day basis using AI. I'm curious if you if you looked at anything like that in the past?\n\nProspect: Yeah, sorry man, I have no interest in it. Thanks.\n\nAaron (Rep): Okay.",
+    "recordingUrl": "https://recording.nooks.in/CA7fd1edf5ffcc3b219c36555c0ee6889e.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363681384133",
+    "persona": "IT Leadership",
+    "offer": "You know, I understand that you look after IT for the mobile warehousing at CE. What we do is we help teams automate a lot of the manual coordination work by deploying agents that fall year team down on a day to day basis using AI.",
+    "iceBreaker": {
+      "text": "\"Hello, Aaron Chuck here with Runbook. I don't call you a bit out of the blue. Is it okay if we chat?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We help teams automate manual coordination work by deploying AI agents that support your team on a day-to-day basis.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "\"No interest in it.\"",
+      "success": false
+    }
+  },
+  {
+    "id": "363643783879",
+    "date": "2026-04-09",
+    "time": "9:15 AM",
+    "timestamp": "2026-04-09T16:15:09.011Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Wrong number",
+    "vertical": "Logistics & Freight",
+    "title": "Chief Operating Officer",
+    "contactName": "Jerry Sigmon, Jr",
+    "durationMs": 35333,
+    "transcript": "[Call only] 'Wrong number' recorded by Chuck Gartland on 2026-04-09 16:15:09 UTC",
+    "recordingUrl": "https://recording.nooks.in/CAcd1a31da7c291cf0a3ba6bc3833b7a2c.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363643783879",
+    "persona": "Executive",
+    "offer": ""
+  },
+  {
+    "id": "363645384422",
+    "date": "2026-04-09",
+    "time": "8:22 AM",
+    "timestamp": "2026-04-09T15:22:46.840Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong contact - referral",
+    "vertical": "Infrastructure",
+    "title": "Chief Technology Officer",
+    "contactName": "Roald Brouwer",
+    "durationMs": 180350,
+    "transcript": "[BL - Call - IT] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-09 15:22:46 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Roald indicated they only have five minutes for the call but agreed to continue the conversation.\n- Brandon pitched the idea of automating workflows for business operations using AI agents, specifically mentioning challenges in production and handling edge cases.\n- Roald stated they do not have a comprehensive view of the company's IT operations and primarily handle technology in general, not day-to-day IT tasks.\n- Roald mentioned that their focus on AI is related to innovation and additional applications rather than operational aspects.\n- Roald requested that Brandon send a short email with more information and offered to connect him with the respective teams if interested.\n- Roald confirmed their email address as roald@MRIs.com for further communication.",
+    "recordingUrl": "https://recording.nooks.in/CAf4030eb238d49243b5d40b7d380eb428.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363645384422",
+    "persona": "IT Leadership",
+    "offer": ""
+  },
+  {
+    "id": "363665082058",
+    "date": "2026-04-09",
+    "time": "7:57 AM",
+    "timestamp": "2026-04-09T14:57:38.105Z",
+    "rep": "Brandon Liao",
+    "outcome": "Account to Pursue",
+    "vertical": "Out of Scope",
+    "title": "Chief Digital Officer (CDO)",
+    "contactName": "Fabio Di Memmo",
+    "durationMs": 614668,
+    "transcript": "Brandon (Rep): hello\nFab (Prospect): hi fab\nBrandon (Rep): hi this is fab\nFab (Prospect): yes\nBrandon (Rep): hi fa how are you my name is brandon\nFab (Prospect): hi brandon how can i help you\nBrandon (Rep): yes sir i'm calling you a bit out of the blue here today i hope you're doing well\nFab (Prospect): great super great have to say so so help the same for you\nBrandon (Rep): thank you so much i was giving you a cold call here i i saw some of the work you guys are doing a apt avatar i thought this call might be relevant do you mind if i borrow thirty seconds of your time\nFab (Prospect): i'm i'm this is not a problem but i have to inform you that i'm boarding up so oh oh yeah so for the time being i will have a spare period before the next job so i'm not longer i'm no longer an after there\nBrandon (Rep): oh that's wonderful so you have you enjoy some time off\nFab (Prospect): i do i do i do yeah\nBrandon (Rep): that's that's good well i maybe i can just run it by you i i love to hear your thoughts since you're kind of really deep in this space i know you're building the you used to build the ai strategy at apt avatar\nFab (Prospect): yeah\nBrandon (Rep): so i've been working with a number of it and ai engineering teams right now in the logistics and manufacturing space mostly like you know coordination heavy industries so they they they've been telling me a theme which is they wanna automate workflows for their business operations with with ai agents handling things like appointment scheduling dispatch order to cash you know things that typically require communication and navigation between different like systems than people but getting those agents to work in production and to get them to handle edge cases as well has been a challenge for them i was curious if this is something that that you saw at apt avatar as you're you know developing the ai strategy\nFab (Prospect): of course we do we had several solutions that promise provides to do workflow integration then at the end they did not deliver for several reasons because you know the prerequisite is as usual standardization and many other things that are difficult to control so to be honest with you i think that automation workflow is possible will be possible nevertheless there are very small pieces that get automated and there is not yet a big flow automated so that a little bit this is the charlotte\nBrandon (Rep): yeah i didn't quite understand that sorry\nFab (Prospect): so know i wasn't an incoming call so i was saying that i don't know when you you've been cut out but the we we saw many solutions that the workflows mh that said they they they don't really deliver it because the recognition for that are so tight that were now fitting her adapter and so i believe this gonna happen and ai could absolutely help but at the same time i to say it's something that i don't know it it doesn't work yet fully we automate automated the small pieces of workflows\nBrandon (Rep): yeah yeah got it yeah it's it sounds like a challenge we're seeing people deal with too so they have kind of these agents in individual systems and they can automate like one workflow really well but like getting agents to kinda work across systems orchestrating them governing them is is the main problem we're seeing like like training them to kind of operate together with the same business context is the challenge\nFab (Prospect): i i i do think that's what you're describing yes yeah it is yeah\nBrandon (Rep): okay yeah so i i guess that's that's that's what we do we built like a platform one for like launching agents quickly but also orchestrating them i i think that the second part is is has been the most beneficial it's good it's good to hear that you know it is a challenge people are solving we're we're we're start up so it and that's good for you but i think there's is space for that\nFab (Prospect): yeah the challenge to me is how do you plug this onto until something like sap or oracle and yeah how do you deal with them of course there are already of the startups doing the same but i think to me that yeah because ecosystem of it depends by the size of the companies you're are looking for but most most likely they do have already a year fee was likely that you have already more workflow management they did do have already many on do it is how you play with them and how are you competitive with those in this ecosystem i think there is a space to to to play among them also some of them for instance service now is try to occupy this space to be the the the automation of workflows within the enterprise it's a big challenge to me the the the would be great when in in a company like apt or so if you can say hey i have this platform and by the way the order to cash is fully automated or could be fully automated within two weeks and we did that in this process or stuff and that's to me or doable or that's something that could be interesting within sap within nasa is now and stuff like that but i know where are you at at\nBrandon (Rep): so we we we are like platform and architecture at agnostic basically all we really need to understand is like what your workflow is and then we'll create the agent that navigate those systems pretty well it it like it it learns it learns your ecosystem it learns your workflows and then eventually it learns how the qa itself because there's certain like edge cases i'm sure when those edge cases happen you we we put a human in the loop like one of your operators they they figure out what to do and then so the next time something like that happens it would just you know remember how to do it but yeah to answer your question it's it's agnostic to kinda what's this things you have so we we work with oracle we work with sap we work with like you know even like not the systems you you probably never heard of like some of the tms and w mms mostly in like the logistics space but so it's pretty agnostic that the worst\nFab (Prospect): yeah so well i i i appreciate yeah but again if you have a specific value proposition or whatever i can try to forward to my my former colleagues if they're interested about but i would recommend more than a last for if you have a process that you can specifically go through because this about manufacturing and our company you know typical manufacturing b and as as long as we can automate made you know global business services or any other process that that would be super helpful\nBrandon (Rep): yeah i can i need to try to think of some use cases because our use cases right now it's been like field service heavy so like like i said scheduling appointments get like dispatching your crew i'm trying to think for manufacturing do you have like one workflow that you can think of in the manufacturing space\nFab (Prospect): yeah oh that would be interesting because in the manufacturing space we have a actually a custom globe a custom solution and that is lacking an integration that is receiving the production planning from and then is is all and we are looking also for an optimal allocation on the work center and machines yeah so this could be okay again an interesting aspect if you something in there i can i can try to forward the the this to the responsible of it and and see whether it's interested to to move forward\nBrandon (Rep): cool like like demand planning almost\nFab (Prospect): yes yeah we do the conversation\nBrandon (Rep): yeah i had a conversation with someone i think they were like chemical manufacturing they have a bunch of analysts create a spreadsheet looking at like demand and they pulled out data from i guess like various sources and then they use that spreadsheet to tell the basically help them plan like what how much they need to produce so to what we would do for them is to pull one we could pull the data help them find the data create that spreadsheet and two use that spreadsheet to kind of determine like come up with some insights but the downstream i'm trying to figure out so let me let me do some more research on that and and get back to you\nFab (Prospect): okay okay that would be great\nBrandon (Rep): okay yeah what's the good way to re reach you i know you're not a apt avatar anymore\nFab (Prospect): that's the mobile phone and the i have a i have at gmail account today so fab dot d at g mail dot com and i have some time those days so when you walk\nBrandon (Rep): yeah let me let me let me spend some time today to come up with something and i'll send it to your email\nFab (Prospect): okay that would be great thank you\nBrandon (Rep): yeah thank you so much thank you i fab you have a good way\nFab (Prospect): you're welcome bye bye\nBrandon (Rep): bye you too bye",
+    "recordingUrl": "https://recording.nooks.in/CA2edcc782a9a8dbb35ed695c8cb41913c.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363665082058",
+    "persona": "IT Leadership",
+    "offer": "so i've been working with a number of it and ai engineering teams right now in the logistics and manufacturing space mostly like you know coordination heavy industries so they they they've been telling me a theme which is they wanna automate workflows for their business operations with with ai agents handling things like appointment scheduling dispatch order to cash you know things that typically require communication and navigation between different like systems than people but getting those agents to work in production and to get them to handle edge cases as well has been a challenge for them. We built like a platform one for like launching agents quickly but also orchestrating them. So we we are like platform and architecture at agnostic basically all we really need to understand is like what your workflow is and then we'll create the agent that navigate those systems pretty well it it like it it learns it learns your ecosystem it learns your workflows and then eventually it learns how the qa itself because there's certain like edge cases and when those edge cases happen we put a human in the loop like one of your operators they they figure out what to do and then so the next time something like that happens it would just you know remember how to do it.",
+    "iceBreaker": {
+      "text": "\"I'm calling you a bit out of the blue here today, I saw some of the work you guys are doing at Apt Avatar and thought this call might be relevant—do you mind if I borrow thirty seconds of your time?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"We built a platform for launching and orchestrating AI agents across systems to automate workflows like appointment scheduling, dispatch, and order-to-cash that typically require communication between different systems.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "How do you integrate with enterprise systems like SAP or Oracle and compete with existing workflow management solutions like ServiceNow?",
+      "success": true
+    }
+  },
   {
     "id": "363443074769",
     "date": "2026-04-08",
