@@ -5,18 +5,40 @@ import { CALL_DATA } from './callData.js';
 function categorizeObjection(text) {
   if (!text || text === 'None' || text === 'NONE') return null;
   const t = text.toLowerCase();
-  if (/happy|current.*(setup|solution|method)|working (well|fine)|satisfied|what i have.*works|in place.*working/.test(t)) return 'Happy with current setup';
-  if (/already|in-house|internally|building.*ourselves|have.*partner|our.*team.*does/.test(t)) return 'Already have solution / in-house';
-  if (/budget|fund|cost|haven.t budgeted|no money/.test(t)) return 'No budget';
-  if (/busy|meeting|no time|not.*(right|good) time|middle of|between meetings/.test(t)) return 'Too busy / bad timing';
-  if (/personal.*(phone|number|line|time)|don.t discuss work/.test(t)) return 'Personal phone / DNC';
-  if (/cold call|don.t take|take me off|do not call|not interested|no thanks|no thank/.test(t)) return 'Immediate rejection';
-  if (/email|send.*info|send.*over|forward/.test(t)) return 'Send info / email first';
-  if (/wrong|not the (right|decision)|not authorized|don.t make.*decision|not.*my.*area|corporate.*runs/.test(t)) return 'Wrong person / not decision maker';
-  if (/new.*to|just started|don.t think.*helpful|can.t offer/.test(t)) return 'Too new / can\'t help';
+  // Already solved / building in-house
+  if (/already|in-house|internally|building.*ourselves|have.*partner|our.*team|own.*ai|we.*build|we.*doing.*lot|power automat|we.ve got.*department|well developed|ongoing.*framework|massive.*it.*department/.test(t)) return 'Building in-house / have solution';
+  // Happy with current setup
+  if (/happy|current.*(setup|solution|method)|working (well|fine)|satisfied|what i have.*works|in place.*working|we.re good|all set|good right now|doing.*things.*by hand.*lean/.test(t)) return 'Happy with current setup';
+  // Not the right person / decisions made elsewhere
+  if (/not.*decision|not authorized|corporate.*team|corporate.*runs|decisions.*made.*above|don.t make.*decision|not.*my.*area|cio.*handles|you.d need to call|strictly over operations|made at corporate|not.*involved|not.*part of/.test(t)) return 'Not the decision maker';
+  // Personal phone / DNC
+  if (/personal.*(phone|number|line|time|cell)|don.t discuss work|don.t ever call|do not.*call.*back|take.*name off|take me off|just take.*off|unsolicited|cyber risk/.test(t)) return 'Personal phone / DNC';
+  // Immediate rejection / no interest
+  if (/cold call|don.t take|no interest|not interested|no thanks|no thank|all good.*sales|sales call.*no|let.s not|sorry.*no|don.t have time for this|don.t like ai/.test(t)) return 'Immediate rejection';
+  // Too busy / bad timing
+  if (/busy|meeting|no time|not.*(right|good) time|middle of|between meetings|slammed|conference call|coming into|can.t.*talk|apartment shopping|out of.*office|call.*back.*tomorrow|call.*next/.test(t)) return 'Too busy / bad timing';
+  // Not ready / purchasing freeze / onboarding
+  if (/six months|not.*ready|coming together|integrat|purchasing freeze|hit.*pause|onboarding.*business|need to.*first|implement.*new.*tms|q[0-9]|next quarter/.test(t)) return 'Not ready / timing';
+  // Budget / no appetite
+  if (/budget|fund|cost|haven.t budgeted|no money|no.*appetite|too.*small|we.re.*small/.test(t)) return 'No budget / too small';
+  // Send info / email first
+  if (/email|send.*info|send.*over|forward|linkedin|ping me/.test(t)) return 'Send info / email first';
+  // AI complexity / governance concerns
+  if (/governance|architecture.*strategy|security.*review|supply chain.*approval|vetting|complex.*ai|ai.*risk|not.*allowed.*ai/.test(t)) return 'AI governance / compliance concerns';
+  // Wrong person
+  if (/wrong|not the right|i.m not.*the|financial.*not logistics|fleet maintenance|i.m.*owner of/.test(t)) return 'Wrong person / wrong dept';
+  // Too new
+  if (/new.*to|just started|not even.*month|haven.t done anything|still evaluating/.test(t)) return 'Too new at company';
+  // Duplicate call frustration
+  if (/another call.*from.*runbook|just.*hung up|too many|getting.*calls|overwhelming/.test(t)) return 'Call fatigue / too many calls';
+  // Person left / retired
   if (/retir|no longer|left.*company|not.*here anymore/.test(t)) return 'Person left / retired';
-  if (/six months|not.*ready|coming together|integrat/.test(t)) return 'Not ready yet / timing';
-  if (/who are you|don.t know what|what is that/.test(t)) return 'Didn\'t understand offer';
+  // Compared to competitor
+  if (/zapier|similar to|is it like/.test(t)) return 'Compared to competitor';
+  // Automated already
+  if (/most.*automated|billing.*automated|api|edi/.test(t)) return 'Already automated';
+  // Generic no
+  if (/^no$|^not.*good.*time$|^sorry/.test(t.trim())) return 'Generic no';
   return 'Other';
 }
 
