@@ -287,7 +287,7 @@ export default function AnalyticsCharts() {
             {/* Top objections */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Top Objections</div>
-              {sortedObjs.length > 0 ? sortedObjs.slice(0, 8).map(([obj, count]) => (
+              {sortedObjs.length > 0 ? sortedObjs.filter(([obj]) => obj !== 'Other').map(([obj, count]) => (
                 <ObjBar key={obj} label={obj} count={count} total={totalObjs} color={
                   obj.includes('Happy') || obj.includes('Already') ? '#2563eb' :
                   obj.includes('Wrong') ? '#d97706' :
