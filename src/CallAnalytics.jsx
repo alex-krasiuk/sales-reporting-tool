@@ -1,6 +1,6 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { CALL_DATA } from "./callData.js";
-import useHubSpotCalls from "./useHubSpotCalls.js";
+import { hsApiFetch } from "./hsApi.js";
 
 const OUTCOME_COLORS = {
   'Not Interested':              { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
@@ -72,36 +72,243 @@ const TD = ({ children, style = {} }) => (
 
 // --- Main Component ---
 export default function CallAnalytics() {
-  const [hsToken, setHsToken] = useState(() => localStorage.getItem('hs_token') || '');
-  const [showHsInput, setShowHsInput] = useState(false);
-  const { calls: liveCalls, loading: hsLoading, error: hsError, lastSync, refresh } = useHubSpotCalls(hsToken);
+  const hsToken = localStorage.getItem('hs_token') || '';
 
-  // Use static data as base, merge in any NEW live calls (don't overwrite enriched static data)
+  // Static data — no auto-sync, manual sync only
   const [rows, setRows] = useState(CALL_DATA);
-  useEffect(() => {
-    if (liveCalls.length > 0) {
-      const existingIds = new Set(CALL_DATA.map(d => d.id));
-      const newCalls = liveCalls.filter(c => !existingIds.has(c.id));
-      if (newCalls.length > 0) {
-        setRows(prev => [...newCalls, ...prev]);
-      }
-    }
-  }, [liveCalls]);
+  const [syncStatus, setSyncStatus] = useState(''); // '', 'syncing', 'done'
+  const [syncMessage, setSyncMessage] = useState('');
 
-  // Total dials (all calls including voicemail/no answer) — fetched from HubSpot
+  // Total dials (lightweight count only)
   const [totalDials, setTotalDials] = useState(null);
   useEffect(() => {
     if (!hsToken) return;
     (async () => {
       try {
-        const data = await import('./hsApi.js').then(m => m.hsApiFetch('/crm/v3/objects/calls/search', hsToken, {
+        const data = await hsApiFetch('/crm/v3/objects/calls/search', hsToken, {
           method: 'POST',
           body: { filterGroups: [{ filters: [{ propertyName: 'hubspot_owner_id', operator: 'IN', values: ['163308867', '162266623'] }] }], limit: 1 }
-        }));
+        });
         if (data.total) setTotalDials(data.total);
       } catch {}
     })();
   }, [hsToken]);
+
+  // --- Manual Sync Pipeline ---
+  const VALID_DISPOSITIONS = [
+    'a12225bd-f90c-43bb-aa10-4b7875a05937', '81180310-0202-4b44-8417-168bd57e399a',
+    'fa4b685a-eb2a-4a5f-ac74-a8e8dde76558', '95d90a61-32bf-4d8d-9445-010e6ce6a055',
+    'f76aed06-41e0-4b55-8f96-361bfd09bf0c', 'e9a4df2f-3fcd-4f8a-bbd8-7634e48ca97c',
+    '91fd5005-2ed7-45dd-b8ec-f22511b5ece2', '72a50c73-0b12-4595-9c31-5f197913be05',
+    '17b47fee-58de-441e-a44c-c6300d46f273', 'f240bbac-87c9-4f6e-bf70-924b57d47db7',
+    '9d9162e7-6cf3-4944-bf63-4dff82258764',
+  ];
+  const DISP_NAMES = {
+    'a12225bd-f90c-43bb-aa10-4b7875a05937': 'Not Interested', '81180310-0202-4b44-8417-168bd57e399a': 'Meeting Booked',
+    'fa4b685a-eb2a-4a5f-ac74-a8e8dde76558': 'Call me later', '95d90a61-32bf-4d8d-9445-010e6ce6a055': 'Account to Pursue',
+    'f76aed06-41e0-4b55-8f96-361bfd09bf0c': 'Follow up - interested', 'e9a4df2f-3fcd-4f8a-bbd8-7634e48ca97c': 'No longer at company',
+    '91fd5005-2ed7-45dd-b8ec-f22511b5ece2': 'Wrong Contact - no referral', '72a50c73-0b12-4595-9c31-5f197913be05': 'Wrong contact - referral',
+    '17b47fee-58de-441e-a44c-c6300d46f273': 'Wrong number', 'f240bbac-87c9-4f6e-bf70-924b57d47db7': 'Connected',
+    '9d9162e7-6cf3-4944-bf63-4dff82258764': 'Busy',
+  };
+  const OWNER_NAMES = { '163308867': 'Brandon Liao', '162266623': 'Chuck Gartland' };
+
+  const inferPersona = (title) => {
+    if (!title) return '';
+    const t = title.toLowerCase();
+    if (/\bcio\b|chief information officer/.test(t)) return 'IT Leadership';
+    if (/\bcto\b|chief tech/.test(t)) return 'IT Leadership';
+    if (/\bcoo\b|chief operating/.test(t)) return 'Operations Leadership';
+    if (/\bceo\b|chief executive|president.*ceo/.test(t)) return 'Executive';
+    if (/vp.*(?:it|info|tech|eng|data|digital|ai)|vice president.*(?:it|info|tech|eng|data|digital|ai)/.test(t)) return 'IT Leadership';
+    if (/vp.*(?:oper|supply|logist)|vice president.*(?:oper|supply|logist)/.test(t)) return 'Operations Leadership';
+    if (/vp|vice president|svp|evp/.test(t)) return 'Executive';
+    if (/director.*(?:it|info|tech|eng|data|software)/.test(t)) return 'IT / Engineering';
+    if (/director.*(?:oper|supply|logist)/.test(t)) return 'Operations';
+    if (/director/.test(t)) return 'Director (Other)';
+    if (/(?:it|tech|data|software).*manager|manager.*(?:it|tech)/.test(t)) return 'IT / Engineering';
+    if (/manager/.test(t)) return 'Manager (Other)';
+    if (/architect|engineer|developer/.test(t)) return 'Technical IC';
+    if (/president/.test(t)) return 'Executive';
+    return 'Other';
+  };
+
+  const syncNewCalls = useCallback(async () => {
+    if (!hsToken || !apiKey) { setApiError('Set both HubSpot token and Anthropic API key'); return; }
+    setSyncStatus('syncing'); setSyncMessage('Finding new calls...'); setApiError('');
+
+    try {
+      // Step 1: Find latest timestamp in current data
+      const latestTs = rows.reduce((max, r) => r.timestamp > max ? r.timestamp : max, '');
+      const existingIds = new Set(rows.map(r => r.id));
+
+      // Fetch new calls from HubSpot
+      const searchBody = {
+        filterGroups: [{ filters: [
+          { propertyName: 'hubspot_owner_id', operator: 'IN', values: ['163308867', '162266623'] },
+          { propertyName: 'hs_call_disposition', operator: 'IN', values: VALID_DISPOSITIONS },
+          { propertyName: 'hs_call_duration', operator: 'GTE', value: '10000' },
+          ...(latestTs ? [{ propertyName: 'hs_timestamp', operator: 'GT', value: latestTs }] : []),
+        ]}],
+        properties: ['hs_call_body', 'hs_call_recording_url', 'hs_call_summary', 'hs_call_disposition', 'hs_call_duration', 'hs_timestamp', 'hubspot_owner_id'],
+        sorts: [{ propertyName: 'hs_timestamp', direction: 'DESCENDING' }],
+        limit: 200,
+      };
+      const callsData = await hsApiFetch('/crm/v3/objects/calls/search', hsToken, { method: 'POST', body: searchBody });
+      const newCalls = (callsData.results || []).filter(c => !existingIds.has(String(c.id)));
+
+      if (newCalls.length === 0) {
+        setSyncStatus('done'); setSyncMessage('No new calls found'); setTimeout(() => setSyncStatus(''), 3000);
+        return;
+      }
+      setSyncMessage(`Found ${newCalls.length} new calls. Enriching...`);
+
+      // Step 2: Enrich — contacts
+      const callIds = newCalls.map(c => String(c.id));
+      let callToContact = {};
+      for (let i = 0; i < callIds.length; i += 100) {
+        try {
+          const batch = callIds.slice(i, i + 100);
+          const assocData = await hsApiFetch('/crm/v4/associations/calls/contacts/batch/read', hsToken, { method: 'POST', body: { inputs: batch.map(id => ({ id })) } });
+          (assocData.results || []).forEach(r => { if (r.to?.[0]) callToContact[String(r.from?.id)] = String(r.to[0].toObjectId); });
+        } catch {}
+      }
+
+      let contacts = {};
+      const contactIds = [...new Set(Object.values(callToContact))];
+      for (let i = 0; i < contactIds.length; i += 100) {
+        try {
+          const batch = contactIds.slice(i, i + 100);
+          const cData = await hsApiFetch('/crm/v3/objects/contacts/batch/read', hsToken, { method: 'POST', body: { inputs: batch.map(id => ({ id })), properties: ['firstname', 'lastname', 'jobtitle', 'associatedcompanyid'] } });
+          (cData.results || []).forEach(c => { contacts[String(c.id)] = c.properties; });
+        } catch {}
+      }
+
+      let companies = {};
+      const companyIds = [...new Set(Object.values(contacts).map(c => c.associatedcompanyid).filter(Boolean))];
+      for (let i = 0; i < companyIds.length; i += 100) {
+        try {
+          const batch = companyIds.slice(i, i + 100);
+          const coData = await hsApiFetch('/crm/v3/objects/companies/batch/read', hsToken, { method: 'POST', body: { inputs: batch.map(id => ({ id })), properties: ['vertical', 'name'] } });
+          (coData.results || []).forEach(c => { companies[String(c.id)] = c.properties; });
+        } catch {}
+      }
+
+      setSyncMessage(`Enriched. Running AI analysis on ${newCalls.filter(c => (c.properties.hs_call_body || '').includes('(Rep):')).length} calls...`);
+
+      // Step 3: Build enriched rows + AI analysis
+      const enrichedRows = [];
+      for (const call of newCalls) {
+        const p = call.properties;
+        const callId = String(call.id);
+        const ts = p.hs_timestamp || '';
+        const dt = ts ? new Date(ts) : null;
+        const pacific = dt ? new Date(dt.getTime() - 7 * 60 * 60 * 1000) : null;
+
+        const contactId = callToContact[callId];
+        const contact = contactId ? contacts[contactId] : null;
+        const companyId = contact?.associatedcompanyid;
+        const company = companyId ? companies[companyId] : null;
+        const transcript = p.hs_call_body || '';
+        const hasRep = transcript.includes('(Rep):') && transcript.length > 150;
+
+        const row = {
+          id: callId,
+          date: pacific ? pacific.toISOString().slice(0, 10) : '',
+          time: pacific ? pacific.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : '',
+          timestamp: ts,
+          rep: OWNER_NAMES[p.hubspot_owner_id] || 'Unknown',
+          outcome: DISP_NAMES[p.hs_call_disposition] || 'Other',
+          vertical: company?.vertical || '',
+          title: contact?.jobtitle || '',
+          contactName: contact ? `${contact.firstname || ''} ${contact.lastname || ''}`.trim() : '',
+          durationMs: parseInt(p.hs_call_duration || '0', 10),
+          transcript: transcript.replace(/\\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim(),
+          recordingUrl: p.hs_call_recording_url || '',
+          hsUrl: `https://app.hubspot.com/calls/244248253/review/${callId}`,
+          persona: inferPersona(contact?.jobtitle || ''),
+          offer: '',
+          iceBreaker: { text: '', success: false },
+          hook: { text: '', success: false },
+          objection: { text: '', success: null },
+          tags: [],
+        };
+
+        // AI analysis for calls with real transcripts
+        if (hasRep) {
+          try {
+            const aiRes = await fetch('https://api.anthropic.com/v1/messages', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+              body: JSON.stringify({
+                model: 'claude-sonnet-4-6', max_tokens: 400,
+                messages: [{ role: 'user', content: `Analyze this cold call. Return EXACTLY these 8 lines:
+
+OFFER: [The exact pitch/value prop sentence the rep used, cleaned up. Or "None" if never got to pitch]
+ICE_BREAKER_TEXT: [What rep said to open + ask for time, 1 sentence]
+ICE_BREAKER_SUCCESS: [TRUE if prospect agreed to listen, FALSE if refused]
+HOOK_TEXT: [The value prop delivered, 1 sentence. Or "Never reached hook"]
+HOOK_SUCCESS: [TRUE if prospect responded to pitch, FALSE if cut off or never reached]
+OBJECTION_TEXT: [Prospect's specific objection, 1 sentence. Or "None"]
+OBJECTION_SUCCESS: [TRUE if rep overcame it, FALSE if it ended the call, NONE if no objection]
+TAGS: [Comma-separated: one reach tag, one pitch tag, one objection tag from these lists]
+
+Reach tags: Right person right target, Right person wrong department, Right person not decision maker, Wrong person answered, Stale number, Person left company
+Pitch tags: Full pitch delivered, Partial pitch cut off, No pitch too busy, No pitch immediate rejection, Callback requested
+Objection tags: Happy with current setup, Already have solution, No budget, Bad timing, Not relevant to me, No pain felt, Wants proof first, Referred elsewhere, Meeting booked, Follow up agreed, Interest shown
+
+Call outcome: ${row.outcome}
+Contact: ${row.contactName} (${row.title})
+Transcript:
+${transcript.slice(0, 2500)}` }]
+              })
+            });
+            if (aiRes.ok) {
+              const aiData = await aiRes.json();
+              const text = aiData.content?.[0]?.text || '';
+              for (const line of text.split('\n')) {
+                const m = line.match(/^(\w[\w_]+):\s*(.+)/);
+                if (!m) continue;
+                const [, key, val] = m;
+                const v = val.trim();
+                if (key === 'OFFER' && v !== 'None') row.offer = v;
+                if (key === 'ICE_BREAKER_TEXT') row.iceBreaker.text = v;
+                if (key === 'ICE_BREAKER_SUCCESS') row.iceBreaker.success = v.toUpperCase() === 'TRUE';
+                if (key === 'HOOK_TEXT') row.hook.text = v;
+                if (key === 'HOOK_SUCCESS') row.hook.success = v.toUpperCase() === 'TRUE';
+                if (key === 'OBJECTION_TEXT') row.objection.text = v;
+                if (key === 'OBJECTION_SUCCESS') row.objection.success = v.toUpperCase() === 'NONE' ? null : v.toUpperCase() === 'TRUE';
+                if (key === 'TAGS') row.tags = v.split(',').map(t => t.trim()).filter(t => ALL_TAG_COLORS[t]);
+              }
+            }
+          } catch {}
+        }
+        enrichedRows.push(row);
+        setSyncMessage(`Analyzing ${enrichedRows.length}/${newCalls.length}...`);
+      }
+
+      // Step 4: Add to table
+      setRows(prev => [...enrichedRows, ...prev]);
+
+      // Update stages and tags state
+      const newStages = { ...stages };
+      const newTags = { ...tags };
+      enrichedRows.forEach(r => {
+        if (r.iceBreaker?.text) newStages[r.id] = { iceBreaker: r.iceBreaker, hook: r.hook, objection: r.objection };
+        if (r.tags?.length) newTags[r.id] = r.tags;
+      });
+      setStages(newStages);
+      setTags(newTags);
+
+      setSyncStatus('done');
+      setSyncMessage(`Added ${enrichedRows.length} new calls (fully enriched)`);
+      setTimeout(() => setSyncStatus(''), 5000);
+
+    } catch (e) {
+      setApiError(`Sync failed: ${e.message}`);
+      setSyncStatus('');
+    }
+  }, [hsToken, apiKey, rows, stages, tags]);
 
   const [customCols, setCustomCols] = useState([]);
   const [search, setSearch] = useState('');
@@ -247,7 +454,7 @@ export default function CallAnalytics() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001', max_tokens: 250,
+            model: 'claude-sonnet-4-6', max_tokens: 250,
             messages: [{ role: 'user', content: `You are analyzing a cold call for RunBook (AP/billing automation for logistics). Classify this call across 3 dimensions. Pick EXACTLY ONE tag per dimension.
 
 REACH — Did we reach the right person?
@@ -309,7 +516,7 @@ OBJECTION: <tag or None>` }]
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001', max_tokens: 300,
+            model: 'claude-sonnet-4-6', max_tokens: 300,
             messages: [{ role: 'user', content: `You are an expert cold call analyst. Analyze this B2B cold call transcript and break it into 3 stages.
 
 STAGE 1 — ICE BREAKER (the intro + permission ask)
@@ -423,7 +630,7 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
             'anthropic-dangerous-direct-browser-access': 'true',
           },
           body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001',
+            model: 'claude-sonnet-4-6',
             max_tokens: 150,
             messages: [{
               role: 'user',
@@ -505,47 +712,25 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
           <div>
             <div style={{ fontSize: 16, fontWeight: 700, color: '#111827', lineHeight: 1.2 }}>Call Analytics</div>
             <div style={{ fontSize: 11, color: '#9ca3af' }}>
-              {rows.length} calls · {hsToken ? (hsLoading ? 'Syncing...' : lastSync ? `Live · Last sync ${lastSync.toLocaleTimeString()}` : 'Connecting...') : 'Static data · Set HubSpot token for live sync'}
+              {rows.length} calls {syncMessage && `· ${syncMessage}`}
             </div>
           </div>
         </div>
 
         <div style={{ flex: 1 }} />
 
-        {/* HubSpot token */}
-        <div style={{ position: 'relative' }}>
-          {showHsInput ? (
-            <div style={{ display: 'flex', gap: 6 }}>
-              <input
-                type="password"
-                placeholder="pat-na2-..."
-                value={hsToken}
-                onChange={e => setHsToken(e.target.value)}
-                autoFocus
-                style={{ border: '1px solid #f97316', borderRadius: 7, padding: '6px 11px', fontSize: 13, width: 200, outline: 'none' }}
-              />
-              <button onClick={() => { localStorage.setItem('hs_token', hsToken); setShowHsInput(false); }} style={{ background: '#f97316', color: 'white', border: 'none', borderRadius: 7, padding: '6px 12px', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>Save</button>
-            </div>
-          ) : (
-            <button
-              onClick={() => setShowHsInput(true)}
-              style={{
-                background: hsToken ? '#dcfce7' : '#fefce8',
-                color: hsToken ? '#166534' : '#713f12',
-                border: `1px solid ${hsToken ? '#86efac' : '#fde68a'}`,
-                borderRadius: 7, padding: '6px 13px', fontSize: 13, cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 5
-              }}
-            >
-              {hsToken ? 'HubSpot ✓' : 'Set HubSpot Token'}
-            </button>
-          )}
-        </div>
-
-        {hsToken && (
-          <button onClick={refresh} disabled={hsLoading} style={{ background: '#f3f4f6', border: '1px solid #e5e7eb', borderRadius: 7, padding: '6px 13px', fontSize: 13, cursor: hsLoading ? 'not-allowed' : 'pointer', fontWeight: 600, color: '#374151' }}>
-            {hsLoading ? 'Syncing...' : '↻ Sync'}
-          </button>
-        )}
+        {/* Sync New Calls button */}
+        <button
+          onClick={syncNewCalls}
+          disabled={syncStatus === 'syncing' || !hsToken || !apiKey}
+          style={{
+            background: syncStatus === 'syncing' ? '#e5e7eb' : syncStatus === 'done' ? '#dcfce7' : '#4f46e5',
+            color: syncStatus === 'syncing' ? '#6b7280' : syncStatus === 'done' ? '#166534' : 'white',
+            border: 'none', borderRadius: 7, padding: '6px 16px', fontSize: 13, cursor: syncStatus === 'syncing' ? 'not-allowed' : 'pointer', fontWeight: 600,
+          }}
+        >
+          {syncStatus === 'syncing' ? `↻ ${syncMessage}` : syncStatus === 'done' ? `✓ ${syncMessage}` : '↻ Sync New Calls'}
+        </button>
 
         {/* API Key button */}
         <div style={{ position: 'relative' }}>
@@ -706,9 +891,9 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
             <span style={{ fontSize: 12, color: '#7c3aed', fontWeight: 600 }}>🤖 {processing} — {processingProgress}%</span>
           </div>
         )}
-        {(apiError || hsError) && (
+        {apiError && (
           <div style={{ background: '#fee2e2', color: '#dc2626', borderRadius: 7, padding: '6px 12px', fontSize: 12, maxWidth: 400 }}>
-            ⚠️ {apiError || hsError} <button onClick={() => setApiError('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#dc2626', fontWeight: 700 }}>×</button>
+            ⚠️ {apiError} <button onClick={() => setApiError('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#dc2626', fontWeight: 700 }}>×</button>
           </div>
         )}
       </div>
