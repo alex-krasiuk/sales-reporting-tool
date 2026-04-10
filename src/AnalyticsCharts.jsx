@@ -46,23 +46,23 @@ function categorizeObjection(text) {
 function categorizeHook(text) {
   if (!text) return null;
   const t = text.toLowerCase();
-  if (/never reached/.test(t)) return null; // exclude from comparison
-  if (/billing|accounts payable|dispatch|carrier|pod|order.to.cash|invoice|back office|scheduling.*crew/.test(t)) return 'Use-Case Specific (billing, AP, dispatch)';
-  if (/common theme|challenge|production|edge case|struggle|trust.*accuracy|getting.*agents.*work/.test(t)) return 'Pain-Led (production challenges)';
-  if (/platform.*build|build.*deploy|orchestration|no.code|natural language.*build/.test(t)) return 'Platform / Orchestration pitch';
-  if (/manual coordination|automate.*manual|repetitive|80%|slows.*down|slow.*team/.test(t)) return 'Manual Work Automation';
-  return 'Other hook';
+  if (/never reached/.test(t)) return null;
+  if (/billing|accounts payable|dispatch|carrier|pod|order.to.cash|invoice|back office|scheduling.*crew/.test(t)) return 'Use-Case Specific ("automate billing, AP, dispatch for logistics")';
+  if (/common theme|challenge|production|edge case|struggle|trust.*accuracy|getting.*agents.*work/.test(t)) return 'Pain-Led ("teams struggle getting AI agents to work in production")';
+  if (/platform.*build|build.*deploy|orchestration|no.code|natural language.*build/.test(t)) return 'Platform pitch ("platform to build and deploy agents, no code")';
+  if (/manual coordination|automate.*manual|repetitive|80%|slows.*down|slow.*team/.test(t)) return 'Manual Work ("automate manual coordination that slows teams down")';
+  return 'Generic / exploratory ("working with IT teams, curious if relevant")';
 }
 
 // --- Icebreaker categorization ---
 function categorizeIceBreaker(text) {
   if (!text) return null;
   const t = text.toLowerCase();
-  if (/follow.up|spoke.*last|talked.*before|called.*earlier|callback|we chatted/.test(t)) return 'Follow-up / Prior contact';
-  if (/i see your|i noticed|i understand.*you|your.*role|leading.*team|working on/.test(t)) return 'Personalized (mentions role)';
-  if (/borrow.*(30|thirty)|out of the blue|cold call|bit out of/.test(t)) return '"Borrow 30 seconds" opener';
-  if (/do you mind|can i|is it okay|okay if/.test(t)) return 'Permission ask';
-  return 'Standard intro';
+  if (/follow.up|spoke.*last|talked.*before|called.*earlier|callback|we chatted/.test(t)) return 'Follow-up ("we spoke last week, wanted to continue")';
+  if (/i see your|i noticed|i understand.*you|your.*role|leading.*team|working on/.test(t)) return 'Personalized ("I see you\'re leading IT at X, thought relevant")';
+  if (/borrow.*(30|thirty)|out of the blue|cold call|bit out of/.test(t)) return '"Borrow 30 seconds" ("calling out of the blue, can I borrow 30s?")';
+  if (/do you mind|can i|is it okay|okay if/.test(t)) return 'Permission ask ("do you mind if I explain why I called?")';
+  return 'Name + company only ("Hey, this is Brandon with RunBook, how are you?")';
 }
 
 // --- SVG Mini Line Chart ---
