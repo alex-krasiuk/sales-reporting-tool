@@ -555,7 +555,7 @@ Analyze in 3-4 sentences:
                 <tbody>
                   {Array.from({ length: 10 }, (_, i) => i + 7).map((h, i) => {
                     const d = hourlyStats.hours[h] || { total: 0, convos: 0, meetings: 0, wrong: 0 };
-                    if (d.total === 0) return null;
+                    // Show all hours even if 0 calls
                     const pctTotal = hourlyStats.totalAll ? (d.total / hourlyStats.totalAll * 100) : 0;
                     const convoRate = d.total ? (d.convos / d.total * 100) : 0;
                     const wrongRate = d.total ? (d.wrong / d.total * 100) : 0;
