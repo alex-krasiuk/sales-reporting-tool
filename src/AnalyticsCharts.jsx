@@ -132,6 +132,85 @@ export default function AnalyticsCharts() {
   const [dateFrom, setDateFrom] = useState(mondayStr);
   const [dateTo, setDateTo] = useState(todayStr);
 
+  // Notes & Changes
+  const [notes, setNotes] = useState(() => { try { return JSON.parse(localStorage.getItem('call_analytics_notes') || '[]'); } catch { return []; } });
+  const [noteText, setNoteText] = useState('');
+  const [noteDate, setNoteDate] = useState(todayStr);
+  const [noteAnalysis, setNoteAnalysis] = useState({}); // noteId -> { text, loading }
+  const apiKey = localStorage.getItem('anthropic_api_key') || '';
+
+  const saveNote = () => {
+    if (!noteText.trim()) return;
+    const newNote = { id: Date.now(), text: noteText.trim(), date: noteDate, createdAt: new Date().toISOString() };
+    const updated = [newNote, ...notes];
+    setNotes(updated);
+    localStorage.setItem('call_analytics_notes', JSON.stringify(updated));
+    setNoteText('');
+  };
+
+  const deleteNote = (id) => {
+    const updated = notes.filter(n => n.id !== id);
+    setNotes(updated);
+    localStorage.setItem('call_analytics_notes', JSON.stringify(updated));
+  };
+
+  const getBeforeAfter = (noteDate) => {
+    const before = CALL_DATA.filter(d => d.date && d.date < noteDate && d.date >= (() => { const dt = new Date(noteDate + 'T12:00:00'); dt.setDate(dt.getDate() - 7); return dt.toISOString().slice(0, 10); })());
+    const after = CALL_DATA.filter(d => d.date && d.date >= noteDate);
+    const calc = (arr) => {
+      const total = arr.length;
+      const convos = arr.filter(d => d.durationMs >= 60000).length;
+      const mtgs = arr.filter(d => d.outcome === 'Meeting Booked').length;
+      const wrongNum = arr.filter(d => d.outcome === 'Wrong number').length;
+      const days = new Set(arr.map(d => d.date)).size;
+      return { total, convos, mtgs, wrongNum, days, connectRate: total, convoRate: total ? Math.round(convos / total * 100) : 0, wrongRate: total ? Math.round(wrongNum / total * 100) : 0, mtgRate: convos ? Math.round(mtgs / convos * 100) : 0 };
+    };
+    return { before: calc(before), after: calc(after) };
+  };
+
+  const analyzeNote = async (note) => {
+    if (!apiKey) return;
+    setNoteAnalysis(prev => ({ ...prev, [note.id]: { text: '', loading: true } }));
+    const { before, after } = getBeforeAfter(note.date);
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-6', max_tokens: 400,
+          messages: [{ role: 'user', content: `You are a sales operations analyst. Be honest and critical.
+
+A cold calling team made this change: "${note.text}" on ${note.date}.
+
+BEFORE (7 days prior):
+- ${before.total} connects over ${before.days} days
+- ${before.convos} conversations (1m+), ${before.convoRate}% conversation rate
+- ${before.mtgs} meetings booked, ${before.mtgRate}% conv→meeting rate
+- ${before.wrongNum} wrong numbers, ${before.wrongRate}% wrong number rate
+
+AFTER (${note.date} to today):
+- ${after.total} connects over ${after.days} days
+- ${after.convos} conversations (1m+), ${after.convoRate}% conversation rate
+- ${after.mtgs} meetings booked, ${after.mtgRate}% conv→meeting rate
+- ${after.wrongNum} wrong numbers, ${after.wrongRate}% wrong number rate
+
+Analyze in 3-4 sentences:
+1. Did the key metrics improve or worsen?
+2. Is the sample size enough to draw conclusions? (be specific about how many more days needed)
+3. Are there confounding variables that could explain the change?
+4. What's your recommendation?` }]
+        })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const text = data.content?.[0]?.text || 'No analysis available.';
+        setNoteAnalysis(prev => ({ ...prev, [note.id]: { text, loading: false } }));
+      }
+    } catch (e) {
+      setNoteAnalysis(prev => ({ ...prev, [note.id]: { text: `Error: ${e.message}`, loading: false } }));
+    }
+  };
+
   const filtered = useMemo(() => CALL_DATA.filter(d => d.date && d.date >= dateFrom && d.date <= dateTo), [dateFrom, dateTo]);
 
   // --- Core metrics ---
@@ -139,11 +218,8 @@ export default function AnalyticsCharts() {
   const wrongNumber = filtered.filter(d => d.outcome === 'Wrong number').length;
   const wrongContact = filtered.filter(d => d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').length;
   const realConvos = filtered.filter(d => !d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').length;
+  const conversations = filtered.filter(d => d.durationMs >= 60000).length; // 1m+ = conversation
   const meetings = filtered.filter(d => d.outcome === 'Meeting Booked').length;
-  const followUp = filtered.filter(d => d.outcome === 'Follow up - interested').length;
-  const notInterested = filtered.filter(d => d.outcome === 'Not Interested').length;
-  const accountPursue = filtered.filter(d => d.outcome === 'Account to Pursue').length;
-  const positive = meetings + followUp + accountPursue;
 
   // --- Per rep ---
   const reps = {};
@@ -180,19 +256,18 @@ export default function AnalyticsCharts() {
     const byDate = {};
     filtered.forEach(d => {
       if (!d.date) return;
-      if (!byDate[d.date]) byDate[d.date] = { connects: 0, meetings: 0, wrongNumber: 0, interest: 0, notInterested: 0, realConvos: 0 };
+      if (!byDate[d.date]) byDate[d.date] = { connects: 0, meetings: 0, wrongNumber: 0, conversations: 0, realConvos: 0 };
       byDate[d.date].connects++;
       if (d.outcome === 'Meeting Booked') byDate[d.date].meetings++;
       if (d.outcome === 'Wrong number') byDate[d.date].wrongNumber++;
-      if (d.outcome === 'Follow up - interested' || d.outcome === 'Account to Pursue') byDate[d.date].interest++;
-      if (d.outcome === 'Not Interested') byDate[d.date].notInterested++;
+      if (d.durationMs >= 60000) byDate[d.date].conversations++;
       if (!d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number') byDate[d.date].realConvos++;
     });
     return Object.entries(byDate).sort(([a], [b]) => a.localeCompare(b)).map(([date, d]) => ({
       date, label: new Date(date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
       meetingRate: d.connects ? (d.meetings / d.connects * 100) : 0,
       wrongNumberRate: d.connects ? (d.wrongNumber / d.connects * 100) : 0,
-      interestRate: d.connects ? (d.interest / d.connects * 100) : 0,
+      convoRate: d.connects ? (d.conversations / d.connects * 100) : 0,
       realConvoRate: d.connects ? (d.realConvos / d.connects * 100) : 0,
       ...d,
     }));
@@ -206,10 +281,10 @@ export default function AnalyticsCharts() {
     filtered.forEach(d => {
       const cat = categorizeHook(d.hook?.text);
       if (!cat) return;
-      if (!cats[cat]) cats[cat] = { total: 0, meetings: 0, followUp: 0, positive: 0 };
+      if (!cats[cat]) cats[cat] = { total: 0, conversations: 0, meetings: 0 };
       cats[cat].total++;
-      if (d.outcome === 'Meeting Booked') { cats[cat].meetings++; cats[cat].positive++; }
-      if (d.outcome === 'Follow up - interested' || d.outcome === 'Account to Pursue') { cats[cat].followUp++; cats[cat].positive++; }
+      if (d.durationMs >= 60000) cats[cat].conversations++; // 1m+ = conversation
+      if (d.outcome === 'Meeting Booked') cats[cat].meetings++;
     });
     return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
   }, [filtered]);
@@ -278,7 +353,7 @@ export default function AnalyticsCharts() {
             <MetricCard label="Real Conversations" value={realConvos} sub={`${total ? Math.round(realConvos / total * 100) : 0}% of connects`} color="#059669" big />
             <MetricCard label="Wrong Numbers" value={wrongNumber} sub={`${total ? Math.round(wrongNumber / total * 100) : 0}% of connects`} color="#ef4444" big />
             <MetricCard label="Meetings Booked" value={meetings} sub={realConvos ? `${Math.round(meetings / realConvos * 100)}% of real convos` : ''} color="#16a34a" big />
-            <MetricCard label="Follow Up + Pursue" value={positive - meetings} sub={`${total ? Math.round((positive - meetings) / total * 100) : 0}% of connects`} color="#2563eb" big />
+            <MetricCard label="Conversations (1m+)" value={conversations} sub={conversations ? `${Math.round(meetings / conversations * 100)}% → meetings` : ''} color="#2563eb" big />
           </div>
 
           {/* ===== ROW 2: REP COMPARISON ===== */}
@@ -351,29 +426,28 @@ export default function AnalyticsCharts() {
             {/* Hook performance — dual metric */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Hook Performance</div>
-              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 14 }}>Interest = follow-ups + meetings. Conversion = meetings booked / calls.</div>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 14 }}>Conversation = call 1m+. Conv→Mtg = meetings / conversations.</div>
               {hookStats.length > 0 ? (
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
                   <thead>
                     <tr style={{ borderBottom: '2px solid #e5e7eb' }}>
                       <th style={{ textAlign: 'left', padding: '6px 0', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Hook</th>
                       <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Calls</th>
-                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#2563eb', fontWeight: 600 }}>Interest</th>
+                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#2563eb', fontWeight: 600 }}>Convos (1m+)</th>
                       <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#16a34a', fontWeight: 600 }}>Meetings</th>
-                      <th style={{ textAlign: 'right', padding: '6px 0', fontSize: 11, color: '#16a34a', fontWeight: 600 }}>Conv %</th>
+                      <th style={{ textAlign: 'right', padding: '6px 0', fontSize: 11, color: '#16a34a', fontWeight: 600 }}>Conv→Mtg</th>
                     </tr>
                   </thead>
                   <tbody>
                     {hookStats.map(([cat, d], i) => {
-                      const intRate = d.total ? Math.round(d.positive / d.total * 100) : 0;
-                      const convRate = d.total ? Math.round(d.meetings / d.total * 100) : 0;
+                      const convMtgRate = d.conversations ? Math.round(d.meetings / d.conversations * 100) : 0;
                       return (
                         <tr key={cat} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
                           <td style={{ padding: '8px 0', color: '#374151', fontWeight: 500, fontSize: 11, maxWidth: 220 }}>{cat}</td>
                           <td style={{ padding: '8px 8px', textAlign: 'right', color: '#6b7280' }}>{d.total}</td>
-                          <td style={{ padding: '8px 8px', textAlign: 'right', color: '#2563eb', fontWeight: 600 }}>{intRate}% <span style={{ fontWeight: 400, color: '#9ca3af' }}>({d.positive})</span></td>
+                          <td style={{ padding: '8px 8px', textAlign: 'right', color: '#2563eb', fontWeight: 600 }}>{d.conversations}</td>
                           <td style={{ padding: '8px 8px', textAlign: 'right', fontWeight: 700, color: d.meetings > 0 ? '#16a34a' : '#d1d5db' }}>{d.meetings}</td>
-                          <td style={{ padding: '8px 0', textAlign: 'right', fontWeight: 700, color: convRate >= 15 ? '#16a34a' : convRate > 0 ? '#d97706' : '#d1d5db', background: convRate >= 15 ? '#dcfce710' : 'transparent' }}>{convRate}%</td>
+                          <td style={{ padding: '8px 0', textAlign: 'right', fontWeight: 700, color: convMtgRate >= 15 ? '#16a34a' : convMtgRate > 0 ? '#d97706' : '#d1d5db', background: convMtgRate >= 15 ? '#dcfce710' : 'transparent' }}>{convMtgRate}%</td>
                         </tr>
                       );
                     })}
@@ -430,7 +504,7 @@ export default function AnalyticsCharts() {
               { key: 'realConvoRate', color: '#059669', title: 'Real Conversation Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.realConvoRate, 0) / daily.length) : 0 },
               { key: 'wrongNumberRate', color: '#ef4444', title: 'Wrong Number Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.wrongNumberRate, 0) / daily.length) : 0 },
               { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
-              { key: 'interestRate', color: '#2563eb', title: 'Interest Rate (Follow Up + Pursue)', avg: daily.length ? (daily.reduce((a, d) => a + d.interestRate, 0) / daily.length) : 0 },
+              { key: 'convoRate', color: '#2563eb', title: 'Conversation Rate (1m+ calls)', avg: daily.length ? (daily.reduce((a, d) => a + (d.convoRate || 0), 0) / daily.length) : 0 },
             ].map(chart => (
               <div key={chart.key} style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '14px 16px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
@@ -458,6 +532,56 @@ export default function AnalyticsCharts() {
               ))}
             </div>
           )}
+
+          {/* ===== NOTES & CHANGES ===== */}
+          <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
+            <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Notes & Changes</div>
+            <div style={{ padding: '12px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+              <input type="date" value={noteDate} onChange={e => setNoteDate(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 8px', fontSize: 12 }} />
+              <input value={noteText} onChange={e => setNoteText(e.target.value)} onKeyDown={e => e.key === 'Enter' && saveNote()} placeholder="What changed? e.g. 'Brandon reduced to 2 parallel dials + daily number rotation'" style={{ flex: 1, minWidth: 250, border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 10px', fontSize: 12 }} />
+              <button onClick={saveNote} style={{ background: '#4f46e5', color: 'white', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>Add</button>
+            </div>
+            {notes.length === 0 && <div style={{ padding: '20px 16px', color: '#9ca3af', fontSize: 12 }}>No changes logged yet. Add notes about strategy changes to track their impact.</div>}
+            {notes.map(note => {
+              const { before, after } = getBeforeAfter(note.date);
+              const analysis = noteAnalysis[note.id];
+              return (
+                <div key={note.id} style={{ padding: '12px 16px', borderBottom: '1px solid #f3f4f6' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+                    <div>
+                      <span style={{ fontSize: 11, color: '#9ca3af', marginRight: 8 }}>{new Date(note.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                      <span style={{ fontSize: 13, fontWeight: 600, color: '#1f2937' }}>{note.text}</span>
+                    </div>
+                    <button onClick={() => deleteNote(note.id)} style={{ background: 'none', border: 'none', color: '#d1d5db', cursor: 'pointer', fontSize: 14 }}>×</button>
+                  </div>
+                  {/* Before / After metrics */}
+                  <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+                    <div style={{ flex: 1, background: '#f8f9fa', borderRadius: 6, padding: '8px 10px', fontSize: 11 }}>
+                      <div style={{ fontWeight: 700, color: '#6b7280', marginBottom: 4 }}>BEFORE (7 days)</div>
+                      <div>{before.total} connects · {before.convos} convos · {before.mtgs} mtgs</div>
+                      <div style={{ color: '#6b7280' }}>Conv rate: {before.convoRate}% · Wrong#: {before.wrongRate}% · Conv→Mtg: {before.mtgRate}%</div>
+                    </div>
+                    <div style={{ flex: 1, background: '#f0fdf4', borderRadius: 6, padding: '8px 10px', fontSize: 11, border: '1px solid #bbf7d0' }}>
+                      <div style={{ fontWeight: 700, color: '#16a34a', marginBottom: 4 }}>AFTER ({after.days} days)</div>
+                      <div>{after.total} connects · {after.convos} convos · {after.mtgs} mtgs</div>
+                      <div style={{ color: '#6b7280' }}>Conv rate: {after.convoRate}% · Wrong#: {after.wrongRate}% · Conv→Mtg: {after.mtgRate}%</div>
+                    </div>
+                  </div>
+                  {/* AI Analysis */}
+                  <div style={{ marginTop: 8 }}>
+                    {!analysis && apiKey && <button onClick={() => analyzeNote(note)} style={{ background: '#f3f4f6', border: '1px solid #e5e7eb', borderRadius: 5, padding: '4px 10px', fontSize: 11, cursor: 'pointer', color: '#374151' }}>Ask AI to analyze this change</button>}
+                    {!analysis && !apiKey && <span style={{ fontSize: 10, color: '#d1d5db' }}>Set API key to enable AI analysis</span>}
+                    {analysis?.loading && <span style={{ fontSize: 11, color: '#6b7280' }}>Analyzing...</span>}
+                    {analysis?.text && !analysis.loading && (
+                      <div style={{ background: '#fefce8', border: '1px solid #fde68a', borderRadius: 6, padding: '8px 10px', fontSize: 11, color: '#374151', lineHeight: 1.5 }}>
+                        <span style={{ fontWeight: 700, color: '#92400e' }}>AI Analysis: </span>{analysis.text}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
         </div>
       </div>
