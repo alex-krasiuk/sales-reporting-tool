@@ -94,7 +94,7 @@ export default function CallAnalytics() {
     })();
   }, [hsToken]);
 
-  const [apiKey, setApiKey] = useState('');
+  const [apiKey, setApiKey] = useState(() => localStorage.getItem('anthropic_api_key') || '');
   const [showApiInput, setShowApiInput] = useState(false);
   const [apiError, setApiError] = useState('');
   const [customCols, setCustomCols] = useState([]);
@@ -746,7 +746,7 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
                 autoFocus
                 style={{ border: '1px solid #c4b5fd', borderRadius: 7, padding: '6px 11px', fontSize: 13, width: 230, outline: 'none' }}
               />
-              <button onClick={() => setShowApiInput(false)} style={{ background: '#4f46e5', color: 'white', border: 'none', borderRadius: 7, padding: '6px 12px', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>Save</button>
+              <button onClick={() => { localStorage.setItem('anthropic_api_key', apiKey); setShowApiInput(false); }} style={{ background: '#4f46e5', color: 'white', border: 'none', borderRadius: 7, padding: '6px 12px', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>Save</button>
             </div>
           ) : (
             <button
@@ -866,20 +866,6 @@ OBJECTION_SUCCESS: [TRUE or FALSE or NONE]` }]
         {(search || filterDateFrom || filterDateTo || filterOutcome !== 'All' || filterRep !== 'All' || filterVertical !== 'All' || filterPersona !== 'All' || filterTag !== 'All' || filterIceBreaker !== 'All' || filterHook !== 'All' || filterObjection !== 'All') && (
           <button onClick={() => { setSearch(''); setFilterDateFrom(''); setFilterDateTo(''); setFilterOutcome('All'); setFilterRep('All'); setFilterVertical('All'); setFilterPersona('All'); setFilterTag('All'); setFilterIceBreaker('All'); setFilterHook('All'); setFilterObjection('All'); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>✕ Clear</button>
         )}
-        <button
-          onClick={analyzeAllCalls}
-          disabled={!!taggingProgress || !!stagesProgress || !apiKey}
-          style={{ background: taggingProgress ? '#e5e7eb' : 'linear-gradient(135deg, #f59e0b, #ef4444)', color: taggingProgress ? '#9ca3af' : 'white', border: 'none', borderRadius: 7, padding: '7px 13px', fontSize: 12, cursor: taggingProgress ? 'not-allowed' : 'pointer', fontWeight: 700 }}
-        >
-          {taggingProgress ? `Tagging ${taggingProgress.done}/${taggingProgress.total}...` : `🏷 Tags${!apiKey ? ' (key)' : ''}`}
-        </button>
-        <button
-          onClick={analyzeCallStages}
-          disabled={!!stagesProgress || !!taggingProgress || !apiKey}
-          style={{ background: stagesProgress ? '#e5e7eb' : 'linear-gradient(135deg, #4f46e5, #7c3aed)', color: stagesProgress ? '#9ca3af' : 'white', border: 'none', borderRadius: 7, padding: '7px 13px', fontSize: 12, cursor: stagesProgress ? 'not-allowed' : 'pointer', fontWeight: 700 }}
-        >
-          {stagesProgress ? `Stages ${stagesProgress.done}/${stagesProgress.total}...` : `📊 Analyze Stages${!apiKey ? ' (key)' : ''}`}
-        </button>
         <div style={{ flex: 1 }} />
         <span style={{ fontSize: 12, color: '#9ca3af' }}>
           {filtered.length} of {rows.length} calls {filtered.length !== rows.length && '(filtered)'}

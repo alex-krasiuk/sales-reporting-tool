@@ -42,6 +42,29 @@ function categorizeObjection(text) {
   return 'Other';
 }
 
+// --- Hook categorization ---
+function categorizeHook(text) {
+  if (!text) return null;
+  const t = text.toLowerCase();
+  if (/never reached/.test(t)) return null; // exclude from comparison
+  if (/billing|accounts payable|dispatch|carrier|pod|order.to.cash|invoice|back office|scheduling.*crew/.test(t)) return 'Use-Case Specific (billing, AP, dispatch)';
+  if (/common theme|challenge|production|edge case|struggle|trust.*accuracy|getting.*agents.*work/.test(t)) return 'Pain-Led (production challenges)';
+  if (/platform.*build|build.*deploy|orchestration|no.code|natural language.*build/.test(t)) return 'Platform / Orchestration pitch';
+  if (/manual coordination|automate.*manual|repetitive|80%|slows.*down|slow.*team/.test(t)) return 'Manual Work Automation';
+  return 'Other hook';
+}
+
+// --- Icebreaker categorization ---
+function categorizeIceBreaker(text) {
+  if (!text) return null;
+  const t = text.toLowerCase();
+  if (/follow.up|spoke.*last|talked.*before|called.*earlier|callback|we chatted/.test(t)) return 'Follow-up / Prior contact';
+  if (/i see your|i noticed|i understand.*you|your.*role|leading.*team|working on/.test(t)) return 'Personalized (mentions role)';
+  if (/borrow.*(30|thirty)|out of the blue|cold call|bit out of/.test(t)) return '"Borrow 30 seconds" opener';
+  if (/do you mind|can i|is it okay|okay if/.test(t)) return 'Permission ask';
+  return 'Standard intro';
+}
+
 // --- SVG Mini Line Chart ---
 function MiniChart({ data, dataKey, color, height = 120 }) {
   if (data.length < 2) return <div style={{ height, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#d1d5db', fontSize: 12 }}>Not enough data</div>;
@@ -104,20 +127,6 @@ function ObjBar({ label, count, total, color }) {
 }
 
 // --- Call Highlight Card ---
-function HighlightCard({ icon, label, call, color }) {
-  if (!call) return null;
-  return (
-    <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: 8, padding: '12px 14px', flex: 1, minWidth: 250 }}>
-      <div style={{ fontSize: 10, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>{icon} {label}</div>
-      <div style={{ fontSize: 13, fontWeight: 600, color: '#1f2937' }}>{call.contactName || 'Unknown'}</div>
-      <div style={{ fontSize: 11, color: '#6b7280' }}>{call.title || ''} {call.vertical ? `· ${call.vertical}` : ''}</div>
-      <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 4 }}>{call.rep} · {call.time} · {Math.round(call.durationMs / 1000)}s</div>
-      {call.offer && <div style={{ fontSize: 11, color: '#374151', marginTop: 6, fontStyle: 'italic', lineHeight: 1.4 }}>"{call.offer.slice(0, 120)}{call.offer.length > 120 ? '...' : ''}"</div>}
-      {call.recordingUrl && <a href={call.recordingUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: '#4f46e5', textDecoration: 'none', fontWeight: 600, marginTop: 6, display: 'inline-block' }}>▶ Listen</a>}
-    </div>
-  );
-}
-
 // --- Main ---
 export default function AnalyticsCharts() {
   const todayStr = new Date().toISOString().slice(0, 10);
@@ -191,10 +200,33 @@ export default function AnalyticsCharts() {
     }));
   }, [filtered]);
 
-  // --- Highlights ---
+  // --- Hook & Icebreaker analytics ---
   const meetingCalls = filtered.filter(d => d.outcome === 'Meeting Booked').sort((a, b) => b.timestamp.localeCompare(a.timestamp));
-  const longestConvo = [...filtered].filter(d => !d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').sort((a, b) => b.durationMs - a.durationMs)[0];
-  const latestFollowUp = filtered.filter(d => d.outcome === 'Follow up - interested').sort((a, b) => b.timestamp.localeCompare(a.timestamp))[0];
+
+  const hookStats = useMemo(() => {
+    const cats = {};
+    filtered.forEach(d => {
+      const cat = categorizeHook(d.hook?.text);
+      if (!cat) return;
+      if (!cats[cat]) cats[cat] = { total: 0, meetings: 0, followUp: 0, positive: 0 };
+      cats[cat].total++;
+      if (d.outcome === 'Meeting Booked') { cats[cat].meetings++; cats[cat].positive++; }
+      if (d.outcome === 'Follow up - interested' || d.outcome === 'Account to Pursue') { cats[cat].followUp++; cats[cat].positive++; }
+    });
+    return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
+  }, [filtered]);
+
+  const ibStats = useMemo(() => {
+    const cats = {};
+    filtered.forEach(d => {
+      const cat = categorizeIceBreaker(d.iceBreaker?.text);
+      if (!cat) return;
+      if (!cats[cat]) cats[cat] = { total: 0, passed: 0 };
+      cats[cat].total++;
+      if (d.iceBreaker?.success) cats[cat].passed++;
+    });
+    return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
+  }, [filtered]);
 
   // Quick presets
   const yesterdayStr = (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
@@ -299,15 +331,49 @@ export default function AnalyticsCharts() {
             </div>
           </div>
 
-          {/* ===== ROW 4: CALL HIGHLIGHTS ===== */}
-          <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', marginBottom: 16 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Call Highlights</div>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              {meetingCalls[0] && <HighlightCard icon="✅" label="Meeting Booked" call={meetingCalls[0]} color="#16a34a" />}
-              {meetingCalls[1] && <HighlightCard icon="✅" label="Meeting Booked" call={meetingCalls[1]} color="#16a34a" />}
-              {longestConvo && <HighlightCard icon="⏱" label="Longest Conversation" call={longestConvo} color="#7c3aed" />}
-              {latestFollowUp && <HighlightCard icon="🔄" label="Latest Follow Up" call={latestFollowUp} color="#2563eb" />}
-              {!meetingCalls[0] && !longestConvo && <div style={{ color: '#9ca3af', fontSize: 12 }}>No notable calls in this period</div>}
+          {/* ===== ROW 4: HOOK & ICEBREAKER PERFORMANCE ===== */}
+          <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+            {/* Hook performance */}
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 320 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Hook Performance</div>
+              {hookStats.length > 0 ? hookStats.map(([cat, d]) => {
+                const positiveRate = d.total ? Math.round(d.positive / d.total * 100) : 0;
+                return (
+                  <div key={cat} style={{ marginBottom: 8 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
+                      <span style={{ color: '#374151', fontWeight: 500 }}>{cat}</span>
+                      <span style={{ fontWeight: 700, color: positiveRate >= 20 ? '#16a34a' : positiveRate >= 10 ? '#d97706' : '#6b7280' }}>
+                        {d.total} calls · {positiveRate}% positive
+                        <span style={{ fontWeight: 400, color: '#9ca3af', marginLeft: 4 }}>({d.meetings}mtg {d.followUp}fu)</span>
+                      </span>
+                    </div>
+                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
+                      <div style={{ width: `${positiveRate}%`, height: '100%', background: positiveRate >= 20 ? '#16a34a' : positiveRate >= 10 ? '#d97706' : '#9ca3af', borderRadius: 4, opacity: 0.7, minWidth: d.positive > 0 ? 2 : 0 }} />
+                    </div>
+                  </div>
+                );
+              }) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No hook data for this period</div>}
+            </div>
+
+            {/* Icebreaker performance */}
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 320 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Icebreaker Performance</div>
+              {ibStats.length > 0 ? ibStats.map(([cat, d]) => {
+                const passRate = d.total ? Math.round(d.passed / d.total * 100) : 0;
+                return (
+                  <div key={cat} style={{ marginBottom: 8 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
+                      <span style={{ color: '#374151', fontWeight: 500 }}>{cat}</span>
+                      <span style={{ fontWeight: 700, color: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444' }}>
+                        {d.total} calls · {passRate}% passed
+                      </span>
+                    </div>
+                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
+                      <div style={{ width: `${passRate}%`, height: '100%', background: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', borderRadius: 4, opacity: 0.7 }} />
+                    </div>
+                  </div>
+                );
+              }) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No icebreaker data for this period</div>}
             </div>
           </div>
 
