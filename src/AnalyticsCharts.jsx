@@ -54,16 +54,14 @@ function categorizeHook(text) {
   return 'Generic / exploratory ("working with IT teams, curious if relevant")';
 }
 
-// --- Icebreaker categorization ---
-function categorizeIceBreaker(text) {
-  if (!text) return null;
-  const t = text.toLowerCase();
-  if (/follow.up|spoke.*last|talked.*before|called.*earlier|callback|we chatted/.test(t)) return 'Follow-up ("we spoke last week, wanted to continue")';
-  if (/i see your|i noticed|i understand.*you|your.*role|leading.*team|working on/.test(t)) return 'Personalized ("I see you\'re leading IT at X, thought relevant")';
-  if (/borrow.*(30|thirty)|out of the blue|cold call|bit out of/.test(t)) return '"Borrow 30 seconds" ("calling out of the blue, can I borrow 30s?")';
-  if (/do you mind|can i|is it okay|okay if/.test(t)) return 'Permission ask ("do you mind if I explain why I called?")';
-  return 'Name + company only ("Hey, this is Brandon with RunBook, how are you?")';
-}
+// --- Icebreaker element detection (not categories — elements can stack) ---
+const IB_ELEMENTS = [
+  { key: 'title', label: 'Mentions their title/role', example: '"I see you\'re leading IT at Shell..."', regex: /i see your|i noticed|leading|working on|director|manager|cio|cto|vp |architect|operations|it team|data and|your.*role|look after/i },
+  { key: 'followup', label: 'Follow-up reference', example: '"We spoke last week, wanted to continue..."', regex: /follow.up|spoke.*last|talked.*before|called.*earlier|we chatted|called.*other day|callback|spoke.*week|spoke.*ago|sent.*note|left.*message/i },
+  { key: 'company', label: 'Mentions their company', example: '"I see you\'re at Shell / FedEx..."', regex: /at (shell|pike|eco|ryder|fedex|pepsi|brock|otis|gordon|lineage|werner|crowley|western|motive|barn)|at your|over at/i },
+  { key: '30sec', label: '"Borrow 30 seconds" ask', example: '"Can I borrow 30 seconds to explain?"', regex: /borrow.*(30|thirty)|mind if|seconds|quick second|quick moment/i },
+  { key: 'howru', label: '"How are you?" opener', example: '"Hey, how are you?" (small talk first)', regex: /how are you|how.s it going|how you doing|how have you been/i },
+];
 
 // --- SVG Mini Line Chart ---
 function MiniChart({ data, dataKey, color, height = 120 }) {
@@ -217,15 +215,23 @@ export default function AnalyticsCharts() {
   }, [filtered]);
 
   const ibStats = useMemo(() => {
-    const cats = {};
-    filtered.forEach(d => {
-      const cat = categorizeIceBreaker(d.iceBreaker?.text);
-      if (!cat) return;
-      if (!cats[cat]) cats[cat] = { total: 0, passed: 0 };
-      cats[cat].total++;
-      if (d.iceBreaker?.success) cats[cat].passed++;
+    return IB_ELEMENTS.map(el => {
+      let total = 0, passed = 0, meetings = 0;
+      filtered.forEach(d => {
+        const ib = d.iceBreaker?.text;
+        if (!ib) return;
+        if (el.regex.test(ib)) {
+          total++;
+          if (d.iceBreaker?.success) passed++;
+          if (d.outcome === 'Meeting Booked') meetings++;
+        }
+      });
+      return { ...el, total, passed, meetings };
+    }).filter(el => el.total > 0).sort((a, b) => {
+      const rateA = a.total ? a.passed / a.total : 0;
+      const rateB = b.total ? b.passed / b.total : 0;
+      return rateB - rateA;
     });
-    return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
   }, [filtered]);
 
   // Quick presets
@@ -355,21 +361,27 @@ export default function AnalyticsCharts() {
               }) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No hook data for this period</div>}
             </div>
 
-            {/* Icebreaker performance */}
+            {/* Icebreaker elements */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 320 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Icebreaker Performance</div>
-              {ibStats.length > 0 ? ibStats.map(([cat, d]) => {
-                const passRate = d.total ? Math.round(d.passed / d.total * 100) : 0;
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Icebreaker Elements</div>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 12 }}>Which elements in the opener improve pass rate?</div>
+              {ibStats.length > 0 ? ibStats.map(el => {
+                const passRate = el.total ? Math.round(el.passed / el.total * 100) : 0;
+                const mtgRate = el.total ? Math.round(el.meetings / el.total * 100) : 0;
                 return (
-                  <div key={cat} style={{ marginBottom: 8 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
-                      <span style={{ color: '#374151', fontWeight: 500 }}>{cat}</span>
-                      <span style={{ fontWeight: 700, color: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444' }}>
-                        {d.total} calls · {passRate}% passed
+                  <div key={el.key} style={{ marginBottom: 10 }}>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: '#1f2937' }}>{el.label}</div>
+                    <div style={{ fontSize: 10, color: '#9ca3af', fontStyle: 'italic', marginBottom: 3 }}>{el.example}</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ flex: 1, height: 8, background: '#f3f4f6', borderRadius: 4 }}>
+                        <div style={{ width: `${passRate}%`, height: '100%', background: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', borderRadius: 4, opacity: 0.7 }} />
+                      </div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', whiteSpace: 'nowrap' }}>
+                        {passRate}% pass
                       </span>
-                    </div>
-                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
-                      <div style={{ width: `${passRate}%`, height: '100%', background: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', borderRadius: 4, opacity: 0.7 }} />
+                      <span style={{ fontSize: 10, color: '#6b7280', whiteSpace: 'nowrap' }}>
+                        {el.total} calls · {el.meetings} mtgs
+                      </span>
                     </div>
                   </div>
                 );
