@@ -215,23 +215,32 @@ export default function AnalyticsCharts() {
   }, [filtered]);
 
   const ibStats = useMemo(() => {
-    return IB_ELEMENTS.map(el => {
+    const FOLLOWUP_RE = /follow.up|spoke.*last|talked.*before|called.*earlier|we chatted|called.*other day|callback|spoke.*week|spoke.*ago|sent.*note|left.*message/i;
+    // Split warm vs cold
+    let warmTotal = 0, warmPassed = 0, warmMeetings = 0;
+    let coldTotal = 0, coldPassed = 0, coldMeetings = 0;
+    filtered.forEach(d => {
+      const ib = d.iceBreaker?.text;
+      if (!ib) return;
+      if (FOLLOWUP_RE.test(ib)) {
+        warmTotal++; if (d.iceBreaker?.success) warmPassed++; if (d.outcome === 'Meeting Booked') warmMeetings++;
+      } else {
+        coldTotal++; if (d.iceBreaker?.success) coldPassed++; if (d.outcome === 'Meeting Booked') coldMeetings++;
+      }
+    });
+    // Element stats (cold calls only)
+    const coldElements = IB_ELEMENTS.filter(el => el.key !== 'followup').map(el => {
       let total = 0, passed = 0, meetings = 0;
       filtered.forEach(d => {
         const ib = d.iceBreaker?.text;
-        if (!ib) return;
+        if (!ib || FOLLOWUP_RE.test(ib)) return; // skip warm calls
         if (el.regex.test(ib)) {
-          total++;
-          if (d.iceBreaker?.success) passed++;
-          if (d.outcome === 'Meeting Booked') meetings++;
+          total++; if (d.iceBreaker?.success) passed++; if (d.outcome === 'Meeting Booked') meetings++;
         }
       });
       return { ...el, total, passed, meetings };
-    }).filter(el => el.total > 0).sort((a, b) => {
-      const rateA = a.total ? a.passed / a.total : 0;
-      const rateB = b.total ? b.passed / b.total : 0;
-      return rateB - rateA;
-    });
+    }).filter(el => el.total > 0).sort((a, b) => (b.total ? b.passed / b.total : 0) - (a.total ? a.passed / a.total : 0));
+    return { warmTotal, warmPassed, warmMeetings, coldTotal, coldPassed, coldMeetings, coldElements };
   }, [filtered]);
 
   // Quick presets
@@ -339,53 +348,79 @@ export default function AnalyticsCharts() {
 
           {/* ===== ROW 4: HOOK & ICEBREAKER PERFORMANCE ===== */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
-            {/* Hook performance */}
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 320 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Hook Performance</div>
-              {hookStats.length > 0 ? hookStats.map(([cat, d]) => {
-                const positiveRate = d.total ? Math.round(d.positive / d.total * 100) : 0;
-                return (
-                  <div key={cat} style={{ marginBottom: 8 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
-                      <span style={{ color: '#374151', fontWeight: 500 }}>{cat}</span>
-                      <span style={{ fontWeight: 700, color: positiveRate >= 20 ? '#16a34a' : positiveRate >= 10 ? '#d97706' : '#6b7280' }}>
-                        {d.total} calls · {positiveRate}% positive
-                        <span style={{ fontWeight: 400, color: '#9ca3af', marginLeft: 4 }}>({d.meetings}mtg {d.followUp}fu)</span>
-                      </span>
-                    </div>
-                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
-                      <div style={{ width: `${positiveRate}%`, height: '100%', background: positiveRate >= 20 ? '#16a34a' : positiveRate >= 10 ? '#d97706' : '#9ca3af', borderRadius: 4, opacity: 0.7, minWidth: d.positive > 0 ? 2 : 0 }} />
-                    </div>
-                  </div>
-                );
-              }) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No hook data for this period</div>}
+            {/* Hook performance — dual metric */}
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Hook Performance</div>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 14 }}>Interest = follow-ups + meetings. Conversion = meetings booked / calls.</div>
+              {hookStats.length > 0 ? (
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                  <thead>
+                    <tr style={{ borderBottom: '2px solid #e5e7eb' }}>
+                      <th style={{ textAlign: 'left', padding: '6px 0', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Hook</th>
+                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Calls</th>
+                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#2563eb', fontWeight: 600 }}>Interest</th>
+                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#16a34a', fontWeight: 600 }}>Meetings</th>
+                      <th style={{ textAlign: 'right', padding: '6px 0', fontSize: 11, color: '#16a34a', fontWeight: 600 }}>Conv %</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {hookStats.map(([cat, d], i) => {
+                      const intRate = d.total ? Math.round(d.positive / d.total * 100) : 0;
+                      const convRate = d.total ? Math.round(d.meetings / d.total * 100) : 0;
+                      return (
+                        <tr key={cat} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
+                          <td style={{ padding: '8px 0', color: '#374151', fontWeight: 500, fontSize: 11, maxWidth: 220 }}>{cat}</td>
+                          <td style={{ padding: '8px 8px', textAlign: 'right', color: '#6b7280' }}>{d.total}</td>
+                          <td style={{ padding: '8px 8px', textAlign: 'right', color: '#2563eb', fontWeight: 600 }}>{intRate}% <span style={{ fontWeight: 400, color: '#9ca3af' }}>({d.positive})</span></td>
+                          <td style={{ padding: '8px 8px', textAlign: 'right', fontWeight: 700, color: d.meetings > 0 ? '#16a34a' : '#d1d5db' }}>{d.meetings}</td>
+                          <td style={{ padding: '8px 0', textAlign: 'right', fontWeight: 700, color: convRate >= 15 ? '#16a34a' : convRate > 0 ? '#d97706' : '#d1d5db', background: convRate >= 15 ? '#dcfce710' : 'transparent' }}>{convRate}%</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              ) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No hook data for this period</div>}
             </div>
 
             {/* Icebreaker elements */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 320 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Icebreaker Elements</div>
-              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 12 }}>Which elements in the opener improve pass rate?</div>
-              {ibStats.length > 0 ? ibStats.map(el => {
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Icebreaker Elements</div>
+
+              {/* Warm vs Cold split */}
+              {(ibStats.warmTotal > 0 || ibStats.coldTotal > 0) && (
+                <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
+                  <div style={{ flex: 1, background: '#f0fdf4', borderRadius: 6, padding: '8px 10px', border: '1px solid #bbf7d0' }}>
+                    <div style={{ fontSize: 10, color: '#6b7280', fontWeight: 600 }}>WARM (follow-ups)</div>
+                    <div style={{ fontSize: 18, fontWeight: 800, color: '#16a34a' }}>{ibStats.warmTotal > 0 ? Math.round(ibStats.warmPassed / ibStats.warmTotal * 100) : 0}%</div>
+                    <div style={{ fontSize: 10, color: '#6b7280' }}>{ibStats.warmTotal} calls · {ibStats.warmMeetings} mtgs</div>
+                  </div>
+                  <div style={{ flex: 1, background: '#eff6ff', borderRadius: 6, padding: '8px 10px', border: '1px solid #bfdbfe' }}>
+                    <div style={{ fontSize: 10, color: '#6b7280', fontWeight: 600 }}>COLD (first contact)</div>
+                    <div style={{ fontSize: 18, fontWeight: 800, color: '#2563eb' }}>{ibStats.coldTotal > 0 ? Math.round(ibStats.coldPassed / ibStats.coldTotal * 100) : 0}%</div>
+                    <div style={{ fontSize: 10, color: '#6b7280' }}>{ibStats.coldTotal} calls · {ibStats.coldMeetings} mtgs</div>
+                  </div>
+                </div>
+              )}
+
+              {/* Cold call elements only */}
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#6b7280', marginBottom: 8 }}>Cold call elements (what improves pass rate?)</div>
+              {ibStats.coldElements.length > 0 ? ibStats.coldElements.map(el => {
                 const passRate = el.total ? Math.round(el.passed / el.total * 100) : 0;
-                const mtgRate = el.total ? Math.round(el.meetings / el.total * 100) : 0;
                 return (
                   <div key={el.key} style={{ marginBottom: 10 }}>
-                    <div style={{ fontSize: 12, fontWeight: 600, color: '#1f2937' }}>{el.label}</div>
-                    <div style={{ fontSize: 10, color: '#9ca3af', fontStyle: 'italic', marginBottom: 3 }}>{el.example}</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <div style={{ flex: 1, height: 8, background: '#f3f4f6', borderRadius: 4 }}>
-                        <div style={{ width: `${passRate}%`, height: '100%', background: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', borderRadius: 4, opacity: 0.7 }} />
-                      </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                      <div style={{ fontSize: 12, fontWeight: 600, color: '#1f2937' }}>{el.label}</div>
                       <span style={{ fontSize: 11, fontWeight: 700, color: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', whiteSpace: 'nowrap' }}>
-                        {passRate}% pass
+                        {passRate}% pass · {el.total} calls · {el.meetings} mtgs
                       </span>
-                      <span style={{ fontSize: 10, color: '#6b7280', whiteSpace: 'nowrap' }}>
-                        {el.total} calls · {el.meetings} mtgs
-                      </span>
+                    </div>
+                    <div style={{ fontSize: 10, color: '#9ca3af', fontStyle: 'italic', marginBottom: 3 }}>{el.example}</div>
+                    <div style={{ height: 6, background: '#f3f4f6', borderRadius: 3 }}>
+                      <div style={{ width: `${passRate}%`, height: '100%', background: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', borderRadius: 3, opacity: 0.7 }} />
                     </div>
                   </div>
                 );
-              }) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No icebreaker data for this period</div>}
+              }) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No cold call data for this period</div>}
             </div>
           </div>
 
