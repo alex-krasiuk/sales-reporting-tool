@@ -1,8 +1,740 @@
-// Auto-generated from HubSpot - 2026-04-09
-// 380 calls: Account to Pursue, Follow up - interested, Meeting Booked, No longer at company, Not Interested, Wrong Contact - no referral, Wrong contact - referral, Wrong number
+// Auto-generated from HubSpot - 2026-04-10
+// 411 calls: Account to Pursue, Follow up - interested, Meeting Booked, No longer at company, Not Interested, Wrong Contact - no referral, Wrong contact - referral, Wrong number
 // Reps: Brandon Liao, Chuck Gartland | Duration >= 10s
 
 export const CALL_DATA = [
+  {
+    "id": "363933639404",
+    "date": "2026-04-10",
+    "time": "12:01 PM",
+    "timestamp": "2026-04-10T19:01:22.359Z",
+    "rep": "Brandon Liao",
+    "outcome": "Busy",
+    "vertical": "Logistics & Freight",
+    "title": "Director of Applications Development",
+    "contactName": "Victor Novak",
+    "durationMs": 28593,
+    "transcript": "Brandon (Rep): hey victor this is brandon hello hello\nVictor (Prospect): hello hello",
+    "recordingUrl": "https://recording.nooks.in/CA8842689e6aed9ea32571ba2edf492a32.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363933639404",
+    "persona": "IT / Engineering",
+    "offer": "",
+    "iceBreaker": {
+      "text": "\"hey victor this is brandon hello hello\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "None",
+      "success": "NONE"
+    },
+    "tags": [
+      "Right person, right target",
+      "No pitch, too busy"
+    ]
+  },
+  {
+    "id": "363933866692",
+    "date": "2026-04-10",
+    "time": "12:00 PM",
+    "timestamp": "2026-04-10T19:00:12.554Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Logistics & Freight",
+    "title": "Enterprise Architect",
+    "contactName": "Matthew Finley",
+    "durationMs": 10293,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-10 19:00:12 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA8d048ccf19a34f37f86b8605b667f1f3.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363933866692",
+    "persona": "Technical IC",
+    "offer": ""
+  },
+  {
+    "id": "363928590030",
+    "date": "2026-04-10",
+    "time": "10:59 AM",
+    "timestamp": "2026-04-10T17:59:58.263Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong contact - referral",
+    "vertical": "Infrastructure",
+    "title": "VP/Director of Technology",
+    "contactName": "John Martin",
+    "durationMs": 142710,
+    "transcript": "[BL - Call - Property Mgmt | HVAC | Pest Control | Equipment | ZoomInfo Numbers] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-10 17:59:58 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon introduced themselves and explained their focus on helping IT teams automate back office workflows with AI agents.\n- John indicated that the area Brandon was discussing is not within their domain, as their offices operate independently.\n- John mentioned that they are currently using AI agents for help desk support.\n- Brandon proposed that their platform could handle edge cases effectively, but John expressed no interest in adding this capability to their current operations.\n- No follow-up meetings or calls were scheduled, and John did not provide any additional contact information.",
+    "recordingUrl": "https://recording.nooks.in/CA1ef1571df178aabf7dcea96b46d90c95.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363928590030",
+    "persona": "IT Leadership",
+    "offer": ""
+  },
+  {
+    "id": "363930125020",
+    "date": "2026-04-10",
+    "time": "10:30 AM",
+    "timestamp": "2026-04-10T17:30:31.619Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong Contact - no referral",
+    "vertical": "Field Service Trades",
+    "title": "CIO",
+    "contactName": "Stephen R Poppe",
+    "durationMs": 38291,
+    "transcript": "[BL - Call - Property Mgmt | HVAC | Pest Control | Equipment | ZoomInfo Numbers] 'Wrong Contact - no referral' recorded by brandon@myrunbook.com on 2026-04-10 17:30:31 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA7a95f64d2b784ece67fb77d0a372829b.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363930125020",
+    "persona": "Other",
+    "offer": ""
+  },
+  {
+    "id": "363821175489",
+    "date": "2026-04-10",
+    "time": "10:23 AM",
+    "timestamp": "2026-04-10T17:23:43.679Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong Contact - no referral",
+    "vertical": "Field Service Trades",
+    "title": "Senior Director, Global Data Platform, Governance and Tools",
+    "contactName": "Jeff Even",
+    "durationMs": 12430,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong Contact - no referral' recorded by brandon@myrunbook.com on 2026-04-10 17:23:43 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA9839fb203206ff9b2c5e926ce1641838.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363821175489",
+    "persona": "IT / Engineering",
+    "offer": ""
+  },
+  {
+    "id": "363806452411",
+    "date": "2026-04-10",
+    "time": "10:15 AM",
+    "timestamp": "2026-04-10T17:15:27.104Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong Contact - no referral",
+    "vertical": "Industrial Production",
+    "title": "Vice President Commercial Excellence - Honeywell Building Technologies",
+    "contactName": "Marvin Spears",
+    "durationMs": 32000,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong Contact - no referral' recorded by brandon@myrunbook.com on 2026-04-10 17:15:27 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon called Marvin to discuss potential automation solutions for IT teams in field operations.\n- Marvin responded in a language that suggests they may not be fluent in English, indicating a possible language barrier.\n- Brandon attempted to explain their services related to automating back office workflows with AI agents but did not get a clear response from Marvin.\n- The conversation did not progress to scheduling a follow-up or demo.",
+    "recordingUrl": "https://recording.nooks.in/CA3cc1762007d0ddba6377a2685be283d7.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363806452411",
+    "persona": "Executive",
+    "offer": ""
+  },
+  {
+    "id": "363924605653",
+    "date": "2026-04-10",
+    "time": "10:13 AM",
+    "timestamp": "2026-04-10T17:13:46.984Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Industrial Production",
+    "title": "Director of IT",
+    "contactName": "HARRY TONG",
+    "durationMs": 10231,
+    "transcript": "[BL - Call - Property Mgmt | HVAC | Pest Control | Equipment | ZoomInfo Numbers] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-10 17:13:46 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA6f5200a413a21e286fe6ca9c46e51fb4.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363924605653",
+    "persona": "IT / Engineering",
+    "offer": ""
+  },
+  {
+    "id": "363917838013",
+    "date": "2026-04-10",
+    "time": "9:57 AM",
+    "timestamp": "2026-04-10T16:57:31.677Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Not Interested",
+    "vertical": "Logistics & Freight",
+    "title": "Director, Strategic Integrations & Engineering",
+    "contactName": "Todd Hicks",
+    "durationMs": 251751,
+    "transcript": "Chuck (Rep): hello\nTodd (Prospect): hey todd\nChuck (Rep): yeah todd this is chuck ga i'm calling you from run book i hope you have a good friday but you get a quick second can tell you why i called\nTodd (Prospect): yeah\nChuck (Rep): cool so you know understand if you look after applications over at covenant the the the reason i reached out directly to you is run book for a platform that helps seems like yours integrate into the enterprise applications that you have like the data layer and and application have and automate a lot of the manual coordination work that goes on between systems using agents and with our platform internal teams can build and deploy those using natural language so it brings a lot closer to the business they can take advantage of ai and you know wanted to get your thoughts and see if that's something you guys have looked at or if you know it'd be relevant to you right now\nTodd (Prospect): it's it's not it it could be in the future right now we've got some we're changing everything out moving everything over to fabric yeah and that project is part of converting out to microsoft three three sixty five so there's we've got a lot going on right now mh that we're not going to be making any additional changes yeah yeah think that all these things are settled down\nChuck (Rep): yeah and we sit on top of those layers by the way and and so just just you know that that was actually you know i talked to someone else and understood you guys are going through some of those changes you know one of the things i think real interesting is you know work with folks like advice i think about bikes transport the team we're working with right now going through a similar migration and either by leveraging you know run book as a platform and having integration into both those systems that they're one on now and two moving over to that that there's actually a pretty good use case for using this type of technology because because you we're layered on top and then the integration is what's doing the coordination work so think about people doing billing like a you know whether be invoice creation or appointment scheduling or whatever it might be and having them to toggle between different systems you know the run book agent can do that orchestration almost immediately just because of that connectivity you know just throwing that out there but like if i i do think that like you know when you when you're looking at projects like that you know sometimes there is you know i'm not calling it a band aid but you know please get you a zero to one a little bit faster\nTodd (Prospect): understand had had we looked at this ahead of time but we're so far down the road right now we've already got all the integration done yeah so no there may be some advantages to it down the road but as of right now like i said there we've got so much going on when not looking to make any additional changes\nChuck (Rep): yeah i gotcha you on that and maybe maybe it's pretty premature then and may you know it's it's like oh well we didn't do it now didn't do it earlier we gotta do it later you know wonderful one makes sense to to spend twenty minutes and show you what we've built\nTodd (Prospect): well like i say it's i'm not opposed to that but it's just right as not the time\nChuck (Rep): sure i mean i mean what what would you be would you be open to at least learn what we're doing and i maybe you can get a little bit more granular on kinda of what your road map and timing is sure but yeah cool buddy it's it's not something we're gonna do right now now\nTodd (Prospect): yes\nChuck (Rep): i mean that's that's what i'm trying to i'm might i understand i mean i'll have a quota in six months i'll quoted in a year you know you know i'll still be calling you but like i think purpose of the call just be figured figuring out just now like you know where where this would slot in and if we if we could spend some time together and just do that maybe like i said they send twenty minutes next week i'll show you what we're up to and then you have that in your pocket you have that in your quiver for when you know for for when the timing is better would that be fair\nTodd (Prospect): it would but like i say i it's not no reason to sit out have a twenty minute call right now when it's it's no benefit to me no benefit to you like we're not gonna do anything with it right now so let's give it several months and reach back out\nChuck (Rep): alright i appreciate it's tom alright bye\nTodd (Prospect): you you bet to",
+    "recordingUrl": "https://recording.nooks.in/CA42b05f2fd14b65d27e1015ec625102b2.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363917838013",
+    "persona": "IT / Engineering",
+    "offer": "Runbook is a platform that helps teams integrate into enterprise applications, automate manual coordination work between systems using agents, and allows internal teams to build and deploy those integrations using natural language — bringing AI capabilities closer to the business.",
+    "iceBreaker": {
+      "text": "\"I hope you have a good Friday but you get a quick second can I tell you why I called.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Runbook helps teams like yours integrate into enterprise applications, automate manual coordination between systems using AI agents that internal teams can build and deploy using natural language.",
+      "success": true
+    },
+    "objection": {
+      "text": "They are mid-migration to Microsoft 365 and Fabric with integrations already built, so they are not looking to make any additional changes right now.",
+      "success": false
+    },
+    "tags": [
+      "Right person, right target",
+      "Full pitch delivered",
+      "Bad timing",
+      "Happy with current setup"
+    ]
+  },
+  {
+    "id": "363917810422",
+    "date": "2026-04-10",
+    "time": "9:47 AM",
+    "timestamp": "2026-04-10T16:47:24.378Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong Contact - no referral",
+    "vertical": "Asset & Facility Services",
+    "title": "Digital Transformation | Data Fusion, AI and Autonomous Solutions",
+    "contactName": "Scott Frigaard",
+    "durationMs": 184549,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong Contact - no referral' recorded by brandon@myrunbook.com on 2026-04-10 16:47:24 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon identified Scott as a contact at Convergent and initiated a conversation about automating back office workflows with AI.\n- Scott clarified that he supports digital transformation initiatives focused on physical security, specifically involving devices like cameras and sensors, rather than workflow automation.\n- Scott explained that their company employs AI for specific applications, such as reducing false alarms, but primarily integrates existing solutions rather than developing new ones.\n- Brandon acknowledged that the conversation was not relevant to Scott's work and decided not to pursue further discussion.\n- No follow-up meetings or additional contact information were exchanged during the call.",
+    "recordingUrl": "https://recording.nooks.in/CA6df9e588ff96559751d35adb9f8665ea.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363917810422",
+    "persona": "Technical IC",
+    "offer": ""
+  },
+  {
+    "id": "363919446770",
+    "date": "2026-04-10",
+    "time": "9:31 AM",
+    "timestamp": "2026-04-10T16:31:57.893Z",
+    "rep": "Brandon Liao",
+    "outcome": "Not Interested",
+    "vertical": "Utilities",
+    "title": "Sr. Enterprise Architect",
+    "contactName": "Frans Sluiter",
+    "durationMs": 76830,
+    "transcript": "Brandon (Rep): hello\nFran (Prospect): hey\nBrandon (Rep): fran this is brandon with run book how are you\nFran (Prospect): good how can i help you\nBrandon (Rep): yeah i'm calling from run book you know i've been working with mostly it teams in the field service heavy industries and and helping their business counterparts automate a lot of their back office workflows with ai agents i was giving you a call out of the blue here i was just wondering if that will be a relevant conversation\nFran (Prospect): not at this point in time but i appreciate you reaching out\nBrandon (Rep): okay yeah thank you why why do you say it's not the right time you are you working on things like this\nFran (Prospect): yeah well i mean i i really can't disclose any details but we are looking at various solutions and we are you know gonna go through vendor selection and all that stuff so\nBrandon (Rep): got it it's in process so if you're on that list and you're being part of that selection criteria then well done okay if not sorry but anyway appreciate you reaching out\nFran (Prospect): there's there's a number companies that are doing something similar in that space so we're evaluating that but thanks you to reach out\nBrandon (Rep): yeah no problem thank you for okay have a good day\nFran (Prospect): bye too but",
+    "recordingUrl": "https://recording.nooks.in/CA665cd54bf65c526666df85481c3bf38b.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363919446770",
+    "persona": "Technical IC",
+    "offer": "Helping IT teams in field service heavy industries automate back office workflows with AI agents for their business counterparts.",
+    "iceBreaker": {
+      "text": "\"I was giving you a call out of the blue here, I was just wondering if that will be a relevant conversation.\"",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "Not the right time as they are already evaluating various solutions through a vendor selection process.",
+      "success": false
+    },
+    "tags": [
+      "Right person, right target",
+      "Bad timing",
+      "Partial pitch, cut off",
+      "Happy with current setup"
+    ]
+  },
+  {
+    "id": "363789110001",
+    "date": "2026-04-10",
+    "time": "9:20 AM",
+    "timestamp": "2026-04-10T16:20:18.043Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong contact - referral",
+    "vertical": "Oil, Gas & Energy",
+    "title": "Director of Technology",
+    "contactName": "Charles Lewis",
+    "durationMs": 73292,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-10 16:20:18 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon introduced themselves as being with RunBook and aimed to discuss their services relevant to IT teams in field service heavy industries.\n- Charles indicated that they do not take calls and prefer to find companies through investors, stating that taking calls would consume all their time.\n- Charles suggested that Brandon could sign up on the RunBook website for further engagement instead of continuing the call.",
+    "recordingUrl": "https://recording.nooks.in/CAc08bcbae0964e04b7562661b01305854.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363789110001",
+    "persona": "IT / Engineering",
+    "offer": ""
+  },
+  {
+    "id": "363938975473",
+    "date": "2026-04-10",
+    "time": "8:51 AM",
+    "timestamp": "2026-04-10T15:51:23.841Z",
+    "rep": "Brandon Liao",
+    "outcome": "Follow up - interested",
+    "vertical": "Asset & Facility Services",
+    "title": "Manager, Intelligent Automation & Customer Experience Transformation",
+    "contactName": "Zack Harris",
+    "durationMs": 42452,
+    "transcript": "Brandon (Rep): hello\nZach (Prospect): hey\nBrandon (Rep): zach this is brandon with gru book how you\nZach (Prospect): i'm well how are you\nBrandon (Rep): doing well wish i was watching the masters instead of bugging you\nZach (Prospect): how can i help you\nBrandon (Rep): yeah zach i i was giving you up a a call out a blue from a company called run book so basically we we help enterprises who are kind of field service heavy and helping them automate a lot of their back office workflows with ai agents i was curious if it's gonna be this would be an interesting conversation for you\nZach (Prospect): potentially but not right now if you could give me a callback in a week or two i'd appreciate it\nBrandon (Rep): yeah i can do that\nZach (Prospect): alright thanks exactly\nBrandon (Rep): cool thanks man have a good one\nZach (Prospect): yeah you",
+    "recordingUrl": "https://recording.nooks.in/CA7240809dc0bcaffb47dcce7061f6a211.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363938975473",
+    "persona": "Manager (Other)",
+    "offer": "We help enterprises who are field service heavy automate a lot of their back office workflows with AI agents.",
+    "iceBreaker": {
+      "text": "Zach, I was giving you a call out of the blue from a company called Runbook — wish I was watching the Masters instead of bugging you.",
+      "success": true
+    },
+    "hook": {
+      "text": "We help enterprises who are field service heavy automate a lot of their back office workflows with AI agents — curious if this would be an interesting conversation for you.",
+      "success": true
+    },
+    "objection": {
+      "text": "Potentially interested but not right now — asked for a callback in a week or two.",
+      "success": true
+    },
+    "tags": [
+      "Right person, right target",
+      "Full pitch delivered",
+      "Bad timing",
+      "Follow up agreed"
+    ]
+  },
+  {
+    "id": "363917626062",
+    "date": "2026-04-10",
+    "time": "8:33 AM",
+    "timestamp": "2026-04-10T15:33:51.101Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Not Interested",
+    "vertical": "Logistics & Freight",
+    "title": "Director of Operations",
+    "contactName": "Jake Heater",
+    "durationMs": 115650,
+    "transcript": "Jake (Prospect): this is jake\n\nChuck (Rep): jay what's up dude this is chuck ga i'm calling you from a run book how are you\n\nJake (Prospect): good happy masters friday\n\nChuck (Rep): but i'm calling a bit out of the blue i understood you're the director operations over at alabama morris express\n\nJake (Prospect): yeah\n\nChuck (Rep): cool so like what we the reason i call to reach out to you directly is that our company provides a a platform that helps automate a lot of the manual coordination work that your price slows your team down on today basis using agent ai your team can build and deploy agents you know at the business level you don't need it to to do it for you curious if you guys have looked at any automation solutions like that in the in the past something to be interested to you\n\nJake (Prospect): yeah we've we've looked at it and we're not in a place right now to even think about that or bring on anything else so\n\nChuck (Rep): why why do you so why you say that\n\nJake (Prospect): we're it's just a crazy market we're focused on that and fine tune processes and stuff and i wanna add cost in the on the ai thing\n\nChuck (Rep): yeah but i you know that that's a that's like probably a good reason to think about it they're like if the the the way that this stuff kinda works and and like it's just changed so much in the last couple months but like you know you take the processes that you have and you automate like a lot of the standard stuff and then your team could spend its time building relationship selling you know doing adding value for the customers so like think about like i don't know building a building an invoice or like that's stuff just happy past through and if there's a you know an issue with rates it escalate leads to a person so you get like that eighty percent of that standard your work time back focused on twenty percent exceptions and then you know that like that that time you get back you see you you spend selling right\n\nJake (Prospect): yeah i hear you now totally get it but that's not where we're at now but i've got another call coming through so i appreciate you reaching now ma'am\n\nChuck (Rep): alright good enough thanks cheers yeah",
+    "recordingUrl": "https://recording.nooks.in/CAfb9a7898718a2d305e841d1ae83592a8.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363917626062",
+    "persona": "Operations Leadership",
+    "offer": "Our platform helps automate manual coordination work that slows your team down on a daily basis using agent AI — your team can build and deploy agents at the business level without needing IT. It handles standard tasks like invoicing and rate issues, giving you back 80% of routine work time so your team can focus on selling and customer relationships.",
+    "iceBreaker": {
+      "text": "Chuck introduced himself from Runbook and confirmed Jake was the Director of Operations at Alabama Morris Express before launching into the pitch.",
+      "success": true
+    },
+    "hook": {
+      "text": "Our platform automates manual coordination work using agent AI so your team gets 80% of routine work time back to focus on selling and exceptions.",
+      "success": true
+    },
+    "objection": {
+      "text": "We've looked at it but we're not in a place right now to bring on anything else — it's a crazy market and we don't want to add cost on the AI thing.",
+      "success": false
+    },
+    "tags": [
+      "Right person, right target",
+      "Full pitch delivered",
+      "Bad timing",
+      "No budget"
+    ]
+  },
+  {
+    "id": "363774514883",
+    "date": "2026-04-10",
+    "time": "8:31 AM",
+    "timestamp": "2026-04-10T15:31:46.184Z",
+    "rep": "Brandon Liao",
+    "outcome": "Follow up - interested",
+    "vertical": "Logistics & Freight",
+    "title": "Enterprise Architect",
+    "contactName": "Pranab Pyne",
+    "durationMs": 127994,
+    "transcript": "Brandon (Rep): hello\nPranab (Prospect): hey p hi was this\nBrandon (Rep): yeah hi p this is brandon with run book was giving you a call out of the blue here today do you mind if i borrow thirty seconds for your time\nPranab (Prospect): yeah go ahead\nBrandon (Rep): yeah thanks so much yeah i i i noticed your linkedin profile you i thought you might be working on some ai applications and i was hoping to tell you a little bit about run book so i've been working with a good amount of it and ai engineering teams in kind of the logistics space and one thing i keep on hearing is they want to automate workflows for their business operations with agents handling things like appointment scheduling dispatch scheduling order to cash those those kind of things but you know a the problem they've been seeing is getting those agents to work in production and to get them to handle edge case as well i was curious if you're working on anything related to like no agents today\nPranab (Prospect): yeah yeah i mean like every the enterprise right we are also working on it what i can request you right now i don't know you want to look into something new but just drop me an email with your whatever you have right and i i can reach out to you if it makes sense\nBrandon (Rep): yeah yeah i could i can send you an email just like you know i well you know have you on the phone right now could i go you know explain a little bit what we do and why you know it might be interesting to you\nPranab (Prospect): let's let me go through your credentials a little bit right send me an email then i can reach out to you right that would be probably a better we develop have a discussion\nBrandon (Rep): yeah okay is is the email peter\nPranab (Prospect): yeah p r n a b under underscore p y n e at credit dot com\nBrandon (Rep): okay yeah alright yeah sounds good i'll send something to you there did do you work on or order to cash back on of workflow i\nPranab (Prospect): no i don't work on it but yeah some parts involved into it right\nBrandon (Rep): okay i might alright i'll send something along the line of that alright thank you so much for now but",
+    "recordingUrl": "https://recording.nooks.in/CA1f2b58891bda94b342825f5e71068a02.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363774514883",
+    "persona": "Technical IC",
+    "offer": "Runbook helps IT and AI engineering teams in the logistics space automate workflows for business operations using agents that handle things like appointment scheduling, dispatch scheduling, and order to cash — specifically solving the problem of getting those agents to work reliably in production and handle edge cases.",
+    "iceBreaker": {
+      "text": "\"Do you mind if I borrow thirty seconds of your time?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "Teams want to automate workflows with agents handling things like appointment scheduling, dispatch, and order to cash, but the problem is getting those agents to work in production and handle edge cases.",
+      "success": true
+    },
+    "objection": {
+      "text": "Prospect asked rep to send an email first so he could review credentials before having a deeper discussion.",
+      "success": false
+    },
+    "tags": [
+      "Right person, right target",
+      "Full pitch delivered",
+      "Follow up agreed",
+      "Bad timing"
+    ]
+  },
+  {
+    "id": "363940614896",
+    "date": "2026-04-10",
+    "time": "8:30 AM",
+    "timestamp": "2026-04-10T15:30:49.799Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Account to Pursue",
+    "vertical": "Logistics & Freight",
+    "title": "Manager, Transformational Excellence & Analytics",
+    "contactName": "Matthew Campbell",
+    "durationMs": 142310,
+    "transcript": "Chuck (Rep): hello\nMatthew (Prospect): hey\nChuck (Rep): matthew chuck cart with run how are you\nMatthew (Prospect): hey are you doing chuck sorry i i'm just getting back from holidays i you've been a vacation i i wasn't trying to ignore i just i just had a lot ago yeah i'm just i'm playing some catch up here mh and you can just give me kind of basically give me into next week to kinda just get get organized and i'll get back to you the projects i mean again the stuff i talked about we're still not as far long as we probably anticipated yeah but if you can just let me kinda get under get a above water here\nChuck (Rep): i will i'm gonna send a reminder right now just because i have you on the phone they kinda just dig into this a little bit more and i'll get back to you sir okay\nMatthew (Prospect): yeah good you're man i appreciate that i'm sorry for banging up like you're i i to go back to i just i i was on vacation and i was just to you know just was enjoying doing my job call back back back to the back to the coal mines now\nChuck (Rep): that's what i said hey exactly so i just i got back today still was just gonna i'm just i'm catching up my emails and all that stuff so hundred hundred percent did yeah i i gotcha you i got i gotcha gotcha so that's reminder\nMatthew (Prospect): yeah i'm just a reminder my outlook so i don't forget about it here yeah this longer works and so next week i i will email you and and give you account at least more context of where next i mean i\nChuck (Rep): cool and i think like the the good the thing is is that would be interesting too because i know you're we looking at like a lot of different things like what i i do think we got a different approach in a lot of the places that are that are going to they're going to market right now so look i we just wanna put our hat in the ring that's kinda what i said first call i get it tell what we're to\nMatthew (Prospect): yeah definitely interested is yeah i just yeah i could tell you high level we're probably not ready just yet but but i'll i'll give you a better idea of our road roadmap and and things along those lines because i know the team did some work last year week i just have a chance to kind of let my a around\nChuck (Rep): yep totally totally did alright man enjoy and enjoy the rest of the day and and hope you have a good weekend but you know we'll talk we'll talk log soon thanks next week\nMatthew (Prospect): yeah you got it care sir\nChuck (Rep): you got it bye bye bye",
+    "recordingUrl": "https://recording.nooks.in/CA2228afeca3888b283eb43d568a385631.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363940614896",
+    "persona": "Manager (Other)",
+    "offer": "We have a different approach compared to a lot of places going to market right now, and we just want to put our hat in the ring.",
+    "iceBreaker": {
+      "text": "\"Matthew, Chuck Cart with Run, how are you?\"",
+      "success": true
+    },
+    "hook": {
+      "text": "\"I do think we got a different approach in a lot of the places that are going to market right now, we just want to put our hat in the ring.\"",
+      "success": true
+    },
+    "objection": {
+      "text": "Prospect said he just got back from vacation and needs until next week to get organized before he can engage properly.",
+      "success": true
+    },
+    "tags": [
+      "Right person, right target",
+      "Partial pitch, cut off",
+      "Bad timing",
+      "Follow up agreed"
+    ]
+  },
+  {
+    "id": "363811861189",
+    "date": "2026-04-10",
+    "time": "8:14 AM",
+    "timestamp": "2026-04-10T15:14:49.302Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong Contact - no referral",
+    "vertical": "Logistics & Freight",
+    "title": "Enterprise Architect",
+    "contactName": "John Stanley",
+    "durationMs": 54190,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong Contact - no referral' recorded by brandon@myrunbook.com on 2026-04-10 15:14:49 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon introduced themselves as a representative from RunBook and briefly described the company as a startup focused on building AI agents.\n- John indicated that they are already working on similar projects internally and are not looking for external solutions.\n- John stated that they are not the right person to discuss this further, implying a lack of interest in pursuing the conversation.",
+    "recordingUrl": "https://recording.nooks.in/CA127bbaf262b63531bdcecfb2003ecc6c.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363811861189",
+    "persona": "Technical IC",
+    "offer": ""
+  },
+  {
+    "id": "363660817131",
+    "date": "2026-04-09",
+    "time": "3:12 PM",
+    "timestamp": "2026-04-09T22:12:39.097Z",
+    "rep": "Brandon Liao",
+    "outcome": "Not Interested",
+    "vertical": "Asset & Facility Services",
+    "title": "Vice President of Information Systems",
+    "contactName": "Keith Gordon",
+    "durationMs": 88493,
+    "transcript": "Brandon (Rep): hello\nKeith (Prospect): hey keith\nBrandon (Rep): yes hi keith this yeah can you hear me sorry\nKeith (Prospect): yes i can now\nBrandon (Rep): yeah sorry about that yeah my name is brandon i'm calling from run book i was giving you a call out of the blue here i was just wondering if i could borrow thirty seconds of your time to explain why i called you\nKeith (Prospect): yeah gotcha ahead you have thirty seconds\nBrandon (Rep): alright thank you keith so you know i noticed you're meeting information systems at waste connections i've been working with a number of it teams in kind of the field service heavy industries and i've been hearing a common theme that i thought you might resonate with is that they wanna automate workflows for their business operators with ai agents handling things like appointment scheduling crew dispatch ordered to cash these kind of things but getting those agents to work in production and to get them to handle edge cases as well has been a challenge for them i was curious if this is something you've also experienced you\nKeith (Prospect): no we got we have an internal system and we're already deep into the ai on that so appreciate the call but i don't think it's a good fit all of our stuff is internalized we're working with a a company bc to to automate that so appreciate\nBrandon (Rep): okay yeah pc the",
+    "recordingUrl": "https://recording.nooks.in/CAdc075bc9a4c40ec9b3099e05dfed454c.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363660817131",
+    "persona": "Executive",
+    "offer": "RunBook helps IT teams in field service-heavy industries automate workflows for business operators using AI agents that handle things like appointment scheduling, crew dispatch, and order-to-cash — specifically addressing the challenge of getting those agents to work reliably in production and handle edge cases.",
+    "iceBreaker": {
+      "text": "\"I was just wondering if I could borrow thirty seconds of your time to explain why I called you.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "IT teams in field service-heavy industries want to automate workflows with AI agents for things like appointment scheduling and crew dispatch, but getting those agents to work in production and handle edge cases has been a challenge.",
+      "success": true
+    },
+    "objection": {
+      "text": "They already have an internal system and are deep into AI automation with an existing partner, so it's not a good fit.",
+      "success": false
+    },
+    "tags": [
+      "Right person, right target",
+      "Full pitch delivered",
+      "Happy with current setup"
+    ]
+  },
+  {
+    "id": "363644864187",
+    "date": "2026-04-09",
+    "time": "3:10 PM",
+    "timestamp": "2026-04-09T22:10:02.571Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Field Service Trades",
+    "title": "Senior Vice President & Chief Digital Officer (CDO)",
+    "contactName": "Riaz Raihan",
+    "durationMs": 29949,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 22:10:02 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA07b8438c9e909408f035f1670f0247a6.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363644864187",
+    "persona": "Executive",
+    "offer": ""
+  },
+  {
+    "id": "363670108864",
+    "date": "2026-04-09",
+    "time": "2:39 PM",
+    "timestamp": "2026-04-09T21:39:01.545Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Construction",
+    "title": "Vice President and Chief Information Officer",
+    "contactName": "Allen Range",
+    "durationMs": 38009,
+    "transcript": "[BL - Call - Property Mgmt | HVAC | Pest Control | Equipment | ZoomInfo Numbers] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 21:39:01 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA933dbf45a7b107c31c64da7010f03a13.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363670108864",
+    "persona": "Executive",
+    "offer": ""
+  },
+  {
+    "id": "363644720884",
+    "date": "2026-04-09",
+    "time": "2:18 PM",
+    "timestamp": "2026-04-09T21:18:42.749Z",
+    "rep": "Brandon Liao",
+    "outcome": "Busy",
+    "vertical": "Field Service Trades",
+    "title": "Director of Product Engineering - AI",
+    "contactName": "Malhar Deshpande",
+    "durationMs": 80372,
+    "transcript": "Brandon (Rep): hello hey m this is brandon with run book hard from from back from from run book i was giving you a a call out of the blue here just wondering if i could borrow a thirty seconds monthly driving okay this is better hello man the heart",
+    "recordingUrl": "https://recording.nooks.in/CA6ce4965ed75fe6865e44396578f7caff.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363644720884",
+    "persona": "IT / Engineering",
+    "offer": "",
+    "iceBreaker": {
+      "text": "Just wondering if I could borrow thirty seconds.",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "None",
+      "success": "NONE"
+    },
+    "tags": [
+      "Right person, right target",
+      "No pitch, too busy"
+    ]
+  },
+  {
+    "id": "363657154260",
+    "date": "2026-04-09",
+    "time": "2:07 PM",
+    "timestamp": "2026-04-09T21:07:07.566Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Utilities",
+    "title": "Program Manager -Change Management",
+    "contactName": "Tanveer Husain",
+    "durationMs": 51771,
+    "transcript": "[BL - Call - Property Mgmt | HVAC | Pest Control | Equipment | ZoomInfo Numbers] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 21:07:07 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA3d0d7f070c266237882173e6f2d0b2cc.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363657154260",
+    "persona": "Manager (Other)",
+    "offer": ""
+  },
+  {
+    "id": "363653547723",
+    "date": "2026-04-09",
+    "time": "2:02 PM",
+    "timestamp": "2026-04-09T21:02:59.474Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Consumer Operations",
+    "title": "Sr. Director AI & Data Science",
+    "contactName": "Diana Adam",
+    "durationMs": 38650,
+    "transcript": "[all sequence] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 21:02:59 UTC",
+    "recordingUrl": "https://recording.nooks.in/CAd8c32c085ed432eb2007b843a1ace20b.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363653547723",
+    "persona": "IT / Engineering",
+    "offer": ""
+  },
+  {
+    "id": "363657138895",
+    "date": "2026-04-09",
+    "time": "2:01 PM",
+    "timestamp": "2026-04-09T21:01:44.171Z",
+    "rep": "Brandon Liao",
+    "outcome": "Not Interested",
+    "vertical": "Asset & Facility Services",
+    "title": "Director, Technology",
+    "contactName": "Gilbert Heiselt",
+    "durationMs": 24443,
+    "transcript": "Brandon (Rep): hello hey gilbert this is brandon with run book how are you sir\nGilbert (Prospect): i'm okay brandon what can do for you\nBrandon (Rep): yeah i was giving you call out of the blue here just wondering if i could borrow thirty seconds of your time to explain why i called\nGilbert (Prospect): yeah no i don't do solicitation calls i'm sorry\nBrandon (Rep): okay understand thanks\nGilbert (Prospect): thank you",
+    "recordingUrl": "https://recording.nooks.in/CA2ac65650115c17aef0009dcedc1d5ea3.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363657138895",
+    "persona": "IT / Engineering",
+    "offer": "",
+    "iceBreaker": {
+      "text": "Just wondering if I could borrow thirty seconds of your time to explain why I called.",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "Prospect does not take solicitation calls.",
+      "success": false
+    },
+    "tags": [
+      "Right person, right target",
+      "No pitch, too busy"
+    ]
+  },
+  {
+    "id": "363646244555",
+    "date": "2026-04-09",
+    "time": "1:55 PM",
+    "timestamp": "2026-04-09T20:55:10.808Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Wrong number",
+    "vertical": "Logistics & Freight",
+    "title": "Principal Architect - Transportation Management",
+    "contactName": "David Johns",
+    "durationMs": 34488,
+    "transcript": "[598354667] 'Wrong number' recorded by Chuck Gartland on 2026-04-09 20:55:10 UTC",
+    "recordingUrl": "https://recording.nooks.in/CAd4e8a698e33a9aab293056fa0d28f0aa.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363646244555",
+    "persona": "Technical IC",
+    "offer": ""
+  },
+  {
+    "id": "363646225101",
+    "date": "2026-04-09",
+    "time": "1:48 PM",
+    "timestamp": "2026-04-09T20:48:11.919Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong contact - referral",
+    "vertical": "Out of Scope",
+    "title": "Global Head of Technology Industry Division, Solutions Development and Managing Director",
+    "contactName": "David Popler",
+    "durationMs": 143090,
+    "transcript": "[BL - Call (Buying Team)] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-09 20:48:11 UTC",
+    "recordingUrl": "https://recording.nooks.in/CAbf2bfcc364add29c21cd621c53bda772.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363646225101",
+    "persona": "IT / Engineering",
+    "offer": ""
+  },
+  {
+    "id": "363635658456",
+    "date": "2026-04-09",
+    "time": "1:42 PM",
+    "timestamp": "2026-04-09T20:42:03.304Z",
+    "rep": "Brandon Liao",
+    "outcome": "Not Interested",
+    "vertical": "Logistics & Freight",
+    "title": "Global Chief Information Officer, and Head of Integrated Services",
+    "contactName": "Brian C.",
+    "durationMs": 66818,
+    "transcript": "Brian (Prospect): this is brian\nBrandon (Rep): hey brian this is brandon with gru book how are you sir\nBrian (Prospect): good good\nBrandon (Rep): good to hear that brian i just wanted i am calling you bit out of the booth here i was wondering if i could borrow thirty seconds of your time to explain why i called you\nBrian (Prospect): go ahead real quick but yeah go go ahead\nBrandon (Rep): thank you so brian i i i've been working with a number of it and engineering teams mostly in the logistics space really just field service and coordination heavy industries basically what we're doing is helping them build ai agents to automate business operations like handling things like appointment scheduling crew dispatch order to cash that kind of thing i was curious if this is something you looked at\nBrian (Prospect): yeah but or it's it's not a it's not front and center for this exact moment\nBrandon (Rep): oh okay okay do you have like a good good way to build ai agents today that is that what\nBrian (Prospect): yeah we're we just we have some other priorities that we're working on right now\nBrandon (Rep): yeah okay got it okay alright i appreciate it\nBrian (Prospect): yeah thank you bye bye",
+    "recordingUrl": "https://recording.nooks.in/CAf3bb69dd8b637ff9e2e872f8c13ca42d.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363635658456",
+    "persona": "IT Leadership",
+    "offer": "We help IT and engineering teams in logistics, field service, and coordination-heavy industries build AI agents to automate business operations like appointment scheduling, crew dispatch, and order to cash.",
+    "iceBreaker": {
+      "text": "\"I was wondering if I could borrow thirty seconds of your time to explain why I called you.\"",
+      "success": true
+    },
+    "hook": {
+      "text": "We help IT and engineering teams in logistics and field service industries build AI agents to automate operations like appointment scheduling, crew dispatch, and order to cash.",
+      "success": true
+    },
+    "objection": {
+      "text": "It's not front and center right now — they have other priorities they're working on.",
+      "success": false
+    },
+    "tags": [
+      "Right person, right target",
+      "Full pitch delivered",
+      "Bad timing"
+    ]
+  },
+  {
+    "id": "363658777277",
+    "date": "2026-04-09",
+    "time": "1:38 PM",
+    "timestamp": "2026-04-09T20:38:53.036Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Wrong contact - referral",
+    "vertical": "Logistics & Freight",
+    "title": "Sr. Director Enterprise Applications",
+    "contactName": "Danielle Baker",
+    "durationMs": 134172,
+    "transcript": "[Call only] 'Wrong contact - referral' recorded by Chuck Gartland on 2026-04-09 20:38:53 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Chuck introduced themselves and pitched RunBook's platform, which automates manual coordination work between systems.\n- Danielle clarified that she was using her personal number and that the topic was not relevant to her current responsibilities.\n- Danielle mentioned that a colleague in charge of data products is handling data centralization, indicating that this is not under her purview.\n- Danielle provided her email address (daniellebaker@odysseylogistics.com) for Chuck to reach out to her colleague regarding the data products.\n- Chuck did not schedule a follow-up call or meeting during this conversation.",
+    "recordingUrl": "https://recording.nooks.in/CA4dd65024856db9936e18f293c73f184f.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363658777277",
+    "persona": "IT / Engineering",
+    "offer": ""
+  },
+  {
+    "id": "363639092935",
+    "date": "2026-04-09",
+    "time": "1:38 PM",
+    "timestamp": "2026-04-09T20:38:26.541Z",
+    "rep": "Brandon Liao",
+    "outcome": "Busy",
+    "vertical": "Private Fleet / Enterprise Shipper",
+    "title": "Global Head of Analytics & AI",
+    "contactName": "Mansi Agarwal",
+    "durationMs": 28410,
+    "transcript": "Brandon (Rep): hello\nMonte (Prospect): hey monte yeah\nBrandon (Rep): hey mon this is brandon with gru book how are you\nMonte (Prospect): this is bug regarding\nBrandon (Rep): yeah i i was giving you a cold call here i was hoping to borrow if you would thirty seconds of your time\nMonte (Prospect): no i'm so sorry right now i'm busy\nBrandon (Rep): yeah okay no worries thank you i'll call you back thanks",
+    "recordingUrl": "https://recording.nooks.in/CA439448f66208619439f7e7b09b9afde8.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363639092935",
+    "persona": "Leadership",
+    "offer": "",
+    "iceBreaker": {
+      "text": "I was hoping to borrow thirty seconds of your time.",
+      "success": false
+    },
+    "hook": {
+      "text": "Never reached hook",
+      "success": false
+    },
+    "objection": {
+      "text": "The prospect said they were busy and could not talk right now.",
+      "success": false
+    },
+    "tags": [
+      "No pitch, too busy"
+    ]
+  },
+  {
+    "id": "363683815128",
+    "date": "2026-04-09",
+    "time": "1:28 PM",
+    "timestamp": "2026-04-09T20:28:52.279Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Wrong number",
+    "vertical": "Logistics & Freight",
+    "title": "Director of IT, Analytics & Product Manager TMS",
+    "contactName": "Lori Kim",
+    "durationMs": 13233,
+    "transcript": "[Call only] 'Wrong number' recorded by Chuck Gartland on 2026-04-09 20:28:52 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Chuck attempted to reach Lori but was informed that they had the wrong number.\n- Lori did not express any interest in a product or service, as the call was misdirected.\n- No follow-up was scheduled, and no contact information was exchanged.\n- Lori did not mention any products or services currently in use.\n- No referrals to other coworkers or colleagues were provided.",
+    "recordingUrl": "https://recording.nooks.in/CA5974aaaeb2c1d39802f76245e5be24aa.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363683815128",
+    "persona": "IT / Engineering",
+    "offer": ""
+  },
+  {
+    "id": "363660532415",
+    "date": "2026-04-09",
+    "time": "1:20 PM",
+    "timestamp": "2026-04-09T20:20:39.567Z",
+    "rep": "Brandon Liao",
+    "outcome": "Wrong number",
+    "vertical": "Logistics & Freight",
+    "title": "Senior System Analyst",
+    "contactName": "Gail Manis",
+    "durationMs": 104510,
+    "transcript": "[all sequence] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 20:20:39 UTC",
+    "recordingUrl": "https://recording.nooks.in/CAfad859155439f2053f499d8e63c10677.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363660532415",
+    "persona": "Analyst / Specialist",
+    "offer": ""
+  },
+  {
+    "id": "363680420551",
+    "date": "2026-04-09",
+    "time": "12:52 PM",
+    "timestamp": "2026-04-09T19:52:56.302Z",
+    "rep": "Chuck Gartland",
+    "outcome": "Wrong Contact - no referral",
+    "vertical": "Logistics & Freight",
+    "title": "Enterprise Architect",
+    "contactName": "Nick P.",
+    "durationMs": 73510,
+    "transcript": "[Call only] 'Wrong Contact - no referral' recorded by Chuck Gartland on 2026-04-09 19:52:56 UTC",
+    "recordingUrl": "https://recording.nooks.in/CA5261ab9b1109f8707374a44bab1207c4.wav?workspaceId=8AQjxXsnXHDflmUT",
+    "hsUrl": "https://app.hubspot.com/calls/244248253/review/363680420551",
+    "persona": "Technical IC",
+    "offer": ""
+  },
   {
     "id": "363648026330",
     "date": "2026-04-09",
@@ -31,7 +763,7 @@ export const CALL_DATA = [
     "title": "Director of Technology",
     "contactName": "Brian Folan",
     "durationMs": 21349,
-    "transcript": "[BL - Call] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 18:46:46 UTC\n\nCall Notes: -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Brian to introduce RunBook but realized he had the wrong number.\n- Brian confirmed that he is not the person Brandon was trying to reach.\n- No follow-up or further engagement was established as the call ended shortly after the identification error.",
+    "transcript": "[BL - Call] 'Wrong number' recorded by brandon@myrunbook.com on 2026-04-09 18:46:46 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon called Brian to introduce RunBook but realized he had the wrong number.\n- Brian confirmed that he is not the person Brandon was trying to reach.\n- No follow-up or further engagement was established as the call ended shortly after the identification error.",
     "recordingUrl": "https://recording.nooks.in/CA756428a7d75acbc4146a3f105df4904a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363649137341",
     "persona": "IT Leadership",
@@ -115,7 +847,7 @@ export const CALL_DATA = [
     "title": "Manager Enterprise Application Integration",
     "contactName": "Scott Ward",
     "durationMs": 70770,
-    "transcript": "[BL - Call (Buying Team)] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-09 17:10:38 UTC\n\nCall Notes: -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Scott to discuss automation solutions for enterprise applications at Ryder.\n- Scott indicated that they do not work with AI agents or automation workflows, stating their focus is solely on external integration work.\n- Brandon acknowledged that Scott was not the right person to discuss their services and thanked them for their time.",
+    "transcript": "[BL - Call (Buying Team)] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-09 17:10:38 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Brandon called Scott to discuss automation solutions for enterprise applications at Ryder.\n- Scott indicated that they do not work with AI agents or automation workflows, stating their focus is solely on external integration work.\n- Brandon acknowledged that Scott was not the right person to discuss their services and thanked them for their time.",
     "recordingUrl": "https://recording.nooks.in/CA550d5e78963aaf4ca634d04f9dac404f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363684995789",
     "persona": "Operations",
@@ -223,7 +955,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "we're helping teams like yours deploy build and deploy against agents to automate a lot of the manual core coordination work that logistics and and field services teams because i slow them down, and we're bringing this closer to the business with a platform that allows your team to actually go and build and deploy these agents using natural language and not have to be code.",
     "iceBreaker": {
-      "text": "\"Hey Steve, this is Chuck from RunBook\u2014I'm calling you out of the blue because we're helping teams like yours deploy AI agents to automate manual work in logistics and field services.\"",
+      "text": "\"Hey Steve, this is Chuck from RunBook—I'm calling you out of the blue because we're helping teams like yours deploy AI agents to automate manual work in logistics and field services.\"",
       "success": true
     },
     "hook": {
@@ -302,7 +1034,7 @@ export const CALL_DATA = [
     "title": "Chief Technology Officer",
     "contactName": "Roald Brouwer",
     "durationMs": 180350,
-    "transcript": "[BL - Call - IT] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-09 15:22:46 UTC\n\nCall Notes: -----------Nooks AI summary \ud83d\udd2e-----------\n- Roald indicated they only have five minutes for the call but agreed to continue the conversation.\n- Brandon pitched the idea of automating workflows for business operations using AI agents, specifically mentioning challenges in production and handling edge cases.\n- Roald stated they do not have a comprehensive view of the company's IT operations and primarily handle technology in general, not day-to-day IT tasks.\n- Roald mentioned that their focus on AI is related to innovation and additional applications rather than operational aspects.\n- Roald requested that Brandon send a short email with more information and offered to connect him with the respective teams if interested.\n- Roald confirmed their email address as roald@MRIs.com for further communication.",
+    "transcript": "[BL - Call - IT] 'Wrong contact - referral' recorded by brandon@myrunbook.com on 2026-04-09 15:22:46 UTC\n\nCall Notes: -----------Nooks AI summary 🔮-----------\n- Roald indicated they only have five minutes for the call but agreed to continue the conversation.\n- Brandon pitched the idea of automating workflows for business operations using AI agents, specifically mentioning challenges in production and handling edge cases.\n- Roald stated they do not have a comprehensive view of the company's IT operations and primarily handle technology in general, not day-to-day IT tasks.\n- Roald mentioned that their focus on AI is related to innovation and additional applications rather than operational aspects.\n- Roald requested that Brandon send a short email with more information and offered to connect him with the respective teams if interested.\n- Roald confirmed their email address as roald@MRIs.com for further communication.",
     "recordingUrl": "https://recording.nooks.in/CAf4030eb238d49243b5d40b7d380eb428.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363645384422",
     "persona": "IT Leadership",
@@ -325,7 +1057,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "so i've been working with a number of it and ai engineering teams right now in the logistics and manufacturing space mostly like you know coordination heavy industries so they they they've been telling me a theme which is they wanna automate workflows for their business operations with with ai agents handling things like appointment scheduling dispatch order to cash you know things that typically require communication and navigation between different like systems than people but getting those agents to work in production and to get them to handle edge cases as well has been a challenge for them. We built like a platform one for like launching agents quickly but also orchestrating them. So we we are like platform and architecture at agnostic basically all we really need to understand is like what your workflow is and then we'll create the agent that navigate those systems pretty well it it like it it learns it learns your ecosystem it learns your workflows and then eventually it learns how the qa itself because there's certain like edge cases and when those edge cases happen we put a human in the loop like one of your operators they they figure out what to do and then so the next time something like that happens it would just you know remember how to do it.",
     "iceBreaker": {
-      "text": "\"I'm calling you a bit out of the blue here today, I saw some of the work you guys are doing at Apt Avatar and thought this call might be relevant\u2014do you mind if I borrow thirty seconds of your time?\"",
+      "text": "\"I'm calling you a bit out of the blue here today, I saw some of the work you guys are doing at Apt Avatar and thought this call might be relevant—do you mind if I borrow thirty seconds of your time?\"",
       "success": true
     },
     "hook": {
@@ -512,7 +1244,7 @@ export const CALL_DATA = [
     "persona": "Operations",
     "offer": "",
     "iceBreaker": {
-      "text": "\"This is Brandon with Run Book, I'm calling out of the blue\u2014could I borrow 30 seconds to explain who we are?\"",
+      "text": "\"This is Brandon with Run Book, I'm calling out of the blue—could I borrow 30 seconds to explain who we are?\"",
       "success": false
     },
     "hook": {
@@ -591,7 +1323,7 @@ export const CALL_DATA = [
     "title": "Associate Director Global Automation and Digital Product Management",
     "contactName": "George Sagoe",
     "durationMs": 83750,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called George to discuss automation solutions for IT and engineering teams in field service industries.\n- George informed Brandon that they have transitioned from digital transformation to manufacturing excellence and are now focused on manufacturing engineering.\n- Brandon's pitch regarding AI agents for automating workflows did not resonate with George's current role or interests.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called George to discuss automation solutions for IT and engineering teams in field service industries.\n- George informed Brandon that they have transitioned from digital transformation to manufacturing excellence and are now focused on manufacturing engineering.\n- Brandon's pitch regarding AI agents for automating workflows did not resonate with George's current role or interests.",
     "recordingUrl": "https://recording.nooks.in/CAdb577d364a995101dd2a6db10ea7e9c8.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363339864792",
     "persona": "Director (Other)",
@@ -625,7 +1357,7 @@ export const CALL_DATA = [
     "title": "VP of Engineering",
     "contactName": "William Fleming, PE",
     "durationMs": 49130,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called William to discuss automating workflows for business operators in the manufacturing logistics space.\n- William expressed that the topic was not relevant to them, indicating a lack of interest in the service being pitched.\n- No follow-up was scheduled, and William did not provide any contact information or refer Brandon to any colleagues.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called William to discuss automating workflows for business operators in the manufacturing logistics space.\n- William expressed that the topic was not relevant to them, indicating a lack of interest in the service being pitched.\n- No follow-up was scheduled, and William did not provide any contact information or refer Brandon to any colleagues.",
     "recordingUrl": "https://recording.nooks.in/CA38fdac1efcdd2372bf08009198c9c168.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363210043121",
     "persona": "IT Leadership",
@@ -693,7 +1425,7 @@ export const CALL_DATA = [
     "title": "VP of Technology & Growth, Excom Member",
     "contactName": "Karthik Sivaraman, PhD",
     "durationMs": 18009,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Karthik to discuss RunBook's services.\n- Karthik expressed frustration about receiving calls on this number for a long time without any relevant information or cards.\n- They apologized for the inconvenience and confirmed they would remove Karthik's number from their call list.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Karthik to discuss RunBook's services.\n- Karthik expressed frustration about receiving calls on this number for a long time without any relevant information or cards.\n- They apologized for the inconvenience and confirmed they would remove Karthik's number from their call list.",
     "recordingUrl": "https://recording.nooks.in/CAca6f148c340dd3bed0e5505e47f35597.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363195669236",
     "persona": "IT Leadership",
@@ -727,7 +1459,7 @@ export const CALL_DATA = [
     "title": "Chief Technical Officer (CTO)",
     "contactName": "Matthew Allen",
     "durationMs": 10989,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Matthew to introduce RunBook and check in on how they were doing.\n- The conversation was brief, and no specific details about the product or scheduling a demo were discussed.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Matthew to introduce RunBook and check in on how they were doing.\n- The conversation was brief, and no specific details about the product or scheduling a demo were discussed.",
     "recordingUrl": "https://recording.nooks.in/CAb17d8008f88de9d02ceaaf4c8c88115d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363215311593",
     "persona": "IT Leadership",
@@ -767,7 +1499,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "I didn't realize you know us I was hoping to you know share a bit about the challenges that we're seeing the teams where are trying to implement ai and how we solve it",
     "iceBreaker": {
-      "text": "\"This is Brandon with RunBook, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds to explain why I called you?\"",
+      "text": "\"This is Brandon with RunBook, I'm calling you out of the blue—do you mind if I borrow thirty seconds to explain why I called you?\"",
       "success": false
     },
     "hook": {
@@ -852,7 +1584,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "so so so that how how many like so that's that's super interesting and that's actually why i called is that you know our platform run book so basically it serves it as a platform to build and deploy these agents much more quickly to get through that list of of priorities and and be able to qa and simulate and make sure they're running properly you know get them done in in in in days not not weeks so that that's what i that's what i really was hoping to show you and so it's basically a platform that year team would take ownership of eventually right and be able to build out whether it it'd be like a a dedicated billing workflow or like a you know a appointment scheduling workflow things like that things like that and the complexity and the the orchestration is is what what our platform is and then you can use natural language to augment the the workflows or code code them in however you want but but the value for a team like yours is hey we have this foundation that has",
     "iceBreaker": {
-      "text": "\"I wanted to follow up\u2014I know we talked briefly last week on Friday, and I wanted to find some time with you to talk through run booking and what you guys are doing in data and AI right now.\"",
+      "text": "\"I wanted to follow up—I know we talked briefly last week on Friday, and I wanted to find some time with you to talk through run booking and what you guys are doing in data and AI right now.\"",
       "success": true
     },
     "hook": {
@@ -860,7 +1592,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"We're super busy this week\u2014we have a release on the twenty-second/twenty-sixth, so we can't do it before at least a couple of weeks from now.\"",
+      "text": "\"We're super busy this week—we have a release on the twenty-second/twenty-sixth, so we can't do it before at least a couple of weeks from now.\"",
       "success": true
     },
     "tags": [
@@ -886,7 +1618,7 @@ export const CALL_DATA = [
     "persona": "Finance / AP",
     "offer": "so i i've been working with finance and it teams in the logistics space to help them automate billing and accounts payable typically for teams who have to manually collect pods look up data various sources like spreadsheets and match it to their tms or crm before billing i was curious if this has been a friction point for your team or if you look to ai agents to help with this",
     "iceBreaker": {
-      "text": "\"I'm calling you a bit out of the blue, I just wanna be respectful here\u2014do you mind if I borrow thirty seconds of your time?\"",
+      "text": "\"I'm calling you a bit out of the blue, I just wanna be respectful here—do you mind if I borrow thirty seconds of your time?\"",
       "success": true
     },
     "hook": {
@@ -894,7 +1626,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"I don't make any decisions about what system is written in or using, and this is my personal number\u2014I don't need to waste any of my time on that.\"",
+      "text": "\"I don't make any decisions about what system is written in or using, and this is my personal number—I don't need to waste any of my time on that.\"",
       "success": false
     },
     "tags": [
@@ -914,7 +1646,7 @@ export const CALL_DATA = [
     "title": "Manager, Financial Planning and Analysis",
     "contactName": "Christopher Carter II",
     "durationMs": 69428,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Christopher to discuss automating billing and accounts payable processes for finance and IT teams in the logistics space.\n- Christopher indicated that they are not a decision maker for this type of solution and expressed no interest in the product.\n- Brandon inquired about the structure of Christopher's department to identify the appropriate decision maker to speak with.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Christopher to discuss automating billing and accounts payable processes for finance and IT teams in the logistics space.\n- Christopher indicated that they are not a decision maker for this type of solution and expressed no interest in the product.\n- Brandon inquired about the structure of Christopher's department to identify the appropriate decision maker to speak with.",
     "recordingUrl": "https://recording.nooks.in/CA612314e78696f139b448c988cf5bfe48.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363105275624",
     "persona": "Manager (Other)",
@@ -931,7 +1663,7 @@ export const CALL_DATA = [
     "title": "Accounts Payable Manager",
     "contactName": "Candice Culwell",
     "durationMs": 69773,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Candice to discuss automation solutions for accounts payable in the logistics space.\n- Candice clarified that they are not in accounts payable and suggested contacting the AP department instead.\n- Candice did not provide any direct contact information for the AP department but recommended calling the ArcBest help desk or front desk for assistance.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Candice to discuss automation solutions for accounts payable in the logistics space.\n- Candice clarified that they are not in accounts payable and suggested contacting the AP department instead.\n- Candice did not provide any direct contact information for the AP department but recommended calling the ArcBest help desk or front desk for assistance.",
     "recordingUrl": "https://recording.nooks.in/CA94ca876a421b5d21fdbe4be9edd98f30.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363092478698",
     "persona": "Finance / AP",
@@ -954,7 +1686,7 @@ export const CALL_DATA = [
     "persona": "Finance / AP",
     "offer": "so i i'm from a company called run book and i've been working with finance teams mostly in logistics to help them automate billing and accounts payable typically for teams who have to manually collect you know pods or work orders create invoices and match it to their tms or crm before billing i was curious if this is like a friction point for your team where if you look to ai agents to help with this",
     "iceBreaker": {
-      "text": "\"Neeraj, this is Brandon with Gru calling you a bit out of the blue\u2014do you mind if I borrow 30 seconds to explain why I called?\"",
+      "text": "\"Neeraj, this is Brandon with Gru calling you a bit out of the blue—do you mind if I borrow 30 seconds to explain why I called?\"",
       "success": true
     },
     "hook": {
@@ -988,7 +1720,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "i've been working with a good amount of it and ai engineering teams in the logistics space right now and i've been seeing a common theme in regards to automating workflows like complex workloads",
     "iceBreaker": {
-      "text": "\"I'm Brandon with Rum calling from California\u2014do you mind if I borrow 30 seconds of your time?\"",
+      "text": "\"I'm Brandon with Rum calling from California—do you mind if I borrow 30 seconds of your time?\"",
       "success": true
     },
     "hook": {
@@ -1016,7 +1748,7 @@ export const CALL_DATA = [
     "title": "Innovation Strategist",
     "contactName": "Jason Lycos",
     "durationMs": 95689,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon introduced themselves and explained that they were calling from RunBook to discuss automating workflows for IT and engineering teams in the logistics space.\n- Jason indicated that they were busy and did not express interest in the automation solutions Brandon was pitching.\n- Jason clarified that they do not manage any AI-related tasks or projects within their organization.\n- No follow-up meeting or call was scheduled, and no additional contact information was exchanged.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon introduced themselves and explained that they were calling from RunBook to discuss automating workflows for IT and engineering teams in the logistics space.\n- Jason indicated that they were busy and did not express interest in the automation solutions Brandon was pitching.\n- Jason clarified that they do not manage any AI-related tasks or projects within their organization.\n- No follow-up meeting or call was scheduled, and no additional contact information was exchanged.",
     "recordingUrl": "https://recording.nooks.in/CA462744719b7bb328a6b1950645ca7fe3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363097583315",
     "persona": "Other",
@@ -1039,15 +1771,15 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "i i was trying to see if you guys have any like challenges when it comes to building ai agents like a lot of the manufacturing and consumer services companies that we work with and i was gonna share our approach and see you know if if it's something new to how you approach building agents and if we can help basically",
     "iceBreaker": {
-      "text": "\"Ba, this is Brandon with Rumble. You told me to call you back last week\u2014is this a good time now?\"",
+      "text": "\"Ba, this is Brandon with Rumble. You told me to call you back last week—is this a good time now?\"",
       "success": false
     },
     "hook": {
-      "text": "\"We help with building AI agents, and I noticed you're leading data and analytics\u2014I figured you might be supporting some AI projects, especially around scaling and orchestrating agent fleets.\"",
+      "text": "\"We help with building AI agents, and I noticed you're leading data and analytics—I figured you might be supporting some AI projects, especially around scaling and orchestrating agent fleets.\"",
       "success": true
     },
     "objection": {
-      "text": "\"We are in pretty good shape with our internally developed team, and right now we're okay\u2014maybe we'll talk in Q3.\"",
+      "text": "\"We are in pretty good shape with our internally developed team, and right now we're okay—maybe we'll talk in Q3.\"",
       "success": false
     },
     "tags": [
@@ -1073,11 +1805,11 @@ export const CALL_DATA = [
     "persona": "Technical IC",
     "offer": "so roger i see your a solutions architect at at len working on ai and i've been working with a good amount of it and ai and engineering teams right and and i've been hearing a common theme that i thought my resonate with you is that they wanna automate workflows for their business operators coordination pass like appointment scheduling service scheduling or like accounts payable you know the ones that it typically require touching multiple people touching multiple system communicating with multiple people and so they've looked at ai agents to help with this but getting those agents to work in production has been a challenge for them either they so too long to no or they're just not very flexible it comes to edge cases i was curious if this is something you know you've you've experienced or working on currently",
     "iceBreaker": {
-      "text": "\"Hey Raj, this is Brandon with One Book. I'm calling you out of the blue here\u2014just want to be respectful. Do you think I could borrow thirty seconds to explain why I called you?\"",
+      "text": "\"Hey Raj, this is Brandon with One Book. I'm calling you out of the blue here—just want to be respectful. Do you think I could borrow thirty seconds to explain why I called you?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with AI and engineering teams who want to automate workflows like appointment scheduling, service scheduling, and accounts payable, but they've found that getting AI agents to work in production is challenging\u2014either they take too long to build or they're not flexible with edge cases.\"",
+      "text": "\"I've been working with AI and engineering teams who want to automate workflows like appointment scheduling, service scheduling, and accounts payable, but they've found that getting AI agents to work in production is challenging—either they take too long to build or they're not flexible with edge cases.\"",
       "success": true
     },
     "objection": {
@@ -1101,7 +1833,7 @@ export const CALL_DATA = [
     "title": "Vice President Information Technology",
     "contactName": "Masud Chowdhury",
     "durationMs": 11251,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Masud to introduce themselves and their company, RunBook.\n- Masud clarified that they are not the person the sales rep was trying to reach.\n- The call ended shortly after the miscommunication was identified.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Masud to introduce themselves and their company, RunBook.\n- Masud clarified that they are not the person the sales rep was trying to reach.\n- The call ended shortly after the miscommunication was identified.",
     "recordingUrl": "https://recording.nooks.in/CA826143e84135f771d7ea391d2f4363fc.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/363074847431",
     "persona": "IT Leadership",
@@ -1135,7 +1867,7 @@ export const CALL_DATA = [
     "title": "Sr. Enterprise Application Architect",
     "contactName": "Sadat Karim",
     "durationMs": 16871,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Sadat but reached the wrong number.\n- Sadat clarified that they were not the intended recipient of the call.\n- Brandon acknowledged the mistake and ended the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Sadat but reached the wrong number.\n- Sadat clarified that they were not the intended recipient of the call.\n- Brandon acknowledged the mistake and ended the call.",
     "recordingUrl": "https://recording.nooks.in/CA23e61645b25ffe4070365247624198ee.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362935002868",
     "persona": "Technical IC",
@@ -1152,7 +1884,7 @@ export const CALL_DATA = [
     "title": "Enterprise Architect",
     "contactName": "Brad Watson",
     "durationMs": 18728,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Brad but reached the wrong number.\n- Brad indicated that they were not the intended recipient of the call.\n- Brandon apologized for the mistake.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Brad but reached the wrong number.\n- Brad indicated that they were not the intended recipient of the call.\n- Brandon apologized for the mistake.",
     "recordingUrl": "https://recording.nooks.in/CA70b702d251f122b5adfc83c5376ceedd.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362948830931",
     "persona": "Technical IC",
@@ -1169,7 +1901,7 @@ export const CALL_DATA = [
     "title": "Vice President Information Technology",
     "contactName": "Nathan Hanks",
     "durationMs": 248667,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Nathan clarified that they are not Nathan Hanks and that Nathan Hanks no longer works for the company.\n- Nathan informed that the company is now called Progressive Tractor, not Heritage Ag.\n- Nathan stated that they do not work in IT and suggested contacting corporate for IT-related inquiries.\n- Nathan provided the contact information for Quentin Garrison (email: quentongg@ptieq.com) and Terry Parker (email: terrypatttieq.com) for further assistance.\n- Nathan mentioned that all coordination and IT matters are handled at the corporate level, indicating limited local decision-making authority.\n- Brandon pitched RunBook's platform for building AI agents, suggesting it could assist with dispatching service requests, but Nathan expressed that the company is not large enough to require such a solution.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Nathan clarified that they are not Nathan Hanks and that Nathan Hanks no longer works for the company.\n- Nathan informed that the company is now called Progressive Tractor, not Heritage Ag.\n- Nathan stated that they do not work in IT and suggested contacting corporate for IT-related inquiries.\n- Nathan provided the contact information for Quentin Garrison (email: quentongg@ptieq.com) and Terry Parker (email: terrypatttieq.com) for further assistance.\n- Nathan mentioned that all coordination and IT matters are handled at the corporate level, indicating limited local decision-making authority.\n- Brandon pitched RunBook's platform for building AI agents, suggesting it could assist with dispatching service requests, but Nathan expressed that the company is not large enough to require such a solution.",
     "recordingUrl": "https://recording.nooks.in/CA6150a059be1698fff1f00ed38862268a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362907888357",
     "persona": "IT Leadership",
@@ -1186,7 +1918,7 @@ export const CALL_DATA = [
     "title": "Vice President Of Technology",
     "contactName": "Raj Athreya",
     "durationMs": 16000,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Raj to discuss a potential opportunity with RunBook.\n- Raj indicated that they are no longer with their previous position at Home Serve, which suggests a possible change in their professional status.\n- The call was brief, and Raj did not express interest in continuing the conversation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Raj to discuss a potential opportunity with RunBook.\n- Raj indicated that they are no longer with their previous position at Home Serve, which suggests a possible change in their professional status.\n- The call was brief, and Raj did not express interest in continuing the conversation.",
     "recordingUrl": "https://recording.nooks.in/CA2946722a7b77d89061d2a3333a8408f6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362907871935",
     "persona": "IT Leadership",
@@ -1209,11 +1941,11 @@ export const CALL_DATA = [
     "persona": "Technical IC",
     "offer": "So i i see you're working on enterprise architecture at gordon and i thought this might be relevant to you so i've been working with a good number of it and engineering teams in the logistics and supply chain side of things and i've been hearing a common theme which is they they wanna automate workflows for their business operators coordination tasks that typically required you know touching multiple systems speaking to or emailing multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them they either take a long time to build or they're just not very flexible with edge cases i was curious if this is something that you resonate with on your role",
     "iceBreaker": {
-      "text": "\"Listen, I'm calling you a bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "text": "\"Listen, I'm calling you a bit out of the blue here today—do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams in logistics and supply chain who want to automate workflows using AI agents, but they're running into challenges getting those agents to work in production\u2014either they take too long to build or they're not flexible with edge cases.\"",
+      "text": "\"I've been working with IT and engineering teams in logistics and supply chain who want to automate workflows using AI agents, but they're running into challenges getting those agents to work in production—either they take too long to build or they're not flexible with edge cases.\"",
       "success": true
     },
     "objection": {
@@ -1243,11 +1975,11 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "so you know i see your leading it team at brock and i've been working with a good amount of it and engineering teams in the logistics and manufacturing space and i've been hearing a common theme that i thought might resonate with you is that they wanna automate workflows for their business operators coordination tasks that are repetitive and typically require touching multiple systems and calling multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a challenge for them it's either takes them a long time to build or they're not very flexible when it comes to edge cases i was curious if this is something that you resonate with",
     "iceBreaker": {
-      "text": "\"Christopher, this is Brandon with Run Book. I'm calling a bit out of the blue here today and I wanna be respectful\u2014do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "text": "\"Christopher, this is Brandon with Run Book. I'm calling a bit out of the blue here today and I wanna be respectful—do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive workflows and coordination tasks across multiple systems using AI agents, but they struggle with getting those agents to work in production\u2014either it takes too long to build or they're not flexible with edge cases.\"",
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive workflows and coordination tasks across multiple systems using AI agents, but they struggle with getting those agents to work in production—either it takes too long to build or they're not flexible with edge cases.\"",
       "success": true
     },
     "objection": {
@@ -1271,7 +2003,7 @@ export const CALL_DATA = [
     "title": "Chief Technology Officer",
     "contactName": "Samantha Fagundes de Toledo",
     "durationMs": 59675,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Samantha to discuss automating workflows for IT teams, but Samantha clarified that she is the Chief Technology Officer for food science, not IT.\n- No follow-up was scheduled, and no interest in a product or service was expressed by Samantha.\n- Samantha did not provide any contact information or refer Brandon to any colleagues.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Samantha to discuss automating workflows for IT teams, but Samantha clarified that she is the Chief Technology Officer for food science, not IT.\n- No follow-up was scheduled, and no interest in a product or service was expressed by Samantha.\n- Samantha did not provide any contact information or refer Brandon to any colleagues.",
     "recordingUrl": "https://recording.nooks.in/CAe0901874d18bb607338cbf490abb8db1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362957532906",
     "persona": "IT Leadership",
@@ -1328,11 +2060,11 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "yeah james i see your leading commercial digital solutions and assuming that falls under it and i i've been working with the a good amount of it and engineering teams in the logistics and manufacturing space and i've been seeing a theme that i thought i resonate with you they wanna automate workflows for their business operators tasks at a repetitive manual and require touching multiple people systems and talking to multiple people and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them to governing them i was curious if this is something you have a hand in",
     "iceBreaker": {
-      "text": "\"James, this is Brandon with Runbook. I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds to explain why I called you?\"",
+      "text": "\"James, this is Brandon with Runbook. I'm calling you out of the blue—do you mind if I borrow thirty seconds to explain why I called you?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with engineering and logistics teams who want to automate repetitive workflows across multiple systems using AI agents, but they struggle getting those agents to work in production\u2014design, implementation, governance\u2014and I was curious if this is something you have a hand in.\"",
+      "text": "\"I've been working with engineering and logistics teams who want to automate repetitive workflows across multiple systems using AI agents, but they struggle getting those agents to work in production—design, implementation, governance—and I was curious if this is something you have a hand in.\"",
       "success": true
     },
     "objection": {
@@ -1356,7 +2088,7 @@ export const CALL_DATA = [
     "title": "Director Enterprise Architecture & Engineering",
     "contactName": "Udhay Sivanatarajan",
     "durationMs": 17349,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Udhay to reach out regarding a potential opportunity.\n- Udhay clarified that they are not Udhay and that the number previously belonged to him.\n- The call was a brief misdial, and no further information was exchanged.\n- They apologized for the mistake and ended the call amicably.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Udhay to reach out regarding a potential opportunity.\n- Udhay clarified that they are not Udhay and that the number previously belonged to him.\n- The call was a brief misdial, and no further information was exchanged.\n- They apologized for the mistake and ended the call amicably.",
     "recordingUrl": "https://recording.nooks.in/CA14e757b06a5166c08c45a7e4ea043362.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362957289199",
     "persona": "IT / Engineering",
@@ -1424,7 +2156,7 @@ export const CALL_DATA = [
     "title": "Principal",
     "contactName": "Brad Bird",
     "durationMs": 39707,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced themselves and pitched RunBook's services, which help teams build and deploy agents to streamline operations.\n- Brad clarified that they are a programmer and do not oversee operations, indicating that Chuck was speaking to the wrong person.\n- Brad requested to be removed from the call list and ended the conversation without expressing interest in the product.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced themselves and pitched RunBook's services, which help teams build and deploy agents to streamline operations.\n- Brad clarified that they are a programmer and do not oversee operations, indicating that Chuck was speaking to the wrong person.\n- Brad requested to be removed from the call list and ended the conversation without expressing interest in the product.",
     "recordingUrl": "https://recording.nooks.in/CA0227868dfdbf3bef344e6195cbfdaf2f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362956602096",
     "persona": "Other",
@@ -1441,7 +2173,7 @@ export const CALL_DATA = [
     "title": "President and Chief Commercial Officer",
     "contactName": "Michael McLary",
     "durationMs": 18811,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Michael to introduce RunBook and explain the purpose of the call.\n- Michael objected to the call, stating they were busy and did not engage further.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Michael to introduce RunBook and explain the purpose of the call.\n- Michael objected to the call, stating they were busy and did not engage further.",
     "recordingUrl": "https://recording.nooks.in/CAa6119505029ded4fd0379a806e37c991.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362956587731",
     "persona": "Executive",
@@ -1475,7 +2207,7 @@ export const CALL_DATA = [
     "title": "Vice President Operations",
     "contactName": "Robert Parrish",
     "durationMs": 302308,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck reached out to Robert to discuss RunBook's platform for automating manual coordination work in operations.\n- Robert indicated that they had not considered automation tools like AgenTeq AI and mentioned that their company relies on personal relationships for billing and coordination.\n- Robert expressed a potential interest in exploring automation in the future and asked Chuck to call back next week to discuss further.\n- Chuck confirmed that Robert's email was incorrect and obtained the correct email: rob@familycarpetwb.com.\n- Robert clarified that they work for Family Carpet, a commercial flooring company, and mentioned they oversee commercial sales.\n- Robert suggested involving a colleague, Wendy Ralston, to further evaluate the potential benefits of RunBook's services.\n- Chuck agreed to follow up with an email to provide more information about their services.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck reached out to Robert to discuss RunBook's platform for automating manual coordination work in operations.\n- Robert indicated that they had not considered automation tools like AgenTeq AI and mentioned that their company relies on personal relationships for billing and coordination.\n- Robert expressed a potential interest in exploring automation in the future and asked Chuck to call back next week to discuss further.\n- Chuck confirmed that Robert's email was incorrect and obtained the correct email: rob@familycarpetwb.com.\n- Robert clarified that they work for Family Carpet, a commercial flooring company, and mentioned they oversee commercial sales.\n- Robert suggested involving a colleague, Wendy Ralston, to further evaluate the potential benefits of RunBook's services.\n- Chuck agreed to follow up with an email to provide more information about their services.",
     "recordingUrl": "https://recording.nooks.in/CAbdcff75c180bc2b0c3e6dc2f9bfb4eeb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362946857662",
     "persona": "Operations Leadership",
@@ -1526,7 +2258,7 @@ export const CALL_DATA = [
     "title": "Senior Director Information Technology",
     "contactName": "Dr. Don B.",
     "durationMs": 202589,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Dr. to discuss automating workflows for IT and engineering teams, particularly in logistics and billing management.\n- Dr. indicated that they are not involved in building AI agents, as their focus is on application support, critical incident management, and disaster recovery.\n- Dr. mentioned that governance activities for AI are managed by Jesse Kumar and suggested that Brandon reach out to them for further discussion.\n- Brandon did not schedule a follow-up call or meeting with Dr. during this conversation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Dr. to discuss automating workflows for IT and engineering teams, particularly in logistics and billing management.\n- Dr. indicated that they are not involved in building AI agents, as their focus is on application support, critical incident management, and disaster recovery.\n- Dr. mentioned that governance activities for AI are managed by Jesse Kumar and suggested that Brandon reach out to them for further discussion.\n- Brandon did not schedule a follow-up call or meeting with Dr. during this conversation.",
     "recordingUrl": "https://recording.nooks.in/CA7eef9dcc41694c9e805fc2d5420cad25.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362930613986",
     "persona": "IT / Engineering",
@@ -1549,15 +2281,15 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "so you know i see your leading it over at otis i've been working with a number of it and engineering teams right now in the logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with it is that they wanna automate workflows for their business operators you know tasks that are repetitive manual complex that requires coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them to implementing them building trust in accuracy i was curious if this is something that you're experiencing right now",
     "iceBreaker": {
-      "text": "\"Hi, I'm Brandon from RunBook. I'm calling out of the blue \u2014 do you mind if I borrow 30 seconds to explain why I called?\"",
+      "text": "\"Hi, I'm Brandon from RunBook. I'm calling out of the blue — do you mind if I borrow 30 seconds to explain why I called?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows using AI agents, but struggle getting those agents to work in production \u2014 I was curious if this is something you're experiencing.\"",
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows using AI agents, but struggle getting those agents to work in production — I was curious if this is something you're experiencing.\"",
       "success": true
     },
     "objection": {
-      "text": "\"We're past that \u2014 we've already worked on this ahead of time, so at this point we're good.\"",
+      "text": "\"We're past that — we've already worked on this ahead of time, so at this point we're good.\"",
       "success": false
     },
     "tags": [
@@ -1611,7 +2343,7 @@ export const CALL_DATA = [
     "title": "Digital Transformation Program Manager",
     "contactName": "Jose Fuente",
     "durationMs": 49467,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced themselves as being from Runbook and pitched the platform, which helps organizations build and deploy agentic agents for operational efficiency.\n- Jose clarified their name as Lily and expressed no interest in receiving information about the product.\n- No follow-up call or meeting was scheduled by Chuck, as Jose declined further discussion.\n- Jose did not provide any contact information or refer Chuck to any colleagues.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced themselves as being from Runbook and pitched the platform, which helps organizations build and deploy agentic agents for operational efficiency.\n- Jose clarified their name as Lily and expressed no interest in receiving information about the product.\n- No follow-up call or meeting was scheduled by Chuck, as Jose declined further discussion.\n- Jose did not provide any contact information or refer Chuck to any colleagues.",
     "recordingUrl": "https://recording.nooks.in/CA72310be430609cfa41c29281039e3e17.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362938961611",
     "persona": "IT / Engineering",
@@ -1628,7 +2360,7 @@ export const CALL_DATA = [
     "title": "CEO",
     "contactName": "Matt Pyatt",
     "durationMs": 36713,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Matt, mistakenly identifying them as the CEO of Red Arrive.\n- Matt clarified that they were not associated with Arrive Logistics and indicated that Chuck had the wrong number.\n- No follow-up or further engagement was established during the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Matt, mistakenly identifying them as the CEO of Red Arrive.\n- Matt clarified that they were not associated with Arrive Logistics and indicated that Chuck had the wrong number.\n- No follow-up or further engagement was established during the call.",
     "recordingUrl": "https://recording.nooks.in/CA0f70d01d922df20a946f746bbecc178a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362930503396",
     "persona": "Executive",
@@ -1645,7 +2377,7 @@ export const CALL_DATA = [
     "title": "Sr. Director IT Business Partner",
     "contactName": "Centofanti Melissa",
     "durationMs": 50809,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Centofanti, mistakenly identifying them as part of an IT team, which Centofanti clarified was incorrect.\n- Centofanti expressed that they do not work in IT and did not want to waste Brandon's time.\n- No follow-up was scheduled, and Centofanti did not provide any contact information.\n- Centofanti showed no interest in Brandon's pitch or product/service due to the misunderstanding about their role.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Centofanti, mistakenly identifying them as part of an IT team, which Centofanti clarified was incorrect.\n- Centofanti expressed that they do not work in IT and did not want to waste Brandon's time.\n- No follow-up was scheduled, and Centofanti did not provide any contact information.\n- Centofanti showed no interest in Brandon's pitch or product/service due to the misunderstanding about their role.",
     "recordingUrl": "https://recording.nooks.in/CAd9123d1b017fbbd3abf6ca8fc219f00f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362905183942",
     "persona": "IT / Engineering",
@@ -1730,7 +2462,7 @@ export const CALL_DATA = [
     "title": "Director of Technology and Brand Compliance",
     "contactName": "Jacob  Perry",
     "durationMs": 97431,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Jacob to discuss automation solutions for IT teams in the logistics space.\n- Jacob clarified that they are currently on the operations side, specifically running water mitigation projects, and are not involved in technology or automation.\n- Jacob indicated that the topic of automation and AI agents is not relevant to their current role.\n- No follow-up meetings or calls were scheduled during this conversation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Jacob to discuss automation solutions for IT teams in the logistics space.\n- Jacob clarified that they are currently on the operations side, specifically running water mitigation projects, and are not involved in technology or automation.\n- Jacob indicated that the topic of automation and AI agents is not relevant to their current role.\n- No follow-up meetings or calls were scheduled during this conversation.",
     "recordingUrl": "https://recording.nooks.in/CAcdb5a9ad1a6a7f270ebdc03a2b749b28.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362922840808",
     "persona": "IT / Engineering",
@@ -1747,7 +2479,7 @@ export const CALL_DATA = [
     "title": "Director of Digital Delivery",
     "contactName": "John Aaron Phillips",
     "durationMs": 29569,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called John but mistakenly reached Dana instead.\n- John clarified that they are Dana, indicating Brandon had the wrong number.\n- No follow-up or further discussion about products/services occurred due to the misdial.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called John but mistakenly reached Dana instead.\n- John clarified that they are Dana, indicating Brandon had the wrong number.\n- No follow-up or further discussion about products/services occurred due to the misdial.",
     "recordingUrl": "https://recording.nooks.in/CA66186d4aae5c222a2d9b526637e89763.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362922588869",
     "persona": "IT / Engineering",
@@ -1832,7 +2564,7 @@ export const CALL_DATA = [
     "title": "Managing Director, Group CFO - Semiconductor Products Group",
     "contactName": "Neera Patel",
     "durationMs": 16813,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Neera but realized they had the wrong person during the conversation.\n- Neera did not express any interest in a product or service, as the call was not relevant to them.\n- No follow-up was scheduled, and no contact information was exchanged.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Neera but realized they had the wrong person during the conversation.\n- Neera did not express any interest in a product or service, as the call was not relevant to them.\n- No follow-up was scheduled, and no contact information was exchanged.",
     "recordingUrl": "https://recording.nooks.in/CA7c63bf355d2f5dfa34dee482e448c26a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362544573119",
     "persona": "Finance Leadership",
@@ -1855,11 +2587,11 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "so you know i see your senior architect at it'll aws i've been working with a number of it and engineering teams and i've been hearing a common theme that i thought you might resonate with they they wanna automate workflows for their business operators you know tasks that are repetitive manual and complex in that it requires coordination between multiple people and system and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them",
     "iceBreaker": {
-      "text": "\"My name is Brandon with Run Book, I'm calling you out of the blue here\u2014do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
+      "text": "\"My name is Brandon with Run Book, I'm calling you out of the blue here—do you mind if I borrow thirty seconds of your time to explain why I called you?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams hearing a common theme that you might resonate with\u2014they want to automate workflows for business operators using AI agents, but getting those agents to work in production has been a problem for them.\"",
+      "text": "\"I've been working with IT and engineering teams hearing a common theme that you might resonate with—they want to automate workflows for business operators using AI agents, but getting those agents to work in production has been a problem for them.\"",
       "success": true
     },
     "objection": {
@@ -1883,7 +2615,7 @@ export const CALL_DATA = [
     "title": "Sr Director - IT Business Partner Operations & Engineering",
     "contactName": "Chris Lawrence",
     "durationMs": 136964,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon mistakenly called Chris, believing they were speaking to Chris Lawrence, a senior director in IT at Vulcan.\n- Chris clarified that they are an INC engineer at Castle Rock Water and have never worked at Vulcan.\n- Brandon attempted to pitch a solution for automating workflows for IT and engineering teams but realized it was not applicable to Chris's role.\n- Chris mentioned their work involves instruments and controls, specifically SCADA systems.\n- No follow-up was scheduled, and no interest in Brandon's product/service was expressed.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon mistakenly called Chris, believing they were speaking to Chris Lawrence, a senior director in IT at Vulcan.\n- Chris clarified that they are an INC engineer at Castle Rock Water and have never worked at Vulcan.\n- Brandon attempted to pitch a solution for automating workflows for IT and engineering teams but realized it was not applicable to Chris's role.\n- Chris mentioned their work involves instruments and controls, specifically SCADA systems.\n- No follow-up was scheduled, and no interest in Brandon's product/service was expressed.",
     "recordingUrl": "https://recording.nooks.in/CA6938c0998481dd9680eab41ef7abad79.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362562513633",
     "persona": "IT / Engineering",
@@ -1900,7 +2632,7 @@ export const CALL_DATA = [
     "title": "Vice President Information Technology -Business Readiness",
     "contactName": "Jim Johnson",
     "durationMs": 24970,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Jim to introduce RunBook\n- Jim responded aggressively, questioning their purpose for calling\n- They attempted to de-escalate the situation by apologizing for the initial tone\n- Jim asked for clarification on who they were and their identity",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Jim to introduce RunBook\n- Jim responded aggressively, questioning their purpose for calling\n- They attempted to de-escalate the situation by apologizing for the initial tone\n- Jim asked for clarification on who they were and their identity",
     "recordingUrl": "https://recording.nooks.in/CAe799a378c98703ec0af3854063cca514.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362474246878",
     "persona": "IT Leadership",
@@ -1951,7 +2683,7 @@ export const CALL_DATA = [
     "title": "Information Technology Manager",
     "contactName": "Manjusha Nimbalkar",
     "durationMs": 81972,
-    "transcript": "[NOOKS] - 7134096021\n-----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon attempted to reach Manjusha but was informed that Manjusha was not home.\n- Manjusha confirmed that the number they were speaking on was their home landline.\n- Manjusha provided Brandon with an alternate phone number: (713) 409-6021.\n- Brandon mistakenly referred to Manjusha's parent as \"her dad,\" but Manjusha clarified that the parent was their mom.\n- No product or service was pitched during the call, and there was no indication of interest from Manjusha regarding any offerings.",
+    "transcript": "[NOOKS] - 7134096021\n-----------Nooks AI summary 🔮-----------\n- Brandon attempted to reach Manjusha but was informed that Manjusha was not home.\n- Manjusha confirmed that the number they were speaking on was their home landline.\n- Manjusha provided Brandon with an alternate phone number: (713) 409-6021.\n- Brandon mistakenly referred to Manjusha's parent as \"her dad,\" but Manjusha clarified that the parent was their mom.\n- No product or service was pitched during the call, and there was no indication of interest from Manjusha regarding any offerings.",
     "recordingUrl": "https://recording.nooks.in/CAbf3117e68ab0676a5b63c7f2ba4309ff.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362500779739",
     "persona": "IT / Engineering",
@@ -1974,7 +2706,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "\"This is Brandon with Run Book in San Francisco, I know I'm calling a bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your Friday?\"",
+      "text": "\"This is Brandon with Run Book in San Francisco, I know I'm calling a bit out of the blue here today—do you mind if I borrow thirty seconds of your Friday?\"",
       "success": false
     },
     "hook": {
@@ -1982,7 +2714,7 @@ export const CALL_DATA = [
       "success": false
     },
     "objection": {
-      "text": "\"This is my personal line and personal time\u2014I appreciate the invitation but I will decline.\"",
+      "text": "\"This is my personal line and personal time—I appreciate the invitation but I will decline.\"",
       "success": false
     },
     "tags": [
@@ -2067,7 +2799,7 @@ export const CALL_DATA = [
       "success": false
     },
     "objection": {
-      "text": "\"No, I'm not interested, and you're calling my personal cell phone\u2014I want my name off your list.\"",
+      "text": "\"No, I'm not interested, and you're calling my personal cell phone—I want my name off your list.\"",
       "success": false
     },
     "tags": [
@@ -2093,7 +2825,7 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "we are a platform that helps teams like yours build and deploy agents",
     "iceBreaker": {
-      "text": "Hi Frank, this is Chuck Bartlett from Runbook. I know you look after automation at Lineage\u2014can I borrow a moment?",
+      "text": "Hi Frank, this is Chuck Bartlett from Runbook. I know you look after automation at Lineage—can I borrow a moment?",
       "success": true
     },
     "hook": {
@@ -2121,7 +2853,7 @@ export const CALL_DATA = [
     "title": "President & Chief Executive Officer",
     "contactName": "Greg Hodgen",
     "durationMs": 12454,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Greg at Ground Bank Transport.\n- Chuck realized it was a wrong number and ended the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Greg at Ground Bank Transport.\n- Chuck realized it was a wrong number and ended the call.",
     "recordingUrl": "https://recording.nooks.in/CAce4c86224c5dfbdc6813f690a6bcfa2b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362517809887",
     "persona": "Executive",
@@ -2138,7 +2870,7 @@ export const CALL_DATA = [
     "title": "Director of Operations Systems",
     "contactName": "Danielle Smithen, PMP",
     "durationMs": 101513,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced RunBook's platform, which helps teams deploy AI agents for operational coordination.\n- Danielle indicated that their team already has AI agents in-house and builds them, suggesting they are not in need of additional solutions.\n- Danielle stated that she is on the project management side and recommended that Chuck speak with the development manager for more technical insights.\n- Chuck attempted to gather information about how Danielle's team is currently using AI agents, but she reiterated that the development manager would have that information.\n- No follow-up meeting or call was scheduled, and no contact information was exchanged.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced RunBook's platform, which helps teams deploy AI agents for operational coordination.\n- Danielle indicated that their team already has AI agents in-house and builds them, suggesting they are not in need of additional solutions.\n- Danielle stated that she is on the project management side and recommended that Chuck speak with the development manager for more technical insights.\n- Chuck attempted to gather information about how Danielle's team is currently using AI agents, but she reiterated that the development manager would have that information.\n- No follow-up meeting or call was scheduled, and no contact information was exchanged.",
     "recordingUrl": "https://recording.nooks.in/CA4d8936ce3bd79a00a8a42b027fa62700.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362519595730",
     "persona": "Operations",
@@ -2155,7 +2887,7 @@ export const CALL_DATA = [
     "title": "Chief Operating Officer",
     "contactName": "Mike Lakmann",
     "durationMs": 51590,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Mike to reach a person named Mike Lakmann.\n- Mike clarified that they are not Mike Lakmann and that they are at reception.\n- Mike offered to transfer Chuck to Mike Lakmann's line.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Mike to reach a person named Mike Lakmann.\n- Mike clarified that they are not Mike Lakmann and that they are at reception.\n- Mike offered to transfer Chuck to Mike Lakmann's line.",
     "recordingUrl": "https://recording.nooks.in/CA075b1f8e4346af5c7546c76ff4b1c658.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362530111166",
     "persona": "Operations Leadership",
@@ -2206,7 +2938,7 @@ export const CALL_DATA = [
     "title": "Director of Technology and Enterprise Architect",
     "contactName": "Kevin Neville",
     "durationMs": 55251,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called to reach Kevin but spoke with his wife, Donna, instead.\n- Donna informed Brandon that Kevin is currently out of town for business.\n- Brandon confirmed that he would not call this number again since it is Donna's and not Kevin's.\n- No follow-up call or meeting was scheduled during this conversation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called to reach Kevin but spoke with his wife, Donna, instead.\n- Donna informed Brandon that Kevin is currently out of town for business.\n- Brandon confirmed that he would not call this number again since it is Donna's and not Kevin's.\n- No follow-up call or meeting was scheduled during this conversation.",
     "recordingUrl": "https://recording.nooks.in/CA2b477eb5dd95a5b57981cfdad1b4b980.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362443280104",
     "persona": "IT / Engineering",
@@ -2229,15 +2961,15 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "yeah yeah so we are in the ai agent space it's a platform for building ai agents it's a orchestration layer you know for all your agents it's supposed to make building agents easy for non technical users and also keep your agents in one place you know if you scale to thousands of agents we help keep things in control",
     "iceBreaker": {
-      "text": "\"Hi Michael, this is Brandon from RunBook, a company in San Francisco\u2014are you good?\"",
+      "text": "\"Hi Michael, this is Brandon from RunBook, a company in San Francisco—are you good?\"",
       "success": true
     },
     "hook": {
-      "text": "\"We're in the AI agent space with a platform for building AI agents\u2014an orchestration layer that makes building agents easy for non-technical users and keeps your agents in one place.\"",
+      "text": "\"We're in the AI agent space with a platform for building AI agents—an orchestration layer that makes building agents easy for non-technical users and keeps your agents in one place.\"",
       "success": true
     },
     "objection": {
-      "text": "\"Is it similar to [competitor platform]\u2014a visual automation platform to connect apps, design workflows, and build processes?\"",
+      "text": "\"Is it similar to [competitor platform]—a visual automation platform to connect apps, design workflows, and build processes?\"",
       "success": true
     },
     "tags": [
@@ -2257,7 +2989,7 @@ export const CALL_DATA = [
     "title": "Sr Director - Logistics Technology",
     "contactName": "Rajesh Halarnkar",
     "durationMs": 634610,
-    "transcript": "[NOOKS] - no longer at Penske, more interested in NLQ for analytics. Not on the transportation side of Penske\n\n-----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Rajesh to discuss automating workflows in logistics using AI agents.\n- Rajesh informed Brandon that they are no longer with Penske and are currently seeking new opportunities.\n- Rajesh shared their experience working on a project to create a data lake at Penske, which involved pulling data from various WMSs for customer queries.\n- Rajesh expressed interest in using AI to automate processes, such as rerouting orders during delays, but noted that Penske was not yet at the AI implementation stage.\n- Brandon introduced RunBook's focus on orchestrating AI agents and enhancing workflow automation, which Rajesh found relevant.\n- Rajesh mentioned that Penske was still in the early stages of data management and not yet utilizing AI effectively.\n- Brandon and Rajesh agreed to connect on LinkedIn to stay in touch for future opportunities.",
+    "transcript": "[NOOKS] - no longer at Penske, more interested in NLQ for analytics. Not on the transportation side of Penske\n\n-----------Nooks AI summary 🔮-----------\n- Brandon called Rajesh to discuss automating workflows in logistics using AI agents.\n- Rajesh informed Brandon that they are no longer with Penske and are currently seeking new opportunities.\n- Rajesh shared their experience working on a project to create a data lake at Penske, which involved pulling data from various WMSs for customer queries.\n- Rajesh expressed interest in using AI to automate processes, such as rerouting orders during delays, but noted that Penske was not yet at the AI implementation stage.\n- Brandon introduced RunBook's focus on orchestrating AI agents and enhancing workflow automation, which Rajesh found relevant.\n- Rajesh mentioned that Penske was still in the early stages of data management and not yet utilizing AI effectively.\n- Brandon and Rajesh agreed to connect on LinkedIn to stay in touch for future opportunities.",
     "recordingUrl": "https://recording.nooks.in/CAdb1f9e61a0e35370bf85e08654a1d0db.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362354035406",
     "persona": "IT / Engineering",
@@ -2280,7 +3012,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "\"This is Brandon Lee with Runbook, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds to explain who I am and why I called?\"",
+      "text": "\"This is Brandon Lee with Runbook, I'm calling you out of the blue—do you mind if I borrow thirty seconds to explain who I am and why I called?\"",
       "success": false
     },
     "hook": {
@@ -2308,7 +3040,7 @@ export const CALL_DATA = [
     "title": "SVP and Chief Technology Officer",
     "contactName": "Patricia Hubbard",
     "durationMs": 35731,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Patricia to explain the purpose of the call but was informed that Patricia is not involved in information technology or as a CIO.\n- Patricia indicated that they are not the right person to speak with regarding Brandon's inquiry.\n- No follow-up was scheduled, and no further contact information was exchanged.\n- Brandon did not pitch any product or service during the call due to the misalignment in roles.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Patricia to explain the purpose of the call but was informed that Patricia is not involved in information technology or as a CIO.\n- Patricia indicated that they are not the right person to speak with regarding Brandon's inquiry.\n- No follow-up was scheduled, and no further contact information was exchanged.\n- Brandon did not pitch any product or service during the call due to the misalignment in roles.",
     "recordingUrl": "https://recording.nooks.in/CA581c97068e91c183ce5ef4cb668c16eb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362370991827",
     "persona": "IT Leadership",
@@ -2352,11 +3084,11 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams hearing a common theme about automating workflows for business operators\u2014repetitive, manual, complex tasks\u2014but they run into problems bringing AI agents to production like implementation, design, building trust and accuracy, and maintenance.\"",
+      "text": "\"I've been working with IT and engineering teams hearing a common theme about automating workflows for business operators—repetitive, manual, complex tasks—but they run into problems bringing AI agents to production like implementation, design, building trust and accuracy, and maintenance.\"",
       "success": true
     },
     "objection": {
-      "text": "\"We're part of United Health Group with billions in budget, work directly with Microsoft and their fast-track programs with 180 senior engineers devoted to us, so opt is probably not going to be one you'll break into\u2014your value is in mid-size players, not Fortune 10 companies.\"",
+      "text": "\"We're part of United Health Group with billions in budget, work directly with Microsoft and their fast-track programs with 180 senior engineers devoted to us, so opt is probably not going to be one you'll break into—your value is in mid-size players, not Fortune 10 companies.\"",
       "success": false
     },
     "tags": [
@@ -2399,7 +3131,7 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "so yeah i i totally get that it sounds like you guys are you know to probably something pretty good i i we what we do is it's a it's a product and a platform for building ai agents and it's also an orchestration layer for these agents you know the one value proposition which i think you probably solve is making building agents as easy as possible and non technical as possible so you know your business people can make those automate certain workflows but the second is is to keep your agents in one place so they have access to tribal knowledge",
     "iceBreaker": {
-      "text": "\"I'm calling you a bit out of the blue\u2014do you mind if I borrow thirty seconds of your time to explain what I called about?\"",
+      "text": "\"I'm calling you a bit out of the blue—do you mind if I borrow thirty seconds of your time to explain what I called about?\"",
       "success": true
     },
     "hook": {
@@ -2494,7 +3226,7 @@ export const CALL_DATA = [
     "title": "Director IT Applications Environmental Services",
     "contactName": "Carl Krizan",
     "durationMs": 53130,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Carl, who works as a supervisor at GFL Environmental, but the call was misdirected as Carl was not the intended contact.\n- Carl indicated that he had received a previous call intended for someone named Patrick, suggesting potential confusion with phone numbers.\n- Carl clarified that he is not the owner or CFO of GFL Environmental, which may indicate that he is not the decision-maker for purchasing decisions.\n- No follow-up or further engagement was established, as Carl expressed no interest in continuing the conversation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Carl, who works as a supervisor at GFL Environmental, but the call was misdirected as Carl was not the intended contact.\n- Carl indicated that he had received a previous call intended for someone named Patrick, suggesting potential confusion with phone numbers.\n- Carl clarified that he is not the owner or CFO of GFL Environmental, which may indicate that he is not the decision-maker for purchasing decisions.\n- No follow-up or further engagement was established, as Carl expressed no interest in continuing the conversation.",
     "recordingUrl": "https://recording.nooks.in/CA7e778540a4a542b22c5a8b4844b0b003.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362169184993",
     "persona": "IT / Engineering",
@@ -2511,7 +3243,7 @@ export const CALL_DATA = [
     "title": "Demand Planner",
     "contactName": "Nikhil Binny",
     "durationMs": 107670,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon introduced themselves and explained that they work with IT teams in logistics and manufacturing to automate workflows, particularly using AI tools.\n- Nikhil expressed a desire to improve their use of AI tools but indicated they are not currently using any specific tools extensively for demand planning.\n- Nikhil mentioned they use tools occasionally, depending on the case, but did not specify which tools.\n- Brandon inquired if automating tasks could be beneficial for Nikhil's work, to which Nikhil responded that it could be potentially useful.\n- The call was interrupted as Nikhil received another call, indicating they were busy.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon introduced themselves and explained that they work with IT teams in logistics and manufacturing to automate workflows, particularly using AI tools.\n- Nikhil expressed a desire to improve their use of AI tools but indicated they are not currently using any specific tools extensively for demand planning.\n- Nikhil mentioned they use tools occasionally, depending on the case, but did not specify which tools.\n- Brandon inquired if automating tasks could be beneficial for Nikhil's work, to which Nikhil responded that it could be potentially useful.\n- The call was interrupted as Nikhil received another call, indicating they were busy.",
     "recordingUrl": "https://recording.nooks.in/CA0dca0adfe344caf0bad8428caef5283a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362160172775",
     "persona": "Other",
@@ -2534,7 +3266,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "Ken, this is Brandon with Runbook. I'm calling you a bit out of the blue here today\u2014do you mind if I borrow 30 seconds to explain why?",
+      "text": "Ken, this is Brandon with Runbook. I'm calling you a bit out of the blue here today—do you mind if I borrow 30 seconds to explain why?",
       "success": false
     },
     "hook": {
@@ -2596,7 +3328,7 @@ export const CALL_DATA = [
     "title": "Director - Enterprise IT Systems",
     "contactName": "Chris Gaboury",
     "durationMs": 10592,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Chris to discuss a potential opportunity.\n- Chris indicated that they had the wrong number and did not engage further.\n- They thanked Chris for their time and ended the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Chris to discuss a potential opportunity.\n- Chris indicated that they had the wrong number and did not engage further.\n- They thanked Chris for their time and ended the call.",
     "recordingUrl": "https://recording.nooks.in/CA412f0876b6edadb57d037e02b434acdb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362145667821",
     "persona": "IT / Engineering",
@@ -2613,7 +3345,7 @@ export const CALL_DATA = [
     "title": "CIO/CTO, Ahold Delhaize Group",
     "contactName": "Mike Laurenti",
     "durationMs": 133547,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Mike but initially reached Mike's wife, who confirmed Mike's identity.\n- Brandon clarified that he was trying to reach Mike Laurenti, who is the CIO, but Mike stated he is not the CIO and works in construction.\n- Mike mentioned he is retired, indicating he may not be the right contact for Brandon's outreach.\n- Brandon acknowledged the mix-up and did not pitch any product or service during the call.\n- No follow-up was scheduled, and no contact information was exchanged.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Mike but initially reached Mike's wife, who confirmed Mike's identity.\n- Brandon clarified that he was trying to reach Mike Laurenti, who is the CIO, but Mike stated he is not the CIO and works in construction.\n- Mike mentioned he is retired, indicating he may not be the right contact for Brandon's outreach.\n- Brandon acknowledged the mix-up and did not pitch any product or service during the call.\n- No follow-up was scheduled, and no contact information was exchanged.",
     "recordingUrl": "https://recording.nooks.in/CA62064be25f6d942ef58ee3ab0ac08750.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362167259852",
     "persona": "IT Leadership",
@@ -2653,11 +3385,11 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "alright michael yeah i see your leading innovation analytics and i've been working with a number of it and engineering teams right now in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for their business operators you know tasks that are repetitive manual and require coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from designing them implementing them to building trust and accuracy and maintaining them afterwards i was curious this is something your company's experiencing today",
     "iceBreaker": {
-      "text": "\"I'm calling you out of the blue here\u2014I wanna be respectful\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "text": "\"I'm calling you out of the blue here—I wanna be respectful—do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows using AI agents, but they struggle getting those agents to work in production\u2014designing, implementing, building trust, accuracy, and maintaining them.\"",
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows using AI agents, but they struggle getting those agents to work in production—designing, implementing, building trust, accuracy, and maintaining them.\"",
       "success": true
     },
     "objection": {
@@ -2687,7 +3419,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "\"Scott, I'm calling you out of the blue\u2014could I borrow thirty seconds to explain why I called you?\"",
+      "text": "\"Scott, I'm calling you out of the blue—could I borrow thirty seconds to explain why I called you?\"",
       "success": false
     },
     "hook": {
@@ -2715,7 +3447,7 @@ export const CALL_DATA = [
     "title": "Sr IT Director",
     "contactName": "Chris Stone",
     "durationMs": 19169,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Chris but did not reach them.\n- Chris was engaged in another conversation and seemed confused about the call.\n- Brandon attempted to clarify that he was trying to reach Chris but did not get a response.\n- The call did not progress to any meaningful conversation or scheduling.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Chris but did not reach them.\n- Chris was engaged in another conversation and seemed confused about the call.\n- Brandon attempted to clarify that he was trying to reach Chris but did not get a response.\n- The call did not progress to any meaningful conversation or scheduling.",
     "recordingUrl": "https://recording.nooks.in/CA4e1d41c26c9b00bbfac4ac9b01e0633c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362146801349",
     "persona": "Director (Other)",
@@ -2755,7 +3487,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "Hey Justin, this is Brandon with Run Book\u2014I called you two days ago when you were apartment shopping.",
+      "text": "Hey Justin, this is Brandon with Run Book—I called you two days ago when you were apartment shopping.",
       "success": true
     },
     "hook": {
@@ -2800,7 +3532,7 @@ export const CALL_DATA = [
     "title": "Senior Director",
     "contactName": "David Berryhill",
     "durationMs": 34189,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called David to discuss their services.\n- David clarified that their name is actually Danny, indicating a mix-up.\n- The call did not progress further due to the misidentification.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called David to discuss their services.\n- David clarified that their name is actually Danny, indicating a mix-up.\n- The call did not progress further due to the misidentification.",
     "recordingUrl": "https://recording.nooks.in/CA30ff2f9b92ce28ee5c1924514239c7a3.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362157374151",
     "persona": "Director (Other)",
@@ -2823,7 +3555,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "what we do is we simplify that whole process of building and orchestrating agents as these companies scale the fleet of agents that they have our concern is they might get out of control maintaining them becomes an issue and you end up spending a lot of engineering time on it our goal is to make that process simple",
     "iceBreaker": {
-      "text": "\"My name is Brandon Lia from a company called Runbook, and I'm calling because I see your digital transformation work at US Radiology\u2014do you mind if I borrow thirty seconds to explain why I'm calling?\"",
+      "text": "\"My name is Brandon Lia from a company called Runbook, and I'm calling because I see your digital transformation work at US Radiology—do you mind if I borrow thirty seconds to explain why I'm calling?\"",
       "success": true
     },
     "hook": {
@@ -2851,7 +3583,7 @@ export const CALL_DATA = [
     "title": "Vice President of Enterprise Technology and Data Services",
     "contactName": "Michael V.",
     "durationMs": 10890,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Michael to introduce RunBook and discuss potential services.\n- Michael indicated that the call was a wrong number.\n- They apologized for the mistake and ended the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Michael to introduce RunBook and discuss potential services.\n- Michael indicated that the call was a wrong number.\n- They apologized for the mistake and ended the call.",
     "recordingUrl": "https://recording.nooks.in/CAde771eda4225e34325f6ae3f8e2af89d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362110769905",
     "persona": "IT Leadership",
@@ -2868,7 +3600,7 @@ export const CALL_DATA = [
     "title": "Business IT Partner",
     "contactName": "Havisha Tetakayala",
     "durationMs": 71950,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Havisha to discuss automating workflows for business operators in the logistics space.\n- Havisha did not express interest in the topic and declined to provide any information.\n- No follow-up was scheduled, and no additional contact information was exchanged.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Havisha to discuss automating workflows for business operators in the logistics space.\n- Havisha did not express interest in the topic and declined to provide any information.\n- No follow-up was scheduled, and no additional contact information was exchanged.",
     "recordingUrl": "https://recording.nooks.in/CA8880fdec978290171323273a20d6c7ab.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362024892127",
     "persona": "Other",
@@ -2891,7 +3623,7 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "so the company is called run book what based in san francisco it's a platform for building ai agents and it's also an orchestration layer for all those kind of agents either the ones you've build on our platform were the ones you already built so the value proposition are are two one is making you know building agents as easy as possible for even non technical people and two is to keep your agents in one place so they have access to your tribal knowledge and just to make sure they they work with each other well is this something that that would be interesting for you to explore",
     "iceBreaker": {
-      "text": "Patrick, this is Brandon with Runbook calling you out of the blue\u2014do you think I could borrow thirty seconds of your time to explain why I called?",
+      "text": "Patrick, this is Brandon with Runbook calling you out of the blue—do you think I could borrow thirty seconds of your time to explain why I called?",
       "success": true
     },
     "hook": {
@@ -2919,7 +3651,7 @@ export const CALL_DATA = [
     "title": "CIO - EAMS OG&C",
     "contactName": "Steve McIntyre",
     "durationMs": 12310,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Steve to introduce RunBook and check in on their needs.\n- Steve clarified that they are not Steve and indicated that the sales rep had the wrong number.\n- The call ended shortly after the clarification.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Steve to introduce RunBook and check in on their needs.\n- Steve clarified that they are not Steve and indicated that the sales rep had the wrong number.\n- The call ended shortly after the clarification.",
     "recordingUrl": "https://recording.nooks.in/CA25608535698d3489b0f8615080373df8.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362015779540",
     "persona": "IT Leadership",
@@ -2936,7 +3668,7 @@ export const CALL_DATA = [
     "title": "Sr. Director Technology and Product Management",
     "contactName": "Todd Faubion",
     "durationMs": 103593,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Todd to discuss automation of workflows for business operators, particularly in the logistics space.\n- Todd clarified that their role primarily involves packaging, specifically injection molding and engineering design, indicating that the conversation may not be relevant to them.\n- Todd expressed that Brandon might have the wrong contact for the topic discussed and suggested it was a waste of time to continue the conversation.\n- No follow-up was scheduled, and Todd did not show interest in Brandon's product or service.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Todd to discuss automation of workflows for business operators, particularly in the logistics space.\n- Todd clarified that their role primarily involves packaging, specifically injection molding and engineering design, indicating that the conversation may not be relevant to them.\n- Todd expressed that Brandon might have the wrong contact for the topic discussed and suggested it was a waste of time to continue the conversation.\n- No follow-up was scheduled, and Todd did not show interest in Brandon's product or service.",
     "recordingUrl": "https://recording.nooks.in/CA35f2596c0527d15c85972b05e9a801f0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361905082052",
     "persona": "IT / Engineering",
@@ -3009,7 +3741,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "",
     "iceBreaker": {
-      "text": "\"Hey Bruce, this is Brandon with Run Book\u2014how are you?\"",
+      "text": "\"Hey Bruce, this is Brandon with Run Book—how are you?\"",
       "success": false
     },
     "hook": {
@@ -3043,7 +3775,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "I've been working with a number of IT and engineering teams and I've been hearing a common theme that I thought you might resonate with they wanna build or automate workflows for their business operators you know it's tasks that are repetitive and require coordination between multiple people and systems and they've looked at AI agents to help with this but getting those agents to work in production has been a problem for them from implementing them to designing them to floating trust and accuracy and maintaining them",
     "iceBreaker": {
-      "text": "Hi, I'm Brandon with RunBook based in San Francisco\u2014I'm calling you out of the blue. Do you mind if I borrow 30 seconds of your time to explain why I called?",
+      "text": "Hi, I'm Brandon with RunBook based in San Francisco—I'm calling you out of the blue. Do you mind if I borrow 30 seconds of your time to explain why I called?",
       "success": true
     },
     "hook": {
@@ -3051,7 +3783,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "Anything you're doing from an AI perspective has to align with your architecture strategy and governance\u2014without proper architectural alignment and rigor, you'll run into production problems.",
+      "text": "Anything you're doing from an AI perspective has to align with your architecture strategy and governance—without proper architectural alignment and rigor, you'll run into production problems.",
       "success": true
     },
     "tags": [
@@ -3077,7 +3809,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "so they wanna automate workflows for their business operators tasks that are repetitive manual and may require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them to building trust and accuracy and to maintaining them",
     "iceBreaker": {
-      "text": "\"Brandon Lia with Run Book calling out of the blue\u2014do you think I could borrow thirty seconds of your time to explain what I call?\"",
+      "text": "\"Brandon Lia with Run Book calling out of the blue—do you think I could borrow thirty seconds of your time to explain what I call?\"",
       "success": true
     },
     "hook": {
@@ -3105,7 +3837,7 @@ export const CALL_DATA = [
     "title": "Senior Director - Information Technology",
     "contactName": "Vinesh Raghavan",
     "durationMs": 61069,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Vinesh to explain the purpose of the call, but Vinesh was initially confused about the context.\n- Vinesh clarified that they are no longer with Neighbors, which was the source of the confusion.\n- Vinesh indicated they are currently in the IT space but expressed disinterest in a marketing call.\n- Vinesh stated they were in a meeting and did not engage further with Brandon's pitch.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Vinesh to explain the purpose of the call, but Vinesh was initially confused about the context.\n- Vinesh clarified that they are no longer with Neighbors, which was the source of the confusion.\n- Vinesh indicated they are currently in the IT space but expressed disinterest in a marketing call.\n- Vinesh stated they were in a meeting and did not engage further with Brandon's pitch.",
     "recordingUrl": "https://recording.nooks.in/CA7b3e5d1234eee77252945f6ff3c5e479.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/362014865137",
     "persona": "IT / Engineering",
@@ -3166,7 +3898,7 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering leaders in logistics who want to automate workflows with AI agents, but they struggle with getting those agents to work in production\u2014from implementation to building trust, accuracy, and maintenance.\"",
+      "text": "\"I've been working with IT and engineering leaders in logistics who want to automate workflows with AI agents, but they struggle with getting those agents to work in production—from implementation to building trust, accuracy, and maintenance.\"",
       "success": true
     },
     "objection": {
@@ -3196,7 +3928,7 @@ export const CALL_DATA = [
     "persona": "Technical IC",
     "offer": "",
     "iceBreaker": {
-      "text": "\"I'm Brandon Lia with Run Book, and I'm calling you out of the blue here Stacy\u2014if I could borrow 30 seconds I could explain the reason for my call.\"",
+      "text": "\"I'm Brandon Lia with Run Book, and I'm calling you out of the blue here Stacy—if I could borrow 30 seconds I could explain the reason for my call.\"",
       "success": false
     },
     "hook": {
@@ -3230,7 +3962,7 @@ export const CALL_DATA = [
     "persona": "Technical IC",
     "offer": "we we're a company called run book the product is a platform for building ai agents and it's also an orchestration layer for any agents that you've already built so there's kinda two main value propositions one is making building agents as easy as",
     "iceBreaker": {
-      "text": "\"This is Brandon Lia with Run Bookings in San Francisco\u2014do you think I could borrow thirty seconds to explain the reason for my call?\"",
+      "text": "\"This is Brandon Lia with Run Bookings in San Francisco—do you think I could borrow thirty seconds to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
@@ -3238,7 +3970,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"We have already built those workflows and we're in the process of building AI for it\u2014we're trying to build independent agents at this point.\"",
+      "text": "\"We have already built those workflows and we're in the process of building AI for it—we're trying to build independent agents at this point.\"",
       "success": true
     },
     "tags": [
@@ -3258,7 +3990,7 @@ export const CALL_DATA = [
     "title": "Manager, Database platform | Scalable, Reliable, Automated &  AI-Powered",
     "contactName": "Rakhi Wani",
     "durationMs": 31009,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Rakhi to reach out to IT leaders on behalf of RunBook.\n- Rakhi indicated that Brandon had the wrong number and was not the intended contact.\n- No follow-up was scheduled as the call was not productive.\n- Rakhi did not express any interest in RunBook's products or services.\n- No additional contact information or referrals were provided by Rakhi.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Rakhi to reach out to IT leaders on behalf of RunBook.\n- Rakhi indicated that Brandon had the wrong number and was not the intended contact.\n- No follow-up was scheduled as the call was not productive.\n- Rakhi did not express any interest in RunBook's products or services.\n- No additional contact information or referrals were provided by Rakhi.",
     "recordingUrl": "https://recording.nooks.in/CA73c5a2f4f8c28a940916dc086c5cf07a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361985295097",
     "persona": "Manager (Other)",
@@ -3285,7 +4017,7 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams to automate workflows using AI agents, but getting those agents to work in production has been a problem\u2014implementing, designing, building trust, and maintaining them.\"",
+      "text": "\"I've been working with IT and engineering teams to automate workflows using AI agents, but getting those agents to work in production has been a problem—implementing, designing, building trust, and maintaining them.\"",
       "success": true
     },
     "objection": {
@@ -3315,15 +4047,15 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "i'm working with a good amount of it at engineering teams mostly in the logistics space and i've been hearing a comments theme email i thought you might resonate with they wanna automate workflows for their business operators you know tasks are repetitive manual and require coordination between people and systems and they've looked the ai agents to help with this but getting those agents to work in production has been a problem from implementing them to building trust and accuracy to maintaining them so i was curious if this is something you experienced or are experiencing today",
     "iceBreaker": {
-      "text": "\"I'm calling you a bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your time to explain why I called?\"",
+      "text": "\"I'm calling you a bit out of the blue here today—do you mind if I borrow thirty seconds of your time to explain why I called?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I'm working with IT engineering teams in logistics who want to automate workflows using AI agents, but they're running into problems getting those agents to work in production\u2014from implementation to building trust and accuracy to maintaining them.\"",
+      "text": "\"I'm working with IT engineering teams in logistics who want to automate workflows using AI agents, but they're running into problems getting those agents to work in production—from implementation to building trust and accuracy to maintaining them.\"",
       "success": true
     },
     "objection": {
-      "text": "\"We're not actually experiencing that issue\u2014we're building automated stuff using Power Automate and other tools, and we have experienced consultants helping us get up to speed.\"",
+      "text": "\"We're not actually experiencing that issue—we're building automated stuff using Power Automate and other tools, and we have experienced consultants helping us get up to speed.\"",
       "success": false
     },
     "tags": [
@@ -3349,15 +4081,15 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "they wanna automate workflows for their business operators and these are tasks that are repetitive manual and require a coordination between people and systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to maintaining them",
     "iceBreaker": {
-      "text": "\"Hi Savannah, this is Brandon with Runbook calling you out of the blue\u2014do you think I could borrow thirty seconds of your time to explain why I called?\"",
+      "text": "\"Hi Savannah, this is Brandon with Runbook calling you out of the blue—do you think I could borrow thirty seconds of your time to explain why I called?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows with AI agents, but they're struggling to get those agents working in production\u2014from implementation to building trust to maintaining them.\"",
+      "text": "\"I've been working with IT and engineering teams in logistics and manufacturing who want to automate repetitive manual workflows with AI agents, but they're struggling to get those agents working in production—from implementation to building trust to maintaining them.\"",
       "success": true
     },
     "objection": {
-      "text": "\"We're two companies coming together and integrating right now, so our biggest issue is that integration work\u2014call us back in six months when that's done.\"",
+      "text": "\"We're two companies coming together and integrating right now, so our biggest issue is that integration work—call us back in six months when that's done.\"",
       "success": true
     },
     "tags": [
@@ -3394,7 +4126,7 @@ export const CALL_DATA = [
     "title": "Senior Vice President of Operations",
     "contactName": "Coley Campbell",
     "durationMs": 100629,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck was trying to reach someone in IT responsible for automation at Coley's company.\n- Coley was unable to provide a specific contact but offered to give the name of the executive assistant overseeing IT.\n- Coley provided the name Ellen Mahoney as the executive assistant and shared her contact number: (803) 939-3565.\n- Chuck did not schedule a follow-up call or meeting with Coley during this conversation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck was trying to reach someone in IT responsible for automation at Coley's company.\n- Coley was unable to provide a specific contact but offered to give the name of the executive assistant overseeing IT.\n- Coley provided the name Ellen Mahoney as the executive assistant and shared her contact number: (803) 939-3565.\n- Chuck did not schedule a follow-up call or meeting with Coley during this conversation.",
     "recordingUrl": "https://recording.nooks.in/CA9fe75d6f90b19100294d2f5cff8a8299.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361937058513",
     "persona": "Operations Leadership",
@@ -3417,7 +4149,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "we are at an organization that helps folks like y'all deploy agents to automate a lot of the business processes that slow teams down and operations in billing",
     "iceBreaker": {
-      "text": "Hi Daniel, it's Chuck Bartlett from RunBook\u2014we help organizations deploy agents to automate business processes in operations and billing, and I thought you might have some thoughts on that.",
+      "text": "Hi Daniel, it's Chuck Bartlett from RunBook—we help organizations deploy agents to automate business processes in operations and billing, and I thought you might have some thoughts on that.",
       "success": true
     },
     "hook": {
@@ -3512,7 +4244,7 @@ export const CALL_DATA = [
     "title": "Global IT Infrastructure Manager",
     "contactName": "Jon Harris",
     "durationMs": 26390,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Jon to introduce RunBook and discuss their services.\n- Jon identified as the global IT manager at Market.\n- Jon requested that Chuck contact them via email or their work number instead of their personal number.\n- Chuck agreed to follow up as requested.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Jon to introduce RunBook and discuss their services.\n- Jon identified as the global IT manager at Market.\n- Jon requested that Chuck contact them via email or their work number instead of their personal number.\n- Chuck agreed to follow up as requested.",
     "recordingUrl": "https://recording.nooks.in/CAecec73d92634bb19e8a3f638e32ed4e7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361989184220",
     "persona": "IT / Engineering",
@@ -3529,7 +4261,7 @@ export const CALL_DATA = [
     "title": "Director, Applications Development",
     "contactName": "Eric Davidson",
     "durationMs": 16571,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Eric to inquire about Eric Davidson.\n- Eric indicated that it was a wrong number.\n- Chuck acknowledged the mistake and ended the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Eric to inquire about Eric Davidson.\n- Eric indicated that it was a wrong number.\n- Chuck acknowledged the mistake and ended the call.",
     "recordingUrl": "https://recording.nooks.in/CA83461ea6d97176df28a023898c2796c9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361979622097",
     "persona": "Director (Other)",
@@ -3637,11 +4369,11 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "i see you're a d for it focus on digital transformation at fedex i'm working with a good number of it and engineering teams in the logistics space and i've been hearing a common theme that i thought might resonate with you they wanna automate workflows for their business operators you know tasks that require talking to multiple people interacting with multiple systems and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementing them designing them to building trust and accuracy and to maintaining them",
     "iceBreaker": {
-      "text": "\"I see you're a Director for IT focus on digital transformation at FedEx\u2014could I borrow thirty seconds to explain why I'm calling?\"",
+      "text": "\"I see you're a Director for IT focus on digital transformation at FedEx—could I borrow thirty seconds to explain why I'm calling?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I'm working with IT and engineering teams in logistics who want to automate workflows with AI agents, but they struggle getting those agents to work in production\u2014from implementation to building trust and accuracy.\"",
+      "text": "\"I'm working with IT and engineering teams in logistics who want to automate workflows with AI agents, but they struggle getting those agents to work in production—from implementation to building trust and accuracy.\"",
       "success": true
     },
     "objection": {
@@ -3678,7 +4410,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"Our corporate tech team runs with all that\u2014we don't make those decisions locally in ops.\"",
+      "text": "\"Our corporate tech team runs with all that—we don't make those decisions locally in ops.\"",
       "success": false
     },
     "tags": [
@@ -3704,11 +4436,11 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "so i'm working with a ton of it and engineering teams mostly in a logistics and manufacturing space and i've been hearing a common theme that i thought you might resonate with they wanna automate workflows for the business operators and they've looked to ai agents to help with this but getting those agents to work in production has been a problem for them from implementation to building trust to even maintaining them i was curious this something you have you're experiencing today",
     "iceBreaker": {
-      "text": "Greg, this is Brandon with Rum Arya\u2014I'm calling you out of the blue today, do you mind if I borrow thirty seconds of your time to explain?",
+      "text": "Greg, this is Brandon with Rum Arya—I'm calling you out of the blue today, do you mind if I borrow thirty seconds of your time to explain?",
       "success": true
     },
     "hook": {
-      "text": "I work with IT and engineering teams in logistics and manufacturing who want to automate workflows with AI agents, but they struggle getting those agents to work in production\u2014implementation, trust, and maintenance\u2014and we have a platform to build AI agents very quickly so non-technical people can build them.",
+      "text": "I work with IT and engineering teams in logistics and manufacturing who want to automate workflows with AI agents, but they struggle getting those agents to work in production—implementation, trust, and maintenance—and we have a platform to build AI agents very quickly so non-technical people can build them.",
       "success": true
     },
     "objection": {
@@ -3776,7 +4508,7 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "\"I'm working with IT and engineering teams building AI workflows for business operators\u2014repetitive tasks requiring coordination between multiple people and systems\u2014and they've looked to AI agents to help, but getting those agents to work in production has been a problem.\"",
+      "text": "\"I'm working with IT and engineering teams building AI workflows for business operators—repetitive tasks requiring coordination between multiple people and systems—and they've looked to AI agents to help, but getting those agents to work in production has been a problem.\"",
       "success": false
     },
     "objection": {
@@ -3940,7 +4672,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "they wanna automate workflows for their business operators you know tasks that are repetitive manual and require a coordination between multiple people and systems and they've looked to ai agents to help with this but getting them to work in production has been a problem for them from implementing them to building trust and accuracy to maintaining them",
     "iceBreaker": {
-      "text": "\"Hi John, this is Brandon with WrongBook, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds of your time?\"",
+      "text": "\"Hi John, this is Brandon with WrongBook, I'm calling you out of the blue—do you mind if I borrow thirty seconds of your time?\"",
       "success": true
     },
     "hook": {
@@ -3948,7 +4680,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"I don't pick out workflow tools\u2014I manage people, budgets, and technology profiles; people who work for me do that, and this is my fifteenth call in four hours.\"",
+      "text": "\"I don't pick out workflow tools—I manage people, budgets, and technology profiles; people who work for me do that, and this is my fifteenth call in four hours.\"",
       "success": false
     },
     "tags": [
@@ -3968,7 +4700,7 @@ export const CALL_DATA = [
     "title": "SVP Administration & CIO",
     "contactName": "Mark Bender",
     "durationMs": 13673,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Mark to connect regarding a potential opportunity.\n- Mark indicated that they had the wrong number and were not the intended recipient of the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Mark to connect regarding a potential opportunity.\n- Mark indicated that they had the wrong number and were not the intended recipient of the call.",
     "recordingUrl": "https://recording.nooks.in/CA01f2a61eb25f6833c3b33f32fb60c8b2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361786680032",
     "persona": "IT Leadership",
@@ -3985,7 +4717,7 @@ export const CALL_DATA = [
     "title": "VP - Global ERP Program",
     "contactName": "Julie Hamm-Tellock",
     "durationMs": 34109,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Sue but realized they had the wrong number and were looking for someone named Julie Hamm-Tellock.\n- Sue clarified that there is no Julie at the Sanitary District and mentioned receiving many calls for that name.\n- Brandon apologized for the mistake and confirmed they would remove the number from their contact list.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Sue but realized they had the wrong number and were looking for someone named Julie Hamm-Tellock.\n- Sue clarified that there is no Julie at the Sanitary District and mentioned receiving many calls for that name.\n- Brandon apologized for the mistake and confirmed they would remove the number from their contact list.",
     "recordingUrl": "https://recording.nooks.in/CA81cc250540199d1974d646de44332675.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361847566047",
     "persona": "Executive",
@@ -4019,7 +4751,7 @@ export const CALL_DATA = [
     "title": "Director of IT",
     "contactName": "Pavil Jose",
     "durationMs": 153933,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon introduced their company, RunBook, and explained that they work with IT and engineering teams in the logistics space to automate workflows.\n- Pavil indicated that they are not the right person to discuss the product, as they are more focused on the delivery side rather than engineering.\n- Pavil mentioned that their team has built their own agents in-house and is unlikely to consider an outside product.\n- Brandon confirmed that Pavil was not the appropriate contact for further discussions regarding the product.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon introduced their company, RunBook, and explained that they work with IT and engineering teams in the logistics space to automate workflows.\n- Pavil indicated that they are not the right person to discuss the product, as they are more focused on the delivery side rather than engineering.\n- Pavil mentioned that their team has built their own agents in-house and is unlikely to consider an outside product.\n- Brandon confirmed that Pavil was not the appropriate contact for further discussions regarding the product.",
     "recordingUrl": "https://recording.nooks.in/CAcf8a2dd2d632860db569a7df0c82cdef.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361792017111",
     "persona": "IT / Engineering",
@@ -4036,7 +4768,7 @@ export const CALL_DATA = [
     "title": "CIO and director",
     "contactName": "Tassos Vassilopoulos",
     "durationMs": 28931,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Tassos but realized they were not speaking to the correct person.\n- There was confusion regarding the identity of the person Brandon intended to reach, as they believed they were speaking to someone based in Greece.\n- No follow-up was scheduled, and no further information was exchanged during the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Tassos but realized they were not speaking to the correct person.\n- There was confusion regarding the identity of the person Brandon intended to reach, as they believed they were speaking to someone based in Greece.\n- No follow-up was scheduled, and no further information was exchanged during the call.",
     "recordingUrl": "https://recording.nooks.in/CA0c1c324add983bd4ae54c411c43b5c91.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361816908486",
     "persona": "IT Leadership",
@@ -4076,7 +4808,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "we're a a platform and orchestration layer to to basically build ai agents and make that process as easy as possible so you're probably worked with in the past you know that that coordination between the to architect the solution with your business operators you know some things lost gets loss in translation and it takes a while to spin up an agent just to bring into production so that's what we help with",
     "iceBreaker": {
-      "text": "\"Hi, this is Brandon with Rumble Book\u2014do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "text": "\"Hi, this is Brandon with Rumble Book—do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
@@ -4084,7 +4816,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"There's a lot of players in this space right now\u2014are you guys an AWS partner, and is this a hosting platform for agents or more of a workflow builder?\"",
+      "text": "\"There's a lot of players in this space right now—are you guys an AWS partner, and is this a hosting platform for agents or more of a workflow builder?\"",
       "success": true
     },
     "tags": [
@@ -4104,7 +4836,7 @@ export const CALL_DATA = [
     "title": "Manager Logistics Operations (Emerging Business)",
     "contactName": "James Fulawka",
     "durationMs": 182412,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced RunBook and inquired if Blake's team had considered using their platform for manual coordination tasks.\n- Blake indicated that their team handles these tasks in-house and mentioned using various tools, including Automation Anywhere and Boomi.\n- Blake clarified that they are not the right contact for IT engineering matters, as they oversee architecture and various engineering disciplines.\n- Chuck expressed interest in understanding how Blake's team builds their solutions and mentioned the importance of establishing business context and governance for automation.\n- Blake acknowledged that there might be a need for standardization in their processes but was unsure about the specifics.\n- Chuck did not schedule a follow-up or obtain any contact information during the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced RunBook and inquired if Blake's team had considered using their platform for manual coordination tasks.\n- Blake indicated that their team handles these tasks in-house and mentioned using various tools, including Automation Anywhere and Boomi.\n- Blake clarified that they are not the right contact for IT engineering matters, as they oversee architecture and various engineering disciplines.\n- Chuck expressed interest in understanding how Blake's team builds their solutions and mentioned the importance of establishing business context and governance for automation.\n- Blake acknowledged that there might be a need for standardization in their processes but was unsure about the specifics.\n- Chuck did not schedule a follow-up or obtain any contact information during the call.",
     "recordingUrl": "https://recording.nooks.in/CAdbefd964ef36970589f66bd3fee0aa25.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361874403040",
     "persona": "Operations",
@@ -4127,7 +4859,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "we talked a little bit about this word platform that helps organizations build and deploy agents to automate and the manual coordinated work that told every day",
     "iceBreaker": {
-      "text": "\"Louise, this is Chuck from Runbook\u2014we spoke about a month ago and you asked me to get back in touch today.\"",
+      "text": "\"Louise, this is Chuck from Runbook—we spoke about a month ago and you asked me to get back in touch today.\"",
       "success": true
     },
     "hook": {
@@ -4135,7 +4867,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"We're going the other way around\u2014we're putting everything in place so we don't have that problem of navigating between old and new systems.\"",
+      "text": "\"We're going the other way around—we're putting everything in place so we don't have that problem of navigating between old and new systems.\"",
       "success": true
     },
     "tags": [
@@ -4205,7 +4937,7 @@ export const CALL_DATA = [
     "title": "Director Of Operations",
     "contactName": "Robert  Bento",
     "durationMs": 15831,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Robert to introduce themselves.\n- Robert initially responded with a different name, \"Rebecca,\" indicating a possible misunderstanding or miscommunication.\n- The call did not progress beyond the initial introduction, as Robert did not engage further after identifying themselves.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Robert to introduce themselves.\n- Robert initially responded with a different name, \"Rebecca,\" indicating a possible misunderstanding or miscommunication.\n- The call did not progress beyond the initial introduction, as Robert did not engage further after identifying themselves.",
     "recordingUrl": "https://recording.nooks.in/CAafbc998117c11db72beb43493b086786.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361832826583",
     "persona": "Operations",
@@ -4222,7 +4954,7 @@ export const CALL_DATA = [
     "title": "Enterprise Architect for IT/OT Solutions",
     "contactName": "Eric R.",
     "durationMs": 114430,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Eric to discuss automation solutions for IT and engineering teams, specifically regarding AI agents.\n- Eric clarified that they are not involved in AI agents and expressed confusion about the relevance of the call.\n- Brandon mistakenly identified Eric as an enterprise architect involved in AI integrations, which Eric denied.\n- Eric confirmed they are indeed at Guidehouse but indicated that the information Brandon had was incorrect.\n- No follow-up was scheduled, and no contact information was exchanged during the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Eric to discuss automation solutions for IT and engineering teams, specifically regarding AI agents.\n- Eric clarified that they are not involved in AI agents and expressed confusion about the relevance of the call.\n- Brandon mistakenly identified Eric as an enterprise architect involved in AI integrations, which Eric denied.\n- Eric confirmed they are indeed at Guidehouse but indicated that the information Brandon had was incorrect.\n- No follow-up was scheduled, and no contact information was exchanged during the call.",
     "recordingUrl": "https://recording.nooks.in/CA676fc01d024da4a447e462ca4c9a91b0.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361881373422",
     "persona": "Technical IC",
@@ -4256,7 +4988,7 @@ export const CALL_DATA = [
     "title": "Chief Information Officer",
     "contactName": "Bob Barnhart",
     "durationMs": 31352,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Bob to explain the reason for the call but was informed it was a wrong number.\n- Bob did not provide any contact information or express interest in a product/service.\n- No follow-up was scheduled as the call ended shortly after the initial introduction.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Bob to explain the reason for the call but was informed it was a wrong number.\n- Bob did not provide any contact information or express interest in a product/service.\n- No follow-up was scheduled as the call ended shortly after the initial introduction.",
     "recordingUrl": "https://recording.nooks.in/CA7aa824f6c26b49676cd88b4526b16c37.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361835930305",
     "persona": "IT Leadership",
@@ -4273,7 +5005,7 @@ export const CALL_DATA = [
     "title": "Chief Information Officer",
     "contactName": "Jeremy Brecher",
     "durationMs": 71763,
-    "transcript": "[NOOKS] - brecherj@gmail.com\n-----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called to speak with Jeremy but reached his wife instead.\n- Jeremy provided Brandon with Jeremy's email address: brecherj@gmail.com.\n- Brandon introduced RunBook as an AI startup in the logistics space that builds AI agents.\n- Jeremy did not provide a phone number for Jeremy but was open to sharing the email address.",
+    "transcript": "[NOOKS] - brecherj@gmail.com\n-----------Nooks AI summary 🔮-----------\n- Brandon called to speak with Jeremy but reached his wife instead.\n- Jeremy provided Brandon with Jeremy's email address: brecherj@gmail.com.\n- Brandon introduced RunBook as an AI startup in the logistics space that builds AI agents.\n- Jeremy did not provide a phone number for Jeremy but was open to sharing the email address.",
     "recordingUrl": "https://recording.nooks.in/CA12ffd8452adc1e24e943f7a9ae32e558.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361879155410",
     "persona": "IT Leadership",
@@ -4296,7 +5028,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "\"I'm calling you out of the blue here and I wanna be respectful\u2014do you think I could borrow thirty seconds of your time to explain?\"",
+      "text": "\"I'm calling you out of the blue here and I wanna be respectful—do you think I could borrow thirty seconds of your time to explain?\"",
       "success": false
     },
     "hook": {
@@ -4324,7 +5056,7 @@ export const CALL_DATA = [
     "title": "VP - Enterprise Platforms - Sales, Marketing and Servicing software and product engineering",
     "contactName": "Joseph Timem",
     "durationMs": 67151,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Joseph to discuss automating workflows for business operators, particularly in logistics and manufacturing.\n- Joseph indicated that they are not the right contact for this discussion, as they work in finance.\n- Joseph did not express interest in Brandon's pitch regarding AI agents for workflow automation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Joseph to discuss automating workflows for business operators, particularly in logistics and manufacturing.\n- Joseph indicated that they are not the right contact for this discussion, as they work in finance.\n- Joseph did not express interest in Brandon's pitch regarding AI agents for workflow automation.",
     "recordingUrl": "https://recording.nooks.in/CA58a56eccc99177590d3ccab23d6f8e14.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361879149252",
     "persona": "IT Leadership",
@@ -4341,7 +5073,7 @@ export const CALL_DATA = [
     "title": "Sr Director of Engineering",
     "contactName": "Juan Cordero",
     "durationMs": 12930,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Juan to initiate a conversation.\n- The call did not progress beyond the initial greeting, as there was no further dialogue.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Juan to initiate a conversation.\n- The call did not progress beyond the initial greeting, as there was no further dialogue.",
     "recordingUrl": "https://recording.nooks.in/CA60f68e6104c6c0bb7897c93e3b95870a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361793017532",
     "persona": "IT / Engineering",
@@ -4397,7 +5129,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "i'm with a company called run book i was calling you a bit out of a blue here today do you think of a could borrow thirty seconds of your time to explain the reason for michael",
     "iceBreaker": {
-      "text": "Hi Joe, this is Brandon Lia with RunBook\u2014I'm calling you out of the blue. Do you think I could borrow 30 seconds to explain the reason for my call?",
+      "text": "Hi Joe, this is Brandon Lia with RunBook—I'm calling you out of the blue. Do you think I could borrow 30 seconds to explain the reason for my call?",
       "success": false
     },
     "hook": {
@@ -4425,7 +5157,7 @@ export const CALL_DATA = [
     "title": "Vice President, Information Technology",
     "contactName": "Baba Mangunoori",
     "durationMs": 25932,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Baba to introduce RunBook and discuss potential services.\n- Baba informed Brandon that they are no longer with ProLogistix and could not assist.\n- Brandon acknowledged Baba's response and ended the call politely.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Baba to introduce RunBook and discuss potential services.\n- Baba informed Brandon that they are no longer with ProLogistix and could not assist.\n- Brandon acknowledged Baba's response and ended the call politely.",
     "recordingUrl": "https://recording.nooks.in/CAa592edf2ea8f5a7c7b6c6287312b312d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361828375261",
     "persona": "IT Leadership",
@@ -4448,11 +5180,11 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "i see you're a senior it infrastructure pm at ohio health and i've been working with the good amount of it and engineering teams right now mostly in the logistics and manufacturing space but i've been hearing a common theme that i thought you might resonate with even in the health care space so they want to automate workflows for their business operators particularly in competitive and manual tasks that require coordination and",
     "iceBreaker": {
-      "text": "\"I'm calling you a little bit out of the blue and I wanna be respectful\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "text": "\"I'm calling you a little bit out of the blue and I wanna be respectful—do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I work with IT and engineering teams in logistics and manufacturing who want to automate workflows for their business operators, particularly in competitive and manual tasks that require coordination\u2014I thought you might resonate with this in the healthcare space.\"",
+      "text": "\"I work with IT and engineering teams in logistics and manufacturing who want to automate workflows for their business operators, particularly in competitive and manual tasks that require coordination—I thought you might resonate with this in the healthcare space.\"",
       "success": false
     },
     "objection": {
@@ -4566,7 +5298,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "so i i could give you an overview of kind of what we do so we help companies deploy agents to automate workflows that typically require a human to communicate with multiple people multiple systems like navigating a portal downloading a certification verifying various pieces of information and the the the problem that we're trying to solve is if you work with forward deployed engineering teams from these other vendors is the the the gap of kinda architect the solution because it requires the to work with your engineers and then your engineers work with your business people so it's like a huge kind of a bottleneck to kinda coordinate and decide on what to build once you decide how to build it it takes a you know a couple steps to actually bring it into production so where we sit is is that part we we our goal is to remove engineering from the equation so you know you can imagine saving a lot of time and effort from your engineers to build something like an ai agent in house",
     "iceBreaker": {
-      "text": "\"I'm calling you a little bit out of the blue here today\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "text": "\"I'm calling you a little bit out of the blue here today—do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
@@ -4594,7 +5326,7 @@ export const CALL_DATA = [
     "title": "Senior Director Of Data Science",
     "contactName": "Andrew Orso",
     "durationMs": 128000,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced RunBook's platform, which automates manual coordination tasks for logistics teams, but Andrew clarified that he is not the director of data science; he is a broker at East Coast Logistics.\n- Andrew mentioned that East Coast Logistics is a family operation generating about $2 million gross per year and also owns a trucking company.\n- Andrew indicated that they are not currently ready to implement AI applications or similar technologies due to their current stage of growth.\n- Andrew provided their full name as Andrew James but goes by AJ, clarifying the mix-up with Chuck regarding names.\n- Andrew suggested that the best way to contact his brother, who is in data science, would be through LinkedIn, as he does not keep in touch with him frequently.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced RunBook's platform, which automates manual coordination tasks for logistics teams, but Andrew clarified that he is not the director of data science; he is a broker at East Coast Logistics.\n- Andrew mentioned that East Coast Logistics is a family operation generating about $2 million gross per year and also owns a trucking company.\n- Andrew indicated that they are not currently ready to implement AI applications or similar technologies due to their current stage of growth.\n- Andrew provided their full name as Andrew James but goes by AJ, clarifying the mix-up with Chuck regarding names.\n- Andrew suggested that the best way to contact his brother, who is in data science, would be through LinkedIn, as he does not keep in touch with him frequently.",
     "recordingUrl": "https://recording.nooks.in/CA2bb6dcdd5586329a0d2c937a068f0c51.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361607544545",
     "persona": "IT / Engineering",
@@ -4611,7 +5343,7 @@ export const CALL_DATA = [
     "title": "Vice President of Information Services",
     "contactName": "Jack Lawrence",
     "durationMs": 19033,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Jack to discuss a potential opportunity.\n- Jack clarified that they are the daughter of the intended contact.\n- They apologized for the mix-up and indicated they would reach out to the correct person another way.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Jack to discuss a potential opportunity.\n- Jack clarified that they are the daughter of the intended contact.\n- They apologized for the mix-up and indicated they would reach out to the correct person another way.",
     "recordingUrl": "https://recording.nooks.in/CAae0b3e53909e60b2ac9d2ac7446194e4.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361583575749",
     "persona": "Executive",
@@ -4679,7 +5411,7 @@ export const CALL_DATA = [
     "title": "Director Information Technology System",
     "contactName": "Cambre Leverette",
     "durationMs": 15749,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Cambre but realized they had the wrong number.\n- Cambre did not provide any information or objections as the call was brief and ended quickly.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Cambre but realized they had the wrong number.\n- Cambre did not provide any information or objections as the call was brief and ended quickly.",
     "recordingUrl": "https://recording.nooks.in/CAe514c772996d11b5a1852e532e1ea13a.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361576343248",
     "persona": "IT / Engineering",
@@ -4719,7 +5451,7 @@ export const CALL_DATA = [
     "persona": "Other",
     "offer": "our platform at run book we help organizations build and deploy agents to automate a lot of the work that lives on top of the data and coordinated effort that slow teams down on a day to day basis",
     "iceBreaker": {
-      "text": "\"This is Chuck Bartlett from Run Book, I'm calling you out of the blue because I understood that you look after data and analytics at Radiant\u2014is that right?\"",
+      "text": "\"This is Chuck Bartlett from Run Book, I'm calling you out of the blue because I understood that you look after data and analytics at Radiant—is that right?\"",
       "success": true
     },
     "hook": {
@@ -4747,7 +5479,7 @@ export const CALL_DATA = [
     "title": "President and Chief Commercial Officer",
     "contactName": "Michael McLary",
     "durationMs": 10691,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Michael to discuss a potential opportunity.\n- Michael indicated that it was a wrong number and did not engage further.\n- The call did not progress beyond the initial greeting.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Michael to discuss a potential opportunity.\n- Michael indicated that it was a wrong number and did not engage further.\n- The call did not progress beyond the initial greeting.",
     "recordingUrl": "https://recording.nooks.in/CAc30177a486eac07dbfa1b98f4bac409f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361600290514",
     "persona": "Executive",
@@ -4770,7 +5502,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "",
     "iceBreaker": {
-      "text": "Hi Steve, this is Brandon from a San Francisco startup called Run Book\u2014how are you?",
+      "text": "Hi Steve, this is Brandon from a San Francisco startup called Run Book—how are you?",
       "success": false
     },
     "hook": {
@@ -4798,7 +5530,7 @@ export const CALL_DATA = [
     "title": "SVP and Chief Technology Officer",
     "contactName": "Patricia Hubbard",
     "durationMs": 22590,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Patricia to introduce RunBook and discuss their services.\n- Patricia expressed concern about receiving the call, stating that the number is on a no-call list.\n- Patricia clarified that they are not the person the sales rep was trying to reach and questioned how they obtained the number.\n- The call ended with an unusual response from the sales rep, claiming to work for the CIA.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Patricia to introduce RunBook and discuss their services.\n- Patricia expressed concern about receiving the call, stating that the number is on a no-call list.\n- Patricia clarified that they are not the person the sales rep was trying to reach and questioned how they obtained the number.\n- The call ended with an unusual response from the sales rep, claiming to work for the CIA.",
     "recordingUrl": "https://recording.nooks.in/CA7e3058196dbe8fa958a31554411a8a5c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361548390096",
     "persona": "IT Leadership",
@@ -4821,7 +5553,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "so the the kind of pain that we're targeting is is that is you have to work with a vendors for to deployed engineering team you have to pull in your own engineers and also the business people attached to that team to figure out a solution to like architect it what we're trying to do is cut out the forward to put engineering model completely so instead of you know your your engineers and your business people you know collaborating with each each other to figure out what to build we make it very easy for your business people to write those agents themselves",
     "iceBreaker": {
-      "text": "\"We're a little startup in San Francisco, I'm calling you out of the blue\u2014do you mind if I borrow thirty seconds of your time to explain my call?\"",
+      "text": "\"We're a little startup in San Francisco, I'm calling you out of the blue—do you mind if I borrow thirty seconds of your time to explain my call?\"",
       "success": true
     },
     "hook": {
@@ -4829,7 +5561,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"I'm in the middle of AI tools for a big healthcare company implementing a second version\u2014not at the point of exploring a different vendor.\"",
+      "text": "\"I'm in the middle of AI tools for a big healthcare company implementing a second version—not at the point of exploring a different vendor.\"",
       "success": true
     },
     "tags": [
@@ -4855,7 +5587,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "Hi Eric, my name is Brandon with a startup in San Francisco called Run Book, and I'm calling you a little out of the blue here today\u2014do you mind if I borrow thirty seconds of your time?",
+      "text": "Hi Eric, my name is Brandon with a startup in San Francisco called Run Book, and I'm calling you a little out of the blue here today—do you mind if I borrow thirty seconds of your time?",
       "success": false
     },
     "hook": {
@@ -4889,15 +5621,15 @@ export const CALL_DATA = [
     "persona": "Technical IC",
     "offer": "we are a platform that helps seems like yours build agents to deploy and automate a lot of the manual coordination work that your operations team and billing teams do on a day to day basis",
     "iceBreaker": {
-      "text": "Hi, this is Chuck from Runbook \u2014 I'm calling because we help teams build agents to deploy and automate manual coordination work, and I'm curious if you're working on anything in agent automation at this point.",
+      "text": "Hi, this is Chuck from Runbook — I'm calling because we help teams build agents to deploy and automate manual coordination work, and I'm curious if you're working on anything in agent automation at this point.",
       "success": true
     },
     "hook": {
-      "text": "We serve as an orchestration layer over your data and systems, giving teams ownership to create and deploy agents using natural language without coding, with governance and guardrails to move things to production faster \u2014 especially valuable in your early design phase.",
+      "text": "We serve as an orchestration layer over your data and systems, giving teams ownership to create and deploy agents using natural language without coding, with governance and guardrails to move things to production faster — especially valuable in your early design phase.",
       "success": true
     },
     "objection": {
-      "text": "We're hitting up against a financial constraint today and I'm not authorized \u2014 every time I ask for money they give me a no.",
+      "text": "We're hitting up against a financial constraint today and I'm not authorized — every time I ask for money they give me a no.",
       "success": true
     },
     "tags": [
@@ -4923,7 +5655,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "so the kind of like pain that we're we're solving for companies building these ai workflows is i'm assuming you probably work with like four to deployed engineers or like you know other vendors to help build some of these workflows and the problem we're seeing is the turnaround time to build something like that involves you know your engineers their engineers your business people who kind of like know what's to fix like you said like that it's very targeted and that coordination like back and forth between those different parties takes a long time and it takes you know sometimes over a day over two days to to build something into production and what we're doing is we we help simplify that process and take out the engineers as many places as possible so we kind of enable the non technical people to to to build these workflows",
     "iceBreaker": {
-      "text": "\"I'm calling you out of the blue and I want to be respectful \u2014 can I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "text": "\"I'm calling you out of the blue and I want to be respectful — can I borrow thirty seconds of your time to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
@@ -4968,7 +5700,7 @@ export const CALL_DATA = [
     "title": "Manager, IT Infrastructure Architecture",
     "contactName": "Michael Bertasz",
     "durationMs": 56628,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Michael to introduce RunBook and briefly explain the purpose of the call.\n- Michael informed Chuck that they are no longer in IT and have been a police officer for the past three years.\n- Chuck acknowledged Michael's current role and expressed appreciation for their service.\n- Michael indicated that the product/service Chuck was offering would not be relevant to them.\n- No follow-up meetings or calls were scheduled, and no contact information was exchanged.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Michael to introduce RunBook and briefly explain the purpose of the call.\n- Michael informed Chuck that they are no longer in IT and have been a police officer for the past three years.\n- Chuck acknowledged Michael's current role and expressed appreciation for their service.\n- Michael indicated that the product/service Chuck was offering would not be relevant to them.\n- No follow-up meetings or calls were scheduled, and no contact information was exchanged.",
     "recordingUrl": "https://recording.nooks.in/CAd54a38ee1a2b121a4759b17ae0990356.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361511404221",
     "persona": "IT / Engineering",
@@ -5046,7 +5778,7 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "\"We work with IT and engineering teams in logistics and manufacturing on the AI side, helping with business teams spending 80% of their time on repetitive manually coordinated tasks, and we help get AI agents to work in production\u2014from implementation to building trust to maintaining it.\"",
+      "text": "\"We work with IT and engineering teams in logistics and manufacturing on the AI side, helping with business teams spending 80% of their time on repetitive manually coordinated tasks, and we help get AI agents to work in production—from implementation to building trust to maintaining it.\"",
       "success": true
     },
     "objection": {
@@ -5070,7 +5802,7 @@ export const CALL_DATA = [
     "title": "VP & Chief Information Officer",
     "contactName": "Ramzi B.",
     "durationMs": 29311,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Ramzi but reached the wrong number, as Ramzi clarified they are not the intended contact.\n- No product or service was pitched during the call due to the misdial.\n- Ramzi did not provide any contact information or express interest in a follow-up.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Ramzi but reached the wrong number, as Ramzi clarified they are not the intended contact.\n- No product or service was pitched during the call due to the misdial.\n- Ramzi did not provide any contact information or express interest in a follow-up.",
     "recordingUrl": "https://recording.nooks.in/CAfe8eb93bd65a5eb615549f9cf4c15d39.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361560141531",
     "persona": "IT Leadership",
@@ -5114,7 +5846,7 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "\"We work with folks like yourself who want to automate operational workflows, but AI models break and can't be trusted\u2014Runbook helps deploy agents to automate those workflows reliably.\"",
+      "text": "\"We work with folks like yourself who want to automate operational workflows, but AI models break and can't be trusted—Runbook helps deploy agents to automate those workflows reliably.\"",
       "success": false
     },
     "objection": {
@@ -5239,7 +5971,7 @@ export const CALL_DATA = [
     "title": "Manager, Strategies and Innovation",
     "contactName": "Grant Montgomery",
     "durationMs": 54112,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Grant, mistakenly believing they were reaching out to someone involved in strategies and innovation at BRW.\n- Grant clarified that they sell cars, indicating that Chuck had the wrong contact.\n- Chuck acknowledged the mistake and confirmed that they would update their records accordingly.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Grant, mistakenly believing they were reaching out to someone involved in strategies and innovation at BRW.\n- Grant clarified that they sell cars, indicating that Chuck had the wrong contact.\n- Chuck acknowledged the mistake and confirmed that they would update their records accordingly.",
     "recordingUrl": "https://recording.nooks.in/CA0548d22f71d2e962ff56b969ce28a87c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361500814066",
     "persona": "Manager (Other)",
@@ -5256,7 +5988,7 @@ export const CALL_DATA = [
     "title": "Chief Digital Officer",
     "contactName": "Chris Heck",
     "durationMs": 26793,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Brandon called Chris to reach Chris Heck.\n- Chris informed Brandon that he had the wrong number.\n- The call ended amicably with no further discussion or objections.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Brandon called Chris to reach Chris Heck.\n- Chris informed Brandon that he had the wrong number.\n- The call ended amicably with no further discussion or objections.",
     "recordingUrl": "https://recording.nooks.in/CAc34ef28777f53cdf06ec25aa8bfb2d2e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361489526480",
     "persona": "IT Leadership",
@@ -5279,7 +6011,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "in this age of ai you know i've been hearing a common theme that i thought would resonate with you given your current role it's that they they have business seems that they're supporting and these teams are spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked at ai agents to help with this but getting the those agents to work in production has been a problem from an implementation to building trust to you know maintaining the agents",
     "iceBreaker": {
-      "text": "\"I'm Brandon Lia calling from a startup in San Francisco, and I want to be respectful\u2014do you mind if I borrow thirty seconds to explain the reason for my call?\"",
+      "text": "\"I'm Brandon Lia calling from a startup in San Francisco, and I want to be respectful—do you mind if I borrow thirty seconds to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
@@ -5306,7 +6038,7 @@ export const CALL_DATA = [
     "title": "Senior Manager, Digital Corporate Solutions, Workday & Human Resources Applications",
     "contactName": "Gianna Daley",
     "durationMs": 57109,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Otis to connect with Gianna Daley.\n- Gianna confirmed that she does not have a phone number on file for Gianna Daley.\n- Gianna requested an email address for Gianna Daley, and They provided the format: first.last@otis.com.\n- No product or service was pitched during the call, and there was no indication of interest from Gianna regarding any offerings.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Otis to connect with Gianna Daley.\n- Gianna confirmed that she does not have a phone number on file for Gianna Daley.\n- Gianna requested an email address for Gianna Daley, and They provided the format: first.last@otis.com.\n- No product or service was pitched during the call, and there was no indication of interest from Gianna regarding any offerings.",
     "recordingUrl": "https://recording.nooks.in/CAcebc735ef8d1752f1189ca635b126f2d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361470969549",
     "persona": "IT / Engineering",
@@ -5323,7 +6055,7 @@ export const CALL_DATA = [
     "title": "Vice President Operations",
     "contactName": "Mike Hutton",
     "durationMs": 56750,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced themselves and explained that they are calling from Runbook to discuss automating manual coordination work for operational leaders.\n- Mike indicated that any discussions would need to go through their corporate office in Canton, Ohio.\n- Mike referred Chuck to Tom Bachman, the executive vice president of IT, as the appropriate contact for further discussions.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced themselves and explained that they are calling from Runbook to discuss automating manual coordination work for operational leaders.\n- Mike indicated that any discussions would need to go through their corporate office in Canton, Ohio.\n- Mike referred Chuck to Tom Bachman, the executive vice president of IT, as the appropriate contact for further discussions.",
     "recordingUrl": "https://recording.nooks.in/CA141e74b4bdc9f67103d2463b24fc0577.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361489356528",
     "persona": "Operations Leadership",
@@ -5346,11 +6078,11 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "the reason i'm calling you is because i've noticed like teams are taking like entire days or maybe two days to build an ai agent and bring it into production and our work is to shorten that process to less than a day the approach is something i would love to tell you more about but the idea is you know we're trying to kinda replace the four deployed engineering model where you know you have an engineer work with the business person to test to build these kind of ai workflows we're trying to cut out like the engineers involvement in that as much as we can because it's the most expensive part of the workflow",
     "iceBreaker": {
-      "text": "\"I'm Brandon with RunBook, I'm calling out of the blue and just wanted to make sure I'm respectful of your time\u2014is this a good time to chat?\"",
+      "text": "\"I'm Brandon with RunBook, I'm calling out of the blue and just wanted to make sure I'm respectful of your time—is this a good time to chat?\"",
       "success": true
     },
     "hook": {
-      "text": "\"We're an AI logistics solution startup, and I've noticed business teams spend 80% of their time on repetitive manual tasks and struggle to get AI agents working in production\u2014I was curious if this rings true for you as a project manager.\"",
+      "text": "\"We're an AI logistics solution startup, and I've noticed business teams spend 80% of their time on repetitive manual tasks and struggle to get AI agents working in production—I was curious if this rings true for you as a project manager.\"",
       "success": true
     },
     "objection": {
@@ -5448,7 +6180,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "",
     "iceBreaker": {
-      "text": "\"I'm calling you a little bit out of the blue here today\u2014do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
+      "text": "\"I'm calling you a little bit out of the blue here today—do you mind if I borrow thirty seconds of your time to explain the reason for my call?\"",
       "success": false
     },
     "hook": {
@@ -5507,7 +6239,7 @@ export const CALL_DATA = [
     "outcome": "Not Interested",
     "vertical": "Logistics & Freight",
     "title": "Application Develpment Lead",
-    "contactName": "Ren\u00e9 Montes de Oca",
+    "contactName": "René Montes de Oca",
     "durationMs": 91089,
     "transcript": "Renee (Prospect): hello\nBrandon (Rep): hey renee\nRenee (Prospect): yep\nBrandon (Rep): hey renee this is brandon with the company called run book calling you a little bit out of the blue here to that do you think i could borrow thirty seconds of your time so explain the reason for my call\nRenee (Prospect): okay\nBrandon (Rep): great thank you so much so the reason i called you you know i noticed that's your application development lead at ryder i've been i've been working with a a bunch of enterprise it teams kind of in the logistics space and i've have been hearing a common theme that i thought you might resonate with it's they're they they're the business thing that they're supporting are spending you know eighty percent or more of their time in repetitive and manual tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem from an implementation to trust to a maintenance standpoint i was curious if you have a hand in this or you know you resonate but with kind of this challenge\nRenee (Prospect): yeah unfortunately charlie we're not really you know as a team we're not really looking that solution so yeah unfortunately i don't i mean i i don't know what to value you and so\nBrandon (Rep): can i just like i asked you to clarify you're or you're not you're not building these solutions like another team is or you're just not looking as a company building",
     "recordingUrl": "https://recording.nooks.in/CA7c5dfc3ac1595b62ce0da6ce05c3f2c6.wav?workspaceId=8AQjxXsnXHDflmUT",
@@ -5515,7 +6247,7 @@ export const CALL_DATA = [
     "persona": "Other",
     "offer": "so the reason i called you you know i noticed that's your application development lead at ryder i've been working with a bunch of enterprise it teams kind of in the logistics space and i've been hearing a common theme that i thought you might resonate with it's they're the business thing that they're supporting are spending you know eighty percent or more of their time in repetitive and manual tasks and they've looked to ai agents to help with this but getting those agents to work in production has been a problem from an implementation to trust to a maintenance standpoint i was curious if you have a hand in this or you know you resonate but with kind of this challenge",
     "iceBreaker": {
-      "text": "\"Hey Renee, this is Brandon with Run Book calling you a little bit out of the blue here\u2014do you think I could borrow thirty seconds of your time so I can explain the reason for my call?\"",
+      "text": "\"Hey Renee, this is Brandon with Run Book calling you a little bit out of the blue here—do you think I could borrow thirty seconds of your time so I can explain the reason for my call?\"",
       "success": true
     },
     "hook": {
@@ -5543,7 +6275,7 @@ export const CALL_DATA = [
     "title": "Chief Operations Excellence Officer",
     "contactName": "Kalyan Sakthivelayutham",
     "durationMs": 37372,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Kalyan to discuss operational excellence at DHL.\n- Kalyan clarified that they do not oversee operational excellence and indicated that Chuck may have the wrong person.\n- No follow-up was scheduled, and no interest in a product or service was expressed by Kalyan.\n- Kalyan did not provide any contact information or refer Chuck to any colleagues.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Kalyan to discuss operational excellence at DHL.\n- Kalyan clarified that they do not oversee operational excellence and indicated that Chuck may have the wrong person.\n- No follow-up was scheduled, and no interest in a product or service was expressed by Kalyan.\n- Kalyan did not provide any contact information or refer Chuck to any colleagues.",
     "recordingUrl": "https://recording.nooks.in/CA0cad490d62d7e9e4e3ab7a89e8cf19cb.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361487516398",
     "persona": "Executive",
@@ -5600,11 +6332,11 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "you know i see your a program manager at logistics i've been working with a a bunch of different enterprise it teams kind of in the logistics logistics space and i've been hearing a common theme that i thought maybe you would resonate with it's their their business teams that the it teams are supporting they're spending eighty percent or more of their time in repetitive manual coordinated tasks and they've looked to ai agents to to to help with this but getting them to work in production has been a problem you know from implementation to building trust to even like maintaining them i figured you know given you're in this kind of space the it space do do do you resonate with kind of these challenges",
     "iceBreaker": {
-      "text": "\"Hi Anu, this is Brandon with Rumble Arya\u2014I'm calling a little bit out of the blue here today, could I borrow like thirty seconds to explain the reason for my call?\"",
+      "text": "\"Hi Anu, this is Brandon with Rumble Arya—I'm calling a little bit out of the blue here today, could I borrow like thirty seconds to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I've been working with enterprise IT teams in logistics and hearing a common theme\u2014business teams are spending 80% of their time in repetitive manual coordinated tasks, they've looked to AI agents to help but getting them to work in production has been a problem, from implementation to building trust to maintaining them.\"",
+      "text": "\"I've been working with enterprise IT teams in logistics and hearing a common theme—business teams are spending 80% of their time in repetitive manual coordinated tasks, they've looked to AI agents to help but getting them to work in production has been a problem, from implementation to building trust to maintaining them.\"",
       "success": true
     },
     "objection": {
@@ -5718,11 +6450,11 @@ export const CALL_DATA = [
     "persona": "Operations Leadership",
     "offer": "we provide a platform that helps deploy automation and agents for a lot of the manual coordination task that's slowed your team down on a day to day basis things like track to trace dispatching could even go into like billing basically places where you're throwing on bodies and problems and people are spending eighty percent of their time doing manual work that could be automated",
     "iceBreaker": {
-      "text": "\"This is Chuck Bartlett from Run\u2014can I tell you what I'm calling about in just a quick second?\"",
+      "text": "\"This is Chuck Bartlett from Run—can I tell you what I'm calling about in just a quick second?\"",
       "success": true
     },
     "hook": {
-      "text": "\"We provide a platform that helps deploy automation and agents for manual coordination tasks like track and trace, dispatching, and billing\u2014places where teams spend 80% of their time on manual work that could be automated.\"",
+      "text": "\"We provide a platform that helps deploy automation and agents for manual coordination tasks like track and trace, dispatching, and billing—places where teams spend 80% of their time on manual work that could be automated.\"",
       "success": true
     },
     "objection": {
@@ -5820,11 +6552,11 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "so the the model that we operate on is we basically come in for free we learn where your biggest blockers or bottlenecks are to find something that creates the most roi and typically we we see that value get created within about a week so we build an ai agent that works in about a week",
     "iceBreaker": {
-      "text": "\"I'm calling you very much out of the blue here\u2014do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
+      "text": "\"I'm calling you very much out of the blue here—do you think I could borrow thirty seconds of your time to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
-      "text": "\"I'm in the logistics AI space and I've noticed business teams are spending 80% of their time on repetitive manual tasks, and while they're implementing AI agents to automate, trust and accuracy can break down in production\u2014does this ring true for what you're working on?\"",
+      "text": "\"I'm in the logistics AI space and I've noticed business teams are spending 80% of their time on repetitive manual tasks, and while they're implementing AI agents to automate, trust and accuracy can break down in production—does this ring true for what you're working on?\"",
       "success": true
     },
     "objection": {
@@ -5854,7 +6586,7 @@ export const CALL_DATA = [
     "persona": "Operations",
     "offer": "we're a platform that helps operations leaders automate a lot of the tasks that their teams do on a day to day basis",
     "iceBreaker": {
-      "text": "\"Hi Lynn, this is Chuck from Runbook\u2014can I help you, can you hear me?\"",
+      "text": "\"Hi Lynn, this is Chuck from Runbook—can I help you, can you hear me?\"",
       "success": true
     },
     "hook": {
@@ -5888,7 +6620,7 @@ export const CALL_DATA = [
     "persona": "Operations",
     "offer": "we are a platform that helps operations teams automate a lot of the manual coordination work they do between systems on a day basis that slow your team down using agent ai",
     "iceBreaker": {
-      "text": "Hi, it's Chuck Art calling from Runbook\u2014how are you?",
+      "text": "Hi, it's Chuck Art calling from Runbook—how are you?",
       "success": true
     },
     "hook": {
@@ -5922,15 +6654,15 @@ export const CALL_DATA = [
     "persona": "Operations Leadership",
     "offer": "so you know i've been working with a lot of it and operations teams in this like logistics space and i've been hearing two common themes that i thought might resonate with you one is their business teams that they're supporting are spending eighty percent or more of their time in repetitive manual and coordinated tasks and two is they've tried to look at ai agents to automate some of this but trust and accuracy can break down very easily and the it teams just can't support them",
     "iceBreaker": {
-      "text": "\"I'm Brandon with Runbook, a small startup in San Francisco calling out of the blue \u2014 do you mind if I borrow thirty seconds to explain the reason for my call?\"",
+      "text": "\"I'm Brandon with Runbook, a small startup in San Francisco calling out of the blue — do you mind if I borrow thirty seconds to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
-      "text": "\"IT and operations teams in logistics are spending 80% of their time on repetitive manual tasks, and while they've tried AI agents to automate this, trust and accuracy break down and IT can't support them \u2014 I was curious if this is something you might have a hand in.\"",
+      "text": "\"IT and operations teams in logistics are spending 80% of their time on repetitive manual tasks, and while they've tried AI agents to automate this, trust and accuracy break down and IT can't support them — I was curious if this is something you might have a hand in.\"",
       "success": true
     },
     "objection": {
-      "text": "\"It's probably not anything of interest \u2014 we're building out some tools right now so we're already mid-stride on that front, and the window isn't really open at the moment.\"",
+      "text": "\"It's probably not anything of interest — we're building out some tools right now so we're already mid-stride on that front, and the window isn't really open at the moment.\"",
       "success": true
     },
     "tags": [
@@ -5967,7 +6699,7 @@ export const CALL_DATA = [
     "title": "CEO",
     "contactName": "William Johnson",
     "durationMs": 11452,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called William to discuss a potential product demo.\n- The call did not progress as William was initially trying to establish a connection, indicating possible issues with the call quality.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called William to discuss a potential product demo.\n- The call did not progress as William was initially trying to establish a connection, indicating possible issues with the call quality.",
     "recordingUrl": "https://recording.nooks.in/CA7563e14fb852659d1433092c623b231b.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361044648678",
     "persona": "Executive",
@@ -5984,7 +6716,7 @@ export const CALL_DATA = [
     "title": "Vice President - Data Science & Analytics",
     "contactName": "Vishwa Ram",
     "durationMs": 28193,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Vishwa to introduce RunBook, a platform that automates the deployment of agents for organizations.\n- Vishwa expressed confusion and indicated that they did not understand the purpose of the call.\n- Chuck acknowledged the misunderstanding and suggested that they might have the wrong number.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Vishwa to introduce RunBook, a platform that automates the deployment of agents for organizations.\n- Vishwa expressed confusion and indicated that they did not understand the purpose of the call.\n- Chuck acknowledged the misunderstanding and suggested that they might have the wrong number.",
     "recordingUrl": "https://recording.nooks.in/CAacaba10937e03ca4038f654cf87fa01c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361055433429",
     "persona": "IT Leadership",
@@ -6057,11 +6789,11 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "so we build ai agents that handle the coordination work you know your team does that typically requires touching multiple systems like navigating portals you know checking like sort of certifications or whatever before getting enough context to make a decision so think of like you know workflows that require maybe in like a like a dispatch coordination right like they they they have to pull out",
     "iceBreaker": {
-      "text": "\"Hey Donald, this is Brandon with Run Arya, a startup in San Francisco calling a bit out of the blue\u2014do you mind if I borrow thirty seconds to explain the reason for my call?\"",
+      "text": "\"Hey Donald, this is Brandon with Run Arya, a startup in San Francisco calling a bit out of the blue—do you mind if I borrow thirty seconds to explain the reason for my call?\"",
       "success": true
     },
     "hook": {
-      "text": "\"We build AI agents that handle coordination work across multiple systems, like navigating portals and checking certifications before making decisions\u2014common pain points in enterprise logistics.\"",
+      "text": "\"We build AI agents that handle coordination work across multiple systems, like navigating portals and checking certifications before making decisions—common pain points in enterprise logistics.\"",
       "success": true
     },
     "objection": {
@@ -6102,7 +6834,7 @@ export const CALL_DATA = [
     "title": "Vice President, Portfolio Management of Technology Platforms, Data & AI",
     "contactName": "Suman Kharbanda",
     "durationMs": 19970,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Suman to discuss a potential product offering.\n- Suman's responses were unclear and seemed to be unrelated to the conversation.\n- There was no clear engagement or interest expressed by Suman during the call.\n- Chuck may need to follow up with a different approach or try reaching out at a later time.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Suman to discuss a potential product offering.\n- Suman's responses were unclear and seemed to be unrelated to the conversation.\n- There was no clear engagement or interest expressed by Suman during the call.\n- Chuck may need to follow up with a different approach or try reaching out at a later time.",
     "recordingUrl": "https://recording.nooks.in/CAedb8561df2204137cd6ff98e7706cdaa.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/361051790048",
     "persona": "IT Leadership",
@@ -6142,7 +6874,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "",
     "iceBreaker": {
-      "text": "Hi Charles, this is Brandon with Runbook. We're based in San Francisco. I'm calling you out of the blue and I want to be respectful\u2014could I borrow 30 seconds to explain the reason for my call?",
+      "text": "Hi Charles, this is Brandon with Runbook. We're based in San Francisco. I'm calling you out of the blue and I want to be respectful—could I borrow 30 seconds to explain the reason for my call?",
       "success": false
     },
     "hook": {
@@ -6176,7 +6908,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "we're a platform that helps organizations deploy agents to automate a lot of the manual effort that operations see that closes operations seems down wondering if that's something that touches your role at all",
     "iceBreaker": {
-      "text": "\"This is Chuck calling from Run Book\u2014can I ask you a quick question?\"",
+      "text": "\"This is Chuck calling from Run Book—can I ask you a quick question?\"",
       "success": true
     },
     "hook": {
@@ -6294,7 +7026,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "what we're doing is we're helping companies like you guys deploy agents to automate a lot of the billing and like we're really billing and carrier communication like tasks that you know folks on your operations team spending eighty percent of your time going over and over again to to give back the the high value workers the time to do high value work",
     "iceBreaker": {
-      "text": "\"Hey Preston, this is Chuck from Runbook\u2014I'm calling you out of the blue. Can I tell you why I called and what we're doing in a couple seconds?\"",
+      "text": "\"Hey Preston, this is Chuck from Runbook—I'm calling you out of the blue. Can I tell you why I called and what we're doing in a couple seconds?\"",
       "success": true
     },
     "hook": {
@@ -6302,7 +7034,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"I'm not the owner\u2014I'm actually the owner of Triumph Financial. I just worked here previously as an employee.\"",
+      "text": "\"I'm not the owner—I'm actually the owner of Triumph Financial. I just worked here previously as an employee.\"",
       "success": false
     },
     "tags": [
@@ -6322,7 +7054,7 @@ export const CALL_DATA = [
     "title": "Sr. EDI Business Analyst",
     "contactName": "Sharon McDuffie",
     "durationMs": 103729,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced themselves and explained that they are calling from RunBook, a platform that automates manual coordination work for dispatching teams.\n- Sharon confirmed that their organization has full EDI and AI teams in place.\n- Chuck inquired about the capabilities of the AI teams, but Sharon was not specifically aware of their details.\n- Sharon suggested that Chuck should contact other teams for more information, indicating that she may not be the right person to discuss their AI capabilities further.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced themselves and explained that they are calling from RunBook, a platform that automates manual coordination work for dispatching teams.\n- Sharon confirmed that their organization has full EDI and AI teams in place.\n- Chuck inquired about the capabilities of the AI teams, but Sharon was not specifically aware of their details.\n- Sharon suggested that Chuck should contact other teams for more information, indicating that she may not be the right person to discuss their AI capabilities further.",
     "recordingUrl": "https://recording.nooks.in/CA77f371efdf24f9f96e04920838ff8ce9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360840909540",
     "persona": "Analyst / Specialist",
@@ -6339,7 +7071,7 @@ export const CALL_DATA = [
     "title": "Information Technology Service Desk Team Lead",
     "contactName": "Shelby Wilson",
     "durationMs": 11932,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Shelby but reached the wrong number.\n- Shelby indicated that they were not the intended recipient of the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Shelby but reached the wrong number.\n- Shelby indicated that they were not the intended recipient of the call.",
     "recordingUrl": "https://recording.nooks.in/CA63aac82e4fe6614146bd5fc67eb32dcf.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360837232361",
     "persona": "Other",
@@ -6356,7 +7088,7 @@ export const CALL_DATA = [
     "title": "Manager, EDI & API",
     "contactName": "Elizabeth Shepherd",
     "durationMs": 19853,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Elizabeth to reach out to someone named Elizabeth.\n- Elizabeth identified herself as Amy and informed Chuck that he had the wrong number.\n- Chuck acknowledged the mistake and ended the call politely.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Elizabeth to reach out to someone named Elizabeth.\n- Elizabeth identified herself as Amy and informed Chuck that he had the wrong number.\n- Chuck acknowledged the mistake and ended the call politely.",
     "recordingUrl": "https://recording.nooks.in/CA06230e61fd0ebeff6ed954a113f9a83f.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360818625229",
     "persona": "Manager (Other)",
@@ -6379,7 +7111,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "",
     "iceBreaker": {
-      "text": "\"Hi Benjamin, this is Chuck Ga calling from Run\u2014how are you?\"",
+      "text": "\"Hi Benjamin, this is Chuck Ga calling from Run—how are you?\"",
       "success": false
     },
     "hook": {
@@ -6407,7 +7139,7 @@ export const CALL_DATA = [
     "title": "Senior Data Engineer",
     "contactName": "Joseph Dunne",
     "durationMs": 40510,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Joseph from RunBook to discuss their platform that automates manual coordination work for operations teams.\n- Joseph expressed confusion and indicated that they did not understand the purpose of the call, suggesting that Chuck may have dialed the wrong number.\n- No follow-up was scheduled, and no contact information was exchanged during the call.\n- Joseph did not show interest in the product or service being pitched.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Joseph from RunBook to discuss their platform that automates manual coordination work for operations teams.\n- Joseph expressed confusion and indicated that they did not understand the purpose of the call, suggesting that Chuck may have dialed the wrong number.\n- No follow-up was scheduled, and no contact information was exchanged during the call.\n- Joseph did not show interest in the product or service being pitched.",
     "recordingUrl": "https://recording.nooks.in/CA25d5b23708ace39fb69a81dfd2033052.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360854391520",
     "persona": "Technical IC",
@@ -6424,7 +7156,7 @@ export const CALL_DATA = [
     "title": "Senior Data Engineer",
     "contactName": "Evidence Nwangwa",
     "durationMs": 111009,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced RunBook as a platform that helps automate manual coordination tasks for operations and billing teams.\n- Evidence clarified that they are not responsible for coordination or deployment of AI solutions within their company.\n- Evidence confirmed that their company is using AI solutions but did not provide specific details about them.\n- Evidence indicated that they are not involved in automation of workflows related to dispatching or billing.\n- Chuck did not schedule any follow-ups or gather additional contact information from Evidence.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced RunBook as a platform that helps automate manual coordination tasks for operations and billing teams.\n- Evidence clarified that they are not responsible for coordination or deployment of AI solutions within their company.\n- Evidence confirmed that their company is using AI solutions but did not provide specific details about them.\n- Evidence indicated that they are not involved in automation of workflows related to dispatching or billing.\n- Chuck did not schedule any follow-ups or gather additional contact information from Evidence.",
     "recordingUrl": "https://recording.nooks.in/CAb6286db8d00b992ca18146638c730b00.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360854388461",
     "persona": "Technical IC",
@@ -6455,7 +7187,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"We're not in a position to spend money on new tooling right now\u2014we just locked in a bunch of stuff and need to hold off for six to eight months.\"",
+      "text": "\"We're not in a position to spend money on new tooling right now—we just locked in a bunch of stuff and need to hold off for six to eight months.\"",
       "success": true
     },
     "tags": [
@@ -6481,7 +7213,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "yeah sure so i understand it's you're the that you look after data and analytics at at dan ross and the reason that i'm calling is i speak to a lot of folks on in in your position who are you know working with their operations teams to sync up data across systems to reduce a lot of the manual effort that goes into coordinating the the repetitive task that they do on a day to day basis we're a platform that provides ai agents to to automate a lot of that work that sits at the kind orchestration layer of the data you have and and and allows agents to execute those those tasks for your operators",
     "iceBreaker": {
-      "text": "\"This is Chuck from Runbook\u2014got a quick second? Can I tell you why I'm calling?\"",
+      "text": "\"This is Chuck from Runbook—got a quick second? Can I tell you why I'm calling?\"",
       "success": true
     },
     "hook": {
@@ -6509,7 +7241,7 @@ export const CALL_DATA = [
     "title": "Sr. IT Engineer",
     "contactName": "Tyler Woods",
     "durationMs": 64000,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Tyler to introduce themselves and explain the reason for the call.\n- Tyler was confused about the call and questioned why they were being contacted.\n- They attempted to confirm Tyler's identity but did not receive a clear response.\n- The call did not progress to a product pitch or discussion of services due to communication issues.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Tyler to introduce themselves and explain the reason for the call.\n- Tyler was confused about the call and questioned why they were being contacted.\n- They attempted to confirm Tyler's identity but did not receive a clear response.\n- The call did not progress to a product pitch or discussion of services due to communication issues.",
     "recordingUrl": "https://recording.nooks.in/CAdde9b23f8ed370e0dde058daeed7baad.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360854310630",
     "persona": "Technical IC",
@@ -6532,7 +7264,7 @@ export const CALL_DATA = [
     "persona": "Technical IC",
     "offer": "so i'm working with a lot of it teams you know in this wonderful age of ai i'm sure you probably heard a lot about that stuff but i've been hearing two kinda common themes that i thought potentially would resonate with you given your role one is they're building a lot of agent workflows but trust and accuracy you can break down very easily with ai and the second one is they're trying to build these like ai applications to help their operations teams because they spend you know maybe eighty percent of their time in manual coordination work you know i figured you might have something to do with one of these things is that right",
     "iceBreaker": {
-      "text": "James, this is Brandon\u2014I'm calling a little out of the blue here and I want to be respectful. Could I borrow 30 seconds of your time to explain the reason for my call?",
+      "text": "James, this is Brandon—I'm calling a little out of the blue here and I want to be respectful. Could I borrow 30 seconds of your time to explain the reason for my call?",
       "success": true
     },
     "hook": {
@@ -6566,7 +7298,7 @@ export const CALL_DATA = [
     "persona": "Analyst / Specialist",
     "offer": "so i've been working with a lot of like it teams and you know in this age of ai and i've been hearing kind of two common themes that i thought my resonate with you given your role in in systems applications one is their building agent workflows but trust and accuracy you can break down very easily in production and and two is they're trying to you know automate a lot things in their operations teams and that's because they're spending like eighty percent of their time and in manual coordination work i was curious if you're working on you know you know these things today",
     "iceBreaker": {
-      "text": "\"Hey, this is Brandon with Runbook\u2014I'm calling you a little bit out of the blue here. Do you happen to have thirty seconds so I can explain the reason for my call?\"",
+      "text": "\"Hey, this is Brandon with Runbook—I'm calling you a little bit out of the blue here. Do you happen to have thirty seconds so I can explain the reason for my call?\"",
       "success": true
     },
     "hook": {
@@ -6600,7 +7332,7 @@ export const CALL_DATA = [
     "persona": "Operations",
     "offer": "what we are is an automation platform that helps automate the manual coordination work that your dispatcher are you know do on a daily basis dispatch operations teams",
     "iceBreaker": {
-      "text": "Hey Scott, it's Chuck Art calling from Runbook\u2014you and I spoke a couple weeks ago and you'd asked me to give you a callback.",
+      "text": "Hey Scott, it's Chuck Art calling from Runbook—you and I spoke a couple weeks ago and you'd asked me to give you a callback.",
       "success": true
     },
     "hook": {
@@ -6634,11 +7366,11 @@ export const CALL_DATA = [
     "persona": "Operations",
     "offer": "what run book is is that we're a platform that helps automate a lot of the manual coordination test that go into an operation like yours so think about carrier communication the out like bill like billing and encoding all that can be automated when and you know executed by an ai agent take you from you know four or six hours down to five minutes to to get something invoice and build out for one of those customers to work for",
     "iceBreaker": {
-      "text": "Hey Andrew, this is Chuck from Run Book\u2014can I borrow a quick second?",
+      "text": "Hey Andrew, this is Chuck from Run Book—can I borrow a quick second?",
       "success": true
     },
     "hook": {
-      "text": "We're a platform that automates manual coordination tasks in operations like billing, encoding, and carrier communication\u2014taking what normally takes 4-6 hours down to 5 minutes using AI agents.",
+      "text": "We're a platform that automates manual coordination tasks in operations like billing, encoding, and carrier communication—taking what normally takes 4-6 hours down to 5 minutes using AI agents.",
       "success": true
     },
     "objection": {
@@ -6668,7 +7400,7 @@ export const CALL_DATA = [
     "persona": "Operations Leadership",
     "offer": "we're agent platform that helps automate a lot of the manual coordination task that folks do on operations team between billing dispatching and like communication between carriers and your customers",
     "iceBreaker": {
-      "text": "\"Hi Kyle, this is Chuck from Runbook\u2014we're an agent platform that helps automate manual coordination tasks on operations teams between billing, dispatching, and communication. Do you have a quick second?\"",
+      "text": "\"Hi Kyle, this is Chuck from Runbook—we're an agent platform that helps automate manual coordination tasks on operations teams between billing, dispatching, and communication. Do you have a quick second?\"",
       "success": true
     },
     "hook": {
@@ -6702,7 +7434,7 @@ export const CALL_DATA = [
     "persona": "Operations Leadership",
     "offer": "we're talking about the agent automation stuff",
     "iceBreaker": {
-      "text": "\"Hey Mike, it's Chuck Bartlett calling from Run Book\u2014we spoke a couple weeks ago. Can we meet with you and Chris, or communicate via email about the agent automation stuff?\"",
+      "text": "\"Hey Mike, it's Chuck Bartlett calling from Run Book—we spoke a couple weeks ago. Can we meet with you and Chris, or communicate via email about the agent automation stuff?\"",
       "success": true
     },
     "hook": {
@@ -6736,7 +7468,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "the reason i'm calling i'm calling from run book we're an ai platform actually that helps automate a lot of the operational tasks that teams are doing on a day to day basis from dispatching the billing to carrier coordination i'm curious if if that's something that you guys have looked at it keen and if if it's relevant to you",
     "iceBreaker": {
-      "text": "\"Hi Lynn, this is Chuck Bartlett from Run Book\u2014can I grab a quick second?\"",
+      "text": "\"Hi Lynn, this is Chuck Bartlett from Run Book—can I grab a quick second?\"",
       "success": true
     },
     "hook": {
@@ -6778,7 +7510,7 @@ export const CALL_DATA = [
       "success": false
     },
     "objection": {
-      "text": "\"You called my personal cell phone\u2014do not ever call me back.\"",
+      "text": "\"You called my personal cell phone—do not ever call me back.\"",
       "success": false
     },
     "tags": [
@@ -6798,7 +7530,7 @@ export const CALL_DATA = [
     "title": "Vice President Operations",
     "contactName": "Travis Hoeschen",
     "durationMs": 99429,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck mistakenly called Travis instead of their husband, who is the intended contact.\n- Travis indicated that their phone number is likely associated with Finish Line Express, a trucking company they previously owned.\n- Chuck pitched a logistics platform that automates work for operations leaders, emphasizing that it could help give time back to Travis's husband.\n- Travis acknowledged that their husband is busy, which may indicate potential interest in the solution Chuck presented.\n- Travis provided Chuck with their husband's phone number: (763) 470-3026.\n- Chuck offered to update their system to prevent further calls to Travis.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck mistakenly called Travis instead of their husband, who is the intended contact.\n- Travis indicated that their phone number is likely associated with Finish Line Express, a trucking company they previously owned.\n- Chuck pitched a logistics platform that automates work for operations leaders, emphasizing that it could help give time back to Travis's husband.\n- Travis acknowledged that their husband is busy, which may indicate potential interest in the solution Chuck presented.\n- Travis provided Chuck with their husband's phone number: (763) 470-3026.\n- Chuck offered to update their system to prevent further calls to Travis.",
     "recordingUrl": "https://recording.nooks.in/CAffba73206502e4d44d1b9fdb5287dfc9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360614227654",
     "persona": "Operations Leadership",
@@ -6855,7 +7587,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "we are a platform that serves as an orchestration layer for the data and infrastructure that you have to deploy agents that automate operational tasks so the things that exist at the end of your current automations that you've already invested in that exist like email phone or customer portals that's what our agents are for to automate",
     "iceBreaker": {
-      "text": "\"Carl, this is Chuck from Runbook\u2014do you have a quick second?\"",
+      "text": "\"Carl, this is Chuck from Runbook—do you have a quick second?\"",
       "success": true
     },
     "hook": {
@@ -6863,7 +7595,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"It's probably a bit early for us\u2014we're updating backend systems, need good data, and need to integrate with systems first before leveraging agent tools.\"",
+      "text": "\"It's probably a bit early for us—we're updating backend systems, need good data, and need to integrate with systems first before leveraging agent tools.\"",
       "success": true
     },
     "tags": [
@@ -6889,7 +7621,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "i know that i had sent you over some some information a little bit ago around run book what we're doing with gen automation was was hoping that we could find some time to connect and talk a little deeper about it",
     "iceBreaker": {
-      "text": "\"I wanted to follow up\u2014I had sent you over some information a little bit ago around RunBook and what we're doing with Gen automation, and I was hoping we could find some time to connect and talk a little deeper about it.\"",
+      "text": "\"I wanted to follow up—I had sent you over some information a little bit ago around RunBook and what we're doing with Gen automation, and I was hoping we could find some time to connect and talk a little deeper about it.\"",
       "success": true
     },
     "hook": {
@@ -6897,7 +7629,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"It's probably gonna be a while\u2014I get so much stuff going on in the next month or so, I got honestly no time for anything extra at this point.\"",
+      "text": "\"It's probably gonna be a while—I get so much stuff going on in the next month or so, I got honestly no time for anything extra at this point.\"",
       "success": true
     },
     "tags": [
@@ -6957,7 +7689,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "we are as a platform that helps automate a lot of the manual coordination work that your operations teams are doing on a day to day basis sounds like you have some updated systems where folks are still toggling between throughout the day agents can take care of that work and give them time back and focus on more higher value work",
     "iceBreaker": {
-      "text": "\"Hi Dan, it's Chuck from Runbook\u2014do you have a quick second? I'm calling to tell you who I'm calling.\"",
+      "text": "\"Hi Dan, it's Chuck from Runbook—do you have a quick second? I'm calling to tell you who I'm calling.\"",
       "success": true
     },
     "hook": {
@@ -6991,7 +7723,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "we're a data orchestration platform that helps you deploy and build agents that can automate a lot of the coordinated manual work your operations and finance teams doing on a day to day basis",
     "iceBreaker": {
-      "text": "\"This is Chuck Bartlett with Run Book, a data orchestration platform that helps you deploy and build agents to automate coordinated manual work your operations and finance teams do daily\u2014curious if that's something you've thought about?\"",
+      "text": "\"This is Chuck Bartlett with Run Book, a data orchestration platform that helps you deploy and build agents to automate coordinated manual work your operations and finance teams do daily—curious if that's something you've thought about?\"",
       "success": true
     },
     "hook": {
@@ -7069,7 +7801,7 @@ export const CALL_DATA = [
     "title": "Site Operations Manager",
     "contactName": "Bill Butler",
     "durationMs": 35631,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Bill to speak with Dusty Baker.\n- Bill informed Chuck that Dusty is not available and suggested recording a message.\n- Bill mentioned \"zero emission tractors with improved aerodynamic,\" indicating a potential interest or focus area for their business.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Bill to speak with Dusty Baker.\n- Bill informed Chuck that Dusty is not available and suggested recording a message.\n- Bill mentioned \"zero emission tractors with improved aerodynamic,\" indicating a potential interest or focus area for their business.",
     "recordingUrl": "https://recording.nooks.in/CAa2eed160e295ea2eca0162219b898b9c.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/360101230292",
     "persona": "IT / Engineering",
@@ -7096,7 +7828,7 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "We help automate tasks that operations teams deal with daily\u2014like billing and dispatching\u2014by deploying agents that give you back a lot of that time.",
+      "text": "We help automate tasks that operations teams deal with daily—like billing and dispatching—by deploying agents that give you back a lot of that time.",
       "success": true
     },
     "objection": {
@@ -7205,7 +7937,7 @@ export const CALL_DATA = [
     "title": "Director Operations Planning",
     "contactName": "Tony Robidoux",
     "durationMs": 12149,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Tony to discuss a potential product offering.\n- Tony indicated that they received the wrong number.\n- Chuck acknowledged the mistake and thanked Tony for their time.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Tony to discuss a potential product offering.\n- Tony indicated that they received the wrong number.\n- Chuck acknowledged the mistake and thanked Tony for their time.",
     "recordingUrl": "https://recording.nooks.in/CAd1809a9273ab14998336a563d7e05962.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359722900208",
     "persona": "Operations",
@@ -7273,7 +8005,7 @@ export const CALL_DATA = [
     "title": "Regional Vice President",
     "contactName": "Teddy Van Hyfte",
     "durationMs": 20191,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Teddy at Everett Express.\n- Teddy answered the call but indicated that they were not the right contact, as the person Chuck was trying to reach only comes into the office once a month.\n- Chuck acknowledged this and decided to try a different approach.\n- Teddy was polite and thanked Chuck before ending the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Teddy at Everett Express.\n- Teddy answered the call but indicated that they were not the right contact, as the person Chuck was trying to reach only comes into the office once a month.\n- Chuck acknowledged this and decided to try a different approach.\n- Teddy was polite and thanked Chuck before ending the call.",
     "recordingUrl": "https://recording.nooks.in/CA36c0a6ba8cafce7ab216145fc9bffc18.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359605994227",
     "persona": "Executive",
@@ -7296,7 +8028,7 @@ export const CALL_DATA = [
     "persona": "Other",
     "offer": "the reason i had called is i'm doing a bunch of research on an end that in the company i work for is called run book what we do is to work with it teams to help solve the problem of having operational like leaders have to deal with manual day to day task by automating them with with ai agents",
     "iceBreaker": {
-      "text": "Hi Ryan, this is Chuck with Runbook\u2014I was trying to reach Jose but got your number instead; do you have a moment?",
+      "text": "Hi Ryan, this is Chuck with Runbook—I was trying to reach Jose but got your number instead; do you have a moment?",
       "success": true
     },
     "hook": {
@@ -7304,7 +8036,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "I'm not involved in those discussions and don't have information on AI investments\u2014those decisions are made way above us.",
+      "text": "I'm not involved in those discussions and don't have information on AI investments—those decisions are made way above us.",
       "success": false
     },
     "tags": [
@@ -7324,7 +8056,7 @@ export const CALL_DATA = [
     "title": "Director, Corporate Systems",
     "contactName": "Maureen Henderson",
     "durationMs": 66931,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Maureen to discuss automating workflows for operations teams.\n- Maureen expressed that they are currently unable to invest in automation due to financial constraints, mentioning that last year was their worst year.\n- Maureen indicated that they are handling tasks themselves and are not interested in the solution Chuck presented.\n- Chuck acknowledged Maureen's response and thanked them for their time.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Maureen to discuss automating workflows for operations teams.\n- Maureen expressed that they are currently unable to invest in automation due to financial constraints, mentioning that last year was their worst year.\n- Maureen indicated that they are handling tasks themselves and are not interested in the solution Chuck presented.\n- Chuck acknowledged Maureen's response and thanked them for their time.",
     "recordingUrl": "https://recording.nooks.in/CA383927196ba8162ceb96f631f650a04d.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/359379965661",
     "persona": "Director (Other)",
@@ -7414,7 +8146,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "we're a platform that helps operations team reduce the manual tasks that they have to do on a day to day basis between systems by ninety seven percent with a agent",
     "iceBreaker": {
-      "text": "\"Yeah Jason, this is Chuck Ga calling from Runbook\u2014how are you?\"",
+      "text": "\"Yeah Jason, this is Chuck Ga calling from Runbook—how are you?\"",
       "success": true
     },
     "hook": {
@@ -7422,7 +8154,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"We're really small and don't have any need for this right now\u2014we're lean and just doing things by hand.\"",
+      "text": "\"We're really small and don't have any need for this right now—we're lean and just doing things by hand.\"",
       "success": false
     },
     "tags": [
@@ -7482,7 +8214,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "",
     "iceBreaker": {
-      "text": "\"Hey Julie, sorry for catching you late\u2014this is Chuck Bartlett from Run Book. I used to work with you guys at my previous company.\"",
+      "text": "\"Hey Julie, sorry for catching you late—this is Chuck Bartlett from Run Book. I used to work with you guys at my previous company.\"",
       "success": true
     },
     "hook": {
@@ -7527,7 +8259,7 @@ export const CALL_DATA = [
     "title": "IT Systems / Security / Communications Administrator",
     "contactName": "Dustin Park",
     "durationMs": 14710,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Dustin to initiate a conversation\n- Dustin confirmed their identity but did not engage further\n- The call did not progress beyond the initial greeting\n- No objections or specific needs were discussed during this call",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Dustin to initiate a conversation\n- Dustin confirmed their identity but did not engage further\n- The call did not progress beyond the initial greeting\n- No objections or specific needs were discussed during this call",
     "recordingUrl": "https://recording.nooks.in/CAbe67fea69a07a8ba9054a1028e9f0fc2.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358654021346",
     "persona": "Other",
@@ -7601,7 +8333,7 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "we're a platform founded by the former founder of motive the fleet management company what we do is we provide we help companies like y'all deploy agents to automate a lot of the tasks that exist on the edges of systems like your tms and el and still require manual coordination with phone email and text",
     "iceBreaker": {
-      "text": "Hi, this is Chuck from Runbook \u2014 do you have a quick second?",
+      "text": "Hi, this is Chuck from Runbook — do you have a quick second?",
       "success": true
     },
     "hook": {
@@ -7668,7 +8400,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "run book is a platform that helps automate a lot of the back office and even dispatch oriented task that operators up you on a day to day basis using ai",
     "iceBreaker": {
-      "text": "\"Hi, this is Chuck from Runbook\u2014do you have a quick second so I can tell you what I'm calling about?\"",
+      "text": "\"Hi, this is Chuck from Runbook—do you have a quick second so I can tell you what I'm calling about?\"",
       "success": true
     },
     "hook": {
@@ -7676,7 +8408,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"I don't do dispatch\u2014I'm in the fleet maintenance side of things.\"",
+      "text": "\"I don't do dispatch—I'm in the fleet maintenance side of things.\"",
       "success": false
     },
     "tags": [
@@ -7702,7 +8434,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "what we do is provide a platform that sits on top of that to deploy agents to automate a lot of the coordination and manual tasks that operation seems to do on a day to day basis",
     "iceBreaker": {
-      "text": "\"Hi Joel, this is Chuck from Run Book\u2014do you have a quick moment?\"",
+      "text": "\"Hi Joel, this is Chuck from Run Book—do you have a quick moment?\"",
       "success": true
     },
     "hook": {
@@ -7730,7 +8462,7 @@ export const CALL_DATA = [
     "title": "VP of Customer Experience",
     "contactName": "Lynn Rivera",
     "durationMs": 21609,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Lynn to introduce themselves and their company, RunBook.\n- Lynn confirmed their identity as Lynn Rivera with Leonard's Express.\n- Chuck did not gather any additional information or schedule a follow-up during this call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Lynn to introduce themselves and their company, RunBook.\n- Lynn confirmed their identity as Lynn Rivera with Leonard's Express.\n- Chuck did not gather any additional information or schedule a follow-up during this call.",
     "recordingUrl": "https://recording.nooks.in/CAe2f3fb40836bc0138b8f1c3a9b650178.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358432988909",
     "persona": "Executive",
@@ -7747,7 +8479,7 @@ export const CALL_DATA = [
     "title": "Vice President Fleet, Safety Compliance",
     "contactName": "Sebastian Carta",
     "durationMs": 52289,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Sebastian to discuss RunBook's agentic AI platform, which automates manual tasks for teams.\n- Sebastian indicated that they were too busy to check emails and were not the right person to discuss AI solutions.\n- Sebastian referred Chuck to contact John Kim in the IT department for further discussions about AI.\n- Chuck did not schedule any follow-ups with Sebastian during the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Sebastian to discuss RunBook's agentic AI platform, which automates manual tasks for teams.\n- Sebastian indicated that they were too busy to check emails and were not the right person to discuss AI solutions.\n- Sebastian referred Chuck to contact John Kim in the IT department for further discussions about AI.\n- Chuck did not schedule any follow-ups with Sebastian during the call.",
     "recordingUrl": "https://recording.nooks.in/CAd3a531013e86e3a0836cc1c98f897b45.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/358453235396",
     "persona": "Executive",
@@ -7770,7 +8502,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "Hi Britney, this is Chuck from RunBook\u2014do you have a quick second?",
+      "text": "Hi Britney, this is Chuck from RunBook—do you have a quick second?",
       "success": true
     },
     "hook": {
@@ -7812,7 +8544,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"We're going to implement a new TMS in Q3, so we need to utilize all the automation and data in the cloud first, understand where our holes are, and then maybe look outside\u2014but for now I'm not going to look at anything.\"",
+      "text": "\"We're going to implement a new TMS in Q3, so we need to utilize all the automation and data in the cloud first, understand where our holes are, and then maybe look outside—but for now I'm not going to look at anything.\"",
       "success": false
     },
     "tags": [
@@ -7906,7 +8638,7 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "",
     "iceBreaker": {
-      "text": "\"This is Chuck from Run\u2014do you have a quick moment right now?\"",
+      "text": "\"This is Chuck from Run—do you have a quick moment right now?\"",
       "success": false
     },
     "hook": {
@@ -7934,7 +8666,7 @@ export const CALL_DATA = [
     "title": "Director of Logistics Engineering",
     "contactName": "Randall Morse",
     "durationMs": 24393,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Randall to reach someone named Randall.\n- Randall clarified that they are not Randall, but their husband's name is Randall.\n- Chuck expressed confusion about the number and mentioned they would try another number for Randall.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Randall to reach someone named Randall.\n- Randall clarified that they are not Randall, but their husband's name is Randall.\n- Chuck expressed confusion about the number and mentioned they would try another number for Randall.",
     "recordingUrl": "https://recording.nooks.in/CA9e116d1bb28e90ed4a9a1c6dc367ccc9.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/357810015985",
     "persona": "IT / Engineering",
@@ -7951,7 +8683,7 @@ export const CALL_DATA = [
     "title": "Mergers & Aquisitions",
     "contactName": "Landin Henderson , MBA",
     "durationMs": 22470,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Landin but realized they had the wrong number.\n- Landin acknowledged the missed call but did not express interest in a product or service.\n- The call ended without any further discussion or scheduling of a demo.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Landin but realized they had the wrong number.\n- Landin acknowledged the missed call but did not express interest in a product or service.\n- The call ended without any further discussion or scheduling of a demo.",
     "recordingUrl": "https://recording.nooks.in/CA198536a8850e69c3ce10b6e8245048d6.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/357857620713",
     "persona": "Other",
@@ -7974,7 +8706,7 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "I've been doing a lot of research on you guys understand that you guys have updated quite a bit and and would love to show you what we're working with here at run book",
     "iceBreaker": {
-      "text": "Hey Andy, it's Chuck Bartlett calling back from Runbook\u2014did you get the note I sent? I'm looking for just 30 minutes sometime this week or next to show you what we're working with.",
+      "text": "Hey Andy, it's Chuck Bartlett calling back from Runbook—did you get the note I sent? I'm looking for just 30 minutes sometime this week or next to show you what we're working with.",
       "success": true
     },
     "hook": {
@@ -8019,7 +8751,7 @@ export const CALL_DATA = [
     "title": "VP of Enterprise Information Management",
     "contactName": "Thomas Scheidemantel",
     "durationMs": 39268,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Thomas, but there was confusion regarding the identity of the caller.\n- Thomas expressed concern about the importance of the call and wanted to ensure it was not something urgent.\n- No product or service was introduced or pitched during the call.\n- No follow-up was scheduled, and no additional contact information was exchanged.\n- Thomas did not mention any products or services they or their company are currently using.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Thomas, but there was confusion regarding the identity of the caller.\n- Thomas expressed concern about the importance of the call and wanted to ensure it was not something urgent.\n- No product or service was introduced or pitched during the call.\n- No follow-up was scheduled, and no additional contact information was exchanged.\n- Thomas did not mention any products or services they or their company are currently using.",
     "recordingUrl": "https://recording.nooks.in/CA3a8a62d12e25b536bc452eaa73d8edf5.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/355311542978",
     "persona": "Executive",
@@ -8087,7 +8819,7 @@ export const CALL_DATA = [
     "title": "Vice President, Transportation Operations",
     "contactName": "Ed Ptok",
     "durationMs": 210449,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced RunBook and pitched AgenTik AI, highlighting its ability to automate manual coordination processes in transportation operations.\n- Ed indicated that the topic of automation and technology decisions falls under the purview of their CIO and VP of Technology, specifically naming Andrew Cree and Andrew Revendran as the appropriate contacts.\n- Ed expressed that they do not have decision-making authority regarding the implementation of new products or services.\n- Chuck attempted to engage Ed further by asking if they would be interested in providing insight on what RunBook is building, but Ed declined, reiterating their lack of decision-making power.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced RunBook and pitched AgenTik AI, highlighting its ability to automate manual coordination processes in transportation operations.\n- Ed indicated that the topic of automation and technology decisions falls under the purview of their CIO and VP of Technology, specifically naming Andrew Cree and Andrew Revendran as the appropriate contacts.\n- Ed expressed that they do not have decision-making authority regarding the implementation of new products or services.\n- Chuck attempted to engage Ed further by asking if they would be interested in providing insight on what RunBook is building, but Ed declined, reiterating their lack of decision-making power.",
     "recordingUrl": "https://recording.nooks.in/CA4fe69e849fadb6af39d8aeaeb11d1add.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/353106475711",
     "persona": "Operations Leadership",
@@ -8110,7 +8842,7 @@ export const CALL_DATA = [
     "persona": "Operations",
     "offer": "so we are a a platform that works with companies like bison who are built on you know really modern technology stacks to extend okay to the edges of those systems and automate a lot of the workflows that happen still in like within at the edges of those systems within phone text email with with ai agents",
     "iceBreaker": {
-      "text": "\"I'm calling you from Runbook if you got a quick second I could tell you why I'm calling\u2014it's well researched.\"",
+      "text": "\"I'm calling you from Runbook if you got a quick second I could tell you why I'm calling—it's well researched.\"",
       "success": true
     },
     "hook": {
@@ -8118,7 +8850,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"A lot of the work we do is fairly complex, especially transportation and customer-facing communication\u2014AI is going to be fairly black and white on the message.\"",
+      "text": "\"A lot of the work we do is fairly complex, especially transportation and customer-facing communication—AI is going to be fairly black and white on the message.\"",
       "success": true
     },
     "tags": [
@@ -8144,7 +8876,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "this is our well researched cold call can explain while i'm calling",
     "iceBreaker": {
-      "text": "\"Chris, this is Chuck from RunBook\u2014if you got a quick second, this is a well-researched cold call and I can explain why I'm calling.\"",
+      "text": "\"Chris, this is Chuck from RunBook—if you got a quick second, this is a well-researched cold call and I can explain why I'm calling.\"",
       "success": true
     },
     "hook": {
@@ -8262,7 +8994,7 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "i just was try we had talked about the gentle k stuff you said you're building some things you wanted to take a look at run book or willing to take a look at what we're doing over here and see if there's just compare notes i guess",
     "iceBreaker": {
-      "text": "Mark, it's Chuck with Run Book. We talked last week and I sent you a note, but I never heard back\u2014I was hoping we could get some time.",
+      "text": "Mark, it's Chuck with Run Book. We talked last week and I sent you a note, but I never heard back—I was hoping we could get some time.",
       "success": true
     },
     "hook": {
@@ -8330,7 +9062,7 @@ export const CALL_DATA = [
     "persona": "Executive",
     "offer": "",
     "iceBreaker": {
-      "text": "Hey Cathy, this is Chuck from Run\u2014Runbook sent you a LinkedIn connection the other day. Do you have a quick second?",
+      "text": "Hey Cathy, this is Chuck from Run—Runbook sent you a LinkedIn connection the other day. Do you have a quick second?",
       "success": false
     },
     "hook": {
@@ -8363,7 +9095,7 @@ export const CALL_DATA = [
     "persona": "Director (Other)",
     "offer": "",
     "iceBreaker": {
-      "text": "\"Hey Ken, this is Chuck from Runbook\u2014do you have a quick second?\"",
+      "text": "\"Hey Ken, this is Chuck from Runbook—do you have a quick second?\"",
       "success": false
     },
     "hook": {
@@ -8391,7 +9123,7 @@ export const CALL_DATA = [
     "title": "Vice President, Information Technology",
     "contactName": "Scott Thomson",
     "durationMs": 24631,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Scott but mistakenly reached Ken instead.\n- Ken clarified that he is not associated with Lyndon, indicating a miscommunication.\n- No follow-up was scheduled, and no contact information was exchanged during the call.\n- No product or service was introduced or discussed during the call.\n- Ken did not refer Chuck to any coworkers or colleagues.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Scott but mistakenly reached Ken instead.\n- Ken clarified that he is not associated with Lyndon, indicating a miscommunication.\n- No follow-up was scheduled, and no contact information was exchanged during the call.\n- No product or service was introduced or discussed during the call.\n- Ken did not refer Chuck to any coworkers or colleagues.",
     "recordingUrl": "https://recording.nooks.in/CA7367a6a0257eca2ff6985ddb8707f5e1.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348904534747",
     "persona": "IT Leadership",
@@ -8459,7 +9191,7 @@ export const CALL_DATA = [
     "title": "",
     "contactName": "",
     "durationMs": 13051,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Rick at Thermo Fisher Scientific.\n- Chuck initially thought they had the wrong number and were looking for Rick Johnson.\n- Rick seemed confused by Chuck's statement and asked for clarification.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Rick at Thermo Fisher Scientific.\n- Chuck initially thought they had the wrong number and were looking for Rick Johnson.\n- Rick seemed confused by Chuck's statement and asked for clarification.",
     "recordingUrl": "https://recording.nooks.in/CA68505ced8001f61439da0e69495f3065.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348416380651",
     "persona": "",
@@ -8486,7 +9218,7 @@ export const CALL_DATA = [
       "success": true
     },
     "hook": {
-      "text": "\"We deploy AI agents to help operationalize frontline work and manual coordinated tasks, and we differentiate on usability\u2014you can take ownership and deploy workflows yourself.\"",
+      "text": "\"We deploy AI agents to help operationalize frontline work and manual coordinated tasks, and we differentiate on usability—you can take ownership and deploy workflows yourself.\"",
       "success": true
     },
     "objection": {
@@ -8516,7 +9248,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "",
     "iceBreaker": {
-      "text": "Hi Mike, this is Chuck calling from RunBook\u2014if you have a quick second.",
+      "text": "Hi Mike, this is Chuck calling from RunBook—if you have a quick second.",
       "success": false
     },
     "hook": {
@@ -8584,7 +9316,7 @@ export const CALL_DATA = [
     "persona": "IT Leadership",
     "offer": "so run book is a platform that helps automate a lot of the frontline operational work that your team might be doing manually to coordinate with carriers across systems we're using agent ai to basically automate that",
     "iceBreaker": {
-      "text": "\"Hi, this is Chuck from Runbook\u2014can I get a quick second to tell you why I'm calling?\"",
+      "text": "\"Hi, this is Chuck from Runbook—can I get a quick second to tell you why I'm calling?\"",
       "success": true
     },
     "hook": {
@@ -8612,7 +9344,7 @@ export const CALL_DATA = [
     "title": "",
     "contactName": "",
     "durationMs": 58910,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced Runbook as a platform for automating appointment scheduling, check-ins, and exception handling.\n- Michael expressed disinterest in the call and stated they were \"all good.\"\n- Chuck inquired if Michael's company was using AgenTek workflows for operational tasks, indicating some research on their automation tools.\n- Michael did not recognize the name \"Circle\" and indicated that Chuck had the wrong number.\n- No follow-up was scheduled, and no contact information was exchanged.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced Runbook as a platform for automating appointment scheduling, check-ins, and exception handling.\n- Michael expressed disinterest in the call and stated they were \"all good.\"\n- Chuck inquired if Michael's company was using AgenTek workflows for operational tasks, indicating some research on their automation tools.\n- Michael did not recognize the name \"Circle\" and indicated that Chuck had the wrong number.\n- No follow-up was scheduled, and no contact information was exchanged.",
     "recordingUrl": "https://recording.nooks.in/CA9f2bdc8f38402742e8c94e422af5d22e.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348443019991",
     "persona": "",
@@ -8635,11 +9367,11 @@ export const CALL_DATA = [
     "persona": "IT / Engineering",
     "offer": "run book is a platform that helps automate a lot of the frontline work that your operations team does in coordination in manual communication on a day to day basis wondering if you're looking at ai to handle any those type of tasks right now",
     "iceBreaker": {
-      "text": "\"Hey Jason, this is Chuck Bartlett calling from Run Book\u2014can I borrow a quick second?\"",
+      "text": "\"Hey Jason, this is Chuck Bartlett calling from Run Book—can I borrow a quick second?\"",
       "success": true
     },
     "hook": {
-      "text": "\"Run Book is a platform that helps automate frontline work, operations coordination, and manual communication\u2014wondering if you're looking at AI to handle any of those tasks right now?\"",
+      "text": "\"Run Book is a platform that helps automate frontline work, operations coordination, and manual communication—wondering if you're looking at AI to handle any of those tasks right now?\"",
       "success": true
     },
     "objection": {
@@ -8663,7 +9395,7 @@ export const CALL_DATA = [
     "title": "Vice President Of Engineering",
     "contactName": "John Engberg",
     "durationMs": 100889,
-    "transcript": "[NOOKS] - not the right type of engineering\n-----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced RunBook as a generic automation company focused on executing operational workflows but John indicated that this does not touch their role as Vice President of Engineering.\n- John confirmed they are more focused on the field side of operations and expressed a lack of interest in RunBook's services.\n- Chuck inquired if John could refer them to someone else in the company who might be a better fit for their outreach, but John stated they did not have anyone to refer.\n- John appreciated the call but reiterated that they are not interested in the services offered by RunBook.",
+    "transcript": "[NOOKS] - not the right type of engineering\n-----------Nooks AI summary 🔮-----------\n- Chuck introduced RunBook as a generic automation company focused on executing operational workflows but John indicated that this does not touch their role as Vice President of Engineering.\n- John confirmed they are more focused on the field side of operations and expressed a lack of interest in RunBook's services.\n- Chuck inquired if John could refer them to someone else in the company who might be a better fit for their outreach, but John stated they did not have anyone to refer.\n- John appreciated the call but reiterated that they are not interested in the services offered by RunBook.",
     "recordingUrl": "https://recording.nooks.in/CA353f9075b33a7768af21e79ba6a4a048.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/348381346495",
     "persona": "IT Leadership",
@@ -8680,7 +9412,7 @@ export const CALL_DATA = [
     "title": "",
     "contactName": "",
     "durationMs": 163691,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck introduced RunBook as a platform that automates tasks for operations teams, particularly in relation to modern technology stacks like cloud and TransFlow.\n- Chris indicated that they are not the right contact for this discussion and referred Chuck to Rich Vetika, the head of IT at their Ambridge, Pennsylvania office.\n- Chris mentioned they are currently starting up a logistics brokerage and are a one-person operation, making it financially impractical to consider AI solutions at this time.\n- Chris stated that once they have a larger team (10-20 people), it would be more realistic to explore optimization solutions from a budgetary and operational standpoint.\n- Chuck acknowledged the growth of Chris's business and expressed interest in staying in touch for future opportunities.\n- Chuck plans to reach out to Rich Vetika for further discussions regarding technology needs.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck introduced RunBook as a platform that automates tasks for operations teams, particularly in relation to modern technology stacks like cloud and TransFlow.\n- Chris indicated that they are not the right contact for this discussion and referred Chuck to Rich Vetika, the head of IT at their Ambridge, Pennsylvania office.\n- Chris mentioned they are currently starting up a logistics brokerage and are a one-person operation, making it financially impractical to consider AI solutions at this time.\n- Chris stated that once they have a larger team (10-20 people), it would be more realistic to explore optimization solutions from a budgetary and operational standpoint.\n- Chuck acknowledged the growth of Chris's business and expressed interest in staying in touch for future opportunities.\n- Chuck plans to reach out to Rich Vetika for further discussions regarding technology needs.",
     "recordingUrl": "https://recording.nooks.in/CA90e02695e9d3cfa7b5c2619ff34084b7.wav?workspaceId=8AQjxXsnXHDflmUT",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/347876569842",
     "persona": "",
@@ -8703,7 +9435,7 @@ export const CALL_DATA = [
     "persona": "",
     "offer": "we're a platform that's helping sit on top of like the mash and can actually automate a lot of the frontline line work that operations seems to spend a lot of time doing like the manual coordination for for loads in terms of email text and phone our agents actually automate that give your teams a time of time back",
     "iceBreaker": {
-      "text": "\"Hey Stuart, got a quick second? I'm calling from Ron Book\u2014we're a platform that automates frontline work and manual coordination for loads via email, text, and phone to give your teams time back.\"",
+      "text": "\"Hey Stuart, got a quick second? I'm calling from Ron Book—we're a platform that automates frontline work and manual coordination for loads via email, text, and phone to give your teams time back.\"",
       "success": true
     },
     "hook": {
@@ -8711,7 +9443,7 @@ export const CALL_DATA = [
       "success": true
     },
     "objection": {
-      "text": "\"All software and technology decisions are made at corporate, and I don't have that much time to offer\u2014just refer to tech support.\"",
+      "text": "\"All software and technology decisions are made at corporate, and I don't have that much time to offer—just refer to tech support.\"",
       "success": false
     },
     "tags": [
@@ -8918,7 +9650,7 @@ export const CALL_DATA = [
     "title": "Sr. IT Project Manager",
     "contactName": "Rick Pellegrino, PMP, CSM",
     "durationMs": 41513,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Rick to introduce Runbook, a platform for logistics companies that automates repetitive manual tasks.\n- Rick stated they are retired and are no longer interested in the product.\n- Chuck acknowledged Rick's retirement and indicated they would update their notes accordingly.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Rick to introduce Runbook, a platform for logistics companies that automates repetitive manual tasks.\n- Rick stated they are retired and are no longer interested in the product.\n- Chuck acknowledged Rick's retirement and indicated they would update their notes accordingly.",
     "recordingUrl": "https://recording.nooks.in/CA77fa2cfad6f44fc395e9f842457540ff.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/342089900790",
     "persona": "IT / Engineering",
@@ -8935,7 +9667,7 @@ export const CALL_DATA = [
     "title": "Director of Operations Systems",
     "contactName": "Danielle Smithen, PMP",
     "durationMs": 13731,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Danielle to introduce themselves and discuss Runbook.\n- Danielle was unable to talk as they were in a meeting.\n- Chuck acknowledged Danielle's unavailability and did not push for further conversation.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Danielle to introduce themselves and discuss Runbook.\n- Danielle was unable to talk as they were in a meeting.\n- Chuck acknowledged Danielle's unavailability and did not push for further conversation.",
     "recordingUrl": "https://recording.nooks.in/CA1bc441655ec3c82b961a7e2efa3ae035.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/342724343527",
     "persona": "Operations",
@@ -8969,7 +9701,7 @@ export const CALL_DATA = [
     "title": "IT Service Delivery Sr Manager",
     "contactName": "Kleber Garbelotti, MBA, PMP",
     "durationMs": 21249,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck attempted to reach Kleber during the call.\n- The call was initiated by Chuck, but there was a brief moment of confusion regarding the name.\n- Kleber responded to Chuck's greeting, indicating they were available to talk.\n- There was no further discussion or information exchanged in this transcript.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck attempted to reach Kleber during the call.\n- The call was initiated by Chuck, but there was a brief moment of confusion regarding the name.\n- Kleber responded to Chuck's greeting, indicating they were available to talk.\n- There was no further discussion or information exchanged in this transcript.",
     "recordingUrl": "https://recording.nooks.in/CA24754de29c8329fa47a165364639d516.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/341638553325",
     "persona": "IT / Engineering",
@@ -9003,7 +9735,7 @@ export const CALL_DATA = [
     "title": "",
     "contactName": "",
     "durationMs": 10470,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Tyler but mistakenly reached them while looking for someone named Diane.\n- Tyler clarified that Chuck had the wrong number and identified themselves as Terry's Tyler.\n- The call ended quickly with no further discussion about products or services.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Tyler but mistakenly reached them while looking for someone named Diane.\n- Tyler clarified that Chuck had the wrong number and identified themselves as Terry's Tyler.\n- The call ended quickly with no further discussion about products or services.",
     "recordingUrl": "https://recording.nooks.in/CA1dcc706e878620df7e5b39f767874a95.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/337618427625",
     "persona": "",
@@ -9037,7 +9769,7 @@ export const CALL_DATA = [
     "title": "Vice President Warehousing Operations at Matson Logistics",
     "contactName": "James Scarboro",
     "durationMs": 18487,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called James to introduce Runbook.\n- James indicated that they had the wrong number.\n- Chuck thanked James for their time and ended the call.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called James to introduce Runbook.\n- James indicated that they had the wrong number.\n- Chuck thanked James for their time and ended the call.",
     "recordingUrl": "https://recording.nooks.in/CA39147c367b17dea3d0ee94e58836a1e3.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/337620198136",
     "persona": "Operations Leadership",
@@ -9071,7 +9803,7 @@ export const CALL_DATA = [
     "title": "Vice President of Operations",
     "contactName": "Cafria Hart",
     "durationMs": 11390,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called Cafria to initiate a conversation\n- Cafria indicated that it was a wrong number\n- Chuck acknowledged the mistake and thanked Cafria for their time",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called Cafria to initiate a conversation\n- Cafria indicated that it was a wrong number\n- Chuck acknowledged the mistake and thanked Cafria for their time",
     "recordingUrl": "https://recording.nooks.in/CA3bcefcebfc7f4c54f33aea60f3ce9b61.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/337331274450",
     "persona": "Operations Leadership",
@@ -9088,7 +9820,7 @@ export const CALL_DATA = [
     "title": "VP of IT",
     "contactName": "Mike Kelley",
     "durationMs": 21249,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Mike to discuss a potential product demo.\n- Mike clarified that they are not the person Chuck was trying to reach.\n- The call ended quickly with Mike wishing Chuck a good day.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Mike to discuss a potential product demo.\n- Mike clarified that they are not the person Chuck was trying to reach.\n- The call ended quickly with Mike wishing Chuck a good day.",
     "recordingUrl": "https://recording.nooks.in/CAb42e061d492018600f5d9cad597c675a.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/337329395423",
     "persona": "IT Leadership",
@@ -9105,7 +9837,7 @@ export const CALL_DATA = [
     "title": "SVP of Operations",
     "contactName": "Brian Fitzgerald",
     "durationMs": 16270,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- They called Brian to discuss a potential opportunity.\n- Brian indicated that they were not the correct person, stating it was a wrong number.\n- They were attempting to reach Brian Fitzgerald specifically.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- They called Brian to discuss a potential opportunity.\n- Brian indicated that they were not the correct person, stating it was a wrong number.\n- They were attempting to reach Brian Fitzgerald specifically.",
     "recordingUrl": "https://recording.nooks.in/CA8fcf998f413a95eb60b57e003e96a58d.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/337296876220",
     "persona": "Operations Leadership",
@@ -9156,7 +9888,7 @@ export const CALL_DATA = [
     "title": "Regional Vice President of Operations",
     "contactName": "David Kaelin",
     "durationMs": 21151,
-    "transcript": "[NOOKS] - -----------Nooks AI summary \ud83d\udd2e-----------\n- Chuck called David but mistakenly thought it was the wrong number.\n- David confirmed their identity but did not engage further in the conversation.\n- The call ended quickly with both parties wishing each other a good day.",
+    "transcript": "[NOOKS] - -----------Nooks AI summary 🔮-----------\n- Chuck called David but mistakenly thought it was the wrong number.\n- David confirmed their identity but did not engage further in the conversation.\n- The call ended quickly with both parties wishing each other a good day.",
     "recordingUrl": "https://recording.nooks.in/CA95f68405110757395cf68ed7833c7ddf.wav",
     "hsUrl": "https://app.hubspot.com/calls/244248253/review/337373379261",
     "persona": "Operations Leadership",
