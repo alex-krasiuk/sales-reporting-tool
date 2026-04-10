@@ -276,11 +276,11 @@ Analyze in 3-4 sentences:
   // --- Hook & Icebreaker analytics ---
   const meetingCalls = filtered.filter(d => d.outcome === 'Meeting Booked').sort((a, b) => b.timestamp.localeCompare(a.timestamp));
 
-  // --- Best time to call (1m+ conversations by hour) ---
+  // --- Best time to call (all calls by hour) ---
   const hourlyStats = useMemo(() => {
     const hours = {};
+    let totalAll = 0;
     filtered.forEach(d => {
-      if (d.durationMs < 60000) return; // only 1m+ conversations
       const t = (d.time || '').trim();
       if (!t) return;
       try {
@@ -289,13 +289,15 @@ Analyze in 3-4 sentences:
         const ampm = t.slice(-2).toUpperCase();
         if (ampm === 'PM' && h !== 12) h += 12;
         if (ampm === 'AM' && h === 12) h = 0;
-        if (!hours[h]) hours[h] = { convos: 0, meetings: 0 };
-        hours[h].convos++;
+        if (!hours[h]) hours[h] = { total: 0, convos: 0, meetings: 0, wrong: 0 };
+        hours[h].total++;
+        totalAll++;
+        if (d.durationMs >= 60000) hours[h].convos++;
         if (d.outcome === 'Meeting Booked') hours[h].meetings++;
+        if (d.outcome?.startsWith('Wrong') || d.outcome === 'Wrong number') hours[h].wrong++;
       } catch {}
     });
-    const totalConvos = Object.values(hours).reduce((a, h) => a + h.convos, 0);
-    return { hours, totalConvos };
+    return { hours, totalAll };
   }, [filtered]);
 
   const hookStats = useMemo(() => {
@@ -539,43 +541,47 @@ Analyze in 3-4 sentences:
           </div>
 
           {/* ===== BEST TIME TO CALL ===== */}
-          {hourlyStats.totalConvos > 0 && (
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', marginBottom: 16 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Best Time to Call</div>
-              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 12 }}>When do 1m+ conversations happen? ({hourlyStats.totalConvos} total)</div>
-              <div style={{ display: 'flex', gap: 4, alignItems: 'flex-end', height: 100 }}>
-                {Array.from({ length: 13 }, (_, i) => i + 7).map(h => {
-                  const d = hourlyStats.hours[h] || { convos: 0, meetings: 0 };
-                  const pct = hourlyStats.totalConvos ? (d.convos / hourlyStats.totalConvos * 100) : 0;
-                  const maxPct = Math.max(...Object.values(hourlyStats.hours).map(x => x.convos / hourlyStats.totalConvos * 100));
-                  const barH = maxPct ? (pct / maxPct * 80) : 0;
-                  const hasMtg = d.meetings > 0;
-                  return (
-                    <div key={h} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-                      {d.convos > 0 && <span style={{ fontSize: 9, fontWeight: 700, color: hasMtg ? '#16a34a' : '#6b7280' }}>{d.convos}{hasMtg ? ` (${d.meetings}m)` : ''}</span>}
-                      <div style={{ width: '100%', maxWidth: 40, height: barH, background: hasMtg ? '#16a34a' : pct >= 10 ? '#4f46e5' : '#cbd5e1', borderRadius: '3px 3px 0 0', opacity: 0.7 }} title={`${h}:00 — ${d.convos} convos, ${d.meetings} meetings (${pct.toFixed(0)}%)`} />
-                      <span style={{ fontSize: 9, color: '#9ca3af' }}>{h > 12 ? h - 12 : h}{h >= 12 ? 'p' : 'a'}</span>
-                    </div>
-                  );
-                })}
-              </div>
-              <div style={{ display: 'flex', gap: 16, marginTop: 10, fontSize: 11 }}>
-                {[
-                  { label: '7-10 AM', range: [7, 8, 9] },
-                  { label: '10 AM-1 PM', range: [10, 11, 12] },
-                  { label: '1-5 PM', range: [13, 14, 15, 16] },
-                ].map(block => {
-                  const convos = block.range.reduce((a, h) => a + (hourlyStats.hours[h]?.convos || 0), 0);
-                  const mtgs = block.range.reduce((a, h) => a + (hourlyStats.hours[h]?.meetings || 0), 0);
-                  const pct = hourlyStats.totalConvos ? Math.round(convos / hourlyStats.totalConvos * 100) : 0;
-                  return (
-                    <div key={block.label} style={{ background: '#f8f9fa', borderRadius: 6, padding: '6px 10px', flex: 1 }}>
-                      <div style={{ fontWeight: 700, color: '#374151' }}>{block.label}</div>
-                      <div style={{ color: '#6b7280' }}>{convos} convos ({pct}%) · {mtgs} mtgs</div>
-                    </div>
-                  );
-                })}
-              </div>
+          {hourlyStats.totalAll > 0 && (
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
+              <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Best Time to Call</div>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                <thead>
+                  <tr style={{ background: '#eff6ff', borderBottom: '2px solid #dbeafe' }}>
+                    {['Hour', 'Connects', '% of Total', 'Convos (1m+)', 'Convo Rate', 'Meetings', 'Wrong #', 'Wrong %'].map((h, i) => (
+                      <th key={h} style={{ padding: '8px 10px', textAlign: i === 0 ? 'left' : 'right', fontSize: 11, fontWeight: 700, color: '#1f2937' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {Array.from({ length: 10 }, (_, i) => i + 7).map((h, i) => {
+                    const d = hourlyStats.hours[h] || { total: 0, convos: 0, meetings: 0, wrong: 0 };
+                    if (d.total === 0) return null;
+                    const pctTotal = hourlyStats.totalAll ? (d.total / hourlyStats.totalAll * 100) : 0;
+                    const convoRate = d.total ? (d.convos / d.total * 100) : 0;
+                    const wrongRate = d.total ? (d.wrong / d.total * 100) : 0;
+                    const label = h > 12 ? `${h - 12}:00 PM` : h === 12 ? '12:00 PM' : `${h}:00 AM`;
+                    return (
+                      <tr key={h} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
+                        <td style={{ padding: '7px 10px', fontWeight: 600, color: '#374151' }}>{label}</td>
+                        <td style={{ padding: '7px 10px', textAlign: 'right' }}>{d.total}</td>
+                        <td style={{ padding: '7px 10px', textAlign: 'right', color: '#6b7280' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 6 }}>
+                            <div style={{ width: 60, height: 6, background: '#f3f4f6', borderRadius: 3 }}>
+                              <div style={{ width: `${pctTotal}%`, height: '100%', background: '#4f46e5', borderRadius: 3, opacity: 0.6 }} />
+                            </div>
+                            {pctTotal.toFixed(0)}%
+                          </div>
+                        </td>
+                        <td style={{ padding: '7px 10px', textAlign: 'right', color: '#2563eb', fontWeight: 600 }}>{d.convos}</td>
+                        <td style={{ padding: '7px 10px', textAlign: 'right', fontWeight: 600, color: convoRate >= 45 ? '#16a34a' : convoRate >= 35 ? '#d97706' : '#ef4444' }}>{convoRate.toFixed(0)}%</td>
+                        <td style={{ padding: '7px 10px', textAlign: 'right', fontWeight: 700, color: d.meetings > 0 ? '#16a34a' : '#d1d5db' }}>{d.meetings}</td>
+                        <td style={{ padding: '7px 10px', textAlign: 'right' }}>{d.wrong}</td>
+                        <td style={{ padding: '7px 10px', textAlign: 'right', color: wrongRate >= 60 ? '#ef4444' : wrongRate >= 50 ? '#d97706' : '#374151', fontWeight: wrongRate >= 50 ? 600 : 400 }}>{wrongRate.toFixed(0)}%</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           )}
 
