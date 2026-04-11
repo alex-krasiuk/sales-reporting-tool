@@ -1,6 +1,11 @@
 {
   "rewrites": [
     { "source": "/api/hubspot", "destination": "/api/hubspot" },
+    { "source": "/api/daily-report", "destination": "/api/daily-report" },
     { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  ],
+  "crons": [{
+    "path": "/api/daily-report",
+    "schedule": "0 23 * * 1-5"
+  }]
 }
