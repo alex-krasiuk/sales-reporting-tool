@@ -170,10 +170,15 @@ export default async function handler(req, res) {
       ]}], limit: 1,
     })).total || 0 : 0;
 
-    // Per rep
+    // Per rep — count dials from ALL calls, not just connects
     const reps = {};
+    allCalls.forEach(c => {
+      const rep = OWNER_MAP[c.properties.hubspot_owner_id] || 'Unknown';
+      if (!reps[rep]) reps[rep] = { dials: 0, pickups: 0, convos: 0, meetings: 0, wrongNum: 0, calls: [] };
+      reps[rep].dials++;
+    });
     enriched.forEach(c => {
-      if (!reps[c.rep]) reps[c.rep] = { pickups: 0, convos: 0, meetings: 0, wrongNum: 0, calls: [] };
+      if (!reps[c.rep]) reps[c.rep] = { dials: 0, pickups: 0, convos: 0, meetings: 0, wrongNum: 0, calls: [] };
       reps[c.rep].pickups++;
       if (c.dur >= 60000) { reps[c.rep].convos++; reps[c.rep].calls.push(c); }
       if (c.disp === 'Meeting Booked') reps[c.rep].meetings++;
@@ -198,20 +203,17 @@ export default async function handler(req, res) {
     let msg = `📞 *Runbook — Daily Call Report*\n${todayLabel} | ${timeLabel} Pacific\n\n`;
     msg += `━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
     msg += `📊 *TODAY'S NUMBERS*\n`;
-    msg += `• Total Dials: ${totalDials}\n`;
-    msg += `• Pickups: ${totalConnects}\n`;
-    msg += `• Conversations (1m+): ${convos.length}\n`;
-    msg += `• Meetings Booked: ${meetings.length}\n`;
-    msg += `• Connect Rate: ${connectRate}%\n`;
-    msg += `• Wrong Number Rate: ${wrongRate}% (${wrongNum} of ${totalConnects})\n\n`;
+    msg += `Dials: *${totalDials}* → Connects: *${totalConnects}* (${connectRate}%) → Conversations: *${convos.length}* → Meetings: *${meetings.length}*\n`;
+    msg += `Wrong #: ${wrongNum} (${wrongRate}% of connects)\n\n`;
 
     // Per rep sections
-    for (const [rep, r] of Object.entries(reps).sort((a, b) => b[1].pickups - a[1].pickups)) {
+    for (const [rep, r] of Object.entries(reps).sort((a, b) => b[1].dials - a[1].dials)) {
+      const repConnectRate = r.dials ? (r.pickups / r.dials * 100).toFixed(1) : '0';
       const wnRate = r.pickups ? Math.round(r.wrongNum / r.pickups * 100) : 0;
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
       msg += `👤 *${rep.toUpperCase()}*\n`;
-      msg += `• Pickups: ${r.pickups} | Convos (1m+): ${r.convos} | Meetings: ${r.meetings}\n`;
-      msg += `• Wrong #: ${r.wrongNum} (${wnRate}%)\n`;
+      msg += `Dials: *${r.dials}* → Connects: *${r.pickups}* (${repConnectRate}%) → Convos: *${r.convos}* → Meetings: *${r.meetings}*\n`;
+      msg += `Wrong #: ${r.wrongNum} (${wnRate}%)\n`;
       if (r.calls.length > 0) {
         msg += `• Conversations:\n`;
         r.calls.forEach(c => {
