@@ -18,7 +18,15 @@ const DISP_MAP = {
   'fa4b685a-eb2a-4a5f-ac74-a8e8dde76558': 'Call me later',
 };
 const OWNER_MAP = { '163308867': 'Brandon Liao', '162266623': 'Chuck Gartland' };
-const CONNECTED_DISPS = new Set(Object.keys(DISP_MAP).filter(k => !['b2cf5968-551e-4856-9783-52b3da59a7d0', '73a0d17f-1163-4015-bdd5-ec830791da20'].includes(k)));
+// Match Nooks connect definition — exclude Voicemail, No answer, Busy, Left live message, No longer at company
+const EXCLUDED_FROM_CONNECT = new Set([
+  'b2cf5968-551e-4856-9783-52b3da59a7d0', // Voicemail
+  '73a0d17f-1163-4015-bdd5-ec830791da20', // No answer
+  '9d9162e7-6cf3-4944-bf63-4dff82258764', // Busy
+  'a4c4c377-d246-4b32-a13b-75a56a4cd0ff', // Left live message
+  'e9a4df2f-3fcd-4f8a-bbd8-7634e48ca97c', // No longer at company
+]);
+const CONNECTED_DISPS = new Set(Object.keys(DISP_MAP).filter(k => !EXCLUDED_FROM_CONNECT.has(k)));
 
 async function hsFetch(path, body) {
   const res = await fetch(`https://api.hubapi.com${path}`, {
