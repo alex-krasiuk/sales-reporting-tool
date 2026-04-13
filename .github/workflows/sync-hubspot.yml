@@ -1,0 +1,34 @@
+name: Sync HubSpot Data
+
+on:
+  schedule:
+    # Every 2 hours during business hours (Mon-Fri, 2pm-4am UTC = 7am-9pm Pacific)
+    - cron: '0 14,16,18,20,22,0,2,4 * * 1-5'
+  workflow_dispatch: # Manual trigger from GitHub UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sync HubSpot data
+        env:
+          HUBSPOT_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
+        run: node scripts/sync-hubspot.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/allCallData.js
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "sync: update call data $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

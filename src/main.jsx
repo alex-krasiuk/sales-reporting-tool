@@ -35,7 +35,7 @@ function App() {
       </div>
       <div style={{ flex: 1, overflow: 'hidden' }}>
         {tab === 'calls' && <CallAnalytics />}
-        {tab === 'report' && <PerformanceReport hsToken={hsToken} />}
+        {tab === 'report' && <PerformanceReport />}
         {tab === 'analytics' && <AnalyticsCharts />}
       </div>
     </div>
