@@ -431,36 +431,79 @@ Analyze in 3-4 sentences:
             ))}
           </div>
 
-          {/* ===== ROW 3: PITCH FUNNEL + TOP OBJECTIONS ===== */}
+          {/* ===== ROW 3: CALL FUNNEL + OUTCOMES ===== */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
-            {/* Pitch funnel */}
+            {/* Call funnel — works for ALL data */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 280 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Pitch Funnel</div>
-              {withStages.length > 0 ? (
-                <div>
-                  {[
-                    { label: 'Connected (with transcripts)', value: withStages.length, pct: 100, color: '#4f46e5' },
-                    { label: 'Ice Breaker Passed', value: ibPassed, pct: withStages.length ? Math.round(ibPassed / withStages.length * 100) : 0, color: '#059669' },
-                    { label: 'Heard Full Pitch', value: heardPitchTotal, pct: withStages.length ? Math.round(heardPitchTotal / withStages.length * 100) : 0, color: '#2563eb' },
-                    { label: 'Meeting Booked', value: meetings, pct: heardPitchTotal ? Math.round(meetings / heardPitchTotal * 100) : 0, color: '#16a34a', note: 'of those who heard pitch' },
-                  ].map(s => (
-                    <div key={s.label} style={{ marginBottom: 8 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
-                        <span style={{ color: '#374151' }}>{s.label}</span>
-                        <span style={{ fontWeight: 700, color: s.color }}>{s.value} ({s.pct}%){s.note ? ` ${s.note}` : ''}</span>
-                      </div>
-                      <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
-                        <div style={{ width: `${Math.min(s.pct, 100)}%`, height: '100%', background: s.color, borderRadius: 4, opacity: 0.7 }} />
-                      </div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Call Funnel</div>
+              <div>
+                {[
+                  { label: 'Dials', value: totalDials, pct: 100, color: '#6b7280' },
+                  { label: 'Connects', value: totalConnects, pct: totalDials ? Math.round(totalConnects / totalDials * 100) : 0, color: '#4f46e5' },
+                  { label: 'Conversations (>1m)', value: conversations, pct: totalDials ? Math.round(conversations / totalDials * 100) : 0, color: '#2563eb' },
+                  { label: 'Follow Up - Interested', value: allDials.filter(d => d.outcome === 'Follow up - interested').length, pct: totalDials ? Math.round(allDials.filter(d => d.outcome === 'Follow up - interested').length / totalDials * 100) : 0, color: '#0891b2' },
+                  { label: 'Meetings Booked', value: meetings, pct: totalDials ? Math.round(meetings / totalDials * 100) : 0, color: '#16a34a' },
+                ].map(s => (
+                  <div key={s.label} style={{ marginBottom: 8 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
+                      <span style={{ color: '#374151' }}>{s.label}</span>
+                      <span style={{ fontWeight: 700, color: s.color }}>{s.value} ({s.pct}%)</span>
                     </div>
-                  ))}
-                </div>
-              ) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No stage data for this period</div>}
+                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
+                      <div style={{ width: `${Math.min(s.pct, 100)}%`, height: '100%', background: s.color, borderRadius: 4, opacity: 0.7 }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Top objections */}
+            {/* Call outcomes — works for ALL data */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Top Objections</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Call Outcomes</div>
+              {(() => {
+                const outcomes = {};
+                allDials.forEach(d => { outcomes[d.outcome] = (outcomes[d.outcome] || 0) + 1; });
+                const sorted = Object.entries(outcomes).sort((a, b) => b[1] - a[1]);
+                const colorMap = {
+                  'Meeting Booked': '#16a34a', 'Follow up - interested': '#0891b2', 'Account to Pursue': '#059669',
+                  'Connected': '#4f46e5', 'Not Interested': '#ef4444', 'Busy': '#d97706',
+                  'No answer': '#9ca3af', 'Voicemail': '#9ca3af', 'Wrong number': '#f97316',
+                  'Wrong Contact': '#f97316', 'Wrong contact - referral': '#f97316',
+                };
+                return sorted.map(([outcome, count]) => (
+                  <ObjBar key={outcome} label={outcome} count={count} total={totalDials} color={colorMap[outcome] || '#6b7280'} />
+                ));
+              })()}
+            </div>
+          </div>
+
+          {/* ===== ENRICHED ANALYSIS (only for calls with AI-analyzed data) ===== */}
+          {withStages.length > 0 && (
+          <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 280 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Pitch Funnel <span style={{ fontSize: 10, color: '#9ca3af', fontWeight: 400 }}>({withStages.length} AI-analyzed calls)</span></div>
+              <div>
+                {[
+                  { label: 'Analyzed Calls', value: withStages.length, pct: 100, color: '#4f46e5' },
+                  { label: 'Ice Breaker Passed', value: ibPassed, pct: withStages.length ? Math.round(ibPassed / withStages.length * 100) : 0, color: '#059669' },
+                  { label: 'Heard Full Pitch', value: heardPitchTotal, pct: withStages.length ? Math.round(heardPitchTotal / withStages.length * 100) : 0, color: '#2563eb' },
+                  { label: 'Meeting Booked', value: meetings, pct: heardPitchTotal ? Math.round(meetings / heardPitchTotal * 100) : 0, color: '#16a34a', note: 'of those who heard pitch' },
+                ].map(s => (
+                  <div key={s.label} style={{ marginBottom: 8 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
+                      <span style={{ color: '#374151' }}>{s.label}</span>
+                      <span style={{ fontWeight: 700, color: s.color }}>{s.value} ({s.pct}%){s.note ? ` ${s.note}` : ''}</span>
+                    </div>
+                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
+                      <div style={{ width: `${Math.min(s.pct, 100)}%`, height: '100%', background: s.color, borderRadius: 4, opacity: 0.7 }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Top Objections <span style={{ fontSize: 10, color: '#9ca3af', fontWeight: 400 }}>(AI-analyzed calls only)</span></div>
               {sortedObjs.length > 0 ? sortedObjs.filter(([obj]) => obj !== 'Other').map(([obj, count]) => (
                 <ObjBar key={obj} label={obj} count={count} total={totalObjs} color={
                   obj.includes('Happy') || obj.includes('Already') ? '#2563eb' :
@@ -469,9 +512,10 @@ Analyze in 3-4 sentences:
                   obj.includes('budget') ? '#dc2626' :
                   '#6b7280'
                 } />
-              )) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No objection data for this period</div>}
+              )) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No objection data</div>}
             </div>
           </div>
+          )}
 
           {/* ===== ROW 4: HOOK & ICEBREAKER PERFORMANCE ===== */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
