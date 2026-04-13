@@ -1,5 +1,37 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
-import { CALL_DATA } from "./callData.js";
+import { CALL_DATA as LEGACY_DATA } from "./callData.js";
+import { ALL_CALLS } from "./allCallData.js";
+
+// Merge: use allCallData for any call not in legacy, prefer legacy for enriched fields (tags, iceBreaker, etc.)
+const legacyById = Object.fromEntries(LEGACY_DATA.map(c => [c.id, c]));
+const CALL_DATA = ALL_CALLS
+  .filter(c => c.isConnect) // Only show connected calls in the database
+  .map(c => {
+    const legacy = legacyById[c.id];
+    if (legacy) return legacy; // Keep rich legacy data (tags, stages, etc.)
+    // Map new format to match legacy schema
+    return {
+      id: c.id,
+      date: c.date,
+      time: c.time,
+      timestamp: c.timestamp,
+      rep: c.rep,
+      outcome: c.outcome,
+      vertical: c.vertical || c.industry || '',
+      title: c.title || '',
+      contactName: c.contactName || '',
+      durationMs: c.durationMs,
+      transcript: c.transcript || '',
+      recordingUrl: c.recordingUrl || '',
+      hsUrl: c.hsUrl || '',
+      persona: c.persona || '',
+      offer: '',
+      iceBreaker: { text: '', success: false },
+      hook: { text: '', success: false },
+      objection: { text: 'None', success: 'NONE' },
+      tags: [],
+    };
+  });
 import { hsApiFetch } from "./hsApi.js";
 
 const OUTCOME_COLORS = {

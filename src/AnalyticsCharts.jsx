@@ -1,5 +1,27 @@
 import { useState, useMemo } from 'react';
-import { CALL_DATA } from './callData.js';
+import { CALL_DATA as LEGACY_DATA } from './callData.js';
+import { ALL_CALLS } from './allCallData.js';
+
+// Merge: legacy data has rich fields (tags, stages), new data fills gaps
+const legacyById = Object.fromEntries(LEGACY_DATA.map(c => [c.id, c]));
+const CALL_DATA = ALL_CALLS
+  .filter(c => c.isConnect)
+  .map(c => {
+    const legacy = legacyById[c.id];
+    if (legacy) return legacy;
+    return {
+      id: c.id, date: c.date, time: c.time, timestamp: c.timestamp,
+      rep: c.rep, outcome: c.outcome, vertical: c.vertical || c.industry || '',
+      title: c.title || '', contactName: c.contactName || '',
+      durationMs: c.durationMs, transcript: c.transcript || '',
+      recordingUrl: c.recordingUrl || '', hsUrl: c.hsUrl || '',
+      persona: c.persona || '', offer: '',
+      iceBreaker: { text: '', success: false },
+      hook: { text: '', success: false },
+      objection: { text: 'None', success: 'NONE' },
+      tags: [],
+    };
+  });
 
 // --- Objection categorization ---
 function categorizeObjection(text) {
