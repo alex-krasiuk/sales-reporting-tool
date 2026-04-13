@@ -233,29 +233,39 @@ Analyze in 3-4 sentences:
     }
   };
 
+  // All calls in date range (connects only — for detailed analysis)
   const filtered = useMemo(() => CALL_DATA.filter(d => d.date && d.date >= dateFrom && d.date <= dateTo), [dateFrom, dateTo]);
+  // ALL dials in date range (includes no-answer, voicemail — for funnel)
+  const allDials = useMemo(() => ALL_CALLS.filter(d => d.date && d.date >= dateFrom && d.date <= dateTo), [dateFrom, dateTo]);
 
-  // --- Core metrics ---
+  // --- Full funnel metrics ---
+  const totalDials = allDials.length;
+  const totalConnects = allDials.filter(d => d.isConnect).length;
+  const connectRate = totalDials ? (totalConnects / totalDials * 100) : 0;
+  const conversations = allDials.filter(d => d.isConversation).length;
+  const meetings = allDials.filter(d => d.isMeeting).length;
+
+  // Legacy metrics (from connects only)
   const total = filtered.length;
   const wrongNumber = filtered.filter(d => d.outcome === 'Wrong number').length;
   const wrongContact = filtered.filter(d => d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').length;
   const realConvos = filtered.filter(d => !d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number').length;
-  const conversations = filtered.filter(d => d.durationMs >= 60000).length; // 1m+ = conversation
-  const meetings = filtered.filter(d => d.outcome === 'Meeting Booked').length;
 
-  // --- Per rep ---
+  // --- Per rep (full funnel from ALL dials) ---
   const reps = {};
-  filtered.forEach(d => {
+  allDials.forEach(d => {
     const r = d.rep;
-    if (!reps[r]) reps[r] = { dials: 0, wrongNumber: 0, wrongContact: 0, realConvos: 0, meetings: 0, followUp: 0, notInterested: 0, heardPitch: 0 };
+    if (!reps[r]) reps[r] = { dials: 0, connects: 0, conversations: 0, meetings: 0, followUp: 0, notInterested: 0, heardPitch: 0 };
     reps[r].dials++;
-    if (d.outcome === 'Wrong number') reps[r].wrongNumber++;
-    else if (d.outcome.startsWith('Wrong')) reps[r].wrongContact++;
-    else reps[r].realConvos++;
-    if (d.outcome === 'Meeting Booked') reps[r].meetings++;
+    if (d.isConnect) reps[r].connects++;
+    if (d.isConversation) reps[r].conversations++;
+    if (d.isMeeting) reps[r].meetings++;
     if (d.outcome === 'Follow up - interested') reps[r].followUp++;
     if (d.outcome === 'Not Interested') reps[r].notInterested++;
-    if (d.hook?.success) reps[r].heardPitch++;
+  });
+  // Add heardPitch from enriched connects
+  filtered.forEach(d => {
+    if (d.hook?.success && reps[d.rep]) reps[d.rep].heardPitch++;
   });
 
   // --- Pitch funnel ---
@@ -273,27 +283,25 @@ Analyze in 3-4 sentences:
   const sortedObjs = Object.entries(objCounts).sort((a, b) => b[1] - a[1]);
   const totalObjs = sortedObjs.reduce((a, [, v]) => a + v, 0);
 
-  // --- Daily trend data ---
+  // --- Daily trend data (from ALL dials) ---
   const daily = useMemo(() => {
     const byDate = {};
-    filtered.forEach(d => {
+    allDials.forEach(d => {
       if (!d.date) return;
-      if (!byDate[d.date]) byDate[d.date] = { connects: 0, meetings: 0, wrongNumber: 0, conversations: 0, realConvos: 0 };
-      byDate[d.date].connects++;
-      if (d.outcome === 'Meeting Booked') byDate[d.date].meetings++;
-      if (d.outcome === 'Wrong number') byDate[d.date].wrongNumber++;
-      if (d.durationMs >= 60000) byDate[d.date].conversations++;
-      if (!d.outcome.startsWith('Wrong') && d.outcome !== 'Wrong number') byDate[d.date].realConvos++;
+      if (!byDate[d.date]) byDate[d.date] = { dials: 0, connects: 0, meetings: 0, conversations: 0 };
+      byDate[d.date].dials++;
+      if (d.isConnect) byDate[d.date].connects++;
+      if (d.isMeeting) byDate[d.date].meetings++;
+      if (d.isConversation) byDate[d.date].conversations++;
     });
     return Object.entries(byDate).sort(([a], [b]) => a.localeCompare(b)).map(([date, d]) => ({
       date, label: new Date(date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-      meetingRate: d.connects ? (d.meetings / d.connects * 100) : 0,
-      wrongNumberRate: d.connects ? (d.wrongNumber / d.connects * 100) : 0,
+      connectRate: d.dials ? (d.connects / d.dials * 100) : 0,
+      meetingRate: d.dials ? (d.meetings / d.dials * 100) : 0,
       convoRate: d.connects ? (d.conversations / d.connects * 100) : 0,
-      realConvoRate: d.connects ? (d.realConvos / d.connects * 100) : 0,
       ...d,
     }));
-  }, [filtered]);
+  }, [allDials]);
 
   // --- Hook & Icebreaker analytics ---
   const meetingCalls = filtered.filter(d => d.outcome === 'Meeting Booked').sort((a, b) => b.timestamp.localeCompare(a.timestamp));
@@ -387,26 +395,25 @@ Analyze in 3-4 sentences:
           }}>{label}</button>
         ))}
         <div style={{ flex: 1 }} />
-        <span style={{ fontSize: 11, color: '#9ca3af' }}>{total} connects · {daily.length} days</span>
+        <span style={{ fontSize: 11, color: '#9ca3af' }}>{totalDials} dials · {totalConnects} connects · {daily.length} days</span>
       </div>
 
       <div style={{ flex: 1, overflow: 'auto', padding: 20, background: '#f8fafc' }}>
         <div style={{ maxWidth: 1200 }}>
 
-          {/* ===== ROW 1: KEY METRICS ===== */}
+          {/* ===== ROW 1: FULL FUNNEL ===== */}
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 16 }}>
-            <MetricCard label="Total Connects" value={total} color="#4f46e5" big />
-            <MetricCard label="Real Conversations" value={realConvos} sub={`${total ? Math.round(realConvos / total * 100) : 0}% of connects`} color="#059669" big />
-            <MetricCard label="Wrong Numbers" value={wrongNumber} sub={`${total ? Math.round(wrongNumber / total * 100) : 0}% of connects`} color="#ef4444" big />
-            <MetricCard label="Meetings Booked" value={meetings} sub={realConvos ? `${Math.round(meetings / realConvos * 100)}% of real convos` : ''} color="#16a34a" big />
-            <MetricCard label="Conversations (1m+)" value={conversations} sub={conversations ? `${Math.round(meetings / conversations * 100)}% → meetings` : ''} color="#2563eb" big />
+            <MetricCard label="Dials" value={totalDials} color="#6b7280" big />
+            <MetricCard label="Connects" value={totalConnects} sub={`${connectRate.toFixed(1)}% connect rate`} color="#4f46e5" big />
+            <MetricCard label="Conversations (>1m)" value={conversations} sub={totalConnects ? `${Math.round(conversations / totalConnects * 100)}% of connects` : ''} color="#2563eb" big />
+            <MetricCard label="Meetings Booked" value={meetings} sub={totalDials ? `${(meetings / totalDials * 100).toFixed(2)}% of dials` : ''} color="#16a34a" big />
           </div>
 
           {/* ===== ROW 2: REP COMPARISON ===== */}
           <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', marginBottom: 16, overflow: 'hidden' }}>
             <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Rep Comparison</div>
             <div style={{ display: 'flex', background: '#eff6ff', fontWeight: 700, fontSize: 11, borderBottom: '1px solid #dbeafe' }}>
-              {['Rep', 'Connects', 'Real Convos', 'Wrong #', 'W# Rate', 'Heard Pitch', 'Meetings', 'Follow Up', 'Not Int'].map((h, i) => (
+              {['Rep', 'Dials', 'Connects', 'Connect Rate', 'Convos (>1m)', 'Meetings', 'Follow Up', 'Not Int'].map((h, i) => (
                 <div key={h} style={{ flex: i === 0 ? 2 : 1, padding: '8px 12px', textAlign: i === 0 ? 'left' : 'center', color: '#1f2937' }}>{h}</div>
               ))}
             </div>
@@ -414,10 +421,9 @@ Analyze in 3-4 sentences:
               <div key={rep} style={{ display: 'flex', fontSize: 12, borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
                 <div style={{ flex: 2, padding: '10px 12px', fontWeight: 700, color: '#1f2937' }}>{rep}</div>
                 <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>{d.dials}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#059669', fontWeight: 600 }}>{d.realConvos} <span style={{ color: '#9ca3af', fontWeight: 400 }}>({d.dials ? Math.round(d.realConvos / d.dials * 100) : 0}%)</span></div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>{d.wrongNumber}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: d.dials && d.wrongNumber / d.dials > 0.4 ? '#ef4444' : '#374151', fontWeight: 600 }}>{d.dials ? Math.round(d.wrongNumber / d.dials * 100) : 0}%</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#2563eb', fontWeight: 600 }}>{d.heardPitch}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#4f46e5', fontWeight: 600 }}>{d.connects}</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', fontWeight: 600, color: d.dials && d.connects / d.dials >= 0.07 ? '#059669' : '#d97706' }}>{d.dials ? (d.connects / d.dials * 100).toFixed(1) : 0}%</div>
+                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#2563eb', fontWeight: 600 }}>{d.conversations}</div>
                 <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#16a34a', fontWeight: 700 }}>{d.meetings}</div>
                 <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#2563eb' }}>{d.followUp}</div>
                 <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#dc2626' }}>{d.notInterested}</div>
@@ -547,10 +553,9 @@ Analyze in 3-4 sentences:
           {/* ===== ROW 5: DAILY TREND CHARTS ===== */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 16 }}>
             {[
-              { key: 'realConvoRate', color: '#059669', title: 'Real Conversation Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.realConvoRate, 0) / daily.length) : 0 },
-              { key: 'wrongNumberRate', color: '#ef4444', title: 'Wrong Number Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.wrongNumberRate, 0) / daily.length) : 0 },
-              { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
-              { key: 'convoRate', color: '#2563eb', title: 'Conversation Rate (1m+ calls)', avg: daily.length ? (daily.reduce((a, d) => a + (d.convoRate || 0), 0) / daily.length) : 0 },
+              { key: 'connectRate', color: '#4f46e5', title: 'Connect Rate (connects / dials)', avg: daily.length ? (daily.reduce((a, d) => a + d.connectRate, 0) / daily.length) : 0 },
+              { key: 'convoRate', color: '#2563eb', title: 'Conversation Rate (>1m / connects)', avg: daily.length ? (daily.reduce((a, d) => a + (d.convoRate || 0), 0) / daily.length) : 0 },
+              { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate (meetings / dials)', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
             ].map(chart => (
               <div key={chart.key} style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '14px 16px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
