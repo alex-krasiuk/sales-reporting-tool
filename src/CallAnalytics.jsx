@@ -26,9 +26,9 @@ const CALL_DATA = ALL_CALLS
       hsUrl: c.hsUrl || '',
       persona: c.persona || '',
       offer: '',
-      iceBreaker: { text: '', success: false },
-      hook: { text: '', success: false },
-      objection: { text: 'None', success: 'NONE' },
+      iceBreaker: c.iceBreaker || { text: '', success: false },
+      hook: c.hook || { text: '', success: false },
+      objection: c.objection || { text: 'None', success: 'NONE' },
       tags: [],
     };
   });

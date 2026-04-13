@@ -16,9 +16,9 @@ const CALL_DATA = ALL_CALLS
       durationMs: c.durationMs, transcript: c.transcript || '',
       recordingUrl: c.recordingUrl || '', hsUrl: c.hsUrl || '',
       persona: c.persona || '', offer: '',
-      iceBreaker: { text: '', success: false },
-      hook: { text: '', success: false },
-      objection: { text: 'None', success: 'NONE' },
+      iceBreaker: c.iceBreaker || { text: '', success: false },
+      hook: c.hook || { text: '', success: false },
+      objection: c.objection || { text: 'None', success: 'NONE' },
       tags: [],
     };
   });
@@ -517,8 +517,30 @@ Analyze in 3-4 sentences:
           </div>
           )}
 
-          {/* ===== ROW 4: HOOK & ICEBREAKER PERFORMANCE ===== */}
-          <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+          {/* ===== DAILY TREND CHARTS (moved up) ===== */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 16 }}>
+            {[
+              { key: 'connectRate', color: '#4f46e5', title: 'Connect Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.connectRate, 0) / daily.length) : 0 },
+              { key: 'convoRate', color: '#2563eb', title: 'Conversation Rate (>1m)', avg: daily.length ? (daily.reduce((a, d) => a + (d.convoRate || 0), 0) / daily.length) : 0 },
+              { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
+            ].map(chart => (
+              <div key={chart.key} style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '14px 16px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1f2937' }}>{chart.title}</span>
+                  <span style={{ fontSize: 18, fontWeight: 800, color: chart.color }}>{chart.avg.toFixed(1)}%</span>
+                </div>
+                <MiniChart data={daily} dataKey={chart.key} color={chart.color} />
+              </div>
+            ))}
+          </div>
+
+          {/* ===== CALL ANALYSIS (from AI-analyzed calls) ===== */}
+          <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13, borderRadius: '6px 6px 0 0', marginTop: 8 }}>
+            CALL ANALYSIS {withStages.length > 0 ? `(${withStages.length} analyzed calls)` : '— select a date range including Mar 26 - Apr 10 for AI analysis'}
+          </div>
+
+          {/* ===== HOOK & ICEBREAKER PERFORMANCE ===== */}
+          <div style={{ display: 'flex', gap: 16, marginBottom: 16, marginTop: 8, flexWrap: 'wrap' }}>
             {/* Hook performance — dual metric */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Hook Performance</div>
@@ -594,22 +616,7 @@ Analyze in 3-4 sentences:
             </div>
           </div>
 
-          {/* ===== ROW 5: DAILY TREND CHARTS ===== */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 16 }}>
-            {[
-              { key: 'connectRate', color: '#4f46e5', title: 'Connect Rate (connects / dials)', avg: daily.length ? (daily.reduce((a, d) => a + d.connectRate, 0) / daily.length) : 0 },
-              { key: 'convoRate', color: '#2563eb', title: 'Conversation Rate (>1m / connects)', avg: daily.length ? (daily.reduce((a, d) => a + (d.convoRate || 0), 0) / daily.length) : 0 },
-              { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate (meetings / dials)', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
-            ].map(chart => (
-              <div key={chart.key} style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '14px 16px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1f2937' }}>{chart.title}</span>
-                  <span style={{ fontSize: 18, fontWeight: 800, color: chart.color }}>{chart.avg.toFixed(1)}%</span>
-                </div>
-                <MiniChart data={daily} dataKey={chart.key} color={chart.color} />
-              </div>
-            ))}
-          </div>
+          {/* (daily charts moved above) */}
 
           {/* ===== BEST TIME TO CALL ===== */}
           {hourlyStats.totalAll > 0 && (

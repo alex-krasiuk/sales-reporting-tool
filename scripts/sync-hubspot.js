@@ -159,6 +159,63 @@ function personaLabel(persona) {
   return m[persona] || (persona && persona !== 'none' ? persona : '');
 }
 
+// --- Transcript analysis (extract icebreaker, hook, objection) ---
+function analyzeTranscript(transcript) {
+  if (!transcript || transcript.length < 50) return { iceBreaker: { text: '', success: false }, hook: { text: '', success: false }, objection: { text: 'None', success: 'NONE' } };
+
+  const lines = transcript.split('\n').filter(l => l.trim());
+  const repLines = lines.filter(l => /\(Rep\):/.test(l)).map(l => l.replace(/^.*?\(Rep\):\s*/, '').trim());
+  const prospectLines = lines.filter(l => /\(Prospect\):/.test(l)).map(l => l.replace(/^.*?\(Prospect\):\s*/, '').trim());
+
+  if (repLines.length === 0) return { iceBreaker: { text: '', success: false }, hook: { text: '', success: false }, objection: { text: 'None', success: 'NONE' } };
+
+  // Icebreaker = first substantive rep line
+  let ibText = '';
+  for (const line of repLines) {
+    if (line.length > 15) { ibText = line; break; }
+  }
+  // IB success = prospect engaged (gave a substantive response, not just "who?")
+  const firstProspectResponse = prospectLines.length > 0 ? prospectLines[0].toLowerCase() : '';
+  const ibSuccess = firstProspectResponse.length > 5 &&
+    !(/who|what|sorry|wrong|no|not interested/.test(firstProspectResponse));
+
+  // Hook = first long pitch (>40 words)
+  let hookText = '';
+  for (const line of repLines) {
+    if (line.split(' ').length > 40) { hookText = line; break; }
+  }
+  const hookSuccess = hookText.length > 0 && prospectLines.some(l =>
+    l.length > 20 && !(/no|not interested|not right now|don't|remove|take me off/.test(l.toLowerCase()))
+  );
+
+  // Objection = first negative prospect response after pitch
+  let objText = 'None';
+  let objSuccess = 'NONE';
+  const pitchIdx = repLines.indexOf(hookText);
+  if (pitchIdx >= 0) {
+    for (const line of prospectLines) {
+      const lower = line.toLowerCase();
+      if (lower.length > 10 && (/no|not interested|not right now|already|in-house|don't|busy|not looking|we have|we.re good|not a good|happy with|current|budget/.test(lower))) {
+        objText = line;
+        // Did rep recover after objection?
+        const objIdx = lines.findIndex(l => l.includes(line));
+        const afterLines = repLines.filter((_, i) => {
+          const repIdx = lines.findIndex(l => l.includes(repLines[i]));
+          return repIdx > objIdx;
+        });
+        objSuccess = afterLines.length >= 2;
+        break;
+      }
+    }
+  }
+
+  return {
+    iceBreaker: { text: ibText ? `"${ibText.slice(0, 150)}"` : '', success: ibSuccess },
+    hook: { text: hookText ? hookText.slice(0, 200) : 'Never reached hook', success: hookSuccess },
+    objection: { text: objText, success: objSuccess },
+  };
+}
+
 // --- Pacific time helper ---
 function toPacific(isoStr) {
   const d = new Date(isoStr);
@@ -234,6 +291,14 @@ async function main() {
     const isConversation = isConnect && durationMs >= 60000;
     const isMeeting = dispGuid === MEETING_GUID;
 
+    // Analyze transcript for icebreaker/hook/objection
+    const hasDialogue = /\(Rep\):/.test(p.hs_call_body || '') && /\(Prospect\):/.test(p.hs_call_body || '');
+    const analysis = hasDialogue ? analyzeTranscript(p.hs_call_body) : {
+      iceBreaker: { text: '', success: false },
+      hook: { text: '', success: false },
+      objection: { text: 'None', success: 'NONE' },
+    };
+
     return {
       id: callId,
       date,
@@ -263,6 +328,11 @@ async function main() {
       isConnect,
       isConversation,
       isMeeting,
+
+      // Call analysis
+      iceBreaker: analysis.iceBreaker,
+      hook: analysis.hook,
+      objection: analysis.objection,
     };
   });
 
