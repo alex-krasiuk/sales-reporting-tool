@@ -1,11 +1,13 @@
 const HUBSPOT_TOKEN = process.env.HUBSPOT_TOKEN || '';
 const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK_URL || '';
 
+const BRANDON_OWNER_ID = '163308867';
+
 const DISP_MAP = {
   'f240bbac-87c9-4f6e-bf70-924b57d47db7': 'Connected',
   'a12225bd-f90c-43bb-aa10-4b7875a05937': 'Not Interested',
   '91fd5005-2ed7-45dd-b8ec-f22511b5ece2': 'Wrong Contact',
-  'f76aed06-41e0-4b55-8f96-361bfd09bf0c': 'Follow up',
+  'f76aed06-41e0-4b55-8f96-361bfd09bf0c': 'Follow up - interested',
   '9d9162e7-6cf3-4944-bf63-4dff82258764': 'Busy',
   'a4c4c377-d246-4b32-a13b-75a56a4cd0ff': 'Left live message',
   '81180310-0202-4b44-8417-168bd57e399a': 'Meeting Booked',
@@ -17,16 +19,13 @@ const DISP_MAP = {
   '95d90a61-32bf-4d8d-9445-010e6ce6a055': 'Account to Pursue',
   'fa4b685a-eb2a-4a5f-ac74-a8e8dde76558': 'Call me later',
 };
-const OWNER_MAP = { '163308867': 'Brandon Liao', '162266623': 'Chuck Gartland' };
-// Match Nooks connect definition — exclude Voicemail, No answer, Busy, Left live message, No longer at company
-const EXCLUDED_FROM_CONNECT = new Set([
+
+// Nooks definition: these are NOT connects
+const NOT_CONNECT = new Set([
   'b2cf5968-551e-4856-9783-52b3da59a7d0', // Voicemail
   '73a0d17f-1163-4015-bdd5-ec830791da20', // No answer
-  '9d9162e7-6cf3-4944-bf63-4dff82258764', // Busy
-  'a4c4c377-d246-4b32-a13b-75a56a4cd0ff', // Left live message
-  'e9a4df2f-3fcd-4f8a-bbd8-7634e48ca97c', // No longer at company
+  '17b47fee-58de-441e-a44c-c6300d46f273', // Wrong number
 ]);
-const CONNECTED_DISPS = new Set(Object.keys(DISP_MAP).filter(k => !EXCLUDED_FROM_CONNECT.has(k)));
 
 async function hsFetch(path, body) {
   const res = await fetch(`https://api.hubapi.com${path}`, {
@@ -37,67 +36,86 @@ async function hsFetch(path, body) {
   return res.json();
 }
 
+// Get last workday (skip weekends)
+function lastWorkdayMs(fromMs) {
+  const d = new Date(fromMs);
+  d.setDate(d.getDate() - 1);
+  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() - 1);
+  const dayStr = d.toISOString().slice(0, 10);
+  return {
+    fromMs: new Date(dayStr + 'T07:00:00Z').getTime(),
+    toMs: new Date(dayStr + 'T07:00:00Z').getTime() + 24 * 60 * 60 * 1000,
+    label: d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+  };
+}
+
+async function fetchCalls(fromMs, toMs) {
+  const all = [];
+  let after;
+  while (true) {
+    const data = await hsFetch('/crm/v3/objects/calls/search', {
+      filterGroups: [{ filters: [
+        { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
+        { propertyName: 'hs_timestamp', operator: 'GTE', value: String(fromMs) },
+        { propertyName: 'hs_timestamp', operator: 'LT', value: String(toMs) },
+        { propertyName: 'hubspot_owner_id', operator: 'EQ', value: BRANDON_OWNER_ID },
+      ]}],
+      properties: ['hs_call_disposition', 'hs_timestamp', 'hubspot_owner_id', 'hs_call_duration', 'hs_call_recording_url'],
+      sorts: [{ propertyName: 'hs_timestamp', direction: 'DESCENDING' }],
+      limit: 200,
+      ...(after ? { after } : {}),
+    });
+    all.push(...(data.results || []));
+    if (data.paging?.next?.after) after = data.paging.next.after;
+    else break;
+    if (all.length >= 2000) break;
+  }
+  return all;
+}
+
+function processCalls(calls) {
+  const dials = calls.length;
+  const connects = calls.filter(c => !NOT_CONNECT.has(c.properties.hs_call_disposition));
+  const convos = calls.filter(c => !NOT_CONNECT.has(c.properties.hs_call_disposition) && parseInt(c.properties.hs_call_duration || '0') >= 60000);
+  const meetings = calls.filter(c => c.properties.hs_call_disposition === '81180310-0202-4b44-8417-168bd57e399a');
+  const followUps = connects.filter(c => c.properties.hs_call_disposition === 'f76aed06-41e0-4b55-8f96-361bfd09bf0c').length;
+  const notInterested = connects.filter(c => c.properties.hs_call_disposition === 'a12225bd-f90c-43bb-aa10-4b7875a05937').length;
+  const busy = connects.filter(c => c.properties.hs_call_disposition === '9d9162e7-6cf3-4944-bf63-4dff82258764').length;
+  const wrongNum = calls.filter(c => c.properties.hs_call_disposition === '17b47fee-58de-441e-a44c-c6300d46f273').length;
+  const cr = dials ? (connects.length / dials * 100).toFixed(1) : '0';
+  return { dials, connects: connects.length, convos: convos.length, meetings: meetings.length, followUps, notInterested, busy, wrongNum, cr, convoList: convos, meetingList: meetings };
+}
+
 export default async function handler(req, res) {
   try {
-    // Today's boundaries in Pacific (UTC-7)
     const now = new Date();
     const pacific = new Date(now.getTime() - 7 * 60 * 60 * 1000);
     const todayStr = pacific.toISOString().slice(0, 10);
     const todayLabel = pacific.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-    const timeLabel = pacific.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
 
-    const fromMs = new Date(todayStr + 'T07:00:00Z').getTime(); // midnight Pacific
+    const fromMs = new Date(todayStr + 'T07:00:00Z').getTime();
     const toMs = fromMs + 24 * 60 * 60 * 1000;
 
-    // Yesterday boundaries
-    const yesterdayFromMs = fromMs - 24 * 60 * 60 * 1000;
+    // Last workday for comparison
+    const prev = lastWorkdayMs(fromMs);
 
-    // Fetch today's calls (all outbound)
-    const allCalls = [];
-    let after = undefined;
-    while (true) {
-      const data = await hsFetch('/crm/v3/objects/calls/search', {
-        filterGroups: [{ filters: [
-          { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
-          { propertyName: 'hs_timestamp', operator: 'GTE', value: String(fromMs) },
-          { propertyName: 'hs_timestamp', operator: 'LT', value: String(toMs) },
-        ]}],
-        properties: ['hs_call_disposition', 'hs_timestamp', 'hubspot_owner_id', 'hs_call_duration', 'hs_call_recording_url', 'hs_call_body', 'hs_call_summary'],
-        sorts: [{ propertyName: 'hs_timestamp', direction: 'DESCENDING' }],
-        limit: 200,
-        ...(after ? { after } : {}),
-      });
-      allCalls.push(...(data.results || []));
-      if (data.paging?.next?.after) after = data.paging.next.after;
-      else break;
-      if (allCalls.length >= 2000) break;
-    }
+    // Fetch Brandon's calls — today + last workday
+    const todayCalls = await fetchCalls(fromMs, toMs);
+    const prevCalls = await fetchCalls(prev.fromMs, prev.toMs);
 
-    // Fetch yesterday's calls for comparison
-    const yesterdayData = await hsFetch('/crm/v3/objects/calls/search', {
-      filterGroups: [{ filters: [
-        { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
-        { propertyName: 'hs_timestamp', operator: 'GTE', value: String(yesterdayFromMs) },
-        { propertyName: 'hs_timestamp', operator: 'LT', value: String(fromMs) },
-      ]}],
-      properties: ['hs_call_disposition', 'hubspot_owner_id', 'hs_call_duration'],
-      limit: 1,
-    });
-    const yesterdayDials = yesterdayData.total || 0;
+    const t = processCalls(todayCalls);
+    const p = processCalls(prevCalls);
 
-    // Process today's calls
-    const totalDials = allCalls.length;
-    const connects = allCalls.filter(c => CONNECTED_DISPS.has(c.properties.hs_call_disposition));
-    const totalConnects = connects.length;
+    // Enrich conversations with contact info
+    const convoIds = t.convoList.map(c => String(c.id));
+    const meetingIds = t.meetingList.map(c => String(c.id));
+    const enrichIds = [...new Set([...convoIds, ...meetingIds])];
 
-    // Get contact info for connected calls
-    const callIds = connects.map(c => String(c.id));
     const callToContact = {};
-    for (let i = 0; i < callIds.length; i += 100) {
-      const batch = callIds.slice(i, i + 100);
+    for (let i = 0; i < enrichIds.length; i += 100) {
       try {
-        const assocData = await hsFetch('/crm/v4/associations/calls/contacts/batch/read', { inputs: batch.map(id => ({ id })) });
-        (assocData.results || []).forEach(r => { if (r.to?.[0]) callToContact[String(r.from?.id)] = String(r.to[0].toObjectId); });
+        const data = await hsFetch('/crm/v4/associations/calls/contacts/batch/read', { inputs: enrichIds.slice(i, i + 100).map(id => ({ id })) });
+        (data.results || []).forEach(r => { if (r.to?.[0]) callToContact[String(r.from?.id)] = String(r.to[0].toObjectId); });
       } catch {}
     }
 
@@ -105,8 +123,8 @@ export default async function handler(req, res) {
     const contacts = {};
     for (let i = 0; i < contactIds.length; i += 100) {
       try {
-        const cData = await hsFetch('/crm/v3/objects/contacts/batch/read', { inputs: contactIds.slice(i, i + 100).map(id => ({ id })), properties: ['firstname', 'lastname', 'jobtitle', 'associatedcompanyid'] });
-        (cData.results || []).forEach(c => { contacts[String(c.id)] = c.properties; });
+        const data = await hsFetch('/crm/v3/objects/contacts/batch/read', { inputs: contactIds.slice(i, i + 100).map(id => ({ id })), properties: ['firstname', 'lastname', 'jobtitle', 'associatedcompanyid'] });
+        (data.results || []).forEach(c => { contacts[String(c.id)] = c.properties; });
       } catch {}
     }
 
@@ -114,155 +132,67 @@ export default async function handler(req, res) {
     const companies = {};
     for (let i = 0; i < companyIds.length; i += 100) {
       try {
-        const coData = await hsFetch('/crm/v3/objects/companies/batch/read', { inputs: companyIds.slice(i, i + 100).map(id => ({ id })), properties: ['vertical', 'name'] });
-        (coData.results || []).forEach(c => { companies[String(c.id)] = c.properties; });
+        const data = await hsFetch('/crm/v3/objects/companies/batch/read', { inputs: companyIds.slice(i, i + 100).map(id => ({ id })), properties: ['name'] });
+        (data.results || []).forEach(c => { companies[String(c.id)] = c.properties; });
       } catch {}
     }
 
-    // Enrich calls
-    const enriched = connects.map(call => {
-      const p = call.properties;
-      const disp = DISP_MAP[p.hs_call_disposition] || 'Other';
-      const rep = OWNER_MAP[p.hubspot_owner_id] || 'Unknown';
-      const dur = parseInt(p.hs_call_duration || '0', 10);
+    function enrichCall(call) {
       const contactId = callToContact[String(call.id)];
       const contact = contactId ? contacts[contactId] : null;
-      const companyId = contact?.associatedcompanyid;
-      const company = companyId ? companies[companyId] : null;
+      const company = contact?.associatedcompanyid ? companies[contact.associatedcompanyid] : null;
       const name = contact ? `${contact.firstname || ''} ${contact.lastname || ''}`.trim() : 'Unknown';
       const title = contact?.jobtitle || '';
-      const vertical = company?.vertical || '';
-      const recording = p.hs_call_recording_url || '';
+      const companyName = company?.name || '';
+      const dur = parseInt(call.properties.hs_call_duration || '0');
+      const mins = Math.floor(dur / 60000);
+      const secs = Math.floor((dur % 60000) / 1000);
+      const disp = DISP_MAP[call.properties.hs_call_disposition] || 'Other';
+      const recording = call.properties.hs_call_recording_url || '';
       const hsUrl = `https://app.hubspot.com/calls/244248253/review/${call.id}`;
-      return { id: call.id, disp, rep, dur, name, title, vertical, recording, hsUrl };
-    });
-
-    // Metrics
-    const wrongNum = enriched.filter(c => c.disp === 'Wrong number').length;
-    const wrongContact = enriched.filter(c => c.disp.startsWith('Wrong') && c.disp !== 'Wrong number').length;
-    const meetings = enriched.filter(c => c.disp === 'Meeting Booked');
-    const convos = enriched.filter(c => c.dur >= 60000);
-    const connectRate = totalDials ? (totalConnects / totalDials * 100).toFixed(1) : '0';
-    const wrongRate = totalConnects ? Math.round(wrongNum / totalConnects * 100) : 0;
-
-    // Yesterday comparison
-    let yesterdayConnects = 0;
-    if (yesterdayDials > 0) {
-      const ydFull = await hsFetch('/crm/v3/objects/calls/search', {
-        filterGroups: [{ filters: [
-          { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
-          { propertyName: 'hs_timestamp', operator: 'GTE', value: String(yesterdayFromMs) },
-          { propertyName: 'hs_timestamp', operator: 'LT', value: String(fromMs) },
-        ]}],
-        properties: ['hs_call_disposition', 'hs_call_duration'],
-        limit: 200,
-      });
-      yesterdayConnects = (ydFull.results || []).filter(c => CONNECTED_DISPS.has(c.properties.hs_call_disposition)).length;
+      return { name, title, companyName, disp, duration: `${mins}:${String(secs).padStart(2, '0')}`, recording, hsUrl };
     }
-    const ydConnectRate = yesterdayDials ? (yesterdayConnects / yesterdayDials * 100).toFixed(1) : '0';
-    const ydWrongNum = yesterdayDials > 0 ? (await hsFetch('/crm/v3/objects/calls/search', {
-      filterGroups: [{ filters: [
-        { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
-        { propertyName: 'hs_timestamp', operator: 'GTE', value: String(yesterdayFromMs) },
-        { propertyName: 'hs_timestamp', operator: 'LT', value: String(fromMs) },
-        { propertyName: 'hs_call_disposition', operator: 'EQ', value: '17b47fee-58de-441e-a44c-c6300d46f273' },
-      ]}], limit: 1,
-    })).total || 0 : 0;
-    const ydWrongRate = yesterdayConnects ? Math.round(ydWrongNum / yesterdayConnects * 100) : 0;
-    const ydConvos = yesterdayDials > 0 ? (await hsFetch('/crm/v3/objects/calls/search', {
-      filterGroups: [{ filters: [
-        { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
-        { propertyName: 'hs_timestamp', operator: 'GTE', value: String(yesterdayFromMs) },
-        { propertyName: 'hs_timestamp', operator: 'LT', value: String(fromMs) },
-        { propertyName: 'hs_call_duration', operator: 'GTE', value: '60000' },
-      ]}], limit: 1,
-    })).total || 0 : 0;
 
-    // Per rep — count dials from ALL calls, not just connects
-    const reps = {};
-    allCalls.forEach(c => {
-      const rep = OWNER_MAP[c.properties.hubspot_owner_id] || 'Unknown';
-      if (!reps[rep]) reps[rep] = { dials: 0, pickups: 0, convos: 0, meetings: 0, wrongNum: 0, calls: [] };
-      reps[rep].dials++;
-    });
-    enriched.forEach(c => {
-      if (!reps[c.rep]) reps[c.rep] = { dials: 0, pickups: 0, convos: 0, meetings: 0, wrongNum: 0, calls: [] };
-      reps[c.rep].pickups++;
-      if (c.dur >= 60000) { reps[c.rep].convos++; reps[c.rep].calls.push(c); }
-      if (c.disp === 'Meeting Booked') reps[c.rep].meetings++;
-      if (c.disp === 'Wrong number') reps[c.rep].wrongNum++;
-    });
-
-    // Objection counts
-    const objections = {};
-    enriched.forEach(c => {
-      if (c.disp === 'Not Interested') objections['Not Interested'] = (objections['Not Interested'] || 0) + 1;
-      if (c.disp === 'Wrong number') objections['Wrong Number'] = (objections['Wrong Number'] || 0) + 1;
-      if (c.disp.startsWith('Wrong') && c.disp !== 'Wrong number') objections['Wrong Contact'] = (objections['Wrong Contact'] || 0) + 1;
-      if (c.disp === 'Follow up') objections['Follow Up'] = (objections['Follow Up'] || 0) + 1;
-      if (c.disp === 'Busy') objections['Busy'] = (objections['Busy'] || 0) + 1;
-      if (c.disp === 'Account to Pursue') objections['Account to Pursue'] = (objections['Account to Pursue'] || 0) + 1;
-    });
-    const topObjs = Object.entries(objections).sort((a, b) => b[1] - a[1]);
-
-    // Build Slack message
     const arrow = (curr, prev) => curr > prev ? '↑' : curr < prev ? '↓' : '→';
 
-    let msg = `📞 *Runbook — Daily Call Report*\n${todayLabel} | ${timeLabel} Pacific\n\n`;
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-    msg += `📊 *TODAY'S NUMBERS*\n`;
-    msg += `Dials: *${totalDials}* → Connects: *${totalConnects}* (${connectRate}%) → Conversations: *${convos.length}* → Meetings: *${meetings.length}*\n`;
-    msg += `Wrong #: ${wrongNum} (${wrongRate}% of connects)\n\n`;
+    // Build message
+    let msg = `📞 *Runbook — Daily Call Report*\n${todayLabel}\n`;
+    msg += `\n━━━━━━━━━━━━━━━━━━━━━\n\n`;
+    msg += `👤 *Brandon Liao*\n`;
+    msg += `Dials: *${t.dials}* → Connects: *${t.connects}* (${t.cr}%) → Convos (>1m): *${t.convos}* → Meetings: *${t.meetings}*\n`;
+    msg += `Interested: ${t.followUps} | Not Interested: ${t.notInterested} | Busy: ${t.busy} | Wrong #: ${t.wrongNum}\n\n`;
 
-    // Per rep sections
-    for (const [rep, r] of Object.entries(reps).sort((a, b) => b[1].dials - a[1].dials)) {
-      const repConnectRate = r.dials ? (r.pickups / r.dials * 100).toFixed(1) : '0';
-      const wnRate = r.pickups ? Math.round(r.wrongNum / r.pickups * 100) : 0;
-      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-      msg += `👤 *${rep.toUpperCase()}*\n`;
-      msg += `Dials: *${r.dials}* → Connects: *${r.pickups}* (${repConnectRate}%) → Convos: *${r.convos}* → Meetings: *${r.meetings}*\n`;
-      msg += `Wrong #: ${r.wrongNum} (${wnRate}%)\n`;
-      if (r.calls.length > 0) {
-        msg += `• Conversations:\n`;
-        r.calls.forEach(c => {
-          msg += `  - ${c.name} — ${c.title}${c.vertical ? `, ${c.vertical}` : ''} (${c.disp})\n`;
-          const links = [];
-          if (c.recording) links.push(`<${c.recording}|🎧 Listen>`);
-          links.push(`<${c.hsUrl}|📋 HubSpot>`);
-          msg += `    ${links.join(' | ')}\n`;
-        });
-      }
-      msg += `\n`;
-    }
+    msg += `📈 _vs ${prev.label}:_\n`;
+    msg += `_• Dials: ${p.dials} ${arrow(t.dials, p.dials)}`;
+    msg += ` | Connect rate: ${p.cr}% ${arrow(parseFloat(t.cr), parseFloat(p.cr))}`;
+    msg += ` | Convos: ${p.convos} ${arrow(t.convos, p.convos)}`;
+    msg += ` | Meetings: ${p.meetings} ${arrow(t.meetings, p.meetings)}_\n`;
 
-    // Meetings
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-    msg += `🏆 *MEETINGS BOOKED TODAY*\n`;
-    if (meetings.length > 0) {
-      meetings.forEach(m => {
-        msg += `• ${m.name} — ${m.title}${m.vertical ? `, ${m.vertical}` : ''} (${m.rep.split(' ')[0]})\n`;
+    if (t.convoList.length > 0) {
+      msg += `\n📝 *Conversations:*\n`;
+      t.convoList.forEach(call => {
+        const c = enrichCall(call);
+        msg += `• ${c.name} — ${c.title}${c.companyName ? ', ' + c.companyName : ''} (${c.disp}, ${c.duration})\n`;
         const links = [];
-        if (m.recording) links.push(`<${m.recording}|🎧 Listen>`);
-        links.push(`<${m.hsUrl}|📋 HubSpot>`);
+        if (c.recording) links.push(`<${c.recording}|🎧 Listen>`);
+        links.push(`<${c.hsUrl}|📋 HubSpot>`);
         msg += `  ${links.join(' | ')}\n`;
       });
-    } else {
-      msg += `(none today)\n`;
     }
 
-    // Objections
-    msg += `\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-    msg += `❌ *TOP DISPOSITIONS*\n`;
-    topObjs.forEach(([obj, count]) => { msg += `• ${obj}: ${count}\n`; });
+    if (t.meetingList.length > 0) {
+      msg += `\n🏆 *Meetings Booked:*\n`;
+      t.meetingList.forEach(call => {
+        const c = enrichCall(call);
+        msg += `• ${c.name} — ${c.title}${c.companyName ? ', ' + c.companyName : ''}\n`;
+        const links = [];
+        if (c.recording) links.push(`<${c.recording}|🎧 Listen>`);
+        links.push(`<${c.hsUrl}|📋 HubSpot>`);
+        msg += `  ${links.join(' | ')}\n`;
+      });
+    }
 
-    // Trends
-    msg += `\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-    msg += `📈 *TRENDS (vs yesterday)*\n`;
-    msg += `• Connect rate: ${connectRate}% (yesterday: ${ydConnectRate}%) ${arrow(parseFloat(connectRate), parseFloat(ydConnectRate))}\n`;
-    msg += `• Wrong # rate: ${wrongRate}% (yesterday: ${ydWrongRate}%) ${arrow(ydWrongRate, wrongRate)}\n`;
-    msg += `• Conversations: ${convos.length} (yesterday: ${ydConvos}) ${arrow(convos.length, ydConvos)}\n`;
-    msg += `\n━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    msg += `🔗 <https://call-analytics-app-eta.vercel.app|Full dashboard>`;
+    msg += `\n━━━━━━━━━━━━━━━━━━━━━\n`;
 
     // Post to Slack
     const slackRes = await fetch(SLACK_WEBHOOK, {
@@ -272,7 +202,7 @@ export default async function handler(req, res) {
     });
 
     if (slackRes.ok) {
-      res.status(200).json({ ok: true, message: 'Report sent to Slack', dials: totalDials, connects: totalConnects, convos: convos.length, meetings: meetings.length });
+      res.status(200).json({ ok: true, dials: t.dials, connects: t.connects, convos: t.convos, meetings: t.meetings });
     } else {
       const err = await slackRes.text();
       res.status(500).json({ ok: false, error: `Slack error: ${err}` });
