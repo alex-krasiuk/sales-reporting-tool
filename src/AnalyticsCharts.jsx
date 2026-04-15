@@ -471,7 +471,7 @@ Analyze in 3-4 sentences:
                   'No answer': '#9ca3af', 'Voicemail': '#9ca3af', 'Wrong number': '#f97316',
                   'Wrong Contact': '#f97316', 'Wrong contact - referral': '#f97316',
                 };
-                return sorted.map(([outcome, count]) => (
+                return sorted.filter(([outcome]) => outcome !== 'No answer').map(([outcome, count]) => (
                   <ObjBar key={outcome} label={outcome} count={count} total={totalDials} color={colorMap[outcome] || '#6b7280'} />
                 ));
               })()}
