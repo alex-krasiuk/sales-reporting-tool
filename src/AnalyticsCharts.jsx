@@ -149,9 +149,10 @@ function ObjBar({ label, count, total, color }) {
 // --- Call Highlight Card ---
 // --- Main ---
 export default function AnalyticsCharts() {
-  const todayStr = new Date().toISOString().slice(0, 10);
-  const mondayStr = (() => { const d = new Date(); const day = d.getDay(); d.setDate(d.getDate() - (day === 0 ? 6 : day - 1)); return d.toISOString().slice(0, 10); })();
-  const [dateFrom, setDateFrom] = useState(mondayStr);
+  const pacificNow = () => new Date(Date.now() - 7 * 60 * 60 * 1000);
+  const todayStr = pacificNow().toISOString().slice(0, 10);
+  const mondayStr = (() => { const d = pacificNow(); const day = d.getDay(); d.setDate(d.getDate() - (day === 0 ? 6 : day - 1)); return d.toISOString().slice(0, 10); })();
+  const [dateFrom, setDateFrom] = useState(todayStr);
   const [dateTo, setDateTo] = useState(todayStr);
 
   // Notes & Changes
@@ -373,7 +374,7 @@ Analyze in 3-4 sentences:
   }, [filtered]);
 
   // Quick presets
-  const yesterdayStr = (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
+  const yesterdayStr = (() => { const d = pacificNow(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
 
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column', fontFamily: "'Inter', -apple-system, sans-serif" }}>
@@ -384,7 +385,7 @@ Analyze in 3-4 sentences:
         <span style={{ color: '#9ca3af' }}>–</span>
         <input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '5px 8px', fontSize: 12 }} />
         {[['Today', todayStr, todayStr], ['Yesterday', yesterdayStr, yesterdayStr], ['This Week', mondayStr, todayStr],
-          ['Last 14d', (() => { const d = new Date(); d.setDate(d.getDate()-14); return d.toISOString().slice(0,10); })(), todayStr],
+          ['Last 14d', (() => { const d = pacificNow(); d.setDate(d.getDate()-14); return d.toISOString().slice(0,10); })(), todayStr],
           ['All Time', '2026-02-01', todayStr],
         ].map(([label, from, to]) => (
           <button key={label} onClick={() => { setDateFrom(from); setDateTo(to); }} style={{

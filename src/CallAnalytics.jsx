@@ -131,8 +131,9 @@ export default function CallAnalytics() {
   const [apiError, setApiError] = useState('');
   const [customCols, setCustomCols] = useState([]);
   const [search, setSearch] = useState('');
-  const [filterDateFrom, setFilterDateFrom] = useState('');
-  const [filterDateTo, setFilterDateTo] = useState('');
+  const pacificToday = new Date(Date.now() - 7 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const [filterDateFrom, setFilterDateFrom] = useState(pacificToday);
+  const [filterDateTo, setFilterDateTo] = useState(pacificToday);
   const [filterOutcome, setFilterOutcome] = useState('All');
   const [filterRep, setFilterRep] = useState('All');
   const [filterVertical, setFilterVertical] = useState('All');

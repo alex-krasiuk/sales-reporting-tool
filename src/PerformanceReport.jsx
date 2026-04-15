@@ -216,13 +216,13 @@ function buildReport(dateFrom, dateTo) {
 
 // --- Main component ---
 export default function PerformanceReport() {
-  const [dateFrom, setDateFrom] = useState(() => {
-    const m = getMonday(new Date()); return m.toISOString().slice(0, 10);
-  });
-  const [dateTo, setDateTo] = useState(() => new Date().toISOString().slice(0, 10));
+  // Use Pacific time for all dates (call data is in Pacific)
+  const pacificNow = () => new Date(Date.now() - 7 * 60 * 60 * 1000);
+  const todayStr = pacificNow().toISOString().slice(0, 10);
+  const mondayStr = (() => { const m = getMonday(pacificNow()); return m.toISOString().slice(0, 10); })();
 
-  const todayStr = new Date().toISOString().slice(0, 10);
-  const mondayStr = (() => { const m = getMonday(new Date()); return m.toISOString().slice(0, 10); })();
+  const [dateFrom, setDateFrom] = useState(todayStr);
+  const [dateTo, setDateTo] = useState(todayStr);
 
   // Instant — computed from local data, no loading
   const r = useMemo(() => buildReport(dateFrom, dateTo), [dateFrom, dateTo]);
@@ -267,9 +267,9 @@ export default function PerformanceReport() {
         {[
           ['Today', todayStr, todayStr],
           ['This Week', mondayStr, todayStr],
-          ['Yesterday', (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })(), (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })()],
-          ['Last 7 Days', (() => { const d = new Date(); d.setDate(d.getDate()-7); return d.toISOString().slice(0,10); })(), todayStr],
-          ['Last 30 Days', (() => { const d = new Date(); d.setDate(d.getDate()-30); return d.toISOString().slice(0,10); })(), todayStr],
+          ['Yesterday', (() => { const d = pacificNow(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })(), (() => { const d = pacificNow(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })()],
+          ['Last 7 Days', (() => { const d = pacificNow(); d.setDate(d.getDate()-7); return d.toISOString().slice(0,10); })(), todayStr],
+          ['Last 30 Days', (() => { const d = pacificNow(); d.setDate(d.getDate()-30); return d.toISOString().slice(0,10); })(), todayStr],
           ['All Time', SYNC_META?.dateRange?.from || '2026-02-01', todayStr],
         ].map(([label, from, to]) => (
           <button key={label} onClick={() => { setDateFrom(from); setDateTo(to); }} style={{ background: dateFrom === from && dateTo === to ? '#eef2ff' : '#f3f4f6', border: `1px solid ${dateFrom === from && dateTo === to ? '#c7d2fe' : '#e5e7eb'}`, borderRadius: 6, padding: '5px 10px', fontSize: 11, cursor: 'pointer', color: '#374151', fontWeight: dateFrom === from && dateTo === to ? 700 : 400 }}>{label}</button>
