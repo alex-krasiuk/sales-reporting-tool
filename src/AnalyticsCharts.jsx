@@ -621,50 +621,6 @@ Analyze in 3-4 sentences:
 
           {/* (daily charts moved above) */}
 
-          {/* ===== BEST TIME TO CALL ===== */}
-          {hourlyStats.totalAll > 0 && (
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
-              <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Best Time to Call</div>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
-                <thead>
-                  <tr style={{ background: '#eff6ff', borderBottom: '2px solid #dbeafe' }}>
-                    {['Hour', 'Connects', '% of Total', 'Convos (1m+)', 'Convo Rate', 'Meetings', 'Wrong #', 'Wrong %'].map((h, i) => (
-                      <th key={h} style={{ padding: '8px 10px', textAlign: i === 0 ? 'left' : 'right', fontSize: 11, fontWeight: 700, color: '#1f2937' }}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {Array.from({ length: 10 }, (_, i) => i + 7).map((h, i) => {
-                    const d = hourlyStats.hours[h] || { total: 0, convos: 0, meetings: 0, wrong: 0 };
-                    // Show all hours even if 0 calls
-                    const pctTotal = hourlyStats.totalAll ? (d.total / hourlyStats.totalAll * 100) : 0;
-                    const convoRate = d.total ? (d.convos / d.total * 100) : 0;
-                    const wrongRate = d.total ? (d.wrong / d.total * 100) : 0;
-                    const label = h > 12 ? `${h - 12}:00 PM` : h === 12 ? '12:00 PM' : `${h}:00 AM`;
-                    return (
-                      <tr key={h} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
-                        <td style={{ padding: '7px 10px', fontWeight: 600, color: '#374151' }}>{label}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right' }}>{d.total}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', color: '#6b7280' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 6 }}>
-                            <div style={{ width: 60, height: 6, background: '#f3f4f6', borderRadius: 3 }}>
-                              <div style={{ width: `${pctTotal}%`, height: '100%', background: '#4f46e5', borderRadius: 3, opacity: 0.6 }} />
-                            </div>
-                            {pctTotal.toFixed(0)}%
-                          </div>
-                        </td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', color: '#2563eb', fontWeight: 600 }}>{d.convos}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', fontWeight: 600, color: convoRate >= 45 ? '#16a34a' : convoRate >= 35 ? '#d97706' : '#ef4444' }}>{convoRate.toFixed(0)}%</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', fontWeight: 700, color: d.meetings > 0 ? '#16a34a' : '#d1d5db' }}>{d.meetings}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right' }}>{d.wrong}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', color: wrongRate >= 60 ? '#ef4444' : wrongRate >= 50 ? '#d97706' : '#374151', fontWeight: wrongRate >= 50 ? 600 : 400 }}>{wrongRate.toFixed(0)}%</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          )}
 
           {/* ===== ROW 6: MEETINGS LIST ===== */}
           {meetingCalls.length > 0 && (
