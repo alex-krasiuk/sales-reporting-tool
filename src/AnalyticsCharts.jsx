@@ -4,8 +4,10 @@ import { ALL_CALLS } from './allCallData.js';
 
 // Merge: legacy data has rich fields (tags, stages), new data fills gaps
 const legacyById = Object.fromEntries(LEGACY_DATA.map(c => [c.id, c]));
+// Skip "junk" connects (pick up + hang up, <20s) — not meaningful
 const CALL_DATA = ALL_CALLS
   .filter(c => c.isConnect)
+  .filter(c => (c.durationMs || 0) >= 20000)
   .map(c => {
     const legacy = legacyById[c.id];
     // Always keep AI classification fields from ALL_CALLS (even when legacy exists)

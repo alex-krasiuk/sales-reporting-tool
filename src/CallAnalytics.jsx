@@ -4,8 +4,11 @@ import { ALL_CALLS, SYNC_META } from "./allCallData.js";
 
 // Merge: legacy has rich fields, new data fills gaps
 const legacyById = Object.fromEntries(LEGACY_DATA.map(c => [c.id, c]));
+// Filter out "junk" connects: pick up + hang up (<20s with no real dialogue)
+const MIN_REAL_CALL_MS = 20000;
 const CALL_DATA = ALL_CALLS
   .filter(c => c.isConnect)
+  .filter(c => (c.durationMs || 0) >= MIN_REAL_CALL_MS)
   .map(c => {
     const legacy = legacyById[c.id];
     // Always keep AI classification fields from ALL_CALLS (even when legacy exists)
