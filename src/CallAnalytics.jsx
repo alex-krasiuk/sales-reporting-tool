@@ -13,6 +13,7 @@ const CALL_DATA = ALL_CALLS
       aiOffer: c.aiOffer,
       aiOfferDetail: c.aiOfferDetail,
       aiObjection: c.aiObjection,
+      aiObjections: c.aiObjections,
       aiObjectionDetail: c.aiObjectionDetail,
       aiIsFollowup: c.aiIsFollowup,
     };
@@ -292,6 +293,14 @@ export default function CallAnalytics() {
   const getObjection = (row) => tags[row.id]?.objection ?? row.aiObjection ?? autoObjection(row);
   const getOfferDetail = (row) => row.aiOfferDetail || '';
   const getObjectionDetail = (row) => row.aiObjectionDetail || '';
+  // Multiple objections per call (AI can return an array now)
+  const getObjections = (row) => {
+    if (tags[row.id]?.objection) return [tags[row.id].objection];
+    if (Array.isArray(row.aiObjections) && row.aiObjections.length > 0) return row.aiObjections;
+    if (row.aiObjection && row.aiObjection !== 'None' && row.aiObjection !== 'N/A') return [row.aiObjection];
+    const fallback = autoObjection(row);
+    return [fallback];
+  };
 
   const setOfferFor = (rowId, offer) => {
     const next = { ...tags, [rowId]: { ...tags[rowId], offer } };
@@ -471,20 +480,30 @@ export default function CallAnalytics() {
                   </td>
                   <td style={{ padding: '8px 10px', borderBottom: '1px solid #f3f4f6' }}>
                     {(() => {
-                      const v = getObjection(row);
-                      const c = OBJECTION_COLORS[v] || OBJECTION_COLORS['Other'];
-                      // Prefer AI detail, fall back to regex summary
-                      const summary = v === 'Other' ? (getObjectionDetail(row) || summarizeObjection(row.objection?.text || '')) : '';
+                      const objs = getObjections(row);
+                      const hasOther = objs.includes('Other');
+                      const summary = hasOther ? (getObjectionDetail(row) || summarizeObjection(row.objection?.text || '')) : '';
+                      const primary = objs[0] || 'None';
                       return (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 260 }}>
-                          <label style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 5, background: c.bg, color: c.text, borderRadius: 5, padding: '3px 9px', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', alignSelf: 'flex-start' }}>
-                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.dot, flexShrink: 0 }} />
-                            {v}
-                            <select value={v} onChange={e => setObjectionFor(row.id, e.target.value)} style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', border: 'none' }}>
-                              <option value="None">None</option>
-                              {OBJECTIONS.map(o => <option key={o} value={o}>{o}</option>)}
-                            </select>
-                          </label>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                            {objs.map((v, idx) => {
+                              const c = OBJECTION_COLORS[v] || OBJECTION_COLORS['Other'];
+                              const isFirst = idx === 0;
+                              return (
+                                <label key={v + idx} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 5, background: c.bg, color: c.text, borderRadius: 5, padding: '3px 9px', fontSize: 12, fontWeight: 600, cursor: isFirst ? 'pointer' : 'default', whiteSpace: 'nowrap' }}>
+                                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.dot, flexShrink: 0 }} />
+                                  {v}
+                                  {isFirst && (
+                                    <select value={v} onChange={e => setObjectionFor(row.id, e.target.value)} style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', border: 'none' }}>
+                                      <option value="None">None</option>
+                                      {OBJECTIONS.map(o => <option key={o} value={o}>{o}</option>)}
+                                    </select>
+                                  )}
+                                </label>
+                              );
+                            })}
+                          </div>
                           {summary && (
                             <span style={{ fontSize: 11, color: '#6b7280', fontStyle: 'italic', lineHeight: 1.3, overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
                               {summary}

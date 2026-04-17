@@ -13,6 +13,7 @@ const CALL_DATA = ALL_CALLS
       aiOffer: c.aiOffer,
       aiOfferDetail: c.aiOfferDetail,
       aiObjection: c.aiObjection,
+      aiObjections: c.aiObjections,
       aiObjectionDetail: c.aiObjectionDetail,
       aiIsFollowup: c.aiIsFollowup,
     };
@@ -284,14 +285,25 @@ Analyze in 3-4 sentences:
   const hookPassed = withStages.filter(d => d.hook?.success).length;
   const heardPitchTotal = hookPassed;
 
-  // --- Objection aggregation (matches Call Database getObjection logic) ---
-  // Priority: manual tag (localStorage) → AI classification → skip
+  // --- Objection aggregation — only counts objections on CONVERSATIONS (>60s) to match Offer Performance ---
   const manualTags = (() => { try { return JSON.parse(localStorage.getItem('call_tags_v1') || '{}'); } catch { return {}; } })();
   const objCounts = {};
   filtered.forEach(d => {
-    const cat = manualTags[d.id]?.objection ?? d.aiObjection;
-    if (!cat || cat === 'N/A' || cat === 'None') return;
-    objCounts[cat] = (objCounts[cat] || 0) + 1;
+    // Only count convos (>60s) — short calls don't have real objections
+    if (d.durationMs < 60000) return;
+    // Manual tag overrides all
+    if (manualTags[d.id]?.objection) {
+      const cat = manualTags[d.id].objection;
+      if (cat && cat !== 'N/A' && cat !== 'None') objCounts[cat] = (objCounts[cat] || 0) + 1;
+      return;
+    }
+    // Use array if available, else fall back to single
+    const cats = Array.isArray(d.aiObjections) && d.aiObjections.length > 0
+      ? d.aiObjections
+      : (d.aiObjection && d.aiObjection !== 'None' && d.aiObjection !== 'N/A' ? [d.aiObjection] : []);
+    cats.forEach(cat => {
+      if (cat && cat !== 'N/A' && cat !== 'None') objCounts[cat] = (objCounts[cat] || 0) + 1;
+    });
   });
   const sortedObjs = Object.entries(objCounts).sort((a, b) => b[1] - a[1]);
   const totalObjs = sortedObjs.reduce((a, [, v]) => a + v, 0);
@@ -343,29 +355,16 @@ Analyze in 3-4 sentences:
     return { hours, totalAll };
   }, [filtered]);
 
-  // Hook stats grouped by offer (AI classified + regex fallback — same as Call Database "Offer" column)
+  // Offer Performance — only counts CONVERSATIONS (>60s) to measure real pitch effectiveness
   const hookStats = useMemo(() => {
-    // Fallback regex classifier for calls without AI classification (short/no-transcript calls)
-    const fallbackOffer = (d) => {
-      const hookText = (d.hook?.text || '').toLowerCase();
-      if (!hookText.trim() || /never reached/.test(hookText)) return 'Not reached';
-      const repText = (d.transcript || '').split('\n').filter(l => l.includes('(Rep):')).join(' ').toLowerCase();
-      const t = hookText + ' ' + repText;
-      if (/\b(ai agents?|platform|automat|workflow|manual|coordinat|dispatch|billing|logistics|warehous|freight|carrier|trucking|fleet|supply chain|no.code|accounts payable|invoice|finance|operations?|ops team|business operator|orchestrat|deploy.*agent|help.*teams?|help you|what we do|run book|runbook|solve|problem|challenge|pain|struggle)\b/i.test(t) === false) return 'Not reached';
-      if (/dispatch|carrier|freight|logistics.*team|trucking|warehouse|fleet|supply chain/.test(t)) return 'AI for Logistics';
-      if (/manual coordination|repetitive|manual.*(task|work|workflow)|workflow automation|automate.*workflow|automate.*manual|80.*percent|eighty percent|slows.*team|coordinat.*task/.test(t)) return 'Automate Manual Coordination';
-      if (/ai agents?|agent.*platform|platform.*agent|build.*agent|deploy.*agent|no.code.*agent|orchestrat|agent builder/.test(t)) return 'AI Agents Platform';
-      return 'Other';
-    };
-
     const cats = {};
     filtered.forEach(d => {
-      // Prefer AI, fall back to regex
-      const cat = d.aiOffer || fallbackOffer(d);
+      // Only include real conversations (>60s) where a pitch actually happened
+      if (d.durationMs < 60000) return;
+      const cat = d.aiOffer;
       if (!cat || cat === 'Not reached' || cat === 'Follow-up call') return;
-      if (!cats[cat]) cats[cat] = { total: 0, conversations: 0, meetings: 0 };
+      if (!cats[cat]) cats[cat] = { total: 0, meetings: 0 };
       cats[cat].total++;
-      if (d.durationMs >= 60000) cats[cat].conversations++;
       if (d.outcome === 'Meeting Booked') cats[cat].meetings++;
     });
     return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
@@ -439,15 +438,15 @@ Analyze in 3-4 sentences:
 
           {/* ===== OFFER PERFORMANCE + CALL OUTCOMES ===== */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
-            {/* Offer Performance — Nooks / Excel style, minimal coloring */}
+            {/* Offer Performance — Convos only (>60s). Excel/Nooks style. */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 14 }}>Offer Performance</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Offer Performance</div>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 14 }}>Convos (&gt;1m) where each offer was pitched</div>
               {hookStats.length > 0 ? (
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
                       <th style={{ textAlign: 'left', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Offer</th>
-                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Calls</th>
                       <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Convos</th>
                       <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Meetings</th>
                       <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Conv→Mtg</th>
@@ -455,15 +454,14 @@ Analyze in 3-4 sentences:
                   </thead>
                   <tbody>
                     {hookStats.map(([cat, d], i) => {
-                      const convMtgRate = d.conversations ? Math.round(d.meetings / d.conversations * 100) : 0;
-                      const bg = convMtgRate >= 15 ? '#d4edbc' : convMtgRate > 0 ? '#fff3d6' : convMtgRate === 0 && d.conversations > 0 ? '#f4c7c3' : 'transparent';
+                      const rate = d.total ? Math.round(d.meetings / d.total * 100) : 0;
+                      const bg = rate >= 15 ? '#d4edbc' : rate > 0 ? '#fff3d6' : rate === 0 && d.total > 0 ? '#f4c7c3' : 'transparent';
                       return (
                         <tr key={cat} style={{ borderBottom: '1px solid #f3f4f6' }}>
                           <td style={{ padding: '8px 10px', color: '#1f2937' }}>{cat}</td>
                           <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.total}</td>
-                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.conversations}</td>
                           <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.meetings}</td>
-                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937', background: bg }}>{convMtgRate}%</td>
+                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937', background: bg }}>{rate}%</td>
                         </tr>
                       );
                     })}

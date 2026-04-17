@@ -157,10 +157,10 @@ async function classifyWithAI(transcript) {
 
 Classify:
 1. "offer" — What the rep pitched. One of: "AI Agents Platform", "Automate Manual Coordination", "AI for Logistics", "Other", "Not reached", "Follow-up call". Use "Not reached" if no real pitch happened. Use "Follow-up call" if rep references a prior conversation. If "Other", also fill "offer_detail" with 3-5 word description of what was pitched.
-2. "objection" — Prospect's main pushback. One of: "Building in-house / have solution", "Too busy / bad timing", "Send info / email first", "Other", "None", "N/A". Use "N/A" for wrong contact, wrong number, meeting booked, or no real objection phase. Use "None" if prospect engaged positively with no pushback. If "Other", also fill "objection_detail" with 3-7 word neutral summary (third person, like "On another call" or "We are all set").
+2. "objections" — Array of prospect pushbacks (can be multiple). Each must be one of: "Building in-house / have solution", "Too busy / bad timing", "Send info / email first", "Other". Example: ["Building in-house / have solution", "Send info / email first"]. Return empty array [] if outcome was wrong contact/wrong number/meeting booked OR prospect engaged positively with no pushback. If any is "Other", fill "objection_detail" with 3-7 word neutral summary (third person).
 3. "is_followup" — Boolean. True if rep references previous conversation.
 
-Return ONLY valid JSON: {"offer":"...","offer_detail":"","objection":"...","objection_detail":"","is_followup":false}
+Return ONLY valid JSON: {"offer":"...","offer_detail":"","objections":[],"objection_detail":"","is_followup":false}
 
 Transcript:
 ${transcript.slice(0, 4000)}`;
@@ -401,7 +401,10 @@ async function main() {
           ok++;
           call.aiOffer = result.offer || null;
           call.aiOfferDetail = result.offer_detail || '';
-          call.aiObjection = result.objection || null;
+          // Support both new array format and old string format for backward compatibility
+          const objArray = Array.isArray(result.objections) ? result.objections : (result.objection ? [result.objection] : []);
+          call.aiObjections = objArray;
+          call.aiObjection = objArray[0] || (objArray.length === 0 ? 'None' : null);
           call.aiObjectionDetail = result.objection_detail || '';
           call.aiIsFollowup = !!result.is_followup;
         }
