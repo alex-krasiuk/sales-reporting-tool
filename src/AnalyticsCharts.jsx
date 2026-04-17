@@ -520,23 +520,6 @@ Analyze in 3-4 sentences:
           </div>
           )}
 
-          {/* ===== DAILY TREND CHARTS (moved up) ===== */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 16 }}>
-            {[
-              { key: 'connectRate', color: '#4f46e5', title: 'Connect Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.connectRate, 0) / daily.length) : 0 },
-              { key: 'convoRate', color: '#2563eb', title: 'Conversation Rate (>1m)', avg: daily.length ? (daily.reduce((a, d) => a + (d.convoRate || 0), 0) / daily.length) : 0 },
-              { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
-            ].map(chart => (
-              <div key={chart.key} style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '14px 16px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1f2937' }}>{chart.title}</span>
-                  <span style={{ fontSize: 18, fontWeight: 800, color: chart.color }}>{chart.avg.toFixed(1)}%</span>
-                </div>
-                <MiniChart data={daily} dataKey={chart.key} color={chart.color} />
-              </div>
-            ))}
-          </div>
-
           {/* ===== CALL ANALYSIS (from AI-analyzed calls) ===== */}
           <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13, borderRadius: '6px 6px 0 0', marginTop: 8 }}>
             CALL ANALYSIS {withStages.length > 0 ? `(${withStages.length} analyzed calls)` : '— select a date range including Mar 26 - Apr 10 for AI analysis'}
