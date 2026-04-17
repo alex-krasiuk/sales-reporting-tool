@@ -440,36 +440,49 @@ Analyze in 3-4 sentences:
 
           {/* ===== OFFER PERFORMANCE + CALL OUTCOMES ===== */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
-            {/* Offer Performance — Convos only (>60s). Excel/Nooks style. */}
+            {/* Offer Performance — Convos only (>60s). Bar visual shows relative Conv→Mtg rate. */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Offer Performance</div>
-              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 14 }}>Convos (&gt;1m) where each offer was pitched</div>
-              {hookStats.length > 0 ? (
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
-                  <thead>
-                    <tr style={{ borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
-                      <th style={{ textAlign: 'left', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Offer</th>
-                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Convos</th>
-                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Meetings</th>
-                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Conv→Mtg</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {hookStats.map(([cat, d], i) => {
-                      const rate = d.total ? Math.round(d.meetings / d.total * 100) : 0;
-                      const bg = rate >= 15 ? '#d4edbc' : rate > 0 ? '#fff3d6' : rate === 0 && d.total > 0 ? '#f4c7c3' : 'transparent';
-                      return (
-                        <tr key={cat} style={{ borderBottom: '1px solid #f3f4f6' }}>
-                          <td style={{ padding: '8px 10px', color: '#1f2937' }}>{cat}</td>
-                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.total}</td>
-                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.meetings}</td>
-                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937', background: bg }}>{rate}%</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              ) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No offer data for this period</div>}
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 14 }}>Convos (&gt;1m) where each offer was pitched. Bar = Conv→Mtg rate.</div>
+              {hookStats.length > 0 ? (() => {
+                // Max rate for normalizing bar widths
+                const maxRate = Math.max(...hookStats.map(([, d]) => d.total ? (d.meetings / d.total * 100) : 0), 1);
+                return (
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
+                        <th style={{ textAlign: 'left', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Offer</th>
+                        <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Convos</th>
+                        <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Meetings</th>
+                        <th style={{ textAlign: 'left', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600, minWidth: 140 }}>Conv→Mtg</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {hookStats.map(([cat, d], i) => {
+                        const rate = d.total ? (d.meetings / d.total * 100) : 0;
+                        const rateInt = Math.round(rate);
+                        const barWidth = maxRate > 0 ? (rate / maxRate * 100) : 0;
+                        const barColor = rateInt >= 15 ? '#16a34a' : rateInt > 0 ? '#d97706' : rateInt === 0 && d.total > 0 ? '#ef4444' : '#e5e7eb';
+                        return (
+                          <tr key={cat} style={{ borderBottom: '1px solid #f3f4f6' }}>
+                            <td style={{ padding: '8px 10px', color: '#1f2937' }}>{cat}</td>
+                            <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.total}</td>
+                            <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.meetings}</td>
+                            <td style={{ padding: '8px 10px' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <div style={{ flex: 1, height: 10, background: '#f3f4f6', borderRadius: 3, overflow: 'hidden' }}>
+                                  <div style={{ width: `${Math.max(barWidth, rateInt > 0 ? 4 : 0)}%`, height: '100%', background: barColor, borderRadius: 3, opacity: 0.85 }} />
+                                </div>
+                                <span style={{ color: '#1f2937', fontWeight: 600, minWidth: 32, textAlign: 'right' }}>{rateInt}%</span>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                );
+              })() : <div style={{ color: '#9ca3af', fontSize: 12 }}>No offer data for this period</div>}
             </div>
 
             {/* Call outcomes — breakdown of CONNECTS only */}
