@@ -8,7 +8,15 @@ const CALL_DATA = ALL_CALLS
   .filter(c => c.isConnect)
   .map(c => {
     const legacy = legacyById[c.id];
-    if (legacy) return legacy;
+    // Always keep AI classification fields from ALL_CALLS (even when legacy exists)
+    const aiFields = {
+      aiOffer: c.aiOffer,
+      aiOfferDetail: c.aiOfferDetail,
+      aiObjection: c.aiObjection,
+      aiObjectionDetail: c.aiObjectionDetail,
+      aiIsFollowup: c.aiIsFollowup,
+    };
+    if (legacy) return { ...legacy, ...aiFields };
     return {
       id: c.id, date: c.date, time: c.time, timestamp: c.timestamp,
       rep: c.rep, outcome: c.outcome, vertical: c.vertical || c.industry || '',
@@ -20,6 +28,7 @@ const CALL_DATA = ALL_CALLS
       hook: c.hook || { text: '', success: false },
       objection: c.objection || { text: 'None', success: 'NONE' },
       tags: [],
+      ...aiFields,
     };
   });
 
@@ -275,11 +284,14 @@ Analyze in 3-4 sentences:
   const hookPassed = withStages.filter(d => d.hook?.success).length;
   const heardPitchTotal = hookPassed;
 
-  // --- Objection aggregation ---
+  // --- Objection aggregation (matches Call Database getObjection logic) ---
+  // Priority: manual tag (localStorage) → AI classification → skip
+  const manualTags = (() => { try { return JSON.parse(localStorage.getItem('call_tags_v1') || '{}'); } catch { return {}; } })();
   const objCounts = {};
   filtered.forEach(d => {
-    const cat = categorizeObjection(d.objection?.text);
-    if (cat) objCounts[cat] = (objCounts[cat] || 0) + 1;
+    const cat = manualTags[d.id]?.objection ?? d.aiObjection;
+    if (!cat || cat === 'N/A' || cat === 'None') return;
+    objCounts[cat] = (objCounts[cat] || 0) + 1;
   });
   const sortedObjs = Object.entries(objCounts).sort((a, b) => b[1] - a[1]);
   const totalObjs = sortedObjs.reduce((a, [, v]) => a + v, 0);
@@ -331,14 +343,29 @@ Analyze in 3-4 sentences:
     return { hours, totalAll };
   }, [filtered]);
 
+  // Hook stats grouped by offer (AI classified + regex fallback — same as Call Database "Offer" column)
   const hookStats = useMemo(() => {
+    // Fallback regex classifier for calls without AI classification (short/no-transcript calls)
+    const fallbackOffer = (d) => {
+      const hookText = (d.hook?.text || '').toLowerCase();
+      if (!hookText.trim() || /never reached/.test(hookText)) return 'Not reached';
+      const repText = (d.transcript || '').split('\n').filter(l => l.includes('(Rep):')).join(' ').toLowerCase();
+      const t = hookText + ' ' + repText;
+      if (/\b(ai agents?|platform|automat|workflow|manual|coordinat|dispatch|billing|logistics|warehous|freight|carrier|trucking|fleet|supply chain|no.code|accounts payable|invoice|finance|operations?|ops team|business operator|orchestrat|deploy.*agent|help.*teams?|help you|what we do|run book|runbook|solve|problem|challenge|pain|struggle)\b/i.test(t) === false) return 'Not reached';
+      if (/dispatch|carrier|freight|logistics.*team|trucking|warehouse|fleet|supply chain/.test(t)) return 'AI for Logistics';
+      if (/manual coordination|repetitive|manual.*(task|work|workflow)|workflow automation|automate.*workflow|automate.*manual|80.*percent|eighty percent|slows.*team|coordinat.*task/.test(t)) return 'Automate Manual Coordination';
+      if (/ai agents?|agent.*platform|platform.*agent|build.*agent|deploy.*agent|no.code.*agent|orchestrat|agent builder/.test(t)) return 'AI Agents Platform';
+      return 'Other';
+    };
+
     const cats = {};
     filtered.forEach(d => {
-      const cat = categorizeHook(d.hook?.text);
-      if (!cat) return;
+      // Prefer AI, fall back to regex
+      const cat = d.aiOffer || fallbackOffer(d);
+      if (!cat || cat === 'Not reached' || cat === 'Follow-up call') return;
       if (!cats[cat]) cats[cat] = { total: 0, conversations: 0, meetings: 0 };
       cats[cat].total++;
-      if (d.durationMs >= 60000) cats[cat].conversations++; // 1m+ = conversation
+      if (d.durationMs >= 60000) cats[cat].conversations++;
       if (d.outcome === 'Meeting Booked') cats[cat].meetings++;
     });
     return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
@@ -410,52 +437,39 @@ Analyze in 3-4 sentences:
             <MetricCard label="Meetings Booked" value={meetings} sub={totalDials ? `${(meetings / totalDials * 100).toFixed(2)}% of dials` : ''} color="#16a34a" big />
           </div>
 
-          {/* ===== ROW 2: REP COMPARISON ===== */}
-          <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', marginBottom: 16, overflow: 'hidden' }}>
-            <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Rep Comparison</div>
-            <div style={{ display: 'flex', background: '#eff6ff', fontWeight: 700, fontSize: 11, borderBottom: '1px solid #dbeafe' }}>
-              {['Rep', 'Dials', 'Connects', 'Connect Rate', 'Convos (>1m)', 'Meetings', 'Follow Up', 'Not Int'].map((h, i) => (
-                <div key={h} style={{ flex: i === 0 ? 2 : 1, padding: '8px 12px', textAlign: i === 0 ? 'left' : 'center', color: '#1f2937' }}>{h}</div>
-              ))}
-            </div>
-            {Object.entries(reps).sort((a, b) => b[1].dials - a[1].dials).map(([rep, d], i) => (
-              <div key={rep} style={{ display: 'flex', fontSize: 12, borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
-                <div style={{ flex: 2, padding: '10px 12px', fontWeight: 700, color: '#1f2937' }}>{rep}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>{d.dials}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#4f46e5', fontWeight: 600 }}>{d.connects}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', fontWeight: 600, color: d.dials && d.connects / d.dials >= 0.07 ? '#059669' : '#d97706' }}>{d.dials ? (d.connects / d.dials * 100).toFixed(1) : 0}%</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#2563eb', fontWeight: 600 }}>{d.conversations}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#16a34a', fontWeight: 700 }}>{d.meetings}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#2563eb' }}>{d.followUp}</div>
-                <div style={{ flex: 1, padding: '10px 12px', textAlign: 'center', color: '#dc2626' }}>{d.notInterested}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* ===== ROW 3: CALL FUNNEL + OUTCOMES ===== */}
+          {/* ===== OFFER PERFORMANCE + CALL OUTCOMES ===== */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
-            {/* Call funnel — works for ALL data */}
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 280 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Call Funnel</div>
-              <div>
-                {[
-                  { label: 'Dials', value: totalDials, pct: 100, color: '#6b7280' },
-                  { label: 'Connects', value: totalConnects, pct: totalDials ? Math.round(totalConnects / totalDials * 100) : 0, color: '#4f46e5' },
-                  { label: 'Conversations (>1m)', value: conversations, pct: totalDials ? Math.round(conversations / totalDials * 100) : 0, color: '#2563eb' },
-                  { label: 'Follow Up - Interested', value: allDials.filter(d => d.outcome === 'Follow up - interested').length, pct: totalDials ? Math.round(allDials.filter(d => d.outcome === 'Follow up - interested').length / totalDials * 100) : 0, color: '#0891b2' },
-                  { label: 'Meetings Booked', value: meetings, pct: totalDials ? Math.round(meetings / totalDials * 100) : 0, color: '#16a34a' },
-                ].map(s => (
-                  <div key={s.label} style={{ marginBottom: 8 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
-                      <span style={{ color: '#374151' }}>{s.label}</span>
-                      <span style={{ fontWeight: 700, color: s.color }}>{s.value} ({s.pct}%)</span>
-                    </div>
-                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
-                      <div style={{ width: `${Math.min(s.pct, 100)}%`, height: '100%', background: s.color, borderRadius: 4, opacity: 0.7 }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* Offer Performance — Nooks / Excel style, minimal coloring */}
+            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 14 }}>Offer Performance</div>
+              {hookStats.length > 0 ? (
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
+                  <thead>
+                    <tr style={{ borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
+                      <th style={{ textAlign: 'left', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Offer</th>
+                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Calls</th>
+                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Convos</th>
+                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Meetings</th>
+                      <th style={{ textAlign: 'right', padding: '8px 10px', fontSize: 11, color: '#374151', fontWeight: 600 }}>Conv→Mtg</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {hookStats.map(([cat, d], i) => {
+                      const convMtgRate = d.conversations ? Math.round(d.meetings / d.conversations * 100) : 0;
+                      const bg = convMtgRate >= 15 ? '#d4edbc' : convMtgRate > 0 ? '#fff3d6' : convMtgRate === 0 && d.conversations > 0 ? '#f4c7c3' : 'transparent';
+                      return (
+                        <tr key={cat} style={{ borderBottom: '1px solid #f3f4f6' }}>
+                          <td style={{ padding: '8px 10px', color: '#1f2937' }}>{cat}</td>
+                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.total}</td>
+                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.conversations}</td>
+                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937' }}>{d.meetings}</td>
+                          <td style={{ padding: '8px 10px', textAlign: 'right', color: '#1f2937', background: bg }}>{convMtgRate}%</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              ) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No offer data for this period</div>}
             </div>
 
             {/* Call outcomes — breakdown of CONNECTS only */}
@@ -480,32 +494,14 @@ Analyze in 3-4 sentences:
             </div>
           </div>
 
-          {/* ===== ENRICHED ANALYSIS (only for calls with AI-analyzed data) ===== */}
-          {withStages.length > 0 && (
-          <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 280 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Pitch Funnel <span style={{ fontSize: 10, color: '#9ca3af', fontWeight: 400 }}>({withStages.length} AI-analyzed calls)</span></div>
-              <div>
-                {[
-                  { label: 'Analyzed Calls', value: withStages.length, pct: 100, color: '#4f46e5' },
-                  { label: 'Ice Breaker Passed', value: ibPassed, pct: withStages.length ? Math.round(ibPassed / withStages.length * 100) : 0, color: '#059669' },
-                  { label: 'Heard Full Pitch', value: heardPitchTotal, pct: withStages.length ? Math.round(heardPitchTotal / withStages.length * 100) : 0, color: '#2563eb' },
-                  { label: 'Meeting Booked', value: meetings, pct: heardPitchTotal ? Math.round(meetings / heardPitchTotal * 100) : 0, color: '#16a34a', note: 'of those who heard pitch' },
-                ].map(s => (
-                  <div key={s.label} style={{ marginBottom: 8 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 2 }}>
-                      <span style={{ color: '#374151' }}>{s.label}</span>
-                      <span style={{ fontWeight: 700, color: s.color }}>{s.value} ({s.pct}%){s.note ? ` ${s.note}` : ''}</span>
-                    </div>
-                    <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4 }}>
-                      <div style={{ width: `${Math.min(s.pct, 100)}%`, height: '100%', background: s.color, borderRadius: 4, opacity: 0.7 }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* ===== CALL ANALYSIS header ===== */}
+          <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13, borderRadius: '6px 6px 0 0', marginTop: 8 }}>
+            CALL ANALYSIS {withStages.length > 0 ? `(${withStages.length} analyzed calls)` : '— select a date range including Mar 26 - Apr 10 for AI analysis'}
+          </div>
 
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
+          {/* ===== TOP OBJECTIONS (AI-analyzed calls only) ===== */}
+          {withStages.length > 0 && (
+            <div style={{ background: 'white', borderRadius: '0 0 10px 10px', border: '1px solid #e5e7eb', borderTop: 'none', padding: '16px 20px', marginBottom: 16 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Top Objections <span style={{ fontSize: 10, color: '#9ca3af', fontWeight: 400 }}>(AI-analyzed calls only)</span></div>
               {sortedObjs.length > 0 ? sortedObjs.filter(([obj]) => obj !== 'Other').map(([obj, count]) => (
                 <ObjBar key={obj} label={obj} count={count} total={totalObjs} color={
@@ -517,160 +513,8 @@ Analyze in 3-4 sentences:
                 } />
               )) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No objection data</div>}
             </div>
-          </div>
           )}
 
-          {/* ===== CALL ANALYSIS (from AI-analyzed calls) ===== */}
-          <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13, borderRadius: '6px 6px 0 0', marginTop: 8 }}>
-            CALL ANALYSIS {withStages.length > 0 ? `(${withStages.length} analyzed calls)` : '— select a date range including Mar 26 - Apr 10 for AI analysis'}
-          </div>
-
-          {/* ===== HOOK & ICEBREAKER PERFORMANCE ===== */}
-          <div style={{ display: 'flex', gap: 16, marginBottom: 16, marginTop: 8, flexWrap: 'wrap' }}>
-            {/* Hook performance — dual metric */}
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Hook Performance</div>
-              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 14 }}>Conversation = call 1m+. Conv→Mtg = meetings / conversations.</div>
-              {hookStats.length > 0 ? (
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
-                  <thead>
-                    <tr style={{ borderBottom: '2px solid #e5e7eb' }}>
-                      <th style={{ textAlign: 'left', padding: '6px 0', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Hook</th>
-                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Calls</th>
-                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#2563eb', fontWeight: 600 }}>Convos (1m+)</th>
-                      <th style={{ textAlign: 'right', padding: '6px 8px', fontSize: 11, color: '#16a34a', fontWeight: 600 }}>Meetings</th>
-                      <th style={{ textAlign: 'right', padding: '6px 0', fontSize: 11, color: '#16a34a', fontWeight: 600 }}>Conv→Mtg</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {hookStats.map(([cat, d], i) => {
-                      const convMtgRate = d.conversations ? Math.round(d.meetings / d.conversations * 100) : 0;
-                      return (
-                        <tr key={cat} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
-                          <td style={{ padding: '8px 0', color: '#374151', fontWeight: 500, fontSize: 11, maxWidth: 220 }}>{cat}</td>
-                          <td style={{ padding: '8px 8px', textAlign: 'right', color: '#6b7280' }}>{d.total}</td>
-                          <td style={{ padding: '8px 8px', textAlign: 'right', color: '#2563eb', fontWeight: 600 }}>{d.conversations}</td>
-                          <td style={{ padding: '8px 8px', textAlign: 'right', fontWeight: 700, color: d.meetings > 0 ? '#16a34a' : '#d1d5db' }}>{d.meetings}</td>
-                          <td style={{ padding: '8px 0', textAlign: 'right', fontWeight: 700, color: convMtgRate >= 15 ? '#16a34a' : convMtgRate > 0 ? '#d97706' : '#d1d5db', background: convMtgRate >= 15 ? '#dcfce710' : 'transparent' }}>{convMtgRate}%</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              ) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No hook data for this period</div>}
-            </div>
-
-            {/* Icebreaker elements */}
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1, minWidth: 320 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Icebreaker Elements</div>
-
-              {/* Warm vs Cold split */}
-              {(ibStats.warmTotal > 0 || ibStats.coldTotal > 0) && (
-                <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
-                  <div style={{ flex: 1, background: '#f0fdf4', borderRadius: 6, padding: '8px 10px', border: '1px solid #bbf7d0' }}>
-                    <div style={{ fontSize: 10, color: '#6b7280', fontWeight: 600 }}>WARM (follow-ups)</div>
-                    <div style={{ fontSize: 18, fontWeight: 800, color: '#16a34a' }}>{ibStats.warmTotal > 0 ? Math.round(ibStats.warmPassed / ibStats.warmTotal * 100) : 0}%</div>
-                    <div style={{ fontSize: 10, color: '#6b7280' }}>{ibStats.warmTotal} calls · {ibStats.warmMeetings} mtgs</div>
-                  </div>
-                  <div style={{ flex: 1, background: '#eff6ff', borderRadius: 6, padding: '8px 10px', border: '1px solid #bfdbfe' }}>
-                    <div style={{ fontSize: 10, color: '#6b7280', fontWeight: 600 }}>COLD (first contact)</div>
-                    <div style={{ fontSize: 18, fontWeight: 800, color: '#2563eb' }}>{ibStats.coldTotal > 0 ? Math.round(ibStats.coldPassed / ibStats.coldTotal * 100) : 0}%</div>
-                    <div style={{ fontSize: 10, color: '#6b7280' }}>{ibStats.coldTotal} calls · {ibStats.coldMeetings} mtgs</div>
-                  </div>
-                </div>
-              )}
-
-              {/* Cold call elements only */}
-              <div style={{ fontSize: 11, fontWeight: 600, color: '#6b7280', marginBottom: 8 }}>Cold call elements (what improves pass rate?)</div>
-              {ibStats.coldElements.length > 0 ? ibStats.coldElements.map(el => {
-                const passRate = el.total ? Math.round(el.passed / el.total * 100) : 0;
-                return (
-                  <div key={el.key} style={{ marginBottom: 10 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                      <div style={{ fontSize: 12, fontWeight: 600, color: '#1f2937' }}>{el.label}</div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', whiteSpace: 'nowrap' }}>
-                        {passRate}% pass · {el.total} calls · {el.meetings} mtgs
-                      </span>
-                    </div>
-                    <div style={{ fontSize: 10, color: '#9ca3af', fontStyle: 'italic', marginBottom: 3 }}>{el.example}</div>
-                    <div style={{ height: 6, background: '#f3f4f6', borderRadius: 3 }}>
-                      <div style={{ width: `${passRate}%`, height: '100%', background: passRate >= 75 ? '#16a34a' : passRate >= 50 ? '#d97706' : '#ef4444', borderRadius: 3, opacity: 0.7 }} />
-                    </div>
-                  </div>
-                );
-              }) : <div style={{ color: '#9ca3af', fontSize: 12 }}>No cold call data for this period</div>}
-            </div>
-          </div>
-
-          {/* (daily charts moved above) */}
-
-
-          {/* ===== ROW 6: MEETINGS LIST ===== */}
-          {meetingCalls.length > 0 && (
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
-              <div style={{ background: '#16a34a', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Meetings Booked ({meetingCalls.length})</div>
-              {meetingCalls.map((c, i) => (
-                <div key={c.id} style={{ display: 'flex', padding: '10px 16px', borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white', fontSize: 12, alignItems: 'center', gap: 16 }}>
-                  <span style={{ color: '#9ca3af', width: 60, flexShrink: 0 }}>{new Date(c.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                  <span style={{ fontWeight: 600, color: '#1f2937', width: 160, flexShrink: 0 }}>{c.contactName || 'Unknown'}</span>
-                  <span style={{ color: '#6b7280', width: 180, flexShrink: 0 }}>{c.title || ''}</span>
-                  <span style={{ color: '#6b7280', flex: 1 }}>{c.vertical || ''}</span>
-                  <span style={{ color: '#4f46e5', width: 100, flexShrink: 0 }}>{c.rep.split(' ')[0]}</span>
-                  {c.recordingUrl && <a href={c.recordingUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#4f46e5', textDecoration: 'none', fontWeight: 600, fontSize: 11 }}>▶ Listen</a>}
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* ===== NOTES & CHANGES ===== */}
-          <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
-            <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Notes & Changes</div>
-            <div style={{ padding: '12px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-              <input type="date" value={noteDate} onChange={e => setNoteDate(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 8px', fontSize: 12 }} />
-              <input value={noteText} onChange={e => setNoteText(e.target.value)} onKeyDown={e => e.key === 'Enter' && saveNote()} placeholder="What changed? e.g. 'Brandon reduced to 2 parallel dials + daily number rotation'" style={{ flex: 1, minWidth: 250, border: '1px solid #e5e7eb', borderRadius: 6, padding: '6px 10px', fontSize: 12 }} />
-              <button onClick={saveNote} style={{ background: '#4f46e5', color: 'white', border: 'none', borderRadius: 6, padding: '6px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>Add</button>
-            </div>
-            {notes.length === 0 && <div style={{ padding: '20px 16px', color: '#9ca3af', fontSize: 12 }}>No changes logged yet. Add notes about strategy changes to track their impact.</div>}
-            {notes.map(note => {
-              const { before, after } = getBeforeAfter(note.date);
-              const analysis = noteAnalysis[note.id];
-              return (
-                <div key={note.id} style={{ padding: '12px 16px', borderBottom: '1px solid #f3f4f6' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
-                    <div>
-                      <span style={{ fontSize: 11, color: '#9ca3af', marginRight: 8 }}>{new Date(note.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                      <span style={{ fontSize: 13, fontWeight: 600, color: '#1f2937' }}>{note.text}</span>
-                    </div>
-                    <button onClick={() => deleteNote(note.id)} style={{ background: 'none', border: 'none', color: '#d1d5db', cursor: 'pointer', fontSize: 14 }}>×</button>
-                  </div>
-                  {/* Before / After metrics */}
-                  <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
-                    <div style={{ flex: 1, background: '#f8f9fa', borderRadius: 6, padding: '8px 10px', fontSize: 11 }}>
-                      <div style={{ fontWeight: 700, color: '#6b7280', marginBottom: 4 }}>BEFORE (7 days)</div>
-                      <div>{before.total} connects · {before.convos} convos · {before.mtgs} mtgs</div>
-                      <div style={{ color: '#6b7280' }}>Conv rate: {before.convoRate}% · Wrong#: {before.wrongRate}% · Conv→Mtg: {before.mtgRate}%</div>
-                    </div>
-                    <div style={{ flex: 1, background: '#f0fdf4', borderRadius: 6, padding: '8px 10px', fontSize: 11, border: '1px solid #bbf7d0' }}>
-                      <div style={{ fontWeight: 700, color: '#16a34a', marginBottom: 4 }}>AFTER ({after.days} days)</div>
-                      <div>{after.total} connects · {after.convos} convos · {after.mtgs} mtgs</div>
-                      <div style={{ color: '#6b7280' }}>Conv rate: {after.convoRate}% · Wrong#: {after.wrongRate}% · Conv→Mtg: {after.mtgRate}%</div>
-                    </div>
-                  </div>
-                  {/* AI Analysis */}
-                  <div style={{ marginTop: 8 }}>
-                    {!analysis && apiKey && <button onClick={() => analyzeNote(note)} style={{ background: '#f3f4f6', border: '1px solid #e5e7eb', borderRadius: 5, padding: '4px 10px', fontSize: 11, cursor: 'pointer', color: '#374151' }}>Ask AI to analyze this change</button>}
-                    {!analysis && !apiKey && <span style={{ fontSize: 10, color: '#d1d5db' }}>Set API key to enable AI analysis</span>}
-                    {analysis?.loading && <span style={{ fontSize: 11, color: '#6b7280' }}>Analyzing...</span>}
-                    {analysis?.text && !analysis.loading && (
-                      <div style={{ background: '#fefce8', border: '1px solid #fde68a', borderRadius: 6, padding: '8px 10px', fontSize: 11, color: '#374151', lineHeight: 1.5 }}>
-                        <span style={{ fontWeight: 700, color: '#92400e' }}>AI Analysis: </span>{analysis.text}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
 
         </div>
       </div>

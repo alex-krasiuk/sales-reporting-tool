@@ -22,6 +22,7 @@ jobs:
       - name: Sync HubSpot data
         env:
           HUBSPOT_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node scripts/sync-hubspot.js
 
       - name: Commit and push if changed

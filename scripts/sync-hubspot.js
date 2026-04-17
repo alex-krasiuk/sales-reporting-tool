@@ -148,6 +148,53 @@ async function batchCompanies(companyIds) {
   return map;
 }
 
+// --- AI classification via OpenAI ---
+const OPENAI_KEY = process.env.OPENAI_API_KEY;
+
+async function classifyWithAI(transcript) {
+  if (!OPENAI_KEY || !transcript || transcript.length < 100) return null;
+  const prompt = `You are classifying a sales cold call transcript. Read it and return JSON ONLY, no prose.
+
+Classify:
+1. "offer" — What the rep pitched. One of: "AI Agents Platform", "Automate Manual Coordination", "AI for Logistics", "Other", "Not reached", "Follow-up call". Use "Not reached" if no real pitch happened. Use "Follow-up call" if rep references a prior conversation. If "Other", also fill "offer_detail" with 3-5 word description of what was pitched.
+2. "objection" — Prospect's main pushback. One of: "Building in-house / have solution", "Too busy / bad timing", "Send info / email first", "Other", "None", "N/A". Use "N/A" for wrong contact, wrong number, meeting booked, or no real objection phase. Use "None" if prospect engaged positively with no pushback. If "Other", also fill "objection_detail" with 3-7 word neutral summary (third person, like "On another call" or "We are all set").
+3. "is_followup" — Boolean. True if rep references previous conversation.
+
+Return ONLY valid JSON: {"offer":"...","offer_detail":"","objection":"...","objection_detail":"","is_followup":false}
+
+Transcript:
+${transcript.slice(0, 4000)}`;
+
+  try {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0,
+        response_format: { type: 'json_object' },
+        max_tokens: 200,
+      }),
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      console.warn(`  AI classify error: ${res.status} ${err.slice(0, 100)}`);
+      return null;
+    }
+    const data = await res.json();
+    const content = data.choices?.[0]?.message?.content;
+    if (!content) return null;
+    return JSON.parse(content);
+  } catch (e) {
+    console.warn(`  AI classify error: ${e.message}`);
+    return null;
+  }
+}
+
 // --- Persona label ---
 function personaLabel(persona) {
   const m = {
@@ -338,6 +385,35 @@ async function main() {
 
   // Sort newest first
   calls.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+
+  // AI classify conversations (>60s) using OpenAI
+  if (OPENAI_KEY) {
+    const toClassify = calls.filter(c => c.isConversation && c.transcript && c.transcript.length > 100);
+    console.log(`\n  AI-classifying ${toClassify.length} conversations...`);
+    let done = 0, ok = 0;
+    const CONCURRENCY = 8;
+    for (let i = 0; i < toClassify.length; i += CONCURRENCY) {
+      const batch = toClassify.slice(i, i + CONCURRENCY);
+      await Promise.all(batch.map(async (call) => {
+        const result = await classifyWithAI(call.transcript);
+        done++;
+        if (result) {
+          ok++;
+          call.aiOffer = result.offer || null;
+          call.aiOfferDetail = result.offer_detail || '';
+          call.aiObjection = result.objection || null;
+          call.aiObjectionDetail = result.objection_detail || '';
+          call.aiIsFollowup = !!result.is_followup;
+        }
+      }));
+      if (done % 50 === 0 || done === toClassify.length) {
+        console.log(`     ${done}/${toClassify.length} classified (${ok} OK)`);
+      }
+    }
+    console.log(`  AI classification done: ${ok}/${toClassify.length} succeeded`);
+  } else {
+    console.log('\n  Skipping AI classification (no OPENAI_API_KEY)');
+  }
 
   // Compute summary stats
   const totalDials = calls.length;
