@@ -458,12 +458,14 @@ Analyze in 3-4 sentences:
               </div>
             </div>
 
-            {/* Call outcomes — works for ALL data */}
+            {/* Call outcomes — breakdown of CONNECTS only */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Call Outcomes</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Call Outcomes</div>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 12 }}>% of {totalConnects} connected calls</div>
               {(() => {
+                const connectedOnly = allDials.filter(d => d.isConnect);
                 const outcomes = {};
-                allDials.forEach(d => { outcomes[d.outcome] = (outcomes[d.outcome] || 0) + 1; });
+                connectedOnly.forEach(d => { outcomes[d.outcome] = (outcomes[d.outcome] || 0) + 1; });
                 const sorted = Object.entries(outcomes).sort((a, b) => b[1] - a[1]);
                 const colorMap = {
                   'Meeting Booked': '#16a34a', 'Follow up - interested': '#0891b2', 'Account to Pursue': '#059669',
@@ -471,8 +473,8 @@ Analyze in 3-4 sentences:
                   'No answer': '#9ca3af', 'Voicemail': '#9ca3af', 'Wrong number': '#f97316',
                   'Wrong Contact': '#f97316', 'Wrong contact - referral': '#f97316',
                 };
-                return sorted.filter(([outcome]) => outcome !== 'No answer').map(([outcome, count]) => (
-                  <ObjBar key={outcome} label={outcome} count={count} total={totalDials} color={colorMap[outcome] || '#6b7280'} />
+                return sorted.map(([outcome, count]) => (
+                  <ObjBar key={outcome} label={outcome} count={count} total={totalConnects} color={colorMap[outcome] || '#6b7280'} />
                 ));
               })()}
             </div>
