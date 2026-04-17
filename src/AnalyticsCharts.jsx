@@ -458,12 +458,14 @@ Analyze in 3-4 sentences:
               </div>
             </div>
 
-            {/* Call outcomes — works for ALL data */}
+            {/* Call outcomes — breakdown of CONNECTS only */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>Call Outcomes</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Call Outcomes</div>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 12 }}>% of {totalConnects} connected calls</div>
               {(() => {
+                const connectedOnly = allDials.filter(d => d.isConnect);
                 const outcomes = {};
-                allDials.forEach(d => { outcomes[d.outcome] = (outcomes[d.outcome] || 0) + 1; });
+                connectedOnly.forEach(d => { outcomes[d.outcome] = (outcomes[d.outcome] || 0) + 1; });
                 const sorted = Object.entries(outcomes).sort((a, b) => b[1] - a[1]);
                 const colorMap = {
                   'Meeting Booked': '#16a34a', 'Follow up - interested': '#0891b2', 'Account to Pursue': '#059669',
@@ -471,8 +473,8 @@ Analyze in 3-4 sentences:
                   'No answer': '#9ca3af', 'Voicemail': '#9ca3af', 'Wrong number': '#f97316',
                   'Wrong Contact': '#f97316', 'Wrong contact - referral': '#f97316',
                 };
-                return sorted.filter(([outcome]) => outcome !== 'No answer').map(([outcome, count]) => (
-                  <ObjBar key={outcome} label={outcome} count={count} total={totalDials} color={colorMap[outcome] || '#6b7280'} />
+                return sorted.map(([outcome, count]) => (
+                  <ObjBar key={outcome} label={outcome} count={count} total={totalConnects} color={colorMap[outcome] || '#6b7280'} />
                 ));
               })()}
             </div>
@@ -517,23 +519,6 @@ Analyze in 3-4 sentences:
             </div>
           </div>
           )}
-
-          {/* ===== DAILY TREND CHARTS (moved up) ===== */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 16 }}>
-            {[
-              { key: 'connectRate', color: '#4f46e5', title: 'Connect Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.connectRate, 0) / daily.length) : 0 },
-              { key: 'convoRate', color: '#2563eb', title: 'Conversation Rate (>1m)', avg: daily.length ? (daily.reduce((a, d) => a + (d.convoRate || 0), 0) / daily.length) : 0 },
-              { key: 'meetingRate', color: '#16a34a', title: 'Meeting Rate', avg: daily.length ? (daily.reduce((a, d) => a + d.meetingRate, 0) / daily.length) : 0 },
-            ].map(chart => (
-              <div key={chart.key} style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '14px 16px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#1f2937' }}>{chart.title}</span>
-                  <span style={{ fontSize: 18, fontWeight: 800, color: chart.color }}>{chart.avg.toFixed(1)}%</span>
-                </div>
-                <MiniChart data={daily} dataKey={chart.key} color={chart.color} />
-              </div>
-            ))}
-          </div>
 
           {/* ===== CALL ANALYSIS (from AI-analyzed calls) ===== */}
           <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13, borderRadius: '6px 6px 0 0', marginTop: 8 }}>
@@ -617,54 +602,7 @@ Analyze in 3-4 sentences:
             </div>
           </div>
 
-          {/* (daily charts moved above) */}
-
-          {/* ===== BEST TIME TO CALL ===== */}
-          {hourlyStats.totalAll > 0 && (
-            <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
-              <div style={{ background: '#1f2937', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Best Time to Call</div>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
-                <thead>
-                  <tr style={{ background: '#eff6ff', borderBottom: '2px solid #dbeafe' }}>
-                    {['Hour', 'Connects', '% of Total', 'Convos (1m+)', 'Convo Rate', 'Meetings', 'Wrong #', 'Wrong %'].map((h, i) => (
-                      <th key={h} style={{ padding: '8px 10px', textAlign: i === 0 ? 'left' : 'right', fontSize: 11, fontWeight: 700, color: '#1f2937' }}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {Array.from({ length: 10 }, (_, i) => i + 7).map((h, i) => {
-                    const d = hourlyStats.hours[h] || { total: 0, convos: 0, meetings: 0, wrong: 0 };
-                    // Show all hours even if 0 calls
-                    const pctTotal = hourlyStats.totalAll ? (d.total / hourlyStats.totalAll * 100) : 0;
-                    const convoRate = d.total ? (d.convos / d.total * 100) : 0;
-                    const wrongRate = d.total ? (d.wrong / d.total * 100) : 0;
-                    const label = h > 12 ? `${h - 12}:00 PM` : h === 12 ? '12:00 PM' : `${h}:00 AM`;
-                    return (
-                      <tr key={h} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 ? '#f8f9fa' : 'white' }}>
-                        <td style={{ padding: '7px 10px', fontWeight: 600, color: '#374151' }}>{label}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right' }}>{d.total}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', color: '#6b7280' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 6 }}>
-                            <div style={{ width: 60, height: 6, background: '#f3f4f6', borderRadius: 3 }}>
-                              <div style={{ width: `${pctTotal}%`, height: '100%', background: '#4f46e5', borderRadius: 3, opacity: 0.6 }} />
-                            </div>
-                            {pctTotal.toFixed(0)}%
-                          </div>
-                        </td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', color: '#2563eb', fontWeight: 600 }}>{d.convos}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', fontWeight: 600, color: convoRate >= 45 ? '#16a34a' : convoRate >= 35 ? '#d97706' : '#ef4444' }}>{convoRate.toFixed(0)}%</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', fontWeight: 700, color: d.meetings > 0 ? '#16a34a' : '#d1d5db' }}>{d.meetings}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right' }}>{d.wrong}</td>
-                        <td style={{ padding: '7px 10px', textAlign: 'right', color: wrongRate >= 60 ? '#ef4444' : wrongRate >= 50 ? '#d97706' : '#374151', fontWeight: wrongRate >= 50 ? 600 : 400 }}>{wrongRate.toFixed(0)}%</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          {/* ===== ROW 6: MEETINGS LIST ===== */}
+          {/* ===== MEETINGS LIST ===== */}
           {meetingCalls.length > 0 && (
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', overflow: 'hidden', marginBottom: 16 }}>
               <div style={{ background: '#16a34a', color: 'white', padding: '10px 16px', fontWeight: 700, fontSize: 13 }}>Meetings Booked ({meetingCalls.length})</div>
