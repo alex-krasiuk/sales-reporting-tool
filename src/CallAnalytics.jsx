@@ -278,12 +278,22 @@ const fmtDuration = (ms) => {
 
 const pacificNow = () => new Date(Date.now() - 7 * 60 * 60 * 1000);
 
+// If today is Sat/Sun, return last Friday. Otherwise return today.
+const lastWeekday = () => {
+  const d = pacificNow();
+  const day = d.getDay(); // 0=Sun, 6=Sat
+  if (day === 0) d.setDate(d.getDate() - 2); // Sun → Fri
+  else if (day === 6) d.setDate(d.getDate() - 1); // Sat → Fri
+  return d.toISOString().slice(0, 10);
+};
+
 export default function CallAnalytics() {
   const [rows] = useState(CALL_DATA);
   const [search, setSearch] = useState('');
   const pacificToday = pacificNow().toISOString().slice(0, 10);
-  const [filterDateFrom, setFilterDateFrom] = useState(pacificToday);
-  const [filterDateTo, setFilterDateTo] = useState(pacificToday);
+  const defaultDay = lastWeekday();
+  const [filterDateFrom, setFilterDateFrom] = useState(defaultDay);
+  const [filterDateTo, setFilterDateTo] = useState(defaultDay);
   const [filterOutcome, setFilterOutcome] = useState('All');
   const [filterRep, setFilterRep] = useState('All');
   const [filterOffer, setFilterOffer] = useState('All');
@@ -407,8 +417,8 @@ export default function CallAnalytics() {
           <option value="None">None</option>
           {OBJECTIONS.map(o => <option key={o} value={o}>{o}</option>)}
         </select>
-        {(search || filterOutcome !== 'All' || filterRep !== 'All' || filterOffer !== 'All' || filterObjection !== 'All' || filterDateFrom !== pacificToday || filterDateTo !== pacificToday) && (
-          <button onClick={() => { setSearch(''); setFilterOutcome('All'); setFilterRep('All'); setFilterOffer('All'); setFilterObjection('All'); setFilterDateFrom(pacificToday); setFilterDateTo(pacificToday); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>Clear</button>
+        {(search || filterOutcome !== 'All' || filterRep !== 'All' || filterOffer !== 'All' || filterObjection !== 'All' || filterDateFrom !== defaultDay || filterDateTo !== defaultDay) && (
+          <button onClick={() => { setSearch(''); setFilterOutcome('All'); setFilterRep('All'); setFilterOffer('All'); setFilterObjection('All'); setFilterDateFrom(defaultDay); setFilterDateTo(defaultDay); }} style={{ background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: 7, padding: '7px 10px', fontSize: 12, cursor: 'pointer' }}>Clear</button>
         )}
         <div style={{ flex: 1 }} />
         <span style={{ fontSize: 12, color: '#9ca3af' }}>{filtered.length} calls</span>

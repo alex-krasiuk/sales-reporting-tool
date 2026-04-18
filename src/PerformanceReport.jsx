@@ -220,9 +220,17 @@ export default function PerformanceReport() {
   const pacificNow = () => new Date(Date.now() - 7 * 60 * 60 * 1000);
   const todayStr = pacificNow().toISOString().slice(0, 10);
   const mondayStr = (() => { const m = getMonday(pacificNow()); return m.toISOString().slice(0, 10); })();
+  // Default to last Friday if weekend, else today
+  const defaultDay = (() => {
+    const d = pacificNow();
+    const day = d.getDay();
+    if (day === 0) d.setDate(d.getDate() - 2);
+    else if (day === 6) d.setDate(d.getDate() - 1);
+    return d.toISOString().slice(0, 10);
+  })();
 
-  const [dateFrom, setDateFrom] = useState(todayStr);
-  const [dateTo, setDateTo] = useState(todayStr);
+  const [dateFrom, setDateFrom] = useState(defaultDay);
+  const [dateTo, setDateTo] = useState(defaultDay);
 
   // Instant — computed from local data, no loading
   const r = useMemo(() => buildReport(dateFrom, dateTo), [dateFrom, dateTo]);

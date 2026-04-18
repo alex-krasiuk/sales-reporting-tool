@@ -164,8 +164,16 @@ export default function AnalyticsCharts() {
   const pacificNow = () => new Date(Date.now() - 7 * 60 * 60 * 1000);
   const todayStr = pacificNow().toISOString().slice(0, 10);
   const mondayStr = (() => { const d = pacificNow(); const day = d.getDay(); d.setDate(d.getDate() - (day === 0 ? 6 : day - 1)); return d.toISOString().slice(0, 10); })();
-  const [dateFrom, setDateFrom] = useState(todayStr);
-  const [dateTo, setDateTo] = useState(todayStr);
+  // Default to last Friday if weekend, else today
+  const defaultDay = (() => {
+    const d = pacificNow();
+    const day = d.getDay();
+    if (day === 0) d.setDate(d.getDate() - 2);
+    else if (day === 6) d.setDate(d.getDate() - 1);
+    return d.toISOString().slice(0, 10);
+  })();
+  const [dateFrom, setDateFrom] = useState(defaultDay);
+  const [dateTo, setDateTo] = useState(defaultDay);
 
   // Notes & Changes
   const [notes, setNotes] = useState(() => { try { return JSON.parse(localStorage.getItem('call_analytics_notes') || '[]'); } catch { return []; } });
