@@ -203,7 +203,7 @@ export default function AnalyticsCharts() {
     const calc = (arr) => {
       const total = arr.length;
       const convos = arr.filter(d => d.durationMs >= 60000).length;
-      const mtgs = arr.filter(d => d.outcome === 'Meeting Booked').length;
+      const mtgs = arr.filter(d => d.isMeeting).length;
       const wrongNum = arr.filter(d => d.outcome === 'Wrong number').length;
       const days = new Set(arr.map(d => d.date)).size;
       return { total, convos, mtgs, wrongNum, days, connectRate: total, convoRate: total ? Math.round(convos / total * 100) : 0, wrongRate: total ? Math.round(wrongNum / total * 100) : 0, mtgRate: convos ? Math.round(mtgs / convos * 100) : 0 };
@@ -276,13 +276,13 @@ Analyze in 3-4 sentences:
   const reps = {};
   allDials.forEach(d => {
     const r = d.rep;
-    if (!reps[r]) reps[r] = { dials: 0, connects: 0, conversations: 0, meetings: 0, followUp: 0, notInterested: 0, heardPitch: 0 };
+    if (!reps[r]) reps[r] = { dials: 0, connects: 0, conversations: 0, meetings: 0, positive: 0, negative: 0, heardPitch: 0 };
     reps[r].dials++;
     if (d.isConnect) reps[r].connects++;
     if (d.isConversation) reps[r].conversations++;
     if (d.isMeeting) reps[r].meetings++;
-    if (d.outcome === 'Follow up - interested') reps[r].followUp++;
-    if (d.outcome === 'Not Interested') reps[r].notInterested++;
+    if ((d.outcome || '').startsWith('Connected Positive')) reps[r].positive++;
+    if ((d.outcome || '').startsWith('Connected Negative')) reps[r].negative++;
   });
   // Add heardPitch from enriched connects
   filtered.forEach(d => {
@@ -339,7 +339,7 @@ Analyze in 3-4 sentences:
   }, [allDials]);
 
   // --- Hook & Icebreaker analytics ---
-  const meetingCalls = filtered.filter(d => d.outcome === 'Meeting Booked').sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+  const meetingCalls = filtered.filter(d => d.isMeeting).sort((a, b) => b.timestamp.localeCompare(a.timestamp));
 
   // --- Best time to call (all calls by hour) ---
   const hourlyStats = useMemo(() => {
@@ -358,7 +358,7 @@ Analyze in 3-4 sentences:
         hours[h].total++;
         totalAll++;
         if (d.durationMs >= 60000) hours[h].convos++;
-        if (d.outcome === 'Meeting Booked') hours[h].meetings++;
+        if (d.isMeeting) hours[h].meetings++;
         if (d.outcome?.startsWith('Wrong') || d.outcome === 'Wrong number') hours[h].wrong++;
       } catch {}
     });
@@ -375,7 +375,7 @@ Analyze in 3-4 sentences:
       if (!cat || cat === 'Not reached' || cat === 'Follow-up call') return;
       if (!cats[cat]) cats[cat] = { total: 0, meetings: 0 };
       cats[cat].total++;
-      if (d.outcome === 'Meeting Booked') cats[cat].meetings++;
+      if (d.isMeeting) cats[cat].meetings++;
     });
     return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
   }, [filtered]);
@@ -389,9 +389,9 @@ Analyze in 3-4 sentences:
       const ib = d.iceBreaker?.text;
       if (!ib) return;
       if (FOLLOWUP_RE.test(ib)) {
-        warmTotal++; if (d.iceBreaker?.success) warmPassed++; if (d.outcome === 'Meeting Booked') warmMeetings++;
+        warmTotal++; if (d.iceBreaker?.success) warmPassed++; if (d.isMeeting) warmMeetings++;
       } else {
-        coldTotal++; if (d.iceBreaker?.success) coldPassed++; if (d.outcome === 'Meeting Booked') coldMeetings++;
+        coldTotal++; if (d.iceBreaker?.success) coldPassed++; if (d.isMeeting) coldMeetings++;
       }
     });
     // Element stats (cold calls only)
@@ -401,7 +401,7 @@ Analyze in 3-4 sentences:
         const ib = d.iceBreaker?.text;
         if (!ib || FOLLOWUP_RE.test(ib)) return; // skip warm calls
         if (el.regex.test(ib)) {
-          total++; if (d.iceBreaker?.success) passed++; if (d.outcome === 'Meeting Booked') meetings++;
+          total++; if (d.iceBreaker?.success) passed++; if (d.isMeeting) meetings++;
         }
       });
       return { ...el, total, passed, meetings };
@@ -503,10 +503,14 @@ Analyze in 3-4 sentences:
                 connectedOnly.forEach(d => { outcomes[d.outcome] = (outcomes[d.outcome] || 0) + 1; });
                 const sorted = Object.entries(outcomes).sort((a, b) => b[1] - a[1]);
                 const colorMap = {
-                  'Meeting Booked': '#16a34a', 'Follow up - interested': '#0891b2', 'Account to Pursue': '#059669',
-                  'Connected': '#4f46e5', 'Not Interested': '#ef4444', 'Busy': '#d97706',
-                  'No answer': '#9ca3af', 'Voicemail': '#9ca3af', 'Wrong number': '#f97316',
-                  'Wrong Contact': '#f97316', 'Wrong contact - referral': '#f97316',
+                  'Connected': '#4f46e5', 'Connected : Confirmed Meeting': '#16a34a', 'Connected : Demo Set': '#16a34a',
+                  'Connected : No Longer With Company': '#9ca3af', 'Connected : Not Decision Maker': '#f97316', 'Connected : Opt Out': '#ef4444',
+                  'Connected Negative - Competitor': '#ef4444', 'Connected Negative - Homegrown': '#ef4444',
+                  'Connected Negative - Other': '#ef4444', 'Connected Negative - Timing': '#d97706',
+                  'Connected Positive : Add To Strat': '#0891b2', 'Connected Positive : Call Later': '#0891b2',
+                  'Connected Positive : Follow-Up (PS)': '#0891b2',
+                  'Hung Up': '#9ca3af', 'Left live message': '#9ca3af', 'Left voicemail': '#9ca3af',
+                  'Busy': '#d97706', 'No answer': '#9ca3af', 'Wrong number': '#f97316',
                 };
                 return sorted.map(([outcome, count]) => (
                   <ObjBar key={outcome} label={outcome} count={count} total={totalConnects} color={colorMap[outcome] || '#6b7280'} />

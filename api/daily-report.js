@@ -4,27 +4,40 @@ const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK_URL || '';
 const BRANDON_OWNER_ID = '163308867';
 
 const DISP_MAP = {
-  'f240bbac-87c9-4f6e-bf70-924b57d47db7': 'Connected',
-  'a12225bd-f90c-43bb-aa10-4b7875a05937': 'Not Interested',
-  '91fd5005-2ed7-45dd-b8ec-f22511b5ece2': 'Wrong Contact',
-  'f76aed06-41e0-4b55-8f96-361bfd09bf0c': 'Follow up - interested',
   '9d9162e7-6cf3-4944-bf63-4dff82258764': 'Busy',
+  'f240bbac-87c9-4f6e-bf70-924b57d47db7': 'Connected',
+  '348880cf-1981-4671-b4de-0645d5926dfa': 'Connected : Confirmed Meeting',
+  'af0d4f3e-13fd-4917-8242-b32daaad5fd8': 'Connected : Demo Set',
+  '79ce9f07-ff5f-4f17-ba9e-01d8d8838c75': 'Connected : No Longer With Company',
+  '91fd5005-2ed7-45dd-b8ec-f22511b5ece2': 'Connected : Not Decision Maker',
+  '63c120ab-9172-4cc9-92d5-73628674759a': 'Connected : Opt Out',
+  '7b8d1d5e-9280-44c2-b201-3bd47709b716': 'Connected Negative - Competitor',
+  'c8d1d5f1-fa74-4b16-8973-ef69bb98c3e5': 'Connected Negative - Homegrown',
+  '38cfbd27-abc5-4e34-aa18-2f95d0446518': 'Connected Negative - Other',
+  '5a19720c-f6a2-4d55-b260-d37f955f1316': 'Connected Negative - Timing',
+  'c9d83dd7-08e6-4fa6-abf8-f00768c1a23e': 'Connected Positive : Add To Strat',
+  '255a94e1-a80f-4799-b533-0d46e9e83732': 'Connected Positive : Call Later',
+  '6e91ac09-47aa-4071-b418-837a389c9b18': 'Connected Positive : Follow-Up (PS)',
+  'eeda19de-af72-47f6-820e-7a3348267d16': 'Hung Up',
   'a4c4c377-d246-4b32-a13b-75a56a4cd0ff': 'Left live message',
-  '81180310-0202-4b44-8417-168bd57e399a': 'Meeting Booked',
-  'b2cf5968-551e-4856-9783-52b3da59a7d0': 'Voicemail',
+  'b2cf5968-551e-4856-9783-52b3da59a7d0': 'Left voicemail',
   '73a0d17f-1163-4015-bdd5-ec830791da20': 'No answer',
   '17b47fee-58de-441e-a44c-c6300d46f273': 'Wrong number',
-  '72a50c73-0b12-4595-9c31-5f197913be05': 'Wrong contact - referral',
-  'e9a4df2f-3fcd-4f8a-bbd8-7634e48ca97c': 'No longer at company',
-  '95d90a61-32bf-4d8d-9445-010e6ce6a055': 'Account to Pursue',
-  'fa4b685a-eb2a-4a5f-ac74-a8e8dde76558': 'Call me later',
 };
 
-// Nooks definition: these are NOT connects
+// Not connects: dispositions where no live conversation happened
 const NOT_CONNECT = new Set([
-  'b2cf5968-551e-4856-9783-52b3da59a7d0', // Voicemail
+  '9d9162e7-6cf3-4944-bf63-4dff82258764', // Busy
+  'eeda19de-af72-47f6-820e-7a3348267d16', // Hung Up
+  'a4c4c377-d246-4b32-a13b-75a56a4cd0ff', // Left live message
+  'b2cf5968-551e-4856-9783-52b3da59a7d0', // Left voicemail
   '73a0d17f-1163-4015-bdd5-ec830791da20', // No answer
   '17b47fee-58de-441e-a44c-c6300d46f273', // Wrong number
+]);
+
+const MEETING_GUIDS = new Set([
+  '348880cf-1981-4671-b4de-0645d5926dfa', // Connected : Confirmed Meeting
+  'af0d4f3e-13fd-4917-8242-b32daaad5fd8', // Connected : Demo Set
 ]);
 
 async function hsFetch(path, body) {
@@ -77,13 +90,13 @@ function processCalls(calls) {
   const dials = calls.length;
   const connects = calls.filter(c => !NOT_CONNECT.has(c.properties.hs_call_disposition));
   const convos = calls.filter(c => !NOT_CONNECT.has(c.properties.hs_call_disposition) && parseInt(c.properties.hs_call_duration || '0') >= 60000);
-  const meetings = calls.filter(c => c.properties.hs_call_disposition === '81180310-0202-4b44-8417-168bd57e399a');
-  const followUps = connects.filter(c => c.properties.hs_call_disposition === 'f76aed06-41e0-4b55-8f96-361bfd09bf0c').length;
-  const notInterested = connects.filter(c => c.properties.hs_call_disposition === 'a12225bd-f90c-43bb-aa10-4b7875a05937').length;
-  const busy = connects.filter(c => c.properties.hs_call_disposition === '9d9162e7-6cf3-4944-bf63-4dff82258764').length;
+  const meetings = calls.filter(c => MEETING_GUIDS.has(c.properties.hs_call_disposition));
+  const positive = connects.filter(c => (DISP_MAP[c.properties.hs_call_disposition] || '').startsWith('Connected Positive')).length;
+  const negative = connects.filter(c => (DISP_MAP[c.properties.hs_call_disposition] || '').startsWith('Connected Negative')).length;
+  const busy = calls.filter(c => c.properties.hs_call_disposition === '9d9162e7-6cf3-4944-bf63-4dff82258764').length;
   const wrongNum = calls.filter(c => c.properties.hs_call_disposition === '17b47fee-58de-441e-a44c-c6300d46f273').length;
   const cr = dials ? (connects.length / dials * 100).toFixed(1) : '0';
-  return { dials, connects: connects.length, convos: convos.length, meetings: meetings.length, followUps, notInterested, busy, wrongNum, cr, convoList: convos, meetingList: meetings };
+  return { dials, connects: connects.length, convos: convos.length, meetings: meetings.length, positive, negative, busy, wrongNum, cr, convoList: convos, meetingList: meetings };
 }
 
 export default async function handler(req, res) {
@@ -160,7 +173,7 @@ export default async function handler(req, res) {
     msg += `\n━━━━━━━━━━━━━━━━━━━━━\n\n`;
     msg += `👤 *Brandon Liao*\n`;
     msg += `Dials: *${t.dials}* → Connects: *${t.connects}* (${t.cr}%) → Convos (>1m): *${t.convos}* → Meetings: *${t.meetings}*\n`;
-    msg += `Interested: ${t.followUps} | Not Interested: ${t.notInterested} | Busy: ${t.busy} | Wrong #: ${t.wrongNum}\n\n`;
+    msg += `Positive: ${t.positive} | Negative: ${t.negative} | Busy: ${t.busy} | Wrong #: ${t.wrongNum}\n\n`;
 
     msg += `📈 _vs ${prev.label}:_\n`;
     msg += `_• Dials: ${p.dials} ${arrow(t.dials, p.dials)}`;

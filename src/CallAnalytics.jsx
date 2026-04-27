@@ -257,17 +257,25 @@ const OBJECTION_COLORS = {
 };
 
 const OUTCOME_COLORS = {
-  'Not Interested':              { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
-  'Meeting Booked':              { bg: '#dcfce7', text: '#16a34a', dot: '#22c55e' },
-  'Follow up - interested':      { bg: '#dbeafe', text: '#2563eb', dot: '#3b82f6' },
-  'Call me later':               { bg: '#fef3c7', text: '#d97706', dot: '#f59e0b' },
-  'Account to Pursue':           { bg: '#f0fdf4', text: '#15803d', dot: '#4ade80' },
-  'Connected':                   { bg: '#ede9fe', text: '#7c3aed', dot: '#8b5cf6' },
-  'Busy':                        { bg: '#fef3c7', text: '#92400e', dot: '#f59e0b' },
-  'No longer at company':        { bg: '#f3f4f6', text: '#6b7280', dot: '#9ca3af' },
-  'Wrong Contact - no referral': { bg: '#fef3c7', text: '#92400e', dot: '#f59e0b' },
-  'Wrong contact - referral':    { bg: '#fef3c7', text: '#92400e', dot: '#f59e0b' },
-  'Wrong number':                { bg: '#e5e7eb', text: '#6b7280', dot: '#9ca3af' },
+  'Connected':                          { bg: '#ede9fe', text: '#7c3aed', dot: '#8b5cf6' },
+  'Connected : Confirmed Meeting':      { bg: '#dcfce7', text: '#16a34a', dot: '#22c55e' },
+  'Connected : Demo Set':               { bg: '#dcfce7', text: '#16a34a', dot: '#22c55e' },
+  'Connected : No Longer With Company': { bg: '#f3f4f6', text: '#6b7280', dot: '#9ca3af' },
+  'Connected : Not Decision Maker':     { bg: '#fef3c7', text: '#92400e', dot: '#f59e0b' },
+  'Connected : Opt Out':                { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
+  'Connected Negative - Competitor':    { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
+  'Connected Negative - Homegrown':     { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
+  'Connected Negative - Other':         { bg: '#fee2e2', text: '#dc2626', dot: '#ef4444' },
+  'Connected Negative - Timing':        { bg: '#fef3c7', text: '#d97706', dot: '#f59e0b' },
+  'Connected Positive : Add To Strat':  { bg: '#dbeafe', text: '#2563eb', dot: '#3b82f6' },
+  'Connected Positive : Call Later':    { bg: '#dbeafe', text: '#2563eb', dot: '#3b82f6' },
+  'Connected Positive : Follow-Up (PS)':{ bg: '#dbeafe', text: '#2563eb', dot: '#3b82f6' },
+  'Hung Up':                            { bg: '#f3f4f6', text: '#6b7280', dot: '#9ca3af' },
+  'Left live message':                  { bg: '#e5e7eb', text: '#6b7280', dot: '#9ca3af' },
+  'Left voicemail':                     { bg: '#e5e7eb', text: '#6b7280', dot: '#9ca3af' },
+  'Busy':                               { bg: '#fef3c7', text: '#92400e', dot: '#f59e0b' },
+  'No answer':                          { bg: '#e5e7eb', text: '#6b7280', dot: '#9ca3af' },
+  'Wrong number':                       { bg: '#e5e7eb', text: '#6b7280', dot: '#9ca3af' },
 };
 
 const fmtDuration = (ms) => {
@@ -356,15 +364,15 @@ export default function CallAnalytics() {
     const connects = allDials.filter(d => d.isConnect).length;
     const convos = allDials.filter(d => d.isConversation).length;
     const meetings = allDials.filter(d => d.isMeeting).length;
-    const followUps = allDials.filter(d => d.outcome === 'Follow up - interested').length;
-    const notInterested = allDials.filter(d => d.outcome === 'Not Interested').length;
+    const positive = allDials.filter(d => (d.outcome || '').startsWith('Connected Positive')).length;
+    const negative = allDials.filter(d => (d.outcome || '').startsWith('Connected Negative')).length;
     const cr = dials ? (connects / dials * 100).toFixed(1) : '0';
-    return { dials, connects, convos, meetings, followUps, notInterested, cr };
+    return { dials, connects, convos, meetings, positive, negative, cr };
   }, [allDials]);
 
   // Unique values for filters
   const reps = useMemo(() => ['All', ...new Set(rows.map(r => r.rep))], [rows]);
-  const outcomes = ['All', 'Meeting Booked', 'Follow up - interested', 'Account to Pursue', 'Not Interested', 'Connected', 'Busy', 'Call me later', 'Wrong number', 'Wrong contact - referral', 'No longer at company'];
+  const outcomes = ['All', 'Connected : Confirmed Meeting', 'Connected : Demo Set', 'Connected Positive : Add To Strat', 'Connected Positive : Call Later', 'Connected Positive : Follow-Up (PS)', 'Connected Negative - Competitor', 'Connected Negative - Homegrown', 'Connected Negative - Timing', 'Connected Negative - Other', 'Connected : Not Decision Maker', 'Connected : Opt Out', 'Connected : No Longer With Company', 'Connected', 'Hung Up', 'Busy', 'Left voicemail', 'No answer', 'Wrong number'];
 
   // Date presets
   const mondayStr = (() => { const d = pacificNow(); const day = d.getDay(); d.setDate(d.getDate() - (day === 0 ? 6 : day - 1)); return d.toISOString().slice(0, 10); })();

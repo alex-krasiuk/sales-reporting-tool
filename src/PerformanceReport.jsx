@@ -134,7 +134,7 @@ function buildReport(dateFrom, dateTo) {
   const enriched = thisPeriod.map(c => {
     const dayOfWeek = DAYS[new Date(c.date + 'T12:00:00').getUTCDay()];
     const vertical = consolidateVertical(c.vertical || c.industry);
-    const disposition = c.isConnect ? (c.isMeeting ? 'Meeting Booked' : 'Connected') : c.outcome;
+    const disposition = c.outcome || 'Other';
     return { ...c, dayOfWeek, vertical, disposition };
   });
 
@@ -261,7 +261,7 @@ export default function PerformanceReport() {
   const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const sortedDays = dayOrder.filter(d => r.byDay[d]);
 
-  const outcomeOrder = ['Connected', 'Meeting Booked', 'Follow up - interested', 'Not Interested', 'Busy', 'Wrong number', 'No answer', 'Voicemail', 'Wrong Contact', 'Wrong contact - referral', 'Account to Pursue', 'No longer at company', 'Left live message', 'Other'];
+  const outcomeOrder = ['Connected', 'Connected : Confirmed Meeting', 'Connected : Demo Set', 'Connected Positive : Add To Strat', 'Connected Positive : Call Later', 'Connected Positive : Follow-Up (PS)', 'Connected Negative - Competitor', 'Connected Negative - Homegrown', 'Connected Negative - Timing', 'Connected Negative - Other', 'Connected : Not Decision Maker', 'Connected : Opt Out', 'Connected : No Longer With Company', 'Hung Up', 'Busy', 'Left live message', 'Left voicemail', 'No answer', 'Wrong number', 'Other'];
   const sortedOutcomes = outcomeOrder.filter(o => r.dispositionCounts[o]);
 
   return (
