@@ -447,6 +447,41 @@ Analyze in 3-4 sentences:
             <MetricCard label="Meetings Booked" value={meetings} sub={totalDials ? `${(meetings / totalDials * 100).toFixed(2)}% of dials` : ''} color="#16a34a" big />
           </div>
 
+          {/* ===== SDR BREAKDOWN ===== */}
+          {(() => {
+            const sorted = Object.entries(reps).filter(([, d]) => d.dials > 0).sort((a, b) => b[1].dials - a[1].dials);
+            if (sorted.length === 0) return null;
+            return (
+              <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', marginBottom: 16 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 12 }}>SDR Breakdown</div>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
+                  <thead>
+                    <tr style={{ borderBottom: '1px solid #e5e7eb' }}>
+                      <th style={{ textAlign: 'left', padding: '6px 10px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Rep</th>
+                      <th style={{ textAlign: 'right', padding: '6px 10px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Dials</th>
+                      <th style={{ textAlign: 'right', padding: '6px 10px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Connects</th>
+                      <th style={{ textAlign: 'right', padding: '6px 10px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Connect %</th>
+                      <th style={{ textAlign: 'right', padding: '6px 10px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Convos</th>
+                      <th style={{ textAlign: 'right', padding: '6px 10px', fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Meetings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sorted.map(([name, d]) => (
+                      <tr key={name} style={{ borderBottom: '1px solid #f3f4f6' }}>
+                        <td style={{ padding: '6px 10px', color: '#1f2937', fontWeight: 500 }}>{name}</td>
+                        <td style={{ padding: '6px 10px', textAlign: 'right', color: '#1f2937' }}>{d.dials}</td>
+                        <td style={{ padding: '6px 10px', textAlign: 'right', color: '#1f2937' }}>{d.connects}</td>
+                        <td style={{ padding: '6px 10px', textAlign: 'right', color: '#1f2937' }}>{d.dials ? (d.connects / d.dials * 100).toFixed(1) : '0'}%</td>
+                        <td style={{ padding: '6px 10px', textAlign: 'right', color: '#1f2937' }}>{d.conversations}</td>
+                        <td style={{ padding: '6px 10px', textAlign: 'right', color: '#1f2937' }}>{d.meetings}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+          })()}
+
           {/* ===== OFFER PERFORMANCE + CALL OUTCOMES ===== */}
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
             {/* Offer Performance — Convos only (>60s). Bar visual shows relative Conv→Mtg rate. */}
