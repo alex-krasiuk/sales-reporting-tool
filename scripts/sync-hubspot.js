@@ -32,7 +32,8 @@ const TOKEN = process.env.HUBSPOT_TOKEN;
 if (!TOKEN) { console.error('Missing HUBSPOT_TOKEN'); process.exit(1); }
 
 // --- Config ---
-const OWNER_MAP = { '163308867': 'Brandon Liao', '162266623': 'Chuck Gartland', '164112986': 'Joe Ammirato', '161641940': 'Wesley Bayer' };
+// Owner map is built dynamically from HubSpot owners API
+let OWNER_MAP = {};
 
 const DISP_MAP = {
   '9d9162e7-6cf3-4944-bf63-4dff82258764': 'Busy',
@@ -155,6 +156,23 @@ async function batchCompanies(companyIds) {
       });
       (data.results || []).forEach(c => { map[String(c.id)] = c.properties; });
     } catch (e) { console.warn(`  companies batch error: ${e.message}`); }
+  }
+  return map;
+}
+
+// --- Fetch all HubSpot owners ---
+async function fetchOwners() {
+  const map = {};
+  let after;
+  while (true) {
+    const path = after ? `/crm/v3/owners?limit=100&after=${after}` : '/crm/v3/owners?limit=100';
+    const data = await hsFetch(path);
+    (data.results || []).forEach(o => {
+      const name = `${o.firstName || ''} ${o.lastName || ''}`.trim();
+      if (name) map[String(o.id)] = name;
+    });
+    if (data.paging?.next?.after) after = data.paging.next.after;
+    else break;
   }
   return map;
 }
@@ -305,16 +323,20 @@ async function main() {
   const since = new Date('2026-02-01T00:00:00Z').getTime();
   const now = Date.now();
 
+  console.log('0/5  Fetching HubSpot owners...');
+  OWNER_MAP = await fetchOwners();
+  console.log(`     ${Object.keys(OWNER_MAP).length} owners loaded`);
+
   console.log('1/5  Fetching all outbound calls...');
   const rawCalls = await searchCalls(since, now);
   console.log(`     ${rawCalls.length} calls fetched`);
 
-  // Only process calls from our reps
+  // Include all calls that have a known owner
   const ourCalls = rawCalls.filter(c => {
     const owner = c.properties?.hubspot_owner_id;
     return OWNER_MAP[owner];
   });
-  console.log(`     ${ourCalls.length} calls from our reps`);
+  console.log(`     ${ourCalls.length} calls with known owners`);
 
   // Get connected call IDs for enrichment (skip no-answer/voicemail for speed)
   const connectedCallIds = ourCalls

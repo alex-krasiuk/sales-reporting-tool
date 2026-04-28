@@ -23,15 +23,7 @@ const DISPOSITION_MAP = {
   '17b47fee-58de-441e-a44c-c6300d46f273': 'Wrong number',
 };
 
-const OWNER_MAP = {
-  '163308867': 'Brandon Liao',
-  '162266623': 'Chuck Gartland',
-  '164112986': 'Joe Ammirato',
-  '161641940': 'Wesley Bayer',
-};
-
 const VALID_DISPOSITIONS = Object.keys(DISPOSITION_MAP);
-const OWNER_IDS = Object.keys(OWNER_MAP);
 const POLL_INTERVAL = 2 * 60 * 1000; // 2 minutes
 
 function parseCall(raw) {
@@ -52,7 +44,7 @@ function parseCall(raw) {
     date,
     time,
     timestamp: ts,
-    rep: OWNER_MAP[p.hubspot_owner_id] || 'Unknown',
+    rep: p.hubspot_owner_id || 'Unknown',
     outcome: DISPOSITION_MAP[p.hs_call_disposition] || 'Unknown',
     durationMs: parseInt(p.hs_call_duration || '0', 10),
     notes: summary,
@@ -68,19 +60,17 @@ async function fetchCalls(token, afterTimestamp) {
     'hs_call_disposition', 'hs_call_duration', 'hs_timestamp', 'hubspot_owner_id',
   ];
 
-  // Build filter groups: one per owner (OR), each with disposition IN + duration >= 10s
-  const filterGroups = OWNER_IDS.map(ownerId => {
-    const filters = [
-      { propertyName: 'hubspot_owner_id', operator: 'EQ', value: ownerId },
-      { propertyName: 'hs_call_disposition', operator: 'IN', values: VALID_DISPOSITIONS },
-      { propertyName: 'hs_call_duration', operator: 'GTE', value: '10000' },
-      { propertyName: 'hs_call_has_transcript', operator: 'EQ', value: 'true' },
-    ];
-    if (afterTimestamp) {
-      filters.push({ propertyName: 'hs_timestamp', operator: 'GT', value: afterTimestamp });
-    }
-    return { filters };
-  });
+  // Filter by disposition + duration + transcript (all owners)
+  const filters = [
+    { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
+    { propertyName: 'hs_call_disposition', operator: 'IN', values: VALID_DISPOSITIONS },
+    { propertyName: 'hs_call_duration', operator: 'GTE', value: '10000' },
+    { propertyName: 'hs_call_has_transcript', operator: 'EQ', value: 'true' },
+  ];
+  if (afterTimestamp) {
+    filters.push({ propertyName: 'hs_timestamp', operator: 'GT', value: afterTimestamp });
+  }
+  const filterGroups = [{ filters }];
 
   const allResults = [];
   let offset = 0;
