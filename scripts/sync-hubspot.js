@@ -68,8 +68,7 @@ const NOT_CONNECT = new Set([
 ]);
 
 const MEETING_GUIDS = new Set([
-  '348880cf-1981-4671-b4de-0645d5926dfa', // Connected : Confirmed Meeting
-  'af0d4f3e-13fd-4917-8242-b32daaad5fd8', // Connected : Demo Set
+  'af0d4f3e-13fd-4917-8242-b32daaad5fd8', // Connected : Demo Set (new demos only)
 ]);
 
 // --- HubSpot API helpers ---
@@ -331,12 +330,9 @@ async function main() {
   const rawCalls = await searchCalls(since, now);
   console.log(`     ${rawCalls.length} calls fetched`);
 
-  // Include all calls that have a known owner
-  const ourCalls = rawCalls.filter(c => {
-    const owner = c.properties?.hubspot_owner_id;
-    return OWNER_MAP[owner];
-  });
-  console.log(`     ${ourCalls.length} calls with known owners`);
+  // Include all outbound calls — use owner ID as fallback name
+  const ourCalls = rawCalls.filter(c => c.properties?.hubspot_owner_id);
+  console.log(`     ${ourCalls.length} calls with owners`);
 
   // Get connected call IDs for enrichment (skip no-answer/voicemail for speed)
   const connectedCallIds = ourCalls
@@ -367,7 +363,7 @@ async function main() {
     const outcome = DISP_MAP[dispGuid] || 'Other';
     const durationMs = parseInt(p.hs_call_duration) || 0;
     const { date, time } = toPacific(p.hs_timestamp);
-    const rep = OWNER_MAP[p.hubspot_owner_id] || 'Unknown';
+    const rep = OWNER_MAP[p.hubspot_owner_id] || `Owner ${p.hubspot_owner_id}`;
 
     // Contact enrichment
     const contactId = callToContact[callId];

@@ -39,8 +39,7 @@ const NOT_CONNECT = new Set([
 ]);
 
 const MEETING_GUIDS = new Set([
-  '348880cf-1981-4671-b4de-0645d5926dfa', // Connected : Confirmed Meeting
-  'af0d4f3e-13fd-4917-8242-b32daaad5fd8', // Connected : Demo Set
+  'af0d4f3e-13fd-4917-8242-b32daaad5fd8', // Connected : Demo Set (new demos only)
 ]);
 
 async function hsFetch(path, body) {
