@@ -32,7 +32,7 @@ const TOKEN = process.env.HUBSPOT_TOKEN;
 if (!TOKEN) { console.error('Missing HUBSPOT_TOKEN'); process.exit(1); }
 
 // --- Config ---
-const OWNER_MAP = { '163308867': 'Brandon Liao', '162266623': 'Chuck Gartland' };
+const OWNER_MAP = { '163308867': 'Brandon Liao', '162266623': 'Chuck Gartland', '164112986': 'Joe Ammirato', '161641940': 'Wesley Bayer' };
 
 const DISP_MAP = {
   '9d9162e7-6cf3-4944-bf63-4dff82258764': 'Busy',

@@ -1,7 +1,10 @@
 const HUBSPOT_TOKEN = process.env.HUBSPOT_TOKEN || '';
 const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK_URL || '';
 
-const BRANDON_OWNER_ID = '163308867';
+const REPS = {
+  '163308867': 'Brandon Liao',
+  '164112986': 'Joe Ammirato',
+};
 
 const DISP_MAP = {
   '9d9162e7-6cf3-4944-bf63-4dff82258764': 'Busy',
@@ -62,7 +65,7 @@ function lastWorkdayMs(fromMs) {
   };
 }
 
-async function fetchCalls(fromMs, toMs) {
+async function fetchCalls(fromMs, toMs, ownerId) {
   const all = [];
   let after;
   while (true) {
@@ -71,7 +74,7 @@ async function fetchCalls(fromMs, toMs) {
         { propertyName: 'hs_call_direction', operator: 'EQ', value: 'OUTBOUND' },
         { propertyName: 'hs_timestamp', operator: 'GTE', value: String(fromMs) },
         { propertyName: 'hs_timestamp', operator: 'LT', value: String(toMs) },
-        { propertyName: 'hubspot_owner_id', operator: 'EQ', value: BRANDON_OWNER_ID },
+        { propertyName: 'hubspot_owner_id', operator: 'EQ', value: ownerId },
       ]}],
       properties: ['hs_call_disposition', 'hs_timestamp', 'hubspot_owner_id', 'hs_call_duration', 'hs_call_recording_url'],
       sorts: [{ propertyName: 'hs_timestamp', direction: 'DESCENDING' }],
@@ -112,17 +115,22 @@ export default async function handler(req, res) {
     // Last workday for comparison
     const prev = lastWorkdayMs(fromMs);
 
-    // Fetch Brandon's calls — today + last workday
-    const todayCalls = await fetchCalls(fromMs, toMs);
-    const prevCalls = await fetchCalls(prev.fromMs, prev.toMs);
+    // Fetch calls for all reps — today + last workday
+    const repIds = Object.keys(REPS);
+    const allEnrichIds = [];
+    const repData = {};
 
-    const t = processCalls(todayCalls);
-    const p = processCalls(prevCalls);
+    for (const ownerId of repIds) {
+      const todayCalls = await fetchCalls(fromMs, toMs, ownerId);
+      const prevCalls = await fetchCalls(prev.fromMs, prev.toMs, ownerId);
+      const t = processCalls(todayCalls);
+      const p = processCalls(prevCalls);
+      repData[ownerId] = { t, p };
+      allEnrichIds.push(...t.convoList.map(c => String(c.id)), ...t.meetingList.map(c => String(c.id)));
+    }
 
-    // Enrich conversations with contact info
-    const convoIds = t.convoList.map(c => String(c.id));
-    const meetingIds = t.meetingList.map(c => String(c.id));
-    const enrichIds = [...new Set([...convoIds, ...meetingIds])];
+    // Enrich conversations with contact info (batch across all reps)
+    const enrichIds = [...new Set(allEnrichIds)];
 
     const callToContact = {};
     for (let i = 0; i < enrichIds.length; i += 100) {
@@ -170,39 +178,45 @@ export default async function handler(req, res) {
 
     // Build message
     let msg = `📞 *Runbook — Daily Call Report*\n${todayLabel}\n`;
-    msg += `\n━━━━━━━━━━━━━━━━━━━━━\n\n`;
-    msg += `👤 *Brandon Liao*\n`;
-    msg += `Dials: *${t.dials}* → Connects: *${t.connects}* (${t.cr}%) → Convos (>1m): *${t.convos}* → Meetings: *${t.meetings}*\n`;
-    msg += `Positive: ${t.positive} | Negative: ${t.negative} | Busy: ${t.busy} | Wrong #: ${t.wrongNum}\n\n`;
 
-    msg += `📈 _vs ${prev.label}:_\n`;
-    msg += `_• Dials: ${p.dials} ${arrow(t.dials, p.dials)}`;
-    msg += ` | Connect rate: ${p.cr}% ${arrow(parseFloat(t.cr), parseFloat(p.cr))}`;
-    msg += ` | Convos: ${p.convos} ${arrow(t.convos, p.convos)}`;
-    msg += ` | Meetings: ${p.meetings} ${arrow(t.meetings, p.meetings)}_\n`;
+    for (const ownerId of repIds) {
+      const { t, p } = repData[ownerId];
+      if (t.dials < 30 || t.connects < 1) continue; // skip reps below threshold
 
-    if (t.convoList.length > 0) {
-      msg += `\n📝 *Conversations:*\n`;
-      t.convoList.forEach(call => {
-        const c = enrichCall(call);
-        msg += `• ${c.name} — ${c.title}${c.companyName ? ', ' + c.companyName : ''} (${c.disp}, ${c.duration})\n`;
-        const links = [];
-        if (c.recording) links.push(`<${c.recording}|🎧 Listen>`);
-        links.push(`<${c.hsUrl}|📋 HubSpot>`);
-        msg += `  ${links.join(' | ')}\n`;
-      });
-    }
+      msg += `\n━━━━━━━━━━━━━━━━━━━━━\n\n`;
+      msg += `👤 *${REPS[ownerId]}*\n`;
+      msg += `Dials: *${t.dials}* → Connects: *${t.connects}* (${t.cr}%) → Convos (>1m): *${t.convos}* → Meetings: *${t.meetings}*\n`;
+      msg += `Positive: ${t.positive} | Negative: ${t.negative} | Busy: ${t.busy} | Wrong #: ${t.wrongNum}\n\n`;
 
-    if (t.meetingList.length > 0) {
-      msg += `\n🏆 *Meetings Booked:*\n`;
-      t.meetingList.forEach(call => {
-        const c = enrichCall(call);
-        msg += `• ${c.name} — ${c.title}${c.companyName ? ', ' + c.companyName : ''}\n`;
-        const links = [];
-        if (c.recording) links.push(`<${c.recording}|🎧 Listen>`);
-        links.push(`<${c.hsUrl}|📋 HubSpot>`);
-        msg += `  ${links.join(' | ')}\n`;
-      });
+      msg += `📈 _vs ${prev.label}:_\n`;
+      msg += `_• Dials: ${p.dials} ${arrow(t.dials, p.dials)}`;
+      msg += ` | Connect rate: ${p.cr}% ${arrow(parseFloat(t.cr), parseFloat(p.cr))}`;
+      msg += ` | Convos: ${p.convos} ${arrow(t.convos, p.convos)}`;
+      msg += ` | Meetings: ${p.meetings} ${arrow(t.meetings, p.meetings)}_\n`;
+
+      if (t.convoList.length > 0) {
+        msg += `\n📝 *Conversations:*\n`;
+        t.convoList.forEach(call => {
+          const c = enrichCall(call);
+          msg += `• ${c.name} — ${c.title}${c.companyName ? ', ' + c.companyName : ''} (${c.disp}, ${c.duration})\n`;
+          const links = [];
+          if (c.recording) links.push(`<${c.recording}|🎧 Listen>`);
+          links.push(`<${c.hsUrl}|📋 HubSpot>`);
+          msg += `  ${links.join(' | ')}\n`;
+        });
+      }
+
+      if (t.meetingList.length > 0) {
+        msg += `\n🏆 *Meetings Booked:*\n`;
+        t.meetingList.forEach(call => {
+          const c = enrichCall(call);
+          msg += `• ${c.name} — ${c.title}${c.companyName ? ', ' + c.companyName : ''}\n`;
+          const links = [];
+          if (c.recording) links.push(`<${c.recording}|🎧 Listen>`);
+          links.push(`<${c.hsUrl}|📋 HubSpot>`);
+          msg += `  ${links.join(' | ')}\n`;
+        });
+      }
     }
 
     msg += `\n━━━━━━━━━━━━━━━━━━━━━\n`;

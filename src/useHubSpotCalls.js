@@ -26,6 +26,8 @@ const DISPOSITION_MAP = {
 const OWNER_MAP = {
   '163308867': 'Brandon Liao',
   '162266623': 'Chuck Gartland',
+  '164112986': 'Joe Ammirato',
+  '161641940': 'Wesley Bayer',
 };
 
 const VALID_DISPOSITIONS = Object.keys(DISPOSITION_MAP);
