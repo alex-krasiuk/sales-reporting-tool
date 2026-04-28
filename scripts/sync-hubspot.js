@@ -324,6 +324,8 @@ async function main() {
 
   console.log('0/5  Fetching HubSpot owners...');
   OWNER_MAP = await fetchOwners();
+  // Fallback for deactivated accounts
+  if (!OWNER_MAP['162266623']) OWNER_MAP['162266623'] = 'Chuck Gartland';
   console.log(`     ${Object.keys(OWNER_MAP).length} owners loaded`);
 
   console.log('1/5  Fetching all outbound calls...');
