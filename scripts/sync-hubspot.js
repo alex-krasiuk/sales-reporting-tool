@@ -160,15 +160,29 @@ async function batchCompanies(companyIds) {
 }
 
 // --- AI classification via OpenAI ---
-const OPENAI_KEY = process.env.OPENAI_API_KEY;
+const OPENAI_KEY = process.env.OPENAI_API_KEY || process.env.GPT_API_KEY;
 
 async function classifyWithAI(transcript) {
   if (!OPENAI_KEY || !transcript || transcript.length < 100) return null;
   const prompt = `You are classifying a sales cold call transcript. Read it and return JSON ONLY, no prose.
 
+Call dispositions in our system:
+- Connected : Confirmed Meeting — meeting was confirmed
+- Connected : Demo Set — demo was scheduled
+- Connected Positive : Add To Strat — positive, added to strategy list
+- Connected Positive : Call Later — positive, asked to call back
+- Connected Positive : Follow-Up (PS) — positive, follow-up with pre-sales
+- Connected Negative - Competitor — using a competitor
+- Connected Negative - Homegrown — built their own solution
+- Connected Negative - Timing — bad timing
+- Connected Negative - Other — other negative outcome
+- Connected : Not Decision Maker — spoke to wrong person
+- Connected : Opt Out — asked to be removed
+- Connected : No Longer With Company — left the company
+
 Classify:
 1. "offer" — What the rep pitched. One of: "AI Agents Platform", "Automate Manual Coordination", "AI for Logistics", "Other", "Not reached", "Follow-up call". Use "Not reached" if no real pitch happened. Use "Follow-up call" if rep references a prior conversation. If "Other", also fill "offer_detail" with 3-5 word description of what was pitched.
-2. "objections" — Array of prospect pushbacks (can be multiple). Each must be one of: "Building in-house / have solution", "Too busy / bad timing", "Send info / email first", "Other". Example: ["Building in-house / have solution", "Send info / email first"]. Return empty array [] if outcome was wrong contact/wrong number/meeting booked OR prospect engaged positively with no pushback. If any is "Other", fill "objection_detail" with 3-7 word neutral summary (third person).
+2. "objections" — Array of prospect pushbacks (can be multiple). Each must be one of: "Building in-house / have solution", "Too busy / bad timing", "Send info / email first", "Other". Example: ["Building in-house / have solution", "Send info / email first"]. Return empty array [] if disposition is Not Decision Maker, No Longer With Company, Confirmed Meeting, or Demo Set — OR if prospect engaged positively with no pushback. If any is "Other", fill "objection_detail" with 3-7 word neutral summary (third person).
 3. "is_followup" — Boolean. True if rep references previous conversation.
 
 Return ONLY valid JSON: {"offer":"...","offer_detail":"","objections":[],"objection_detail":"","is_followup":false}
@@ -184,11 +198,10 @@ ${transcript.slice(0, 4000)}`;
         'Authorization': `Bearer ${OPENAI_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-5-mini',
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0,
         response_format: { type: 'json_object' },
-        max_tokens: 200,
+        max_completion_tokens: 1000,
       }),
     });
     if (!res.ok) {
@@ -426,7 +439,7 @@ async function main() {
     }
     console.log(`  AI classification done: ${ok}/${toClassify.length} succeeded`);
   } else {
-    console.log('\n  Skipping AI classification (no OPENAI_API_KEY)');
+    console.log('\n  Skipping AI classification (no OPENAI_API_KEY or GPT_API_KEY)');
   }
 
   // Compute summary stats
