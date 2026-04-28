@@ -19,7 +19,7 @@ const CALL_DATA = ALL_CALLS
       aiObjectionDetail: c.aiObjectionDetail,
       aiIsFollowup: c.aiIsFollowup,
     };
-    if (legacy) return { ...legacy, ...aiFields };
+    if (legacy) return { ...legacy, ...aiFields, isConnect: c.isConnect, isConversation: c.isConversation, isMeeting: c.isMeeting };
     return {
       id: c.id, date: c.date, time: c.time, timestamp: c.timestamp,
       rep: c.rep, outcome: c.outcome, vertical: c.vertical || c.industry || '',
@@ -27,6 +27,7 @@ const CALL_DATA = ALL_CALLS
       durationMs: c.durationMs, transcript: c.transcript || '',
       recordingUrl: c.recordingUrl || '', hsUrl: c.hsUrl || '',
       persona: c.persona || '', offer: '',
+      isConnect: c.isConnect, isConversation: c.isConversation, isMeeting: c.isMeeting,
       iceBreaker: c.iceBreaker || { text: '', success: false },
       hook: c.hook || { text: '', success: false },
       objection: c.objection || { text: 'None', success: 'NONE' },
