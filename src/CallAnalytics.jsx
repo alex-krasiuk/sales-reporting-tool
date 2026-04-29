@@ -293,15 +293,15 @@ const lastWeekday = () => {
   return d.toISOString().slice(0, 10);
 };
 
-export default function CallAnalytics({ initialOutcome }) {
+export default function CallAnalytics({ initialOutcome, initialDateRange, initialRep }) {
   const [rows] = useState(CALL_DATA);
   const [search, setSearch] = useState('');
   const pacificToday = pacificNow().toISOString().slice(0, 10);
   const defaultDay = lastWeekday();
-  const [filterDateFrom, setFilterDateFrom] = useState(defaultDay);
-  const [filterDateTo, setFilterDateTo] = useState(defaultDay);
+  const [filterDateFrom, setFilterDateFrom] = useState(initialDateRange?.from || defaultDay);
+  const [filterDateTo, setFilterDateTo] = useState(initialDateRange?.to || defaultDay);
   const [filterOutcome, setFilterOutcome] = useState(initialOutcome || 'All');
-  const [filterRep, setFilterRep] = useState('All');
+  const [filterRep, setFilterRep] = useState(initialRep || 'All');
   const [filterOffer, setFilterOffer] = useState('All');
   const [filterObjection, setFilterObjection] = useState('All');
   const [expandedRow, setExpandedRow] = useState(null);

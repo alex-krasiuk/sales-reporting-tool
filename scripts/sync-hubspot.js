@@ -177,9 +177,11 @@ async function fetchOwners() {
 // --- AI classification via OpenAI ---
 const OPENAI_KEY = process.env.OPENAI_API_KEY || process.env.GPT_API_KEY;
 
-async function classifyWithAI(transcript) {
+async function classifyWithAI(transcript, disposition) {
   if (!OPENAI_KEY || !transcript || transcript.length < 100) return null;
   const prompt = `You are classifying a sales cold call transcript. Read it and return JSON ONLY, no prose.
+
+The rep set the call disposition to: "${disposition || 'Unknown'}"
 
 Call dispositions in our system:
 - Connected : Confirmed Meeting — meeting was confirmed
@@ -437,7 +439,7 @@ async function main() {
     for (let i = 0; i < toClassify.length; i += CONCURRENCY) {
       const batch = toClassify.slice(i, i + CONCURRENCY);
       await Promise.all(batch.map(async (call) => {
-        const result = await classifyWithAI(call.transcript);
+        const result = await classifyWithAI(call.transcript, call.outcome);
         done++;
         if (result) {
           ok++;

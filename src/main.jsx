@@ -7,9 +7,13 @@ import AnalyticsCharts from './AnalyticsCharts.jsx'
 function App() {
   const [tab, setTab] = useState('calls');
   const [outcomeFilter, setOutcomeFilter] = useState(null);
+  const [dateFilter, setDateFilter] = useState(null);
+  const [repFilterNav, setRepFilterNav] = useState(null);
 
-  const navigateToOutcome = (outcome) => {
+  const navigateToOutcome = (outcome, dateFrom, dateTo, rep) => {
     setOutcomeFilter(outcome);
+    setDateFilter({ from: dateFrom, to: dateTo });
+    setRepFilterNav(rep !== 'All' ? rep : null);
     setTab('calls');
   };
 
@@ -28,7 +32,7 @@ function App() {
         <div style={{ flex: 1 }} />
       </div>
       <div style={{ flex: 1, overflow: 'hidden' }}>
-        {tab === 'calls' && <CallAnalytics initialOutcome={outcomeFilter} />}
+        {tab === 'calls' && <CallAnalytics initialOutcome={outcomeFilter} initialDateRange={dateFilter} initialRep={repFilterNav} />}
         {tab === 'analytics' && <AnalyticsCharts onOutcomeClick={navigateToOutcome} />}
       </div>
     </div>

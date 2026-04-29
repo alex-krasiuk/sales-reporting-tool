@@ -554,7 +554,7 @@ Analyze in 3-4 sentences:
                   'Busy': '#d97706', 'No answer': '#9ca3af', 'Wrong number': '#f97316',
                 };
                 return sorted.map(([outcome, count]) => (
-                  <div key={outcome} onClick={() => onOutcomeClick?.(outcome)} style={{ cursor: onOutcomeClick ? 'pointer' : 'default' }}>
+                  <div key={outcome} onClick={() => onOutcomeClick?.(outcome, dateFrom, dateTo, repFilter)} style={{ cursor: onOutcomeClick ? 'pointer' : 'default' }}>
                     <ObjBar label={outcome} count={count} total={totalConnects} color={colorMap[outcome] || '#6b7280'} />
                   </div>
                 ));
