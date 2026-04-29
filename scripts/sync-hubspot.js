@@ -196,7 +196,7 @@ Call dispositions in our system:
 - Connected : No Longer With Company — left the company
 
 Classify:
-1. "offer" — What the rep pitched. One of: "AI Agents Platform", "Automate Manual Coordination", "AI for Logistics", "Other", "Not reached", "Follow-up call". Use "Not reached" if no real pitch happened. Use "Follow-up call" if rep references a prior conversation. If "Other", also fill "offer_detail" with 3-5 word description of what was pitched.
+1. "offer" — What the rep pitched. One of: "AI Agents Platform", "Automate Manual Coordination", "AI for Logistics", "Other", "Not reached", "Follow-up call". Use "Not reached" if no real pitch happened (e.g. wrong person, hung up, never got to pitch). Use "Follow-up call" ONLY if the call is purely a scheduled callback with no new pitch — the rep just says "following up on our last call" and arranges next steps without pitching again. If the rep pitches the product (describes features, gives examples, mentions use cases) even while referencing a prior conversation, classify by what was pitched, NOT as "Follow-up call". If "Other", also fill "offer_detail" with 3-5 word description of what was pitched.
 2. "objections" — Array of prospect pushbacks (can be multiple). Each must be one of: "Building in-house / have solution", "Too busy / bad timing", "Send info / email first", "Other". Example: ["Building in-house / have solution", "Send info / email first"]. Return empty array [] if disposition is Not Decision Maker, No Longer With Company, Confirmed Meeting, or Demo Set — OR if prospect engaged positively with no pushback. If any is "Other", fill "objection_detail" with 3-7 word neutral summary (third person).
 3. "is_followup" — Boolean. True if rep references previous conversation.
 
