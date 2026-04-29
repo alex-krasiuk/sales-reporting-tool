@@ -379,7 +379,7 @@ Analyze in 3-4 sentences:
       // Only include real conversations (>60s) where a pitch actually happened
       if (d.durationMs < 60000) return;
       let cat = d.aiOffer;
-      if (!cat && d.isMeeting) cat = 'Unknown (Demo Set)';
+      if (!cat && d.isMeeting) cat = 'Other';
       if (!cat || cat === 'Not reached') return;
       if (!cats[cat]) cats[cat] = { total: 0, meetings: 0 };
       cats[cat].total++;
