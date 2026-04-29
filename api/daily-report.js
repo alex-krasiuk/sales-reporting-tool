@@ -28,10 +28,8 @@ const DISP_MAP = {
   '17b47fee-58de-441e-a44c-c6300d46f273': 'Wrong number',
 };
 
-// Not connects: dispositions where no live conversation happened
+// Not connects: no human picked up
 const NOT_CONNECT = new Set([
-  '9d9162e7-6cf3-4944-bf63-4dff82258764', // Busy
-  'eeda19de-af72-47f6-820e-7a3348267d16', // Hung Up
   'a4c4c377-d246-4b32-a13b-75a56a4cd0ff', // Left live message
   'b2cf5968-551e-4856-9783-52b3da59a7d0', // Left voicemail
   '73a0d17f-1163-4015-bdd5-ec830791da20', // No answer

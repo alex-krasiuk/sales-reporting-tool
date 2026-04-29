@@ -161,7 +161,7 @@ function ObjBar({ label, count, total, color }) {
 
 // --- Call Highlight Card ---
 // --- Main ---
-export default function AnalyticsCharts() {
+export default function AnalyticsCharts({ onOutcomeClick }) {
   const pacificNow = () => new Date(Date.now() - 7 * 60 * 60 * 1000);
   const todayStr = pacificNow().toISOString().slice(0, 10);
   const mondayStr = (() => { const d = pacificNow(); const day = d.getDay(); d.setDate(d.getDate() - (day === 0 ? 6 : day - 1)); return d.toISOString().slice(0, 10); })();
@@ -175,6 +175,7 @@ export default function AnalyticsCharts() {
   })();
   const [dateFrom, setDateFrom] = useState(defaultDay);
   const [dateTo, setDateTo] = useState(defaultDay);
+  const [repFilter, setRepFilter] = useState('All');
 
   // Notes & Changes
   const [notes, setNotes] = useState(() => { try { return JSON.parse(localStorage.getItem('call_analytics_notes') || '[]'); } catch { return []; } });
@@ -259,6 +260,11 @@ Analyze in 3-4 sentences:
   const filtered = useMemo(() => CALL_DATA.filter(d => d.date && d.date >= dateFrom && d.date <= dateTo), [dateFrom, dateTo]);
   // ALL dials in date range (includes no-answer, voicemail — for funnel)
   const allDials = useMemo(() => ALL_CALLS.filter(d => d.date && d.date >= dateFrom && d.date <= dateTo), [dateFrom, dateTo]);
+  // Rep-filtered versions for Offer Performance + Call Outcomes
+  const filteredByRep = useMemo(() => repFilter === 'All' ? filtered : filtered.filter(d => d.rep === repFilter), [filtered, repFilter]);
+  const allDialsByRep = useMemo(() => repFilter === 'All' ? allDials : allDials.filter(d => d.rep === repFilter), [allDials, repFilter]);
+  // Available reps for dropdown
+  const repNames = useMemo(() => [...new Set(allDials.map(d => d.rep))].sort(), [allDials]);
 
   // --- Full funnel metrics ---
   const totalDials = allDials.length;
@@ -291,7 +297,7 @@ Analyze in 3-4 sentences:
   });
 
   // --- Pitch funnel ---
-  const withStages = filtered.filter(d => d.iceBreaker?.text);
+  const withStages = filteredByRep.filter(d => d.iceBreaker?.text);
   const ibPassed = withStages.filter(d => d.iceBreaker?.success).length;
   const hookPassed = withStages.filter(d => d.hook?.success).length;
   const heardPitchTotal = hookPassed;
@@ -299,7 +305,7 @@ Analyze in 3-4 sentences:
   // --- Objection aggregation — only counts objections on CONVERSATIONS (>60s) to match Offer Performance ---
   const manualTags = (() => { try { return JSON.parse(localStorage.getItem('call_tags_v1') || '{}'); } catch { return {}; } })();
   const objCounts = {};
-  filtered.forEach(d => {
+  filteredByRep.forEach(d => {
     // Only count convos (>60s) — short calls don't have real objections
     if (d.durationMs < 60000) return;
     // Manual tag overrides all
@@ -340,13 +346,13 @@ Analyze in 3-4 sentences:
   }, [allDials]);
 
   // --- Hook & Icebreaker analytics ---
-  const meetingCalls = filtered.filter(d => d.isMeeting).sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+  const meetingCalls = filteredByRep.filter(d => d.isMeeting).sort((a, b) => b.timestamp.localeCompare(a.timestamp));
 
   // --- Best time to call (all calls by hour) ---
   const hourlyStats = useMemo(() => {
     const hours = {};
     let totalAll = 0;
-    filtered.forEach(d => {
+    filteredByRep.forEach(d => {
       const t = (d.time || '').trim();
       if (!t) return;
       try {
@@ -364,12 +370,12 @@ Analyze in 3-4 sentences:
       } catch {}
     });
     return { hours, totalAll };
-  }, [filtered]);
+  }, [filteredByRep]);
 
   // Offer Performance — only counts CONVERSATIONS (>60s) to measure real pitch effectiveness
   const hookStats = useMemo(() => {
     const cats = {};
-    filtered.forEach(d => {
+    filteredByRep.forEach(d => {
       // Only include real conversations (>60s) where a pitch actually happened
       if (d.durationMs < 60000) return;
       const cat = d.aiOffer;
@@ -379,14 +385,14 @@ Analyze in 3-4 sentences:
       if (d.isMeeting) cats[cat].meetings++;
     });
     return Object.entries(cats).sort((a, b) => b[1].total - a[1].total);
-  }, [filtered]);
+  }, [filteredByRep]);
 
   const ibStats = useMemo(() => {
     const FOLLOWUP_RE = /follow.up|spoke.*last|talked.*before|called.*earlier|we chatted|called.*other day|callback|spoke.*week|spoke.*ago|sent.*note|left.*message/i;
     // Split warm vs cold
     let warmTotal = 0, warmPassed = 0, warmMeetings = 0;
     let coldTotal = 0, coldPassed = 0, coldMeetings = 0;
-    filtered.forEach(d => {
+    filteredByRep.forEach(d => {
       const ib = d.iceBreaker?.text;
       if (!ib) return;
       if (FOLLOWUP_RE.test(ib)) {
@@ -398,7 +404,7 @@ Analyze in 3-4 sentences:
     // Element stats (cold calls only)
     const coldElements = IB_ELEMENTS.filter(el => el.key !== 'followup').map(el => {
       let total = 0, passed = 0, meetings = 0;
-      filtered.forEach(d => {
+      filteredByRep.forEach(d => {
         const ib = d.iceBreaker?.text;
         if (!ib || FOLLOWUP_RE.test(ib)) return; // skip warm calls
         if (el.regex.test(ib)) {
@@ -408,7 +414,7 @@ Analyze in 3-4 sentences:
       return { ...el, total, passed, meetings };
     }).filter(el => el.total > 0).sort((a, b) => (b.total ? b.passed / b.total : 0) - (a.total ? a.passed / a.total : 0));
     return { warmTotal, warmPassed, warmMeetings, coldTotal, coldPassed, coldMeetings, coldElements };
-  }, [filtered]);
+  }, [filteredByRep]);
 
   // Quick presets
   const yesterdayStr = (() => { const d = pacificNow(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
@@ -438,14 +444,6 @@ Analyze in 3-4 sentences:
 
       <div style={{ flex: 1, overflow: 'auto', padding: 20, background: '#f8fafc' }}>
         <div style={{ maxWidth: 1200 }}>
-
-          {/* ===== ROW 1: FULL FUNNEL ===== */}
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 16 }}>
-            <MetricCard label="Dials" value={totalDials} color="#6b7280" big />
-            <MetricCard label="Connects" value={totalConnects} sub={`${connectRate.toFixed(1)}% connect rate`} color="#4f46e5" big />
-            <MetricCard label="Conversations (>1m)" value={conversations} sub={totalConnects ? `${Math.round(conversations / totalConnects * 100)}% of connects` : ''} color="#2563eb" big />
-            <MetricCard label="Meetings Booked" value={meetings} sub={totalDials ? `${(meetings / totalDials * 100).toFixed(2)}% of dials` : ''} color="#16a34a" big />
-          </div>
 
           {/* ===== SDR BREAKDOWN ===== */}
           {(() => {
@@ -482,7 +480,14 @@ Analyze in 3-4 sentences:
             );
           })()}
 
-          {/* ===== OFFER PERFORMANCE + CALL OUTCOMES ===== */}
+          {/* ===== REP FILTER + OFFER PERFORMANCE + CALL OUTCOMES ===== */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <span style={{ fontSize: 12, fontWeight: 600, color: '#374151' }}>Filter by SDR:</span>
+            <select value={repFilter} onChange={e => setRepFilter(e.target.value)} style={{ border: '1px solid #e5e7eb', borderRadius: 6, padding: '5px 10px', fontSize: 12, color: '#374151' }}>
+              <option value="All">All</option>
+              {repNames.map(name => <option key={name} value={name}>{name}</option>)}
+            </select>
+          </div>
           <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
             {/* Offer Performance — Convos only (>60s). Bar visual shows relative Conv→Mtg rate. */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.2, minWidth: 380 }}>
@@ -532,9 +537,9 @@ Analyze in 3-4 sentences:
             {/* Call outcomes — breakdown of CONNECTS only */}
             <div style={{ background: 'white', borderRadius: 10, border: '1px solid #e5e7eb', padding: '16px 20px', flex: 1.5, minWidth: 350 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#1f2937', marginBottom: 4 }}>Call Outcomes</div>
-              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 12 }}>% of {totalConnects} connected calls</div>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 12 }}>% of connected calls{repFilter !== 'All' ? ` (${repFilter})` : ''}</div>
               {(() => {
-                const connectedOnly = allDials.filter(d => d.isConnect);
+                const connectedOnly = allDialsByRep.filter(d => d.isConnect);
                 const outcomes = {};
                 connectedOnly.forEach(d => { outcomes[d.outcome] = (outcomes[d.outcome] || 0) + 1; });
                 const sorted = Object.entries(outcomes).sort((a, b) => b[1] - a[1]);
@@ -549,7 +554,9 @@ Analyze in 3-4 sentences:
                   'Busy': '#d97706', 'No answer': '#9ca3af', 'Wrong number': '#f97316',
                 };
                 return sorted.map(([outcome, count]) => (
-                  <ObjBar key={outcome} label={outcome} count={count} total={totalConnects} color={colorMap[outcome] || '#6b7280'} />
+                  <div key={outcome} onClick={() => onOutcomeClick?.(outcome)} style={{ cursor: onOutcomeClick ? 'pointer' : 'default' }}>
+                    <ObjBar label={outcome} count={count} total={totalConnects} color={colorMap[outcome] || '#6b7280'} />
+                  </div>
                 ));
               })()}
             </div>

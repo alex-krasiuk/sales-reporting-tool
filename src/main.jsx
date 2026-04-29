@@ -6,13 +6,19 @@ import AnalyticsCharts from './AnalyticsCharts.jsx'
 
 function App() {
   const [tab, setTab] = useState('calls');
+  const [outcomeFilter, setOutcomeFilter] = useState(null);
+
+  const navigateToOutcome = (outcome) => {
+    setOutcomeFilter(outcome);
+    setTab('calls');
+  };
 
   return (
     <div style={{ fontFamily: "'Inter', -apple-system, sans-serif", height: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       {/* Tab bar */}
       <div style={{ display: 'flex', background: '#1f2937', flexShrink: 0 }}>
         {[['calls', 'Call Database'], ['analytics', 'Analytics']].map(([key, label]) => (
-          <button key={key} onClick={() => setTab(key)} style={{
+          <button key={key} onClick={() => { setTab(key); if (key === 'calls') setOutcomeFilter(null); }} style={{
             padding: '10px 24px', fontSize: 13, fontWeight: 600, cursor: 'pointer', border: 'none',
             background: tab === key ? '#4f46e5' : 'transparent',
             color: tab === key ? 'white' : '#9ca3af',
@@ -22,8 +28,8 @@ function App() {
         <div style={{ flex: 1 }} />
       </div>
       <div style={{ flex: 1, overflow: 'hidden' }}>
-        {tab === 'calls' && <CallAnalytics />}
-        {tab === 'analytics' && <AnalyticsCharts />}
+        {tab === 'calls' && <CallAnalytics initialOutcome={outcomeFilter} />}
+        {tab === 'analytics' && <AnalyticsCharts onOutcomeClick={navigateToOutcome} />}
       </div>
     </div>
   );
